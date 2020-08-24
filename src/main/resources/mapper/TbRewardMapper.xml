@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbRewardMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbReward">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="reward_id" jdbcType="INTEGER" property="rewardId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_idl" jdbcType="INTEGER" property="userIdl" />
+    <result column="reward_money" jdbcType="DOUBLE" property="rewardMoney" />
+    <result column="reward_date" jdbcType="TIMESTAMP" property="rewardDate" />
+  </resultMap>
+</mapper>

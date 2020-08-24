@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbReplyMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbReply">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="reply_id" jdbcType="INTEGER" property="replyId" />
+    <result column="reply_content" jdbcType="VARCHAR" property="replyContent" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="comment_id" jdbcType="INTEGER" property="commentId" />
+    <result column="reply_idto" jdbcType="INTEGER" property="replyIdto" />
+    <result column="reply_date" jdbcType="TIMESTAMP" property="replyDate" />
+  </resultMap>
+</mapper>
