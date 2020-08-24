@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbEducationMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbEducation">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="education_id" jdbcType="INTEGER" property="educationId" />
+    <result column="education_school" jdbcType="VARCHAR" property="educationSchool" />
+    <result column="education_specialty" jdbcType="VARCHAR" property="educationSpecialty" />
+    <result column="occupation_id" jdbcType="INTEGER" property="occupationId" />
+    <result column="year_in_id" jdbcType="INTEGER" property="yearInId" />
+    <result column="year_out_id" jdbcType="INTEGER" property="yearOutId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+</mapper>

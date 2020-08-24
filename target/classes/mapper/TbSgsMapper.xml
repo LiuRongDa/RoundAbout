@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbSgsMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbSgs">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="sgs_id" jdbcType="INTEGER" property="sgsId" />
+    <result column="sgs_school" jdbcType="VARCHAR" property="sgsSchool" />
+    <result column="sgs_info" jdbcType="VARCHAR" property="sgsInfo" />
+    <result column="sgs_prove" jdbcType="VARCHAR" property="sgsProve" />
+    <result column="sgs_name" jdbcType="VARCHAR" property="sgsName" />
+    <result column="sgs_idcard" jdbcType="VARCHAR" property="sgsIdcard" />
+    <result column="sgs_photo" jdbcType="VARCHAR" property="sgsPhoto" />
+    <result column="occupation_id" jdbcType="INTEGER" property="occupationId" />
+    <result column="degree_id" jdbcType="INTEGER" property="degreeId" />
+    <result column="career_id" jdbcType="INTEGER" property="careerId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="sgs_time" jdbcType="TIMESTAMP" property="sgsTime" />
+    <result column="sgs_result" jdbcType="INTEGER" property="sgsResult" />
+  </resultMap>
+</mapper>

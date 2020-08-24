@@ -50,8 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.html")
                 // 表单提交路径
                 .loginProcessingUrl("/login-check")
-                .usernameParameter("uname")
-                .passwordParameter("pwd")
+                .usernameParameter("userName")
+                .passwordParameter("userPwd")
                 // 默认成功路径：登录后有目标资源，访问目标资源，没有跳转默认成功路径
                 // .defaultSuccessUrl("/home.html")
                 // 成功处理器

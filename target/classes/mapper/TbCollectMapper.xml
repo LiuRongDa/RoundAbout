@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbCollectMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbCollect">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="collect_id" jdbcType="INTEGER" property="collectId" />
+    <result column="collect_title" jdbcType="VARCHAR" property="collectTitle" />
+    <result column="collect_describe" jdbcType="VARCHAR" property="collectDescribe" />
+    <result column="collect_state" jdbcType="INTEGER" property="collectState" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+</mapper>

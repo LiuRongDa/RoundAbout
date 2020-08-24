@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbArticleMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbArticle">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="article_content" jdbcType="VARCHAR" property="articleContent" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="article_photo" jdbcType="VARCHAR" property="articlePhoto" />
+    <result column="article_state" jdbcType="INTEGER" property="articleState" />
+  </resultMap>
+</mapper>

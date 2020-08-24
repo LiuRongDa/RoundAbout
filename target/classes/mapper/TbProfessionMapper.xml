@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbProfessionMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbProfession">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="profession_id" jdbcType="INTEGER" property="professionId" />
+    <result column="profession_company" jdbcType="VARCHAR" property="professionCompany" />
+    <result column="profession_position" jdbcType="VARCHAR" property="professionPosition" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="profession_start" jdbcType="TIMESTAMP" property="professionStart" />
+    <result column="profession_end" jdbcType="TIMESTAMP" property="professionEnd" />
+  </resultMap>
+</mapper>

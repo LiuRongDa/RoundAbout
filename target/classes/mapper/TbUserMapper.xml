@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbUserMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_photo" jdbcType="VARCHAR" property="userPhoto" />
+    <result column="user_backdrop" jdbcType="VARCHAR" property="userBackdrop" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_sex" jdbcType="INTEGER" property="userSex" />
+    <result column="user_sign" jdbcType="VARCHAR" property="userSign" />
+    <result column="user_residence" jdbcType="VARCHAR" property="userResidence" />
+    <result column="trade_id" jdbcType="INTEGER" property="tradeId" />
+    <result column="user_brief" jdbcType="VARCHAR" property="userBrief" />
+    <result column="user_balance" jdbcType="DOUBLE" property="userBalance" />
+    <result column="user_count" jdbcType="INTEGER" property="userCount" />
+    <result column="user_joindate" jdbcType="TIMESTAMP" property="userJoindate" />
+    <result column="user_state" jdbcType="INTEGER" property="userState" />
+    <result column="user_isexpired" jdbcType="INTEGER" property="userIsexpired" />
+    <result column="user_islocked" jdbcType="INTEGER" property="userIslocked" />
+    <result column="user_isCreExpired" jdbcType="INTEGER" property="userIscreexpired" />
+    <result column="user_isenable" jdbcType="INTEGER" property="userIsenable" />
+  </resultMap>
+</mapper>

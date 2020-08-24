@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.TbIssueArticleMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.TbIssueArticle">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="issue_id" jdbcType="INTEGER" property="issueId" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+  </resultMap>
+</mapper>
