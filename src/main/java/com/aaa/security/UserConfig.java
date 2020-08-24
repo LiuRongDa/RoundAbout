@@ -14,24 +14,18 @@ import java.util.List;
 
 @Component
 public class UserConfig implements UserDetailsService {
-
     @Resource
     TbUserService tbUserService;
 
-    /**
-     * 根据用户名加载用户信息
-     * @param s 表单提交的用户名
-     * @return 用户详细信息
-     * @throws UsernameNotFoundException
-     */
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-
-        /*SimpleGrantedAuthority role_admin = new SimpleGrantedAuthority("ROLE_ADMIN");
-        List<GrantedAuthority> authorityList = new ArrayList<GrantedAuthority>();
-        authorityList.add(role_admin);*/
-        TbUser tbUser = tbUserService.findByName(s);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        TbUser tbUser=new TbUser();
+        tbUser.setUserName(username);
+        tbUser = tbUserService.findByName(tbUser);
+        System.out.println(tbUser);
+        //查询用户权限信息
         List<GrantedAuthority> grantedAuthorities1 = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN,add,select");
         List<GrantedAuthority> grantedAuthorities2 = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_TEST,select");
+
         if(tbUser == null){
             throw new UsernameNotFoundException("用户没有找到");
         }
@@ -40,7 +34,6 @@ public class UserConfig implements UserDetailsService {
         }else{
             tbUser.setAuthorityList(grantedAuthorities2);
         }
-        return (UserDetails) tbUser;
+        return tbUser;
     }
-
 }

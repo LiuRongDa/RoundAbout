@@ -1,13 +1,15 @@
 package com.aaa.entity;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_user")
-public class TbUser {
+public class TbUser implements UserDetails {
     @Id
     @Column(name = "user_id")
     private Integer userId;
@@ -351,5 +353,67 @@ public class TbUser {
      */
     public void setUserIsenable(Integer userIsenable) {
         this.userIsenable = userIsenable;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.userPwd;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return this.userIsexpired==1;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return this.userIslocked==1;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return this.userIsexpired==1;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.userIsenable==1;
+    }
+
+    @Override
+    public String toString() {
+        return "TbUser{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPhoto='" + userPhoto + '\'' +
+                ", userBackdrop='" + userBackdrop + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userSex=" + userSex +
+                ", userSign='" + userSign + '\'' +
+                ", userResidence='" + userResidence + '\'' +
+                ", tradeId=" + tradeId +
+                ", userBrief='" + userBrief + '\'' +
+                ", userBalance=" + userBalance +
+                ", userCount=" + userCount +
+                ", userJoindate=" + userJoindate +
+                ", userState=" + userState +
+                ", userIsexpired=" + userIsexpired +
+                ", userIslocked=" + userIslocked +
+                ", userIscreexpired=" + userIscreexpired +
+                ", userIsenable=" + userIsenable +
+                ", authorityList=" + authorityList +
+                '}';
     }
 }

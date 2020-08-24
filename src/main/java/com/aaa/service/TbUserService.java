@@ -16,8 +16,16 @@ public class TbUserService {
     @Resource
     TbUserMapper tbUserMapper;
 
-    public TbUser findByName(String userName){
-        TbUser name = tbUserMapper.findName(userName);
-        return name;
+    /**
+     * 查询用户名
+     * @param tbUser
+     * @return
+     */
+    public TbUser findByName(TbUser tbUser){
+        System.out.println(tbUser);
+        TbUser selectOne = tbUserMapper.selectOne(tbUser);
+        return selectOne;
     }
+
+
 }

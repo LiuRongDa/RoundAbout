@@ -7,25 +7,19 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * @description:
- * @author: LRD
- * @time: 2020/8/7 21:53
- */
 @Component("rbacConfig")
-public class RbacConfig {
+public class Rbacconfig {
     public boolean hasPermission(HttpServletRequest request, Authentication authentication){
         Object principal = authentication.getPrincipal();
         if(principal instanceof UserDetails){
-            TbUser tbUser=(TbUser) principal;
-            String requestURI = request.getRequestURI();
-            System.out.println(requestURI);
-            if(requestURI.length()>30){
-                return false;
-            }else{
+            TbUser tbUser = (TbUser) principal;
+            if(tbUser.getUserName().equals("张三")){
+                System.out.println(request.getRequestURI());
                 return true;
             }
+        }else{
+            System.out.println("meiyren");
         }
         return false;
-    }
+    };
 }
