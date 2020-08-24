@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2020-08-24 14:11:32
+Date: 2020-08-24 14:29:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -529,6 +529,7 @@ CREATE TABLE `tb_trade` (
 DROP TABLE IF EXISTS `tb_user`;
 CREATE TABLE `tb_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(50) NOT NULL,
   `user_photo` varchar(50) DEFAULT NULL,
   `user_backdrop` varchar(50) DEFAULT NULL,
   `user_phone` varchar(11) NOT NULL,
