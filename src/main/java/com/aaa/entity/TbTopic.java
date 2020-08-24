@@ -2,7 +2,7 @@ package com.aaa.entity;
 
 import javax.persistence.*;
 
-@Table(name = "roundabout..tb_topic")
+@Table(name = "tb_topic")
 public class TbTopic {
     @Id
     @Column(name = "topic_id")

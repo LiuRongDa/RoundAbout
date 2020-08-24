@@ -2,7 +2,7 @@ package com.aaa.entity;
 
 import javax.persistence.*;
 
-@Table(name = "roundabout..tb_role_power")
+@Table(name = "tb_role_power")
 public class TbRolePower {
     @Column(name = "role_id")
     private Integer roleId;

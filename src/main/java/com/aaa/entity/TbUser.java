@@ -1,13 +1,19 @@
 package com.aaa.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
-@Table(name = "roundabout..tb_user")
+@Table(name = "tb_user")
 public class TbUser {
     @Id
     @Column(name = "user_id")
     private Integer userId;
+
+    @Column(name = "user_name")
+    private String userName;
 
     @Column(name = "user_photo")
     private String userPhoto;
@@ -62,6 +68,24 @@ public class TbUser {
 
     @Column(name = "user_isenable")
     private Integer userIsenable;
+
+    private List<GrantedAuthority> authorityList;//权限信息
+
+    public List<GrantedAuthority> getAuthorityList() {
+        return authorityList;
+    }
+
+    public void setAuthorityList(List<GrantedAuthority> authorityList) {
+        this.authorityList = authorityList;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     /**
      * @return user_id

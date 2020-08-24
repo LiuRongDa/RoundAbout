@@ -3,7 +3,7 @@ package com.aaa.entity;
 import java.util.Date;
 import javax.persistence.*;
 
-@Table(name = "roundabout..tb_pay")
+@Table(name = "tb_pay")
 public class TbPay {
     @Id
     @Column(name = "pay_id")
