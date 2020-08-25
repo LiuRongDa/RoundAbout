@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2020-08-25 10:29:40
+Date: 2020-08-25 11:23:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -585,16 +585,20 @@ CREATE TABLE `tb_staff` (
   `staff_out` datetime NOT NULL,
   `staff_state` int(11) NOT NULL DEFAULT '0',
   `role_id` int(11) NOT NULL,
+  `user_isexpired` int(11) NOT NULL DEFAULT '1',
+  `user_islocked` int(11) NOT NULL DEFAULT '1',
+  `user_isCreExpired` int(11) NOT NULL DEFAULT '1',
+  `user_isenable` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`staff_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of tb_staff
 -- ----------------------------
-INSERT INTO `tb_staff` VALUES ('1', '曹操', 'cao123456', 'cao123456', '0', '412821200837165012', '12345678910', '2020-08-24 19:22:29', '2020-08-24 19:22:47', '0', '1');
-INSERT INTO `tb_staff` VALUES ('2', '刘备', 'liu123456', 'liu123456', '0', '412743188612126012', '10987654321', '2020-08-25 09:19:17', '2020-08-25 09:19:20', '0', '2');
-INSERT INTO `tb_staff` VALUES ('3', '大乔', 'qiao123456', 'qiao', '1', '427361199611156022', '98765432110', '2020-08-25 09:21:08', '2020-08-25 09:21:11', '0', '3');
-INSERT INTO `tb_staff` VALUES ('4', '孙尚香', 'sun123456', 'sun123456', '1', '431862200207156842', '10293847561', '2020-08-25 09:22:38', '2020-08-25 09:22:41', '0', '4');
+INSERT INTO `tb_staff` VALUES ('1', '曹操', 'cao123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '0', '412821200837165012', '12345678910', '2020-08-24 19:22:29', '2020-08-24 19:22:47', '0', '1', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('2', '刘备', 'liu123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '0', '412743188612126012', '10987654321', '2020-08-25 09:19:17', '2020-08-25 09:19:20', '0', '2', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('3', '大乔', 'qiao123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '1', '427361199611156022', '98765432110', '2020-08-25 09:21:08', '2020-08-25 09:21:11', '0', '3', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('4', '孙尚香', 'sun123456', 'sun123456', '1', '431862200207156842', '10293847561', '2020-08-25 09:22:38', '2020-08-25 09:22:41', '0', '4', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for tb_topic
@@ -667,17 +671,13 @@ CREATE TABLE `tb_user` (
   `user_count` int(11) DEFAULT NULL,
   `user_joindate` datetime NOT NULL,
   `user_state` int(11) NOT NULL,
-  `user_isexpired` int(11) NOT NULL DEFAULT '1',
-  `user_islocked` int(11) NOT NULL DEFAULT '1',
-  `user_isCreExpired` int(11) NOT NULL DEFAULT '1',
-  `user_isenable` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of tb_user
 -- ----------------------------
-INSERT INTO `tb_user` VALUES ('1', 'zs', 'null', 'null', '12345678910', '12345@qq.com', '$2a$10$Iqq0rAnbwVrBpo4V7DNWueQVUe3FsoEmZT3lrJHtTDpJv0w7CROBq', '0', '个性签名', '河南郑州', '1', '个人简介', '0', '0', '2020-08-24 18:27:30', '0', '1', '1', '1', '1');
-INSERT INTO `tb_user` VALUES ('2', '李四', 'null', 'null', '66666666666', '23456@qq.com', '$2a$10$6HdiJ6f/kTvzliZWpzyp/e41TW1AnyYyfHP/8Ik3Bu5vjldrVxF0a', '0', '因为不个性，所以不签名', '河南南阳', '2', '个人简介', '0', '0', '2020-08-25 09:28:25', '0', '1', '1', '1', '1');
-INSERT INTO `tb_user` VALUES ('3', '王五', 'null', 'null', '77777777777', '34567@qq.com', '$2a$10$ejYT9Csh.X32FAZhgzHDBuwxaTwNDb7xyvWKcPr.oKm1sE/9rUlVm', '0', '个性签名', '河南信阳', '3', '个人简介', '0', '0', '2020-08-25 09:30:50', '0', '1', '1', '1', '1');
-INSERT INTO `tb_user` VALUES ('4', '赵六', 'null', 'null', '99999999999', '45678@qq.com', 'admin', '0', '个性签名', '河南濮阳', '4', '个人简介', '0', '0', '2020-08-25 09:31:32', '0', '1', '1', '1', '1');
+INSERT INTO `tb_user` VALUES ('1', 'zs', 'null', 'null', '12345678910', '12345@qq.com', '$2a$10$Iqq0rAnbwVrBpo4V7DNWueQVUe3FsoEmZT3lrJHtTDpJv0w7CROBq', '0', '个性签名', '河南郑州', '1', '个人简介', '0', '0', '2020-08-24 18:27:30', '0');
+INSERT INTO `tb_user` VALUES ('2', '李四', 'null', 'null', '66666666666', '23456@qq.com', '$2a$10$6HdiJ6f/kTvzliZWpzyp/e41TW1AnyYyfHP/8Ik3Bu5vjldrVxF0a', '0', '因为不个性，所以不签名', '河南南阳', '2', '个人简介', '0', '0', '2020-08-25 09:28:25', '0');
+INSERT INTO `tb_user` VALUES ('3', '王五', 'null', 'null', '77777777777', '34567@qq.com', '$2a$10$ejYT9Csh.X32FAZhgzHDBuwxaTwNDb7xyvWKcPr.oKm1sE/9rUlVm', '0', '个性签名', '河南信阳', '3', '个人简介', '0', '0', '2020-08-25 09:30:50', '0');
+INSERT INTO `tb_user` VALUES ('4', '赵六', 'null', 'null', '99999999999', '45678@qq.com', 'admin', '0', '个性签名', '河南濮阳', '4', '个人简介', '0', '0', '2020-08-25 09:31:32', '0');
