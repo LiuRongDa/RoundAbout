@@ -13,8 +13,8 @@ public class Rbacconfig {
         Object principal = authentication.getPrincipal();
         if(principal instanceof UserDetails){
             TbUser tbUser = (TbUser) principal;
-            if(tbUser.getUserName().equals("张三")){
-                System.out.println(request.getRequestURI());
+            if(tbUser.getUserName().equals("zs")){
+                System.out.println("url"+request.getRequestURI());
                 return true;
             }
         }else{

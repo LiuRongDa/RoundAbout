@@ -41,8 +41,8 @@ public class TbUser implements UserDetails {
     @Column(name = "user_residence")
     private String userResidence;
 
-    @Column(name = "trade_id")
-    private Integer tradeId;
+    @Column(name = "user_trade")
+    private Integer userTrade;
 
     @Column(name = "user_brief")
     private String userBrief;
@@ -215,18 +215,12 @@ public class TbUser implements UserDetails {
         this.userResidence = userResidence;
     }
 
-    /**
-     * @return trade_id
-     */
-    public Integer getTradeId() {
-        return tradeId;
+    public Integer getUserTrade() {
+        return userTrade;
     }
 
-    /**
-     * @param tradeId
-     */
-    public void setTradeId(Integer tradeId) {
-        this.tradeId = tradeId;
+    public void setUserTrade(Integer userTrade) {
+        this.userTrade = userTrade;
     }
 
     /**
@@ -403,7 +397,7 @@ public class TbUser implements UserDetails {
                 ", userSex=" + userSex +
                 ", userSign='" + userSign + '\'' +
                 ", userResidence='" + userResidence + '\'' +
-                ", tradeId=" + tradeId +
+                ", userTrade=" + userTrade +
                 ", userBrief='" + userBrief + '\'' +
                 ", userBalance=" + userBalance +
                 ", userCount=" + userCount +

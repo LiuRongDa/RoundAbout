@@ -6,10 +6,12 @@
 </head>
 <body>
 <form action="login-check" method="post">
-    用户名：<input name="user_name"/><br/>
-    密码：<input name="user_pwd"/><br/>
+    用户名：<input name="name"/><br/>
+    密码：<input name="pwd"/><br/>
     <p th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></p>
     <button>登录</button>
+
+    <a href="show.html">12312</a>
 </form>
 </body>
 </html>

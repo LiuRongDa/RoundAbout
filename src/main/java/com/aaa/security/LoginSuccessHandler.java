@@ -20,7 +20,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         httpServletResponse.setCharacterEncoding("UTF-8");
         httpServletResponse.setContentType("application/json");
         PrintWriter writer = httpServletResponse.getWriter();
-        System.out.println(tbUser);
+        System.out.println("tbUser"+tbUser);
         writer.print(tbUser);
         writer.flush();
         writer.close();

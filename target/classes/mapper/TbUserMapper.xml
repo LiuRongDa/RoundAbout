@@ -7,6 +7,7 @@
     -->
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="user_photo" jdbcType="VARCHAR" property="userPhoto" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_backdrop" jdbcType="VARCHAR" property="userBackdrop" />
     <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
     <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
@@ -14,7 +15,7 @@
     <result column="user_sex" jdbcType="INTEGER" property="userSex" />
     <result column="user_sign" jdbcType="VARCHAR" property="userSign" />
     <result column="user_residence" jdbcType="VARCHAR" property="userResidence" />
-    <result column="trade_id" jdbcType="INTEGER" property="tradeId" />
+    <result column="user_trade" jdbcType="VARCHAR" property="userTrade" />
     <result column="user_brief" jdbcType="VARCHAR" property="userBrief" />
     <result column="user_balance" jdbcType="DOUBLE" property="userBalance" />
     <result column="user_count" jdbcType="INTEGER" property="userCount" />
@@ -25,4 +26,8 @@
     <result column="user_isCreExpired" jdbcType="INTEGER" property="userIscreexpired" />
     <result column="user_isenable" jdbcType="INTEGER" property="userIsenable" />
   </resultMap>
+
+  <!--<sql id="selectAll">
+    user_id,user_photo,user_backdrop,user_phone,user_email,user_pwd,user_sex,user_sign,user_residence,trade_id,user_brief,user_balance,user_count,user_joindate,user_state,user_isexpired,user_islocked,user_isCreExpired,user_isenable,user_name
+  </sql>-->
 </mapper>

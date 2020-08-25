@@ -29,7 +29,7 @@ public class LoginErrorHandler implements AuthenticationFailureHandler {
         }else if(accept.indexOf("application/json") != -1){
             isAjax = true;
         }
-        System.out.println(isAjax);
+        System.out.println("isAjax"+isAjax);
         if(isAjax){
             httpServletResponse.setCharacterEncoding("UTF-8");
             httpServletResponse.setContentType("application/json");
