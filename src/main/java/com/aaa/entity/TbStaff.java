@@ -1,10 +1,15 @@
 package com.aaa.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_staff")
-public class TbStaff {
+public class TbStaff implements UserDetails {
     @Id
     @Column(name = "staff_id")
     private Integer staffId;
@@ -38,6 +43,28 @@ public class TbStaff {
 
     @Column(name = "role_id")
     private Integer roleId;
+
+    @Column(name = "user_isexpired")
+    private Integer userIsexpired;
+
+    @Column(name = "user_islocked")
+    private Integer userIslocked;
+
+    @Column(name = "user_isCreExpired")
+    private Integer userIscreexpired;
+
+    @Column(name = "user_isenable")
+    private Integer userIsenable;
+
+    private List<GrantedAuthority> authorityList;//权限信息
+
+    public List<GrantedAuthority> getAuthorityList() {
+        return authorityList;
+    }
+
+    public void setAuthorityList(List<GrantedAuthority> authorityList) {
+        this.authorityList = authorityList;
+    }
 
     /**
      * @return staff_id
@@ -191,5 +218,96 @@ public class TbStaff {
      */
     public void setRoleId(Integer roleId) {
         this.roleId = roleId;
+    }
+
+    /**
+     * @return user_isexpired
+     */
+    public Integer getUserIsexpired() {
+        return userIsexpired;
+    }
+
+    /**
+     * @param userIsexpired
+     */
+    public void setUserIsexpired(Integer userIsexpired) {
+        this.userIsexpired = userIsexpired;
+    }
+
+    /**
+     * @return user_islocked
+     */
+    public Integer getUserIslocked() {
+        return userIslocked;
+    }
+
+    /**
+     * @param userIslocked
+     */
+    public void setUserIslocked(Integer userIslocked) {
+        this.userIslocked = userIslocked;
+    }
+
+    /**
+     * @return user_isCreExpired
+     */
+    public Integer getUserIscreexpired() {
+        return userIscreexpired;
+    }
+
+    /**
+     * @param userIscreexpired
+     */
+    public void setUserIscreexpired(Integer userIscreexpired) {
+        this.userIscreexpired = userIscreexpired;
+    }
+
+    /**
+     * @return user_isenable
+     */
+    public Integer getUserIsenable() {
+        return userIsenable;
+    }
+
+    /**
+     * @param userIsenable
+     */
+    public void setUserIsenable(Integer userIsenable) {
+        this.userIsenable = userIsenable;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.getUsername();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return this.userIsexpired==1;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return this.userIslocked==1;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return this.userIscreexpired==1;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.userIsenable==1;
     }
 }
