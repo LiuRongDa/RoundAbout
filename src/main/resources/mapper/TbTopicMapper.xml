@@ -5,8 +5,8 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="topic_id" jdbcType="INTEGER" property="topicId" />
-    <result column="topic_name" jdbcType="VARCHAR" property="topicName" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="topic_id" jdbcType="INTEGER" property="topic_id" />
+    <result column="topic_name" jdbcType="VARCHAR" property="topic_name" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
 </mapper>

@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="trade_id" jdbcType="INTEGER" property="tradeId" />
-    <result column="trade_name" jdbcType="VARCHAR" property="tradeName" />
+    <id column="trade_id" jdbcType="INTEGER" property="trade_id" />
+    <result column="trade_name" jdbcType="VARCHAR" property="trade_name" />
   </resultMap>
 </mapper>

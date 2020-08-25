@@ -5,10 +5,10 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="reward_id" jdbcType="INTEGER" property="rewardId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="user_idl" jdbcType="INTEGER" property="userIdl" />
-    <result column="reward_money" jdbcType="DOUBLE" property="rewardMoney" />
-    <result column="reward_date" jdbcType="TIMESTAMP" property="rewardDate" />
+    <id column="reward_id" jdbcType="INTEGER" property="reward_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="user_idl" jdbcType="INTEGER" property="user_idl" />
+    <result column="reward_money" jdbcType="DOUBLE" property="reward_money" />
+    <result column="reward_date" jdbcType="TIMESTAMP" property="reward_date" />
   </resultMap>
 </mapper>

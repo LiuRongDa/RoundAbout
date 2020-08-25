@@ -5,21 +5,21 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_photo" jdbcType="VARCHAR" property="userPhoto" />
-    <result column="user_backdrop" jdbcType="VARCHAR" property="userBackdrop" />
-    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
-    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
-    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
-    <result column="user_sex" jdbcType="INTEGER" property="userSex" />
-    <result column="user_sign" jdbcType="VARCHAR" property="userSign" />
-    <result column="user_residence" jdbcType="VARCHAR" property="userResidence" />
-    <result column="user_trade" jdbcType="VARCHAR" property="userTrade" />
-    <result column="user_brief" jdbcType="VARCHAR" property="userBrief" />
-    <result column="user_balance" jdbcType="DOUBLE" property="userBalance" />
-    <result column="user_count" jdbcType="INTEGER" property="userCount" />
-    <result column="user_joindate" jdbcType="TIMESTAMP" property="userJoindate" />
-    <result column="user_state" jdbcType="INTEGER" property="userState" />
+    <id column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="user_name" jdbcType="VARCHAR" property="user_name" />
+    <result column="user_photo" jdbcType="VARCHAR" property="user_photo" />
+    <result column="user_backdrop" jdbcType="VARCHAR" property="user_backdrop" />
+    <result column="user_phone" jdbcType="VARCHAR" property="user_phone" />
+    <result column="user_email" jdbcType="VARCHAR" property="user_email" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="user_pwd" />
+    <result column="user_sex" jdbcType="INTEGER" property="user_sex" />
+    <result column="user_sign" jdbcType="VARCHAR" property="user_sign" />
+    <result column="user_residence" jdbcType="VARCHAR" property="user_residence" />
+    <result column="user_trade" jdbcType="VARCHAR" property="user_trade" />
+    <result column="user_brief" jdbcType="VARCHAR" property="user_brief" />
+    <result column="user_balance" jdbcType="DOUBLE" property="user_balance" />
+    <result column="user_count" jdbcType="INTEGER" property="user_count" />
+    <result column="user_joindate" jdbcType="TIMESTAMP" property="user_joindate" />
+    <result column="user_state" jdbcType="INTEGER" property="user_state" />
   </resultMap>
 </mapper>

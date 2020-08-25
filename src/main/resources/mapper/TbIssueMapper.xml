@@ -5,9 +5,9 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="issue_id" jdbcType="INTEGER" property="issueId" />
-    <result column="issue_title" jdbcType="VARCHAR" property="issueTitle" />
-    <result column="issue_content" jdbcType="VARCHAR" property="issueContent" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="issue_id" jdbcType="INTEGER" property="issue_id" />
+    <result column="issue_title" jdbcType="VARCHAR" property="issue_title" />
+    <result column="issue_content" jdbcType="VARCHAR" property="issue_content" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
 </mapper>

@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="gambit_id" jdbcType="INTEGER" property="gambitId" />
-    <result column="gambit_name" jdbcType="VARCHAR" property="gambitName" />
+    <id column="gambit_id" jdbcType="INTEGER" property="gambit_id" />
+    <result column="gambit_name" jdbcType="VARCHAR" property="gambit_name" />
   </resultMap>
 </mapper>

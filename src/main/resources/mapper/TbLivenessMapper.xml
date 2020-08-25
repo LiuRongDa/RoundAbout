@@ -5,8 +5,8 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="liveness_id" jdbcType="INTEGER" property="livenessId" />
-    <result column="liveness_endtime" jdbcType="TIMESTAMP" property="livenessEndtime" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="liveness_id" jdbcType="INTEGER" property="liveness_id" />
+    <result column="liveness_endtime" jdbcType="TIMESTAMP" property="liveness_endtime" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
 </mapper>

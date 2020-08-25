@@ -5,8 +5,8 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="power_id" jdbcType="INTEGER" property="powerId" />
-    <result column="power_name" jdbcType="VARCHAR" property="powerName" />
-    <result column="power_url" jdbcType="VARCHAR" property="powerUrl" />
+    <id column="power_id" jdbcType="INTEGER" property="power_id" />
+    <result column="power_name" jdbcType="VARCHAR" property="power_name" />
+    <result column="power_url" jdbcType="VARCHAR" property="power_url" />
   </resultMap>
 </mapper>
