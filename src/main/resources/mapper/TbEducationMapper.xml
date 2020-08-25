@@ -9,8 +9,8 @@
     <result column="education_school" jdbcType="VARCHAR" property="educationSchool" />
     <result column="education_specialty" jdbcType="VARCHAR" property="educationSpecialty" />
     <result column="occupation_id" jdbcType="INTEGER" property="occupationId" />
-    <result column="year_in_id" jdbcType="INTEGER" property="yearInId" />
-    <result column="year_out_id" jdbcType="INTEGER" property="yearOutId" />
+    <result column="education_inyear" jdbcType="INTEGER" property="educationInYear" />
+    <result column="education_outyear" jdbcType="INTEGER" property="educationOutYear" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
   </resultMap>
 </mapper>
