@@ -20,16 +20,4 @@ public class TbUserController {
     @Resource
     TbUserService tbUserService;
 
-    @RequestMapping("findByName")
-    public TbUser findByName(@RequestBody TbUser tbUser){
-        System.out.println("controller User"+tbUser);
-        TbUser byName = tbUserService.findByName(tbUser);
-        return byName;
-    }
-
-    @RequestMapping("queryAll")
-    public List<TbUser> queryAll(@RequestBody TbUser tbUser){
-        List<TbUser> tbUsers = tbUserService.queryAll(tbUser);
-        return tbUsers;
-    }
 }
