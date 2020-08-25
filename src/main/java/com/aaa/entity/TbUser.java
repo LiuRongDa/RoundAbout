@@ -1,86 +1,59 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_user")
-public class TbUser {
+public class TbUser implements Serializable {
     @Id
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
 
-    @Column(name = "user_name")
-    private String userName;
+    private String user_name;
 
-    @Column(name = "user_photo")
-    private String userPhoto;
+    private String user_photo;
 
-    @Column(name = "user_backdrop")
-    private String userBackdrop;
+    private String user_backdrop;
 
-    @Column(name = "user_phone")
-    private String userPhone;
+    private String user_phone;
 
-    @Column(name = "user_email")
-    private String userEmail;
+    private String user_email;
 
-    @Column(name = "user_pwd")
-    private String userPwd;
+    private String user_pwd;
 
-    @Column(name = "user_sex")
-    private Integer userSex;
+    private Integer user_sex;
 
-    @Column(name = "user_sign")
-    private String userSign;
+    private String user_sign;
 
-    @Column(name = "user_residence")
-    private String userResidence;
+    private String user_residence;
 
-    @Column(name = "user_trade")
-    private String userTrade;
+    private String user_trade;
 
-    @Column(name = "user_brief")
-    private String userBrief;
+    private String user_brief;
 
-    @Column(name = "user_balance")
-    private Double userBalance;
+    private Double user_balance;
 
-    @Column(name = "user_count")
-    private Integer userCount;
+    private Integer user_count;
 
-    @Column(name = "user_joindate")
-    private Date userJoindate;
+    private Date user_joindate;
 
-    @Column(name = "user_state")
-    private Integer userState;
+    private Integer user_state;
+
 
     private List<TbProfession> tbProfessionList;
 
     private List<TbEducation> tbEducations;
 
-    @Override
-    public String toString() {
-        return "TbUser{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", userPhoto='" + userPhoto + '\'' +
-                ", userBackdrop='" + userBackdrop + '\'' +
-                ", userPhone='" + userPhone + '\'' +
-                ", userEmail='" + userEmail + '\'' +
-                ", userPwd='" + userPwd + '\'' +
-                ", userSex=" + userSex +
-                ", userSign='" + userSign + '\'' +
-                ", userResidence='" + userResidence + '\'' +
-                ", userTrade='" + userTrade + '\'' +
-                ", userBrief='" + userBrief + '\'' +
-                ", userBalance=" + userBalance +
-                ", userCount=" + userCount +
-                ", userJoindate=" + userJoindate +
-                ", userState=" + userState +
-                ", tbProfessionList=" + tbProfessionList +
-                ", tbEducations=" + tbEducations +
-                '}';
+
+    private static final long serialVersionUID = 1L;
+
+    public List<TbProfession> getTbProfessionList() {
+        return tbProfessionList;
+    }
+
+    public void setTbProfessionList(List<TbProfession> tbProfessionList) {
+        this.tbProfessionList = tbProfessionList;
     }
 
     public List<TbEducation> getTbEducations() {
@@ -91,235 +64,251 @@ public class TbUser {
         this.tbEducations = tbEducations;
     }
 
-    public List<TbProfession> getTbProfessionList() {
-        return tbProfessionList;
-    }
-
-    public void setTbProfessionList(List<TbProfession> tbProfessionList) {
-        this.tbProfessionList = tbProfessionList;
-    }
-
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     /**
      * @return user_name
      */
-    public String getUserName() {
-        return userName;
+    public String getUser_name() {
+        return user_name;
     }
 
     /**
-     * @param userName
+     * @param user_name
      */
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     /**
      * @return user_photo
      */
-    public String getUserPhoto() {
-        return userPhoto;
+    public String getUser_photo() {
+        return user_photo;
     }
 
     /**
-     * @param userPhoto
+     * @param user_photo
      */
-    public void setUserPhoto(String userPhoto) {
-        this.userPhoto = userPhoto;
+    public void setUser_photo(String user_photo) {
+        this.user_photo = user_photo;
     }
 
     /**
      * @return user_backdrop
      */
-    public String getUserBackdrop() {
-        return userBackdrop;
+    public String getUser_backdrop() {
+        return user_backdrop;
     }
 
     /**
-     * @param userBackdrop
+     * @param user_backdrop
      */
-    public void setUserBackdrop(String userBackdrop) {
-        this.userBackdrop = userBackdrop;
+    public void setUser_backdrop(String user_backdrop) {
+        this.user_backdrop = user_backdrop;
     }
 
     /**
      * @return user_phone
      */
-    public String getUserPhone() {
-        return userPhone;
+    public String getUser_phone() {
+        return user_phone;
     }
 
     /**
-     * @param userPhone
+     * @param user_phone
      */
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
+    public void setUser_phone(String user_phone) {
+        this.user_phone = user_phone;
     }
 
     /**
      * @return user_email
      */
-    public String getUserEmail() {
-        return userEmail;
+    public String getUser_email() {
+        return user_email;
     }
 
     /**
-     * @param userEmail
+     * @param user_email
      */
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 
     /**
      * @return user_pwd
      */
-    public String getUserPwd() {
-        return userPwd;
+    public String getUser_pwd() {
+        return user_pwd;
     }
 
     /**
-     * @param userPwd
+     * @param user_pwd
      */
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+    public void setUser_pwd(String user_pwd) {
+        this.user_pwd = user_pwd;
     }
 
     /**
      * @return user_sex
      */
-    public Integer getUserSex() {
-        return userSex;
+    public Integer getUser_sex() {
+        return user_sex;
     }
 
     /**
-     * @param userSex
+     * @param user_sex
      */
-    public void setUserSex(Integer userSex) {
-        this.userSex = userSex;
+    public void setUser_sex(Integer user_sex) {
+        this.user_sex = user_sex;
     }
 
     /**
      * @return user_sign
      */
-    public String getUserSign() {
-        return userSign;
+    public String getUser_sign() {
+        return user_sign;
     }
 
     /**
-     * @param userSign
+     * @param user_sign
      */
-    public void setUserSign(String userSign) {
-        this.userSign = userSign;
+    public void setUser_sign(String user_sign) {
+        this.user_sign = user_sign;
     }
 
     /**
      * @return user_residence
      */
-    public String getUserResidence() {
-        return userResidence;
+    public String getUser_residence() {
+        return user_residence;
     }
 
     /**
-     * @param userResidence
+     * @param user_residence
      */
-    public void setUserResidence(String userResidence) {
-        this.userResidence = userResidence;
+    public void setUser_residence(String user_residence) {
+        this.user_residence = user_residence;
     }
 
     /**
      * @return user_trade
      */
-    public String getUserTrade() {
-        return userTrade;
+    public String getUser_trade() {
+        return user_trade;
     }
 
     /**
-     * @param userTrade
+     * @param user_trade
      */
-    public void setUserTrade(String userTrade) {
-        this.userTrade = userTrade;
+    public void setUser_trade(String user_trade) {
+        this.user_trade = user_trade;
     }
 
     /**
      * @return user_brief
      */
-    public String getUserBrief() {
-        return userBrief;
+    public String getUser_brief() {
+        return user_brief;
     }
 
     /**
-     * @param userBrief
+     * @param user_brief
      */
-    public void setUserBrief(String userBrief) {
-        this.userBrief = userBrief;
+    public void setUser_brief(String user_brief) {
+        this.user_brief = user_brief;
     }
 
     /**
      * @return user_balance
      */
-    public Double getUserBalance() {
-        return userBalance;
+    public Double getUser_balance() {
+        return user_balance;
     }
 
     /**
-     * @param userBalance
+     * @param user_balance
      */
-    public void setUserBalance(Double userBalance) {
-        this.userBalance = userBalance;
+    public void setUser_balance(Double user_balance) {
+        this.user_balance = user_balance;
     }
 
     /**
      * @return user_count
      */
-    public Integer getUserCount() {
-        return userCount;
+    public Integer getUser_count() {
+        return user_count;
     }
 
     /**
-     * @param userCount
+     * @param user_count
      */
-    public void setUserCount(Integer userCount) {
-        this.userCount = userCount;
+    public void setUser_count(Integer user_count) {
+        this.user_count = user_count;
     }
 
     /**
      * @return user_joindate
      */
-    public Date getUserJoindate() {
-        return userJoindate;
+    public Date getUser_joindate() {
+        return user_joindate;
     }
 
     /**
-     * @param userJoindate
+     * @param user_joindate
      */
-    public void setUserJoindate(Date userJoindate) {
-        this.userJoindate = userJoindate;
+    public void setUser_joindate(Date user_joindate) {
+        this.user_joindate = user_joindate;
     }
 
     /**
      * @return user_state
      */
-    public Integer getUserState() {
-        return userState;
+    public Integer getUser_state() {
+        return user_state;
     }
 
     /**
-     * @param userState
+     * @param user_state
      */
-    public void setUserState(Integer userState) {
-        this.userState = userState;
+    public void setUser_state(Integer user_state) {
+        this.user_state = user_state;
+    }
+
+    @Override
+    public String toString() {
+        return "TbUser{" +
+                "user_id=" + user_id +
+                ", user_name='" + user_name + '\'' +
+                ", user_photo='" + user_photo + '\'' +
+                ", user_backdrop='" + user_backdrop + '\'' +
+                ", user_phone='" + user_phone + '\'' +
+                ", user_email='" + user_email + '\'' +
+                ", user_pwd='" + user_pwd + '\'' +
+                ", user_sex=" + user_sex +
+                ", user_sign='" + user_sign + '\'' +
+                ", user_residence='" + user_residence + '\'' +
+                ", user_trade='" + user_trade + '\'' +
+                ", user_brief='" + user_brief + '\'' +
+                ", user_balance=" + user_balance +
+                ", user_count=" + user_count +
+                ", user_joindate=" + user_joindate +
+                ", user_state=" + user_state +
+                ", tbProfessionList=" + tbProfessionList +
+                ", tbEducations=" + tbEducations +
+                '}';
     }
 }

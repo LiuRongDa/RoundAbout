@@ -1,92 +1,106 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_collect")
-public class TbCollect {
+public class TbCollect implements Serializable {
     @Id
-    @Column(name = "collect_id")
-    private Integer collectId;
+    private Integer collect_id;
 
-    @Column(name = "collect_title")
-    private String collectTitle;
+    private String collect_title;
 
-    @Column(name = "collect_describe")
-    private String collectDescribe;
+    private String collect_describe;
 
-    @Column(name = "collect_state")
-    private Integer collectState;
+    private Integer collect_state;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return collect_id
      */
-    public Integer getCollectId() {
-        return collectId;
+    public Integer getCollect_id() {
+        return collect_id;
     }
 
     /**
-     * @param collectId
+     * @param collect_id
      */
-    public void setCollectId(Integer collectId) {
-        this.collectId = collectId;
+    public void setCollect_id(Integer collect_id) {
+        this.collect_id = collect_id;
     }
 
     /**
      * @return collect_title
      */
-    public String getCollectTitle() {
-        return collectTitle;
+    public String getCollect_title() {
+        return collect_title;
     }
 
     /**
-     * @param collectTitle
+     * @param collect_title
      */
-    public void setCollectTitle(String collectTitle) {
-        this.collectTitle = collectTitle;
+    public void setCollect_title(String collect_title) {
+        this.collect_title = collect_title;
     }
 
     /**
      * @return collect_describe
      */
-    public String getCollectDescribe() {
-        return collectDescribe;
+    public String getCollect_describe() {
+        return collect_describe;
     }
 
     /**
-     * @param collectDescribe
+     * @param collect_describe
      */
-    public void setCollectDescribe(String collectDescribe) {
-        this.collectDescribe = collectDescribe;
+    public void setCollect_describe(String collect_describe) {
+        this.collect_describe = collect_describe;
     }
 
     /**
      * @return collect_state
      */
-    public Integer getCollectState() {
-        return collectState;
+    public Integer getCollect_state() {
+        return collect_state;
     }
 
     /**
-     * @param collectState
+     * @param collect_state
      */
-    public void setCollectState(Integer collectState) {
-        this.collectState = collectState;
+    public void setCollect_state(Integer collect_state) {
+        this.collect_state = collect_state;
     }
 
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", collect_id=").append(collect_id);
+        sb.append(", collect_title=").append(collect_title);
+        sb.append(", collect_describe=").append(collect_describe);
+        sb.append(", collect_state=").append(collect_state);
+        sb.append(", user_id=").append(user_id);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

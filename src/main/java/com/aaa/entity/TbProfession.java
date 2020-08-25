@@ -1,110 +1,124 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "tb_profession")
-public class TbProfession {
+public class TbProfession implements Serializable {
     @Id
-    @Column(name = "profession_id")
-    private Integer professionId;
+    private Integer profession_id;
 
-    @Column(name = "profession_company")
-    private String professionCompany;
+    private String profession_company;
 
-    @Column(name = "profession_position")
-    private String professionPosition;
+    private String profession_position;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
 
-    @Column(name = "profession_start")
-    private Date professionStart;
+    private Date profession_start;
 
-    @Column(name = "profession_end")
-    private Date professionEnd;
+    private Date profession_end;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return profession_id
      */
-    public Integer getProfessionId() {
-        return professionId;
+    public Integer getProfession_id() {
+        return profession_id;
     }
 
     /**
-     * @param professionId
+     * @param profession_id
      */
-    public void setProfessionId(Integer professionId) {
-        this.professionId = professionId;
+    public void setProfession_id(Integer profession_id) {
+        this.profession_id = profession_id;
     }
 
     /**
      * @return profession_company
      */
-    public String getProfessionCompany() {
-        return professionCompany;
+    public String getProfession_company() {
+        return profession_company;
     }
 
     /**
-     * @param professionCompany
+     * @param profession_company
      */
-    public void setProfessionCompany(String professionCompany) {
-        this.professionCompany = professionCompany;
+    public void setProfession_company(String profession_company) {
+        this.profession_company = profession_company;
     }
 
     /**
      * @return profession_position
      */
-    public String getProfessionPosition() {
-        return professionPosition;
+    public String getProfession_position() {
+        return profession_position;
     }
 
     /**
-     * @param professionPosition
+     * @param profession_position
      */
-    public void setProfessionPosition(String professionPosition) {
-        this.professionPosition = professionPosition;
+    public void setProfession_position(String profession_position) {
+        this.profession_position = profession_position;
     }
 
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     /**
      * @return profession_start
      */
-    public Date getProfessionStart() {
-        return professionStart;
+    public Date getProfession_start() {
+        return profession_start;
     }
 
     /**
-     * @param professionStart
+     * @param profession_start
      */
-    public void setProfessionStart(Date professionStart) {
-        this.professionStart = professionStart;
+    public void setProfession_start(Date profession_start) {
+        this.profession_start = profession_start;
     }
 
     /**
      * @return profession_end
      */
-    public Date getProfessionEnd() {
-        return professionEnd;
+    public Date getProfession_end() {
+        return profession_end;
     }
 
     /**
-     * @param professionEnd
+     * @param profession_end
      */
-    public void setProfessionEnd(Date professionEnd) {
-        this.professionEnd = professionEnd;
+    public void setProfession_end(Date profession_end) {
+        this.profession_end = profession_end;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", profession_id=").append(profession_id);
+        sb.append(", profession_company=").append(profession_company);
+        sb.append(", profession_position=").append(profession_position);
+        sb.append(", user_id=").append(user_id);
+        sb.append(", profession_start=").append(profession_start);
+        sb.append(", profession_end=").append(profession_end);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

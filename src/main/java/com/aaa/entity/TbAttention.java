@@ -1,58 +1,72 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_attention")
-public class TbAttention {
+public class TbAttention implements Serializable {
     @Id
-    @Column(name = "attention_id")
-    private Integer attentionId;
+    private Integer attention_id;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
 
-    @Column(name = "user_idl")
-    private Integer userIdl;
+    private Integer user_idl;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return attention_id
      */
-    public Integer getAttentionId() {
-        return attentionId;
+    public Integer getAttention_id() {
+        return attention_id;
     }
 
     /**
-     * @param attentionId
+     * @param attention_id
      */
-    public void setAttentionId(Integer attentionId) {
-        this.attentionId = attentionId;
+    public void setAttention_id(Integer attention_id) {
+        this.attention_id = attention_id;
     }
 
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     /**
      * @return user_idl
      */
-    public Integer getUserIdl() {
-        return userIdl;
+    public Integer getUser_idl() {
+        return user_idl;
     }
 
     /**
-     * @param userIdl
+     * @param user_idl
      */
-    public void setUserIdl(Integer userIdl) {
-        this.userIdl = userIdl;
+    public void setUser_idl(Integer user_idl) {
+        this.user_idl = user_idl;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", attention_id=").append(attention_id);
+        sb.append(", user_id=").append(user_id);
+        sb.append(", user_idl=").append(user_idl);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

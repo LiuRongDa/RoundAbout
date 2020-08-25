@@ -1,76 +1,90 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "tb_idea")
-public class TbIdea {
+public class TbIdea implements Serializable {
     @Id
-    @Column(name = "idea_id")
-    private Integer ideaId;
+    private Integer idea_id;
 
-    @Column(name = "idea_content")
-    private String ideaContent;
+    private String idea_content;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
 
-    @Column(name = "idea_date")
-    private Date ideaDate;
+    private Date idea_date;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return idea_id
      */
-    public Integer getIdeaId() {
-        return ideaId;
+    public Integer getIdea_id() {
+        return idea_id;
     }
 
     /**
-     * @param ideaId
+     * @param idea_id
      */
-    public void setIdeaId(Integer ideaId) {
-        this.ideaId = ideaId;
+    public void setIdea_id(Integer idea_id) {
+        this.idea_id = idea_id;
     }
 
     /**
      * @return idea_content
      */
-    public String getIdeaContent() {
-        return ideaContent;
+    public String getIdea_content() {
+        return idea_content;
     }
 
     /**
-     * @param ideaContent
+     * @param idea_content
      */
-    public void setIdeaContent(String ideaContent) {
-        this.ideaContent = ideaContent;
+    public void setIdea_content(String idea_content) {
+        this.idea_content = idea_content;
     }
 
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     /**
      * @return idea_date
      */
-    public Date getIdeaDate() {
-        return ideaDate;
+    public Date getIdea_date() {
+        return idea_date;
     }
 
     /**
-     * @param ideaDate
+     * @param idea_date
      */
-    public void setIdeaDate(Date ideaDate) {
-        this.ideaDate = ideaDate;
+    public void setIdea_date(Date idea_date) {
+        this.idea_date = idea_date;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", idea_id=").append(idea_id);
+        sb.append(", idea_content=").append(idea_content);
+        sb.append(", user_id=").append(user_id);
+        sb.append(", idea_date=").append(idea_date);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

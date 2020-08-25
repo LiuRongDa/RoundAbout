@@ -1,40 +1,54 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_issue_article")
-public class TbIssueArticle {
-    @Column(name = "issue_id")
-    private Integer issueId;
+public class TbIssueArticle implements Serializable {
+    private Integer issue_id;
 
-    @Column(name = "article_id")
-    private Integer articleId;
+    private Integer article_id;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return issue_id
      */
-    public Integer getIssueId() {
-        return issueId;
+    public Integer getIssue_id() {
+        return issue_id;
     }
 
     /**
-     * @param issueId
+     * @param issue_id
      */
-    public void setIssueId(Integer issueId) {
-        this.issueId = issueId;
+    public void setIssue_id(Integer issue_id) {
+        this.issue_id = issue_id;
     }
 
     /**
      * @return article_id
      */
-    public Integer getArticleId() {
-        return articleId;
+    public Integer getArticle_id() {
+        return article_id;
     }
 
     /**
-     * @param articleId
+     * @param article_id
      */
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticle_id(Integer article_id) {
+        this.article_id = article_id;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", issue_id=").append(issue_id);
+        sb.append(", article_id=").append(article_id);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

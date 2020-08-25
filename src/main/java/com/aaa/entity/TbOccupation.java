@@ -1,41 +1,55 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_occupation")
-public class TbOccupation {
+public class TbOccupation implements Serializable {
     @Id
-    @Column(name = "occupation_id")
-    private Integer occupationId;
+    private Integer occupation_id;
 
-    @Column(name = "occupation_name")
-    private String occupationName;
+    private String occupation_name;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return occupation_id
      */
-    public Integer getOccupationId() {
-        return occupationId;
+    public Integer getOccupation_id() {
+        return occupation_id;
     }
 
     /**
-     * @param occupationId
+     * @param occupation_id
      */
-    public void setOccupationId(Integer occupationId) {
-        this.occupationId = occupationId;
+    public void setOccupation_id(Integer occupation_id) {
+        this.occupation_id = occupation_id;
     }
 
     /**
      * @return occupation_name
      */
-    public String getOccupationName() {
-        return occupationName;
+    public String getOccupation_name() {
+        return occupation_name;
     }
 
     /**
-     * @param occupationName
+     * @param occupation_name
      */
-    public void setOccupationName(String occupationName) {
-        this.occupationName = occupationName;
+    public void setOccupation_name(String occupation_name) {
+        this.occupation_name = occupation_name;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", occupation_id=").append(occupation_id);
+        sb.append(", occupation_name=").append(occupation_name);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

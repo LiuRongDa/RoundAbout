@@ -1,109 +1,123 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_article")
-public class TbArticle {
+public class TbArticle implements Serializable {
     @Id
-    @Column(name = "article_id")
-    private Integer articleId;
+    private Integer article_id;
 
-    @Column(name = "article_title")
-    private String articleTitle;
+    private String article_title;
 
-    @Column(name = "article_content")
-    private String articleContent;
+    private String article_content;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
 
-    @Column(name = "article_photo")
-    private String articlePhoto;
+    private String article_photo;
 
-    @Column(name = "article_state")
-    private Integer articleState;
+    private Integer article_state;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return article_id
      */
-    public Integer getArticleId() {
-        return articleId;
+    public Integer getArticle_id() {
+        return article_id;
     }
 
     /**
-     * @param articleId
+     * @param article_id
      */
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticle_id(Integer article_id) {
+        this.article_id = article_id;
     }
 
     /**
      * @return article_title
      */
-    public String getArticleTitle() {
-        return articleTitle;
+    public String getArticle_title() {
+        return article_title;
     }
 
     /**
-     * @param articleTitle
+     * @param article_title
      */
-    public void setArticleTitle(String articleTitle) {
-        this.articleTitle = articleTitle;
+    public void setArticle_title(String article_title) {
+        this.article_title = article_title;
     }
 
     /**
      * @return article_content
      */
-    public String getArticleContent() {
-        return articleContent;
+    public String getArticle_content() {
+        return article_content;
     }
 
     /**
-     * @param articleContent
+     * @param article_content
      */
-    public void setArticleContent(String articleContent) {
-        this.articleContent = articleContent;
+    public void setArticle_content(String article_content) {
+        this.article_content = article_content;
     }
 
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     /**
      * @return article_photo
      */
-    public String getArticlePhoto() {
-        return articlePhoto;
+    public String getArticle_photo() {
+        return article_photo;
     }
 
     /**
-     * @param articlePhoto
+     * @param article_photo
      */
-    public void setArticlePhoto(String articlePhoto) {
-        this.articlePhoto = articlePhoto;
+    public void setArticle_photo(String article_photo) {
+        this.article_photo = article_photo;
     }
 
     /**
      * @return article_state
      */
-    public Integer getArticleState() {
-        return articleState;
+    public Integer getArticle_state() {
+        return article_state;
     }
 
     /**
-     * @param articleState
+     * @param article_state
      */
-    public void setArticleState(Integer articleState) {
-        this.articleState = articleState;
+    public void setArticle_state(Integer article_state) {
+        this.article_state = article_state;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", article_id=").append(article_id);
+        sb.append(", article_title=").append(article_title);
+        sb.append(", article_content=").append(article_content);
+        sb.append(", user_id=").append(user_id);
+        sb.append(", article_photo=").append(article_photo);
+        sb.append(", article_state=").append(article_state);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

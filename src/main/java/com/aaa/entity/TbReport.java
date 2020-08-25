@@ -1,144 +1,158 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "tb_report")
-public class TbReport {
+public class TbReport implements Serializable {
     @Id
-    @Column(name = "report_id")
-    private Integer reportId;
+    private Integer report_id;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
 
-    @Column(name = "report_data")
-    private Date reportData;
+    private Date report_data;
 
-    @Column(name = "report_content")
-    private String reportContent;
+    private String report_content;
 
-    @Column(name = "issue_id")
-    private Integer issueId;
+    private Integer issue_id;
 
-    @Column(name = "article_id")
-    private Integer articleId;
+    private Integer article_id;
 
-    @Column(name = "comment_id")
-    private Integer commentId;
+    private Integer comment_id;
 
-    @Column(name = "reply_id")
-    private Integer replyId;
+    private Integer reply_id;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return report_id
      */
-    public Integer getReportId() {
-        return reportId;
+    public Integer getReport_id() {
+        return report_id;
     }
 
     /**
-     * @param reportId
+     * @param report_id
      */
-    public void setReportId(Integer reportId) {
-        this.reportId = reportId;
+    public void setReport_id(Integer report_id) {
+        this.report_id = report_id;
     }
 
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     /**
      * @return report_data
      */
-    public Date getReportData() {
-        return reportData;
+    public Date getReport_data() {
+        return report_data;
     }
 
     /**
-     * @param reportData
+     * @param report_data
      */
-    public void setReportData(Date reportData) {
-        this.reportData = reportData;
+    public void setReport_data(Date report_data) {
+        this.report_data = report_data;
     }
 
     /**
      * @return report_content
      */
-    public String getReportContent() {
-        return reportContent;
+    public String getReport_content() {
+        return report_content;
     }
 
     /**
-     * @param reportContent
+     * @param report_content
      */
-    public void setReportContent(String reportContent) {
-        this.reportContent = reportContent;
+    public void setReport_content(String report_content) {
+        this.report_content = report_content;
     }
 
     /**
      * @return issue_id
      */
-    public Integer getIssueId() {
-        return issueId;
+    public Integer getIssue_id() {
+        return issue_id;
     }
 
     /**
-     * @param issueId
+     * @param issue_id
      */
-    public void setIssueId(Integer issueId) {
-        this.issueId = issueId;
+    public void setIssue_id(Integer issue_id) {
+        this.issue_id = issue_id;
     }
 
     /**
      * @return article_id
      */
-    public Integer getArticleId() {
-        return articleId;
+    public Integer getArticle_id() {
+        return article_id;
     }
 
     /**
-     * @param articleId
+     * @param article_id
      */
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticle_id(Integer article_id) {
+        this.article_id = article_id;
     }
 
     /**
      * @return comment_id
      */
-    public Integer getCommentId() {
-        return commentId;
+    public Integer getComment_id() {
+        return comment_id;
     }
 
     /**
-     * @param commentId
+     * @param comment_id
      */
-    public void setCommentId(Integer commentId) {
-        this.commentId = commentId;
+    public void setComment_id(Integer comment_id) {
+        this.comment_id = comment_id;
     }
 
     /**
      * @return reply_id
      */
-    public Integer getReplyId() {
-        return replyId;
+    public Integer getReply_id() {
+        return reply_id;
     }
 
     /**
-     * @param replyId
+     * @param reply_id
      */
-    public void setReplyId(Integer replyId) {
-        this.replyId = replyId;
+    public void setReply_id(Integer reply_id) {
+        this.reply_id = reply_id;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", report_id=").append(report_id);
+        sb.append(", user_id=").append(user_id);
+        sb.append(", report_data=").append(report_data);
+        sb.append(", report_content=").append(report_content);
+        sb.append(", issue_id=").append(issue_id);
+        sb.append(", article_id=").append(article_id);
+        sb.append(", comment_id=").append(comment_id);
+        sb.append(", reply_id=").append(reply_id);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

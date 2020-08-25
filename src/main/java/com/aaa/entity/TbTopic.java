@@ -1,58 +1,72 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_topic")
-public class TbTopic {
+public class TbTopic implements Serializable {
     @Id
-    @Column(name = "topic_id")
-    private Integer topicId;
+    private Integer topic_id;
 
-    @Column(name = "topic_name")
-    private String topicName;
+    private String topic_name;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return topic_id
      */
-    public Integer getTopicId() {
-        return topicId;
+    public Integer getTopic_id() {
+        return topic_id;
     }
 
     /**
-     * @param topicId
+     * @param topic_id
      */
-    public void setTopicId(Integer topicId) {
-        this.topicId = topicId;
+    public void setTopic_id(Integer topic_id) {
+        this.topic_id = topic_id;
     }
 
     /**
      * @return topic_name
      */
-    public String getTopicName() {
-        return topicName;
+    public String getTopic_name() {
+        return topic_name;
     }
 
     /**
-     * @param topicName
+     * @param topic_name
      */
-    public void setTopicName(String topicName) {
-        this.topicName = topicName;
+    public void setTopic_name(String topic_name) {
+        this.topic_name = topic_name;
     }
 
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", topic_id=").append(topic_id);
+        sb.append(", topic_name=").append(topic_name);
+        sb.append(", user_id=").append(user_id);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

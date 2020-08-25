@@ -1,41 +1,55 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_trade")
-public class TbTrade {
+public class TbTrade implements Serializable {
     @Id
-    @Column(name = "trade_id")
-    private Integer tradeId;
+    private Integer trade_id;
 
-    @Column(name = "trade_name")
-    private String tradeName;
+    private String trade_name;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return trade_id
      */
-    public Integer getTradeId() {
-        return tradeId;
+    public Integer getTrade_id() {
+        return trade_id;
     }
 
     /**
-     * @param tradeId
+     * @param trade_id
      */
-    public void setTradeId(Integer tradeId) {
-        this.tradeId = tradeId;
+    public void setTrade_id(Integer trade_id) {
+        this.trade_id = trade_id;
     }
 
     /**
      * @return trade_name
      */
-    public String getTradeName() {
-        return tradeName;
+    public String getTrade_name() {
+        return trade_name;
     }
 
     /**
-     * @param tradeName
+     * @param trade_name
      */
-    public void setTradeName(String tradeName) {
-        this.tradeName = tradeName;
+    public void setTrade_name(String trade_name) {
+        this.trade_name = trade_name;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", trade_id=").append(trade_id);
+        sb.append(", trade_name=").append(trade_name);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

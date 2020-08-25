@@ -1,126 +1,140 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_education")
-public class TbEducation {
+public class TbEducation implements Serializable {
     @Id
-    @Column(name = "education_id")
-    private Integer educationId;
+    private Integer education_id;
 
-    @Column(name = "education_school")
-    private String educationSchool;
+    private String education_school;
 
-    @Column(name = "education_specialty")
-    private String educationSpecialty;
+    private String education_specialty;
 
-    @Column(name = "education_occupation")
-    private Integer educationOccupationId;
+    private String education_occupation;
 
-    @Column(name = "education_inyear")
-    private Integer educationInYear;
+    private Integer education_inyear;
 
-    @Column(name = "education_outyear")
-    private Integer educationOutYear;
+    private Integer education_outyear;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    private Integer user_id;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return education_id
      */
-    public Integer getEducationId() {
-        return educationId;
+    public Integer getEducation_id() {
+        return education_id;
     }
 
     /**
-     * @param educationId
+     * @param education_id
      */
-    public void setEducationId(Integer educationId) {
-        this.educationId = educationId;
+    public void setEducation_id(Integer education_id) {
+        this.education_id = education_id;
     }
 
     /**
      * @return education_school
      */
-    public String getEducationSchool() {
-        return educationSchool;
+    public String getEducation_school() {
+        return education_school;
     }
 
     /**
-     * @param educationSchool
+     * @param education_school
      */
-    public void setEducationSchool(String educationSchool) {
-        this.educationSchool = educationSchool;
+    public void setEducation_school(String education_school) {
+        this.education_school = education_school;
     }
 
     /**
      * @return education_specialty
      */
-    public String getEducationSpecialty() {
-        return educationSpecialty;
+    public String getEducation_specialty() {
+        return education_specialty;
     }
 
     /**
-     * @param educationSpecialty
+     * @param education_specialty
      */
-    public void setEducationSpecialty(String educationSpecialty) {
-        this.educationSpecialty = educationSpecialty;
+    public void setEducation_specialty(String education_specialty) {
+        this.education_specialty = education_specialty;
     }
 
     /**
-     * @return occupation_id
+     * @return education_occupation
      */
-    public Integer getEducationOccupationId() {
-        return educationOccupationId;
+    public String getEducation_occupation() {
+        return education_occupation;
     }
 
     /**
-     * @param educationOccupationId
+     * @param education_occupation
      */
-    public void setEducationOccupationId(Integer educationOccupationId) {
-        this.educationOccupationId = educationOccupationId;
+    public void setEducation_occupation(String education_occupation) {
+        this.education_occupation = education_occupation;
     }
 
     /**
-     * @return year_in_id
+     * @return education_inyear
      */
-    public Integer getEducationInYear() {
-        return educationInYear;
+    public Integer getEducation_inyear() {
+        return education_inyear;
     }
 
     /**
-     * @param educationInYear
+     * @param education_inyear
      */
-    public void setEducationInYear(Integer educationInYear) {
-        this.educationInYear = educationInYear;
+    public void setEducation_inyear(Integer education_inyear) {
+        this.education_inyear = education_inyear;
     }
 
     /**
-     * @return year_out_id
+     * @return education_outyear
      */
-    public Integer getEducationOutYear() {
-        return educationOutYear;
+    public Integer getEducation_outyear() {
+        return education_outyear;
     }
 
     /**
-     * @param educationOutYear
+     * @param education_outyear
      */
-    public void setEducationOutYear(Integer educationOutYear) {
-        this.educationOutYear = educationOutYear;
+    public void setEducation_outyear(Integer education_outyear) {
+        this.education_outyear = education_outyear;
     }
 
     /**
      * @return user_id
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
     /**
-     * @param userId
+     * @param user_id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", education_id=").append(education_id);
+        sb.append(", education_school=").append(education_school);
+        sb.append(", education_specialty=").append(education_specialty);
+        sb.append(", education_occupation=").append(education_occupation);
+        sb.append(", education_inyear=").append(education_inyear);
+        sb.append(", education_outyear=").append(education_outyear);
+        sb.append(", user_id=").append(user_id);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

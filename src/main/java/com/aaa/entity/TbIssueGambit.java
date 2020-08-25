@@ -1,40 +1,54 @@
 package com.aaa.entity;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "tb_issue_gambit")
-public class TbIssueGambit {
-    @Column(name = "gambit_id")
-    private Integer gambitId;
+public class TbIssueGambit implements Serializable {
+    private Integer gambit_id;
 
-    @Column(name = "issue_id")
-    private Integer issueId;
+    private Integer issue_id;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return gambit_id
      */
-    public Integer getGambitId() {
-        return gambitId;
+    public Integer getGambit_id() {
+        return gambit_id;
     }
 
     /**
-     * @param gambitId
+     * @param gambit_id
      */
-    public void setGambitId(Integer gambitId) {
-        this.gambitId = gambitId;
+    public void setGambit_id(Integer gambit_id) {
+        this.gambit_id = gambit_id;
     }
 
     /**
      * @return issue_id
      */
-    public Integer getIssueId() {
-        return issueId;
+    public Integer getIssue_id() {
+        return issue_id;
     }
 
     /**
-     * @param issueId
+     * @param issue_id
      */
-    public void setIssueId(Integer issueId) {
-        this.issueId = issueId;
+    public void setIssue_id(Integer issue_id) {
+        this.issue_id = issue_id;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", gambit_id=").append(gambit_id);
+        sb.append(", issue_id=").append(issue_id);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }
