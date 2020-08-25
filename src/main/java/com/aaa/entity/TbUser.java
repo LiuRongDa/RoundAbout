@@ -1,6 +1,7 @@
 package com.aaa.entity;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_user")
@@ -53,6 +54,50 @@ public class TbUser {
 
     @Column(name = "user_state")
     private Integer userState;
+
+    private List<TbProfession> tbProfessionList;
+
+    private List<TbEducation> tbEducations;
+
+    @Override
+    public String toString() {
+        return "TbUser{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userPhoto='" + userPhoto + '\'' +
+                ", userBackdrop='" + userBackdrop + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userSex=" + userSex +
+                ", userSign='" + userSign + '\'' +
+                ", userResidence='" + userResidence + '\'' +
+                ", userTrade='" + userTrade + '\'' +
+                ", userBrief='" + userBrief + '\'' +
+                ", userBalance=" + userBalance +
+                ", userCount=" + userCount +
+                ", userJoindate=" + userJoindate +
+                ", userState=" + userState +
+                ", tbProfessionList=" + tbProfessionList +
+                ", tbEducations=" + tbEducations +
+                '}';
+    }
+
+    public List<TbEducation> getTbEducations() {
+        return tbEducations;
+    }
+
+    public void setTbEducations(List<TbEducation> tbEducations) {
+        this.tbEducations = tbEducations;
+    }
+
+    public List<TbProfession> getTbProfessionList() {
+        return tbProfessionList;
+    }
+
+    public void setTbProfessionList(List<TbProfession> tbProfessionList) {
+        this.tbProfessionList = tbProfessionList;
+    }
 
     /**
      * @return user_id

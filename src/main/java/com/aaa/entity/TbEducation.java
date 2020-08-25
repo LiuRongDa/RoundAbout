@@ -14,14 +14,14 @@ public class TbEducation {
     @Column(name = "education_specialty")
     private String educationSpecialty;
 
-    @Column(name = "occupation_id")
-    private Integer occupationId;
+    @Column(name = "education_occupation")
+    private Integer educationOccupationId;
 
-    @Column(name = "year_in_id")
-    private Integer yearInId;
+    @Column(name = "education_inyear")
+    private Integer educationInYear;
 
-    @Column(name = "year_out_id")
-    private Integer yearOutId;
+    @Column(name = "education_outyear")
+    private Integer educationOutYear;
 
     @Column(name = "user_id")
     private Integer userId;
@@ -71,43 +71,43 @@ public class TbEducation {
     /**
      * @return occupation_id
      */
-    public Integer getOccupationId() {
-        return occupationId;
+    public Integer getEducationOccupationId() {
+        return educationOccupationId;
     }
 
     /**
-     * @param occupationId
+     * @param educationOccupationId
      */
-    public void setOccupationId(Integer occupationId) {
-        this.occupationId = occupationId;
+    public void setEducationOccupationId(Integer educationOccupationId) {
+        this.educationOccupationId = educationOccupationId;
     }
 
     /**
      * @return year_in_id
      */
-    public Integer getYearInId() {
-        return yearInId;
+    public Integer getEducationInYear() {
+        return educationInYear;
     }
 
     /**
-     * @param yearInId
+     * @param educationInYear
      */
-    public void setYearInId(Integer yearInId) {
-        this.yearInId = yearInId;
+    public void setEducationInYear(Integer educationInYear) {
+        this.educationInYear = educationInYear;
     }
 
     /**
      * @return year_out_id
      */
-    public Integer getYearOutId() {
-        return yearOutId;
+    public Integer getEducationOutYear() {
+        return educationOutYear;
     }
 
     /**
-     * @param yearOutId
+     * @param educationOutYear
      */
-    public void setYearOutId(Integer yearOutId) {
-        this.yearOutId = yearOutId;
+    public void setEducationOutYear(Integer educationOutYear) {
+        this.educationOutYear = educationOutYear;
     }
 
     /**

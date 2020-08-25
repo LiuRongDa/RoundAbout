@@ -20,4 +20,9 @@ public class TbUserController {
     @Resource
     TbUserService tbUserService;
 
+    @RequestMapping("query")
+    public TbUser query(){
+        return tbUserService.queryProfession();
+    }
+
 }

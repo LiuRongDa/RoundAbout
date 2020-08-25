@@ -1,6 +1,10 @@
 package com.aaa.service;
 
+import com.aaa.dao.TbEducationMapper;
+import com.aaa.dao.TbProfessionMapper;
 import com.aaa.dao.TbUserMapper;
+import com.aaa.entity.TbEducation;
+import com.aaa.entity.TbProfession;
 import com.aaa.entity.TbUser;
 import org.springframework.stereotype.Service;
 
@@ -17,23 +21,30 @@ public class TbUserService {
     @Resource
     TbUserMapper tbUserMapper;
 
-    /**
-     * 查询用户名
-     * @param tbUser
-     * @return
-     */
-    public TbUser findByName(TbUser tbUser){
-        TbUser selectOne = tbUserMapper.selectOne(tbUser);
-        return selectOne;
-    }
+    @Resource
+    TbProfessionMapper tbProfessionMapper;
+
+    @Resource
+    TbEducationMapper tbEducationMapper;
 
     /**
-     * 查询全部
-     * @param tbUser
-     * @return
+     * 查询用户
      */
-    public List<TbUser> queryAll(TbUser tbUser){
-        List<TbUser> select = tbUserMapper.select(tbUser);
-        return select;
+    public TbUser queryProfession(){
+        TbUser tbUser = tbUserMapper.selectByPrimaryKey(1);
+        //查询该用户的职业经历
+        TbProfession tbProfession = new TbProfession();
+        tbProfession.setUserId(tbUser.getUserId());
+        List<TbProfession> tbProfessions = tbProfessionMapper.select(tbProfession);
+        //查询该用户的教育经历
+        TbEducation tbEducation = new TbEducation();
+        tbEducation.setUserId(tbUser.getUserId());
+        List<TbEducation> tbEducations = tbEducationMapper.select(tbEducation);
+
+
+        tbUser.setTbProfessionList(tbProfessions);
+        tbUser.setTbEducations(tbEducations);
+        return tbUser;
     }
+
 }
