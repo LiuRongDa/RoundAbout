@@ -1,6 +1,6 @@
 package com.aaa.security;
 
-import com.aaa.entity.TbUser;
+import com.aaa.entity.TbStaff;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -12,8 +12,8 @@ public class Rbacconfig {
     public boolean hasPermission(HttpServletRequest request, Authentication authentication){
         Object principal = authentication.getPrincipal();
         if(principal instanceof UserDetails){
-            TbUser tbUser = (TbUser) principal;
-            if(tbUser.getUserName().equals("zs")){
+            TbStaff tbStaff = (TbStaff) principal;
+            if(tbStaff.getStaffName().equals("zs")){
                 System.out.println("url"+request.getRequestURI());
                 return true;
             }

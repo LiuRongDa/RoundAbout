@@ -3,7 +3,6 @@ package com.aaa.service;
 import com.aaa.dao.TbUserMapper;
 import com.aaa.entity.TbUser;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.List;

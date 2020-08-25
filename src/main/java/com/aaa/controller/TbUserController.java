@@ -28,7 +28,7 @@ public class TbUserController {
     }
 
     @RequestMapping("queryAll")
-    public List<TbUser> queryAll(TbUser tbUser){
+    public List<TbUser> queryAll(@RequestBody TbUser tbUser){
         List<TbUser> tbUsers = tbUserService.queryAll(tbUser);
         return tbUsers;
     }
