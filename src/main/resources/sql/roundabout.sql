@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2020-08-25 11:23:18
+Date: 2020-08-25 15:48:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -193,9 +193,9 @@ CREATE TABLE `tb_education` (
   `education_id` int(11) NOT NULL AUTO_INCREMENT,
   `education_school` varchar(50) NOT NULL,
   `education_specialty` varchar(50) DEFAULT NULL,
-  `occupation_id` int(11) NOT NULL,
-  `year_in_id` int(11) NOT NULL,
-  `year_out_id` int(11) NOT NULL,
+  `education_occupation` varchar(20) NOT NULL,
+  `education_inyear` int(11) NOT NULL,
+  `education_outyear` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`education_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -203,10 +203,10 @@ CREATE TABLE `tb_education` (
 -- ----------------------------
 -- Records of tb_education
 -- ----------------------------
-INSERT INTO `tb_education` VALUES ('1', '河南致远', '软件开发', '1', '1', '1', '1');
-INSERT INTO `tb_education` VALUES ('2', '郑州大学', '土木工程', '2', '2', '2', '2');
-INSERT INTO `tb_education` VALUES ('3', '郑州工商', '金融管理', '3', '3', '3', '3');
-INSERT INTO `tb_education` VALUES ('4', '郑州铁路', '铁路管理', '4', '4', '4', '4');
+INSERT INTO `tb_education` VALUES ('1', '河南致远', '软件开发', '1', '2000', '2004', '1');
+INSERT INTO `tb_education` VALUES ('2', '郑州大学', '土木工程', '2', '2000', '2004', '2');
+INSERT INTO `tb_education` VALUES ('3', '郑州工商', '金融管理', '3', '2000', '2004', '3');
+INSERT INTO `tb_education` VALUES ('4', '郑州铁路', '铁路管理', '4', '2000', '2004', '4');
 
 -- ----------------------------
 -- Table structure for tb_gambit
@@ -595,9 +595,9 @@ CREATE TABLE `tb_staff` (
 -- ----------------------------
 -- Records of tb_staff
 -- ----------------------------
-INSERT INTO `tb_staff` VALUES ('1', '曹操', 'cao123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '0', '412821200837165012', '12345678910', '2020-08-24 19:22:29', '2020-08-24 19:22:47', '0', '1', '1', '1', '1', '1');
-INSERT INTO `tb_staff` VALUES ('2', '刘备', 'liu123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '0', '412743188612126012', '10987654321', '2020-08-25 09:19:17', '2020-08-25 09:19:20', '0', '2', '1', '1', '1', '1');
-INSERT INTO `tb_staff` VALUES ('3', '大乔', 'qiao123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '1', '427361199611156022', '98765432110', '2020-08-25 09:21:08', '2020-08-25 09:21:11', '0', '3', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('1', 'zs', 'zs', '$2a$10$kzHc0mh8C8cDWwzxBzT.VOViYX87F5ZjdbvSQeRHQ0DN29Qptr5fe', '0', '412821200837165012', '12345678910', '2020-08-24 19:22:29', '2020-08-24 19:22:47', '0', '1', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('2', '刘备', 'liu123456', '$2a$10$SDzTDQZnT8fk69Qqoqlos..hxblvDwkfw2/mg7yH1igmeOYobpT/S', '0', '412743188612126012', '10987654321', '2020-08-25 09:19:17', '2020-08-25 09:19:20', '0', '2', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('3', '大乔', 'qiao123456', '$2a$10$SDzTDQZnT8fk69Qqoqlos..hxblvDwkfw2/mg7yH1igmeOYobpT/S', '1', '427361199611156022', '98765432110', '2020-08-25 09:21:08', '2020-08-25 09:21:11', '0', '3', '1', '1', '1', '1');
 INSERT INTO `tb_staff` VALUES ('4', '孙尚香', 'sun123456', 'sun123456', '1', '431862200207156842', '10293847561', '2020-08-25 09:22:38', '2020-08-25 09:22:41', '0', '4', '1', '1', '1', '1');
 
 -- ----------------------------
