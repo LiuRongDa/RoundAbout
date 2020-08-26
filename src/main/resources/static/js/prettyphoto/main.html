@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>职位</th>
+                <th>状态</th>
+            </tr>
+            <tr th:each="l:${list}">
+                <td th:text="${l.tid}">111</td>
+                <td th:text="${l.tname}">222</td>
+                <td th:text="${l.posts}">222</td>
+                <td th:text="${l.tstate}">222</td>
+            </tr>
+        </table>
+    </body>
+</html>
