@@ -16,5 +16,9 @@
     <result column="staff_out" jdbcType="TIMESTAMP" property="staffOut" />
     <result column="staff_state" jdbcType="INTEGER" property="staffState" />
     <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="user_isexpired" jdbcType="INTEGER" property="userIsexpired" />
+    <result column="user_islocked" jdbcType="INTEGER" property="userIslocked" />
+    <result column="user_isCreExpired" jdbcType="INTEGER" property="userIscreexpired" />
+    <result column="user_isenable" jdbcType="INTEGER" property="userIsenable" />
   </resultMap>
 </mapper>
