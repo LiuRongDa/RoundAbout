@@ -5,10 +5,13 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="collect_id" jdbcType="INTEGER" property="collectId" />
-    <result column="collect_title" jdbcType="VARCHAR" property="collectTitle" />
-    <result column="collect_describe" jdbcType="VARCHAR" property="collectDescribe" />
-    <result column="collect_state" jdbcType="INTEGER" property="collectState" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="collect_id" jdbcType="INTEGER" property="collect_id" />
+    <result column="collect_title" jdbcType="VARCHAR" property="collect_title" />
+    <result column="collect_describe" jdbcType="VARCHAR" property="collect_describe" />
+    <result column="collect_state" jdbcType="INTEGER" property="collect_state" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
+  <sql id="selectAll">
+    collect_id,collect_title,collect_describe,collect_state,user_id
+  </sql>
 </mapper>

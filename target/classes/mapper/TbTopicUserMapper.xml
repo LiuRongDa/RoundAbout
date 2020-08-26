@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="topic_id" jdbcType="INTEGER" property="topicId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="topic_id" jdbcType="INTEGER" property="topic_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
 </mapper>

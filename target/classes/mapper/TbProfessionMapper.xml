@@ -5,11 +5,14 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="profession_id" jdbcType="INTEGER" property="professionId" />
-    <result column="profession_company" jdbcType="VARCHAR" property="professionCompany" />
-    <result column="profession_position" jdbcType="VARCHAR" property="professionPosition" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="profession_start" jdbcType="TIMESTAMP" property="professionStart" />
-    <result column="profession_end" jdbcType="TIMESTAMP" property="professionEnd" />
+    <id column="profession_id" jdbcType="INTEGER" property="profession_id" />
+    <result column="profession_company" jdbcType="VARCHAR" property="profession_company" />
+    <result column="profession_position" jdbcType="VARCHAR" property="profession_position" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="profession_start" jdbcType="TIMESTAMP" property="profession_start" />
+    <result column="profession_end" jdbcType="TIMESTAMP" property="profession_end" />
   </resultMap>
+  <sql id="selectAll">
+    profession_id,profession_company,profession_position,user_id,profession_start,profession_end
+  </sql>
 </mapper>

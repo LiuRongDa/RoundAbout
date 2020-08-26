@@ -5,9 +5,12 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="idea_id" jdbcType="INTEGER" property="ideaId" />
-    <result column="idea_content" jdbcType="VARCHAR" property="ideaContent" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="idea_date" jdbcType="TIMESTAMP" property="ideaDate" />
+    <id column="idea_id" jdbcType="INTEGER" property="idea_id" />
+    <result column="idea_content" jdbcType="VARCHAR" property="idea_content" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="idea_date" jdbcType="TIMESTAMP" property="idea_date" />
   </resultMap>
+  <sql id="selectAll">
+    idea_id,idea_content,user_id,idea_date
+  </sql>
 </mapper>

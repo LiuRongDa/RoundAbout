@@ -5,7 +5,10 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="issue_id" jdbcType="INTEGER" property="issueId" />
-    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="issue_id" jdbcType="INTEGER" property="issue_id" />
+    <result column="article_id" jdbcType="INTEGER" property="article_id" />
   </resultMap>
+  <sql id="selectAll">
+    issue_id,article_id
+  </sql>
 </mapper>

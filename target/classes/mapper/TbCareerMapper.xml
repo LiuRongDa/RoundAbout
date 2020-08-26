@@ -5,8 +5,11 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="career_id" jdbcType="INTEGER" property="careerId" />
-    <result column="career_name" jdbcType="VARCHAR" property="careerName" />
-    <result column="degree_id" jdbcType="INTEGER" property="degreeId" />
+    <id column="career_id" jdbcType="INTEGER" property="career_id" />
+    <result column="career_name" jdbcType="VARCHAR" property="career_name" />
+    <result column="degree_id" jdbcType="INTEGER" property="degree_id" />
   </resultMap>
+  <sql id="selectAll">
+    career_id,career_name,degree_id
+  </sql>
 </mapper>

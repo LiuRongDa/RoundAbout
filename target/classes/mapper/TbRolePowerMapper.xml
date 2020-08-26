@@ -5,7 +5,10 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="role_id" jdbcType="INTEGER" property="roleId" />
-    <result column="power_id" jdbcType="INTEGER" property="powerId" />
+    <result column="role_id" jdbcType="INTEGER" property="role_id" />
+    <result column="power_id" jdbcType="INTEGER" property="power_id" />
   </resultMap>
+  <sql id="selectAll">
+    role_id,power_id
+  </sql>
 </mapper>

@@ -20,7 +20,7 @@ public class UserConfig implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println(username);
         TbStaff tbStaff=new TbStaff();
-        tbStaff.setStaffName(username);
+        tbStaff.setStaff_name(username);
         tbStaff = tbstaffController.findByName(tbStaff);
         System.out.println("tbUser"+tbStaff);
         //查询用户权限信息
@@ -30,7 +30,7 @@ public class UserConfig implements UserDetailsService {
         if(tbStaff == null){
             throw new UsernameNotFoundException("用户没有找到");
         }
-        if(tbStaff.getStaffName().equals("zs")){
+        if(tbStaff.getStaff_name().equals("zs")){
             tbStaff.setAuthorityList(grantedAuthorities1);
         }else{
             tbStaff.setAuthorityList(grantedAuthorities2);

@@ -5,13 +5,16 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="report_id" jdbcType="INTEGER" property="reportId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="report_data" jdbcType="TIMESTAMP" property="reportData" />
-    <result column="report_content" jdbcType="VARCHAR" property="reportContent" />
-    <result column="issue_id" jdbcType="INTEGER" property="issueId" />
-    <result column="article_id" jdbcType="INTEGER" property="articleId" />
-    <result column="comment_id" jdbcType="INTEGER" property="commentId" />
-    <result column="reply_id" jdbcType="INTEGER" property="replyId" />
+    <id column="report_id" jdbcType="INTEGER" property="report_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="report_data" jdbcType="TIMESTAMP" property="report_data" />
+    <result column="report_content" jdbcType="VARCHAR" property="report_content" />
+    <result column="issue_id" jdbcType="INTEGER" property="issue_id" />
+    <result column="article_id" jdbcType="INTEGER" property="article_id" />
+    <result column="comment_id" jdbcType="INTEGER" property="comment_id" />
+    <result column="reply_id" jdbcType="INTEGER" property="reply_id" />
   </resultMap>
+  <sql id="selectAll">
+    report_id,user_id,report_data,report_content,issue_id,article_id,comment_id,reply_id
+  </sql>
 </mapper>

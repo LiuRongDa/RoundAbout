@@ -5,12 +5,15 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="education_id" jdbcType="INTEGER" property="educationId" />
-    <result column="education_school" jdbcType="VARCHAR" property="educationSchool" />
-    <result column="education_specialty" jdbcType="VARCHAR" property="educationSpecialty" />
-    <result column="occupation_id" jdbcType="INTEGER" property="occupationId" />
-    <result column="year_in_id" jdbcType="INTEGER" property="yearInId" />
-    <result column="year_out_id" jdbcType="INTEGER" property="yearOutId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="education_id" jdbcType="INTEGER" property="education_id" />
+    <result column="education_school" jdbcType="VARCHAR" property="education_school" />
+    <result column="education_specialty" jdbcType="VARCHAR" property="education_specialty" />
+    <result column="education_occupation" jdbcType="VARCHAR" property="education_occupation" />
+    <result column="education_inyear" jdbcType="INTEGER" property="education_inyear" />
+    <result column="education_outyear" jdbcType="INTEGER" property="education_outyear" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
+  <sql id="selectAll">
+    education_id,education_school,education_specialty,education_occupation,education_inyear,education_outyear,user_id
+  </sql>
 </mapper>
