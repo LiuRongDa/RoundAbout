@@ -34,11 +34,11 @@ public class TbUserService {
         TbUser tbUser = tbUserMapper.selectByPrimaryKey(1);
         //查询该用户的职业经历
         TbProfession tbProfession = new TbProfession();
-        tbProfession.setUserId(tbUser.getUserId());
+        tbProfession.setUser_id(tbUser.getUser_id());
         List<TbProfession> tbProfessions = tbProfessionMapper.select(tbProfession);
         //查询该用户的教育经历
         TbEducation tbEducation = new TbEducation();
-        tbEducation.setUserId(tbUser.getUserId());
+        tbEducation.setUser_id(tbUser.getUser_id());
         List<TbEducation> tbEducations = tbEducationMapper.select(tbEducation);
 
 
