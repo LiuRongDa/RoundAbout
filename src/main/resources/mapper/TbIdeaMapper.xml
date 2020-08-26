@@ -10,4 +10,7 @@
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="idea_date" jdbcType="TIMESTAMP" property="idea_date" />
   </resultMap>
+  <sql id="selectAll">
+    idea_id,idea_content,user_id,idea_date
+  </sql>
 </mapper>

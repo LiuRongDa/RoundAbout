@@ -8,4 +8,7 @@
     <id column="role_id" jdbcType="INTEGER" property="role_id" />
     <result column="role_name" jdbcType="VARCHAR" property="role_name" />
   </resultMap>
+  <sql id="selectAll">
+    role_id,role_name
+  </sql>
 </mapper>

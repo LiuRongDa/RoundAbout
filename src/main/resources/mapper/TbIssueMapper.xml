@@ -10,4 +10,7 @@
     <result column="issue_content" jdbcType="VARCHAR" property="issue_content" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
+  <sql id="selectAll">
+    issue_id,issue_title,issue_content,user_id
+  </sql>
 </mapper>

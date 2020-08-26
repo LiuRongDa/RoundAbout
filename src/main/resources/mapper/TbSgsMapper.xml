@@ -19,4 +19,7 @@
     <result column="sgs_time" jdbcType="TIMESTAMP" property="sgs_time" />
     <result column="sgs_result" jdbcType="INTEGER" property="sgs_result" />
   </resultMap>
+  <sql id="selectAll">
+    sgs_id,sgs_school,sgs_info,sgs_prove,sgs_name,sgs_idcard,sgs_photo,occupation_id,degree_id,career_id,user_id,sgs_time,sgs_result
+  </sql>
 </mapper>

@@ -14,4 +14,7 @@
     <result column="comment_id" jdbcType="INTEGER" property="comment_id" />
     <result column="reply_id" jdbcType="INTEGER" property="reply_id" />
   </resultMap>
+  <sql id="selectAll">
+    report_id,user_id,report_data,report_content,issue_id,article_id,comment_id,reply_id
+  </sql>
 </mapper>

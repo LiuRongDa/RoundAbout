@@ -11,4 +11,7 @@
     <result column="collect_state" jdbcType="INTEGER" property="collect_state" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
+  <sql id="selectAll">
+    collect_id,collect_title,collect_describe,collect_state,user_id
+  </sql>
 </mapper>

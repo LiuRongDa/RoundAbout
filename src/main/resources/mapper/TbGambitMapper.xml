@@ -8,4 +8,7 @@
     <id column="gambit_id" jdbcType="INTEGER" property="gambit_id" />
     <result column="gambit_name" jdbcType="VARCHAR" property="gambit_name" />
   </resultMap>
+  <sql id="selectAll">
+    gambit_id,gambit_name
+  </sql>
 </mapper>

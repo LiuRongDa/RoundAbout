@@ -9,4 +9,7 @@
     <result column="liveness_endtime" jdbcType="TIMESTAMP" property="liveness_endtime" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
+  <sql id="selectAll">
+    liveness_id,liveness_endtime,user_id
+  </sql>
 </mapper>

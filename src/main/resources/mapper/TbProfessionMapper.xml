@@ -12,4 +12,7 @@
     <result column="profession_start" jdbcType="TIMESTAMP" property="profession_start" />
     <result column="profession_end" jdbcType="TIMESTAMP" property="profession_end" />
   </resultMap>
+  <sql id="selectAll">
+    profession_id,profession_company,profession_position,user_id,profession_start,profession_end
+  </sql>
 </mapper>

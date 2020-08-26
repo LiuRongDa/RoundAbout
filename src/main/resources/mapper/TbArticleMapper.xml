@@ -10,6 +10,9 @@
     <result column="article_content" jdbcType="VARCHAR" property="article_content" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="article_photo" jdbcType="VARCHAR" property="article_photo" />
-    <result column="article_state" jdbcType="INTEGER" property="article_state" />
+    <result column="article_photo" jdbcType="INTEGER" property="article_state" />
   </resultMap>
+  <sql id="selectAll">
+    article_id,article_title,article_content,user_id,article_photo,article_photo
+  </sql>
 </mapper>

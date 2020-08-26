@@ -11,4 +11,7 @@
     <result column="comment_date" jdbcType="TIMESTAMP" property="comment_date" />
     <result column="article_id" jdbcType="INTEGER" property="article_id" />
   </resultMap>
+  <sql id="selectAll">
+    comment_id,comment_content,user_id,comment_date,article_id
+  </sql>
 </mapper>

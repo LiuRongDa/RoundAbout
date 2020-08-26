@@ -9,4 +9,7 @@
     <result column="power_name" jdbcType="VARCHAR" property="power_name" />
     <result column="power_url" jdbcType="VARCHAR" property="power_url" />
   </resultMap>
+  <sql id="selectAll">
+    power_id,power_name,power_url
+  </sql>
 </mapper>
