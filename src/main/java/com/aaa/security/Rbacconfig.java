@@ -13,7 +13,7 @@ public class Rbacconfig {
         Object principal = authentication.getPrincipal();
         if(principal instanceof UserDetails){
             TbStaff tbStaff = (TbStaff) principal;
-            if(tbStaff.getStaffName().equals("zs")){
+            if(tbStaff.getStaff_number().equals("zs")){
                 System.out.println("url"+request.getRequestURI());
                 return true;
             }

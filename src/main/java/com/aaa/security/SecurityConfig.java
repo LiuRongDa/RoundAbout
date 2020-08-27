@@ -37,6 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http    // 授权请求
                 .authorizeRequests()
+                //除了这个路径其他的都拦截
+                .antMatchers("/Reception/**").permitAll()
                 // 请求配置
                 .requestMatchers(CorsUtils::isPreFlightRequest)
                 .permitAll();
