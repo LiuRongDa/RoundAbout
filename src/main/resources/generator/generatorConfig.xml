@@ -12,6 +12,8 @@
        <property name="beginningDelimiter" value="`"/>
        <property name="endingDelimiter" value="`"/>
 
+       <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+       <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
        <!-- 配置 tk.mybatis 插件 -->
        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
            <property name="mappers" value="tk.mybatis.MyMapper"/>
@@ -42,6 +44,7 @@
            <!--自动生成的实体类的tablename 为表名  不加上数据库名-->
            <!-- 默认为false，如果设置为true，在生成的SQL中，table名字不会加上catalog或schema； -->
            <property name="ignoreQualifiersAtRuntime" value="false"/>
+           <property name="useActualColumnNames" value="true" />
            <!-- mysql 配置 -->
            <generatedKey column="id" sqlStatement="Mysql" identity="false"/>
        </table>

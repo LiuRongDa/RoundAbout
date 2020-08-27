@@ -30,7 +30,7 @@ public class TbUserService {
     /**
      * 查询用户
      */
-    public TbUser queryProfession(){
+/*    public TbUser queryProfession(){
         TbUser tbUser = tbUserMapper.selectByPrimaryKey(1);
         //查询该用户的职业经历
         TbProfession tbProfession = new TbProfession();
@@ -45,6 +45,6 @@ public class TbUserService {
         tbUser.setTbProfessionList(tbProfessions);
         tbUser.setTbEducations(tbEducations);
         return tbUser;
-    }
+    }*/
 
 }
