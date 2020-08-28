@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <meta name="renderer" content="webkit" />
+    <title>热门</title>
+    <meta name="keywords" content="WeCenter3.31仿知乎模板" />
+    <meta name="description" content="WeCenter仿知乎模板，支持WeCenter3.31，WeCenter3.32，WeCenter3.33"  />
+    <base href="http://localhost:8088/springboot/" /><!--[if IE]></base><![endif]-->
+    <link href="css/azhihu/img/favicon.ico?v=20200516" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/icon.css" />
+    <link href="css/default/common.css?v=20200516" rel="stylesheet" type="text/css" />
+    <link href="css/default/link.css?v=20200516" rel="stylesheet" type="text/css" />
+    <link href="js/plug_module/style.css?v=20200516" rel="stylesheet" type="text/css" />
+    <link href="css/azhihu/azhihu.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="js/highlight/styles/tomorrow.css">
+    <script type="text/javascript">
+        var _8F1CD5B2C8936CF2265DD7E0CE79E084="";
+        var G_POST_HASH=_8F1CD5B2C8936CF2265DD7E0CE79E084;
+        var G_INDEX_SCRIPT = "?/";
+        var G_SITE_NAME = "WeCenter仿知乎模板";
+        var G_BASE_URL = "http://azhihu.cssroom.com/?";
+        var G_STATIC_URL = "http://azhihu.cssroom.com/static";
+        var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";
+        var G_USER_ID = "";
+        var G_USER_NAME = "";
+        var G_UPLOAD_ENABLE = "N";
+        var G_UNREAD_NOTIFICATION = 0;
+        var G_NOTIFICATION_INTERVAL = 100000;
+        var G_CAN_CREATE_TOPIC = "";
+        var G_ADVANCED_EDITOR_ENABLE = "Y";
+        var FILE_TYPES = "jpg,jpeg,png,gif,zip,doc,docx,rar,pdf,psd";
+        var G_DRAFT_ENABLED = "N";
+        var G_PER_PAGE = "10";
+        var G_INDEX_PER_PAGE = "20";
+        var G_PRIVATEKEY = "pvjxzjmzvewfscft";
+        var G_IV = "qvibvaiwgouxwjeu";
+        var G_QUICK_PUBLISH_HUMAN_VALID = "0";
+        var editor_type="wangeditor";
+    </script>
+    <script src="js/jquery.2.js?v=20200516" type="text/javascript"></script>
+    <script src="js/jquery.form.js?v=20200516" type="text/javascript"></script>
+    <script src="js/plug_module/plug-in_module.js?v=20200516" type="text/javascript"></script>
+    <script src="js/aws.js?v=20200516" type="text/javascript"></script>
+    <script src="js/aw_template.js?v=20200516" type="text/javascript"></script>
+    <script src="js/layer/layer.js?v=20200516" type="text/javascript"></script>
+    <script src="js/app.js?v=20200516" type="text/javascript"></script>
+    <script type="text/javascript" src="js/compatibility.js"></script>
+    <script type="text/javascript" src="js/laydate/laydate.js"></script>
+    <script type="text/javascript" src="js/slide_captcha/gt.js"></script>
+    <script src="js/crypto-js.js"></script>
+    <script src="js/highlight/highlight.pack.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+    <style type="text/css">
+        .geetest_radar_tip_content{
+            position: initial !important;
+        }
+    </style>
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="js/respond.js"></script>
+    <![endif]-->
+    <!--头部公共注入钩子-->
+    <!--end头部公共注入钩子-->
+</head>
+<noscript unselectable="on" id="noscript">
+    <div class="aw-404 aw-404-wrap container">
+        <img src="http://azhihu.cssroom.com/static/common/no-js.jpg">
+        <p>你的浏览器禁用了JavaScript, 请开启后刷新浏览器获得更好的体验!</p>
+    </div>
+</noscript><body>
+<div class="aw-top-menu-wrap">
+    <div class="container" style="padding-right:0px;">
+        <!-- logo -->
+        <div class="aw-logo hidden-xs">
+            <a href="http://azhihu.cssroom.com">
+                <img src="http://azhihu.cssroom.com/uploads/logo/20200525/logo_(1).png"  height="40">
+            </a>
+        </div>
+        <!-- end logo -->
+        <!-- 导航 -->
+        <div class="aw-top-nav navbar">
+            <div class="navbar-header">
+                <button  class="navbar-toggle pull-left">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="http://azhihu.cssroom.com/?/explore" class="active"><i class=""></i> 首页</a>
+                    </li>
+                    <li>
+                        <a href="http://azhihu.cssroom.com/?/column"><i class=""></i> 专栏</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- end 导航 -->
+        <!-- 搜索框 -->
+        <div class="aw-search-box  hidden-xs hidden-sm">
+            <form class="navbar-search" action="http://azhihu.cssroom.com/?/search/" id="global_search_form" method="post">
+                <label class="oldPwdTip aw-search-query-label" onclick="$(this).hide();$('#aw-search-query').focus();">搜索问题、话题或人...</label> 					<input class="form-control search-query" type="text" value=""  autocomplete="off" name="q" id="aw-search-query" onfocus="hideOldPwdTip('aw-search-query');" onblur="toggleOldPwdTip('aw-search-query',this.value);" />
+                <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();"><i class="icon icon-search"></i></span>
+                <div class="aw-dropdown">
+                    <div class="mod-body">
+                        <p class="title">输入关键字进行搜索</p>
+                        <ul class="aw-dropdown-list collapse"></ul>
+                        <p class="search"><span>搜索:</span><a onClick="$('#global_search_form').submit();"></a></p>
+                    </div>
+                    <div class="mod-footer">
+                        <a href="http://azhihu.cssroom.com/?/publish" onClick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- end 搜索框 -->
+        <!-- 发起 -->
+        <div class="aw-publish-btn">
+
+            <a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/">发起</a>
+            <div class="dropdown-list pull-right">
+                <ul>
+                    <li>
+                        <form method="post" action="http://azhihu.cssroom.com/?/publish/">
+                            <a onclick="$(this).parents('form').submit();">问题</a>
+                        </form>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- end 发起 -->
+        <!-- 用户栏 -->
+        <div class="aw-user-nav">
+            <!-- 登陆&注册栏 -->
+
+            <a class="register btn btn-normal btn-success" href="http://azhihu.cssroom.com/?/account/register/"><i class="icon icon-users"></i> 注册</a>					<a class="login btn btn-normal btn-primary" href="http://azhihu.cssroom.com/?/account/login/">登录</a>
+            <!-- end 登陆&注册栏 -->
+        </div>
+        <!-- end 用户栏 -->
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $changeSkin = $("#changeSkin"), $skinList = $("#skinList");
+        $changeSkin.mouseenter(function () {
+            $skinList.stop(true,true).show();
+        });
+        $changeSkin.mouseleave(function (e) {
+            $skinList.hide();
+        });
+        $skinList.mouseover(function () {
+            $(this).stop(true,true).show();
+        });
+        $skinList.mouseleave(function (e) {
+            $(this).hide();
+        })
+    })
+</script>
+<div class="aw-container-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="aw-main-content pull-left">
+                    <!-- 新消息通知 -->
+                    <div class="aw-mod aw-notification-box collapse" id="index_notification">
+                        <div class="mod-head common-head">
+                            <h2>
+                                <span class="pull-right"><a href="http://azhihu.cssroom.com/?/account/setting/privacy/#notifications" class="text-color-999"><i class="icon icon-setting"></i> 通知设置</a></span>
+                                <i class="icon icon-bell"></i>新通知<em class="badge badge-important" name="notification_unread_num"></em>
+                            </h2>
+                        </div>
+                        <div class="mod-body">
+                            <ul id="notification_list"></ul>
+                        </div>
+                        <div class="mod-footer clearfix">
+                            <a href="javascript:;" onclick="AWS.Message.read_notification(false, 0, false);" class="pull-left btn btn-mini btn-gray">我知道了</a>
+                            <a href="http://azhihu.cssroom.com/?/notifications/" class="pull-right btn btn-mini btn-success">查看所有</a>
+                        </div>
+                    </div>
+                    <!-- end 新消息通知 -->
+                    <!-- tab切换 -->
+                    <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
+                        <li><a href="http://azhihu.cssroom.com/?/sort_type-unresponsive">等待回复</a></li>
+                        <li><a href="http://azhihu.cssroom.com/?/is_recommend-1">推荐</a></li>
+                        <li class="active"><a href="http://azhihu.cssroom.com/?/sort_type-hot__day-7" id="sort_control_hot">热门</a></li>
+                        <li><a href="">最新</a></li>
+
+                        <h2 class="hidden-xs">主页·发现</h2>
+                    </ul>
+                    <!-- end tab切换 -->
+
+                    <!-- 自定义tab切换 -->
+                    <div class="aw-tabs">
+                        <ul>
+                            <li class="active"><a href="http://azhihu.cssroom.com/?/sort_type-hot____day-30" day="30">30天</a></li>
+                            <li><a href="http://azhihu.cssroom.com/?/sort_type-hot____day-7" day="7">7天</a></li>
+                            <li><a href="http://azhihu.cssroom.com/?/sort_type-hot____day-1" day="1">当天</a></li>
+                        </ul>
+                    </div>
+                    <!-- end 自定义tab切换 -->
+                    <div class="aw-mod aw-explore-list">
+                        <div class="mod-body">
+                            <div class="aw-common-list">
+                                <div class="aw-item " data-topic-id="">
+                                    <!-- <a class="aw-user-name hidden-xs" data-id="102" href="http://azhihu.cssroom.com/?/people/102" rel="nofollow"><img src="http://azhihu.cssroom.com/uploads/avatar/000/00/01/02_avatar_max.jpg" alt="" /></a> -->
+                                    <div class="aw-question-content">
+                                        <h4>
+                                            <a href="http://azhihu.cssroom.com/?/question/226">hahha</a>								</h4>
+                                        <a href="http://azhihu.cssroom.com/?/question/226#!answer_form" class="pull-right text-color-999">回复</a>
+
+                                        <p>
+                                            <a href="http://azhihu.cssroom.com/?/people/102" class="aw-user-name" data-id="102">
+                                                <i class="icon icon-user"></i>147258369q</a>
+                                            回复了问题
+                                            <span><i class="icon icon-favor"></i>1 人关注</span>
+                                            <span><i class="icon icon-comment"></i>1 个回复</span>
+                                            <span><i class="icon icon-preview"></i>7 次浏览</span>
+                                            <span><i class="icon icon-date"></i>5 天前</span>
+
+                                            <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="aw-item active" data-topic-id="">
+                                    <!-- <a class="aw-user-name hidden-xs" data-id="105" href="http://azhihu.cssroom.com/?/people/105" rel="nofollow"><img src="http://azhihu.cssroom.com/static/common/avatar-max-img.png" alt="" /></a> -->
+                                    <div class="aw-question-content">
+                                        <h4>
+                                            <a href="http://azhihu.cssroom.com/?/question/227">那一天值得等待，那一眼满载星海</a>								</h4>
+                                        <a href="http://azhihu.cssroom.com/?/question/227#!answer_form" class="pull-right text-color-999">回复</a>
+
+                                        <p>
+                                            <a href="http://azhihu.cssroom.com/?/people/105" class="aw-user-name"><i class="icon icon-user"></i>你好</a>
+                                            发起了问题				<span><i class="icon icon-favor"></i>1 人关注</span>
+                                            <span><i class="icon icon-comment"></i>0 个回复</span>
+                                            <span><i class="icon icon-preview"></i>4 次浏览</span>
+                                            <span><i class="icon icon-date"></i>5 小时前</span>
+                                            </span>
+                                            <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod-footer">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 -->
+                <div class="aw-side-bar pull-left">
+                    <!--侧边栏插件-->
+                    <div class="aw-mod write">
+                        <div>
+                            <a href="http://azhihu.cssroom.com/?/account/login/">
+                                <i class="icon icon-reply"></i></br>
+                                <span>写回答</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="http://azhihu.cssroom.com/?/account/login/">
+                                <i class="icon icon-ask"></i></br>
+                                <span>写问题</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="http://azhihu.cssroom.com/?/account/login/">
+                                <i class="icon icon-draft"></i></br>
+                                <span>写文章</span>
+                            </a>
+                        </div>
+                    </div>					<div class="aw-mod write">
+                    <div>
+                        <a href="http://azhihu.cssroom.com/?/column/">
+                            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/zlico.png"></br>
+                            <span class="w_span">专栏</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="http://azhihu.cssroom.com/?/question/">
+                            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wtico.png"></br>
+                            <span class="w_span">问题</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="http://azhihu.cssroom.com/?/article/">
+                            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wzico.png"></br>
+                            <span class="w_span">文章</span>
+                        </a>
+                    </div>
+                </div>
+                    <div class="sideAdd">
+                        <a href="#"><img src="http://azhihu.cssroom.com/static/css/azhihu/img/side_add.jpg" alt=""></a>
+                    </div>										<div class="aw-mod aw-text-align-justify">
+                    <div class="mod-head">
+                        <a href="http://azhihu.cssroom.com/?/topic/channel-hot" class="pull-right">更多话题 &gt;&gt;</a>
+                        <h3>热门话题</h3>
+                    </div>
+                    <div class="mod-body">
+                    </div>
+                </div>
+                    <div class="aw-mod aw-text-align-justify">
+                        <div class="mod-head">
+                            <a href="http://azhihu.cssroom.com/?/people/" class="pull-right">更多用户 &gt;&gt;</a>
+                            <h3>热门用户</h3>
+                        </div>
+                        <div class="mod-body">
+
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="http://azhihu.cssroom.com/?/people/105"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="http://azhihu.cssroom.com/?/people/105" data-id="105" class="aw-user-name">你好						</a>
+                                    <p class="signature"></p>
+                                    <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
+                                </dd>
+                            </dl>
+
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="http://azhihu.cssroom.com/?/people/101"><img alt="" src="http://azhihu.cssroom.com/uploads/avatar/000/00/01/01_avatar_mid.jpg" /></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="http://azhihu.cssroom.com/?/people/101" data-id="101" class="aw-user-name">1354996886qw						</a>
+                                    <p class="signature"></p>
+                                    <p><b>1</b> 个问题, <b>0</b> 次赞同</p>
+                                </dd>
+                            </dl>
+
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="http://azhihu.cssroom.com/?/people/106"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="http://azhihu.cssroom.com/?/people/106" data-id="106" class="aw-user-name">Artls						</a>
+                                    <p class="signature"></p>
+                                    <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
+                                </dd>
+                            </dl>
+
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="http://azhihu.cssroom.com/?/people/107"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="http://azhihu.cssroom.com/?/people/107" data-id="107" class="aw-user-name">123aa						</a>
+                                    <p class="signature"></p>
+                                    <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
+                                </dd>
+                            </dl>
+
+                            <dl>
+                                <dt class="pull-left aw-border-radius-5">
+                                    <a href="http://azhihu.cssroom.com/?/people/102"><img alt="" src="http://azhihu.cssroom.com/uploads/avatar/000/00/01/02_avatar_mid.jpg" /></a>
+                                </dt>
+                                <dd class="pull-left">
+                                    <a href="http://azhihu.cssroom.com/?/people/102" data-id="102" class="aw-user-name">147258369q						</a>
+                                    <p class="signature"></p>
+                                    <p><b>1</b> 个问题, <b>0</b> 次赞同</p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>									</div>
+                <!-- end 侧边栏 -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="aw-footer-wrap">
+    <div class="aw-footer">
+        Copyright © 2020, All Rights Reserved</span>
+        <span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 3.5.1</a></span>
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?1a4884ec01ab4ea9a8280251bbd1a95d";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    </div>
+</div>
+<a class="aw-back-top hidden-xs" href="javascript:;" onclick="$.scrollTo(1, 600, {queue:true});"><i class="icon icon-up"></i></a>
+<!--底部公共注入钩子-->
+<!--end底部公共注入钩子-->
+<!-- DO NOT REMOVE -->
+<div id="aw-ajax-box" class="aw-ajax-box"></div>
+<div style="display:none;" id="__crond">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#__crond').html(unescape('%3Cimg%20src%3D%22' + G_BASE_URL + '/crond/run/1598519970%22%20width%3D%221%22%20height%3D%221%22%20/%3E'));
+        });
+    </script>
+</div>
+<!-- Escape time: 0.064826011657715 --></body>
+</html>

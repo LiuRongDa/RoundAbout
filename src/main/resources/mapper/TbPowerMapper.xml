@@ -8,8 +8,11 @@
     <id column="power_id" jdbcType="INTEGER" property="power_id" />
     <result column="power_name" jdbcType="VARCHAR" property="power_name" />
     <result column="power_url" jdbcType="VARCHAR" property="power_url" />
+    <result column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
   </resultMap>
-  <sql id="selectAll">
-    power_id,power_name,power_url
-  </sql>
+
+  <select id="queryMenu" resultMap="BaseResultMap">
+    select tb_power.* from tb_role_power LEFT JOIN tb_role on tb_role_power.role_id = tb_role.role_id LEFT JOIN tb_power ON tb_power.power_id = tb_role_power.power_id where tb_role.role_id = #{role_id} ORDER BY tb_power.power_id
+  </select>
 </mapper>

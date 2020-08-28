@@ -12,7 +12,27 @@ public class TbPower implements Serializable {
 
     private String power_url;
 
+    private Integer fid;
+
+    private String icon;
+
     private static final long serialVersionUID = 1L;
+
+    public Integer getFid() {
+        return fid;
+    }
+
+    public void setFid(Integer fid) {
+        this.fid = fid;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     /**
      * @return power_id
@@ -58,15 +78,12 @@ public class TbPower implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", power_id=").append(power_id);
-        sb.append(", power_name=").append(power_name);
-        sb.append(", power_url=").append(power_url);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "TbPower{" +
+                "power_id=" + power_id +
+                ", power_name='" + power_name + '\'' +
+                ", power_url='" + power_url + '\'' +
+                ", fid=" + fid +
+                ", icon='" + icon + '\'' +
+                '}';
     }
 }
