@@ -8,7 +8,7 @@
     <meta http-equiv="Cache-Control" CONTENT="no-cache">
     <meta http-equiv="Pragma" CONTENT="no-cache">
     <meta name="renderer" content="webkit" />
-    <title>发现 - WeCenter仿知乎模板</title>
+    <title>热门</title>
     <meta name="keywords" content="WeCenter3.31仿知乎模板" />
     <meta name="description" content="WeCenter仿知乎模板，支持WeCenter3.31，WeCenter3.32，WeCenter3.33"  />
     <base href="http://localhost:8088/springboot/" /><!--[if IE]></base><![endif]-->
@@ -21,15 +21,15 @@
     <link href="css/azhihu/azhihu.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="js/highlight/styles/tomorrow.css">
     <script type="text/javascript">
-        var _8636174409F417ACF47725DA9B2BBF64="481014e8501ec9b82c7742dec9eae023";
-        var G_POST_HASH=_8636174409F417ACF47725DA9B2BBF64;
+        var _8F1CD5B2C8936CF2265DD7E0CE79E084="";
+        var G_POST_HASH=_8F1CD5B2C8936CF2265DD7E0CE79E084;
         var G_INDEX_SCRIPT = "?/";
-        /*var G_SITE_NAME = "WeCenter仿知乎模板";*/
-        var G_BASE_URL = "http://localhost:8088/springboot";
-        /*var G_STATIC_URL = "http://azhihu.cssroom.com/static";
-        var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";*/
-        var G_USER_ID = "106";
-        var G_USER_NAME = "Artls";
+        var G_SITE_NAME = "WeCenter仿知乎模板";
+        var G_BASE_URL = "http://azhihu.cssroom.com/?";
+        var G_STATIC_URL = "http://azhihu.cssroom.com/static";
+        var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";
+        var G_USER_ID = "";
+        var G_USER_NAME = "";
         var G_UPLOAD_ENABLE = "N";
         var G_UNREAD_NOTIFICATION = 0;
         var G_NOTIFICATION_INTERVAL = 100000;
@@ -122,7 +122,7 @@
                         <p class="search"><span>搜索:</span><a onClick="$('#global_search_form').submit();"></a></p>
                     </div>
                     <div class="mod-footer">
-                        <a href="javascript:;" onClick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
+                        <a href="http://azhihu.cssroom.com/?/publish" onClick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
                     </div>
                 </div>
             </form>
@@ -130,7 +130,8 @@
         <!-- end 搜索框 -->
         <!-- 发起 -->
         <div class="aw-publish-btn">
-            <a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/" onclick="AWS.dialog('publish', {'category_enable':'0', 'category_id':'0', 'topic_title':''}); return false;">发起</a>
+
+            <a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/">发起</a>
             <div class="dropdown-list pull-right">
                 <ul>
                     <li>
@@ -147,25 +148,8 @@
         <!-- 用户栏 -->
         <div class="aw-user-nav">
             <!-- 登陆&注册栏 -->
-            <a href="http://azhihu.cssroom.com/?/people/106" class="aw-user-nav-dropdown">
-                <img alt="Artls" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" />
 
-            </a>
-            <div class="aw-dropdown dropdown-list pull-right">
-                <ul class="aw-dropdown-list">
-                    <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                    <li class="hidden-xs"><a href="http://azhihu.cssroom.com/?/account/setting/profile/"><i class="icon icon-setting"></i> 设置</a></li>
-                    <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
-                    <li><a href="http://azhihu.cssroom.com/?/account/logout/"><i class="icon icon-logout"></i> 退出</a></li>
-                </ul>
-            </div>
-            <!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
-                <ul class="aw-dropdown-list">
-                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=common"><i class="icon icon-draft"></i> 默认&nbsp;&nbsp;√</a></li>
-                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=green"><i class="icon icon-draft"></i> 绿色&nbsp;&nbsp;</a></li>
-                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=orange"><i class="icon icon-draft"></i> 橙色&nbsp;&nbsp;</a></li>
-                </ul>
-            </div> -->
+            <a class="register btn btn-normal btn-success" href="http://azhihu.cssroom.com/?/account/register/"><i class="icon icon-users"></i> 注册</a>					<a class="login btn btn-normal btn-primary" href="http://azhihu.cssroom.com/?/account/login/">登录</a>
             <!-- end 登陆&注册栏 -->
         </div>
         <!-- end 用户栏 -->
@@ -200,7 +184,7 @@
                         <div class="mod-head common-head">
                             <h2>
                                 <span class="pull-right"><a href="http://azhihu.cssroom.com/?/account/setting/privacy/#notifications" class="text-color-999"><i class="icon icon-setting"></i> 通知设置</a></span>
-                                <i class="icon icon-bell"></i>新通知<em class="badge badge-important" name="notification_unread_num">0</em>
+                                <i class="icon icon-bell"></i>新通知<em class="badge badge-important" name="notification_unread_num"></em>
                             </h2>
                         </div>
                         <div class="mod-body">
@@ -216,51 +200,69 @@
                     <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
                         <li><a href="http://azhihu.cssroom.com/?/sort_type-unresponsive">等待回复</a></li>
                         <li><a href="http://azhihu.cssroom.com/?/is_recommend-1">推荐</a></li>
-                        <li><a href="http://azhihu.cssroom.com/?/sort_type-hot__day-7" id="sort_control_hot">热门</a></li>
-                        <li class="active"><a href="">最新</a></li>
+                        <li class="active"><a href="http://azhihu.cssroom.com/?/sort_type-hot__day-7" id="sort_control_hot">热门</a></li>
+                        <li><a href="">最新</a></li>
 
                         <h2 class="hidden-xs">主页·发现</h2>
                     </ul>
                     <!-- end tab切换 -->
 
+                    <!-- 自定义tab切换 -->
+                    <div class="aw-tabs">
+                        <ul>
+                            <li class="active"><a href="http://azhihu.cssroom.com/?/sort_type-hot____day-30" day="30">30天</a></li>
+                            <li><a href="http://azhihu.cssroom.com/?/sort_type-hot____day-7" day="7">7天</a></li>
+                            <li><a href="http://azhihu.cssroom.com/?/sort_type-hot____day-1" day="1">当天</a></li>
+                        </ul>
+                    </div>
+                    <!-- end 自定义tab切换 -->
                     <div class="aw-mod aw-explore-list">
                         <div class="mod-body">
                             <div class="aw-common-list">
-                                <!--提问-->
-                                <div class="aw-item article" data-topic-id="30,2,3,">
-                                    <!-- <a class="aw-user-name hidden-xs" data-id="2" href="http://azhihu.cssroom.com/?/people/2" rel="nofollow"><img src="http://azhihu.cssroom.com/uploads/avatar/000/00/00/02_avatar_max.jpg" alt="" /></a> -->
+                                <div class="aw-item " data-topic-id="">
+                                    <!-- <a class="aw-user-name hidden-xs" data-id="102" href="http://azhihu.cssroom.com/?/people/102" rel="nofollow"><img src="http://azhihu.cssroom.com/uploads/avatar/000/00/01/02_avatar_max.jpg" alt="" /></a> -->
                                     <div class="aw-question-content">
                                         <h4>
-                                            <a href="http://azhihu.cssroom.com/?/article/6">身边的人是怎么靠生活经验赚钱的？</a>
-                                            <span style="font-style: normal; background: #FF7F00; color: #ffffff; font-size: 12px;  padding: 2px 8px; border-radius: 3px;">置顶</span>		</h4>
+                                            <a href="http://azhihu.cssroom.com/?/question/226">hahha</a>								</h4>
+                                        <a href="http://azhihu.cssroom.com/?/question/226#!answer_form" class="pull-right text-color-999">回复</a>
 
                                         <p>
-                                            <a href="http://azhihu.cssroom.com/?/people/2" class="aw-user-name">
-                                                <i class="icon icon-user"></i>豆豆龙
-                                            </a>
-                                            发表了文章
-                                            <span><i class="icon icon-comment"></i>4 个评论</span>
-                                            <span><i class="icon icon-preview"></i>766 次浏览</span>
-                                            <span><i class="icon icon-date"></i>2019-05-17 14:56</span>
+                                            <a href="http://azhihu.cssroom.com/?/people/102" class="aw-user-name" data-id="102">
+                                                <i class="icon icon-user"></i>147258369q</a>
+                                            回复了问题
+                                            <span><i class="icon icon-favor"></i>1 人关注</span>
+                                            <span><i class="icon icon-comment"></i>1 个回复</span>
+                                            <span><i class="icon icon-preview"></i>7 次浏览</span>
+                                            <span><i class="icon icon-date"></i>5 天前</span>
+
                                             <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
                                         </p>
 
-                                        <!-- 文章内容调用 -->
-                                        <div class="markitup-box" onclick="window.location.href='article/6'" style="cursor: pointer;">
-                                            <div class="img pull-right"></div>
-                                            麻辣烫，手抓饼，奶茶店，买空卖空的淘宝包邮？你们的智商都去哪里了？没有智商了，那你们的生活经验去哪里了？以前的“我要当科学家”、“我要当老师”、“我要当工程师”、哪怕“我要当程序员”这些“梦想去哪里了”？ 君见几个卖麻辣烫，手抓饼和奶茶店的 				...<a class="more" href="http://azhihu.cssroom.com/?/article/6">查看全部</a>
-                                        </div>
-                                        <div class="collapse all-content">
-                                            <img src="http://azhihu.cssroom.com/uploads/article/20190517/ce6b85e5d2c9bf215918c765f663ae3b.jpg?7411" />
-                                            <p>麻辣烫，手抓饼，奶茶店，买空卖空的淘宝包邮？你们的智商都去哪里了？没有智商了，那你们的生活经验去哪里了？</p><p>以前的“我要当科学家”、“我要当老师”、“我要当工程师”、哪怕“我要当程序员”这些“梦想去哪里了”？ 君见几个卖麻辣烫，手抓饼和奶茶店的财务自由了。说不定好多场外开麻辣烫、手抓饼、奶茶店的人也正关注这个问题呢，密切的关注着有没有新的出路，脱离这起早贪黑、费力不赚钱，看不到希望的苦逼的麻辣烫，奶茶店。</p><p>或许有一些做的很好的麻辣烫或者奶茶店，但是他们背后的苦和心酸绝不是一个“一杯奶茶的成本7分钱，而售价却在8块到15块不等”这样的计算能衡量的。每一门生意都不简单，都是整套的系统，产品设计与创新，推广营销，客户管理，客户服务，成本控制……能成就一个赚钱的生意，都是一整套的系统在天时地利人和的情况的偶然的必然，如果只是一句简单的计算能日进斗金，那请你出门左转然后自己去试试。<img src="/ueditor/php/upload/image/20190517/1558076175422458.png" title="1558076175422458.png" alt="image.png"/></p><p><br/></p><p>这个问题下有很多回答的确让人眼前一亮耳目一新，隔行如隔山嘛，在这个问题下，我们可以看见好多其不起眼的行业的套路，但是请年轻的你，一定一定一定要有定力，不要被这些东西左右了自己的心智。360行，行行出状元，每个行业有每个行业的门道（套路），不要见到了别人的一些巧妙的门道（套路）就跨入这一行。</p><p><br/></p>			</div>
-                                        <!-- end 文章内容调用 -->
                                     </div>
                                 </div>
+                                <div class="aw-item active" data-topic-id="">
+                                    <!-- <a class="aw-user-name hidden-xs" data-id="105" href="http://azhihu.cssroom.com/?/people/105" rel="nofollow"><img src="http://azhihu.cssroom.com/static/common/avatar-max-img.png" alt="" /></a> -->
+                                    <div class="aw-question-content">
+                                        <h4>
+                                            <a href="http://azhihu.cssroom.com/?/question/227">那一天值得等待，那一眼满载星海</a>								</h4>
+                                        <a href="http://azhihu.cssroom.com/?/question/227#!answer_form" class="pull-right text-color-999">回复</a>
 
+                                        <p>
+                                            <a href="http://azhihu.cssroom.com/?/people/105" class="aw-user-name"><i class="icon icon-user"></i>你好</a>
+                                            发起了问题				<span><i class="icon icon-favor"></i>1 人关注</span>
+                                            <span><i class="icon icon-comment"></i>0 个回复</span>
+                                            <span><i class="icon icon-preview"></i>4 次浏览</span>
+                                            <span><i class="icon icon-date"></i>5 小时前</span>
+                                            </span>
+                                            <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
+                                        </p>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="mod-footer">
-                            <div class="page-control"><ul class="pagination pull-right"><li class="active"><a href="javascript:;">1</a></li><li><a href="http://azhihu.cssroom.com/?/sort_type-new__day-0__is_recommend-0__page-2">2</a></li><li><a href="http://azhihu.cssroom.com/?/sort_type-new__day-0__is_recommend-0__page-3">3</a></li><li><a href="http://azhihu.cssroom.com/?/sort_type-new__day-0__is_recommend-0__page-4">4</a></li><li><a href="http://azhihu.cssroom.com/?/sort_type-new__day-0__is_recommend-0__page-2">&gt;</a></li><li><a href="http://azhihu.cssroom.com/?/sort_type-new__day-0__is_recommend-0__page-5">&gt;&gt;</a></li></ul></div>						</div>
+                        </div>
                     </div>
                 </div>
 
@@ -269,19 +271,19 @@
                     <!--侧边栏插件-->
                     <div class="aw-mod write">
                         <div>
-                            <a href="http://azhihu.cssroom.com/?/question/">
+                            <a href="http://azhihu.cssroom.com/?/account/login/">
                                 <i class="icon icon-reply"></i></br>
                                 <span>写回答</span>
                             </a>
                         </div>
                         <div>
-                            <a href="http://azhihu.cssroom.com/?/publish/">
+                            <a href="http://azhihu.cssroom.com/?/account/login/">
                                 <i class="icon icon-ask"></i></br>
                                 <span>写问题</span>
                             </a>
                         </div>
                         <div>
-                            <a href="http://azhihu.cssroom.com/?/publish/article/">
+                            <a href="http://azhihu.cssroom.com/?/account/login/">
                                 <i class="icon icon-draft"></i></br>
                                 <span>写文章</span>
                             </a>
@@ -325,7 +327,7 @@
 
                             <dl>
                                 <dt class="pull-left aw-border-radius-5">
-                                    <a href="http://azhihu.cssroom.com/?/people/105"><img alt="" src="http://azhihu.cssroom.com/uploads/avatar/000/00/01/05_avatar_mid.jpg" /></a>
+                                    <a href="http://azhihu.cssroom.com/?/people/105"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
                                 </dt>
                                 <dd class="pull-left">
                                     <a href="http://azhihu.cssroom.com/?/people/105" data-id="105" class="aw-user-name">你好						</a>
@@ -347,10 +349,10 @@
 
                             <dl>
                                 <dt class="pull-left aw-border-radius-5">
-                                    <a href="http://azhihu.cssroom.com/?/people/103"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
+                                    <a href="http://azhihu.cssroom.com/?/people/106"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
                                 </dt>
                                 <dd class="pull-left">
-                                    <a href="http://azhihu.cssroom.com/?/people/103" data-id="103" class="aw-user-name">zs						</a>
+                                    <a href="http://azhihu.cssroom.com/?/people/106" data-id="106" class="aw-user-name">Artls						</a>
                                     <p class="signature"></p>
                                     <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
                                 </dd>
@@ -369,12 +371,12 @@
 
                             <dl>
                                 <dt class="pull-left aw-border-radius-5">
-                                    <a href="http://azhihu.cssroom.com/?/people/104"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
+                                    <a href="http://azhihu.cssroom.com/?/people/102"><img alt="" src="http://azhihu.cssroom.com/uploads/avatar/000/00/01/02_avatar_mid.jpg" /></a>
                                 </dt>
                                 <dd class="pull-left">
-                                    <a href="http://azhihu.cssroom.com/?/people/104" data-id="104" class="aw-user-name">1111ded						</a>
+                                    <a href="http://azhihu.cssroom.com/?/people/102" data-id="102" class="aw-user-name">147258369q						</a>
                                     <p class="signature"></p>
-                                    <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
+                                    <p><b>1</b> 个问题, <b>0</b> 次赞同</p>
                                 </dd>
                             </dl>
                         </div>
@@ -407,9 +409,9 @@
 <div style="display:none;" id="__crond">
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#__crond').html(unescape('%3Cimg%20src%3D%22' + G_BASE_URL + '/crond/run/1598575905%22%20width%3D%221%22%20height%3D%221%22%20/%3E'));
+            $('#__crond').html(unescape('%3Cimg%20src%3D%22' + G_BASE_URL + '/crond/run/1598519970%22%20width%3D%221%22%20height%3D%221%22%20/%3E'));
         });
     </script>
 </div>
-<!-- Escape time: 0.079468011856079 --></body>
+<!-- Escape time: 0.064826011657715 --></body>
 </html>
