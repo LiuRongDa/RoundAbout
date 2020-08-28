@@ -1,6 +1,5 @@
 package com.aaa.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
-@Table(name = "tb_staff")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Table(name = "tb_staff")/*
+@JsonIgnoreProperties(ignoreUnknown = true)*/
 public class TbStaff implements Serializable, UserDetails {
     @Id
     private Integer staff_id;
@@ -225,24 +224,24 @@ public class TbStaff implements Serializable, UserDetails {
 
     @Override
     public String toString() {
-        return "TbStaff{" +
-                "staff_id=" + staff_id +
-                ", staff_name='" + staff_name + '\'' +
-                ", staff_number='" + staff_number + '\'' +
-                ", staff_pwd='" + staff_pwd + '\'' +
-                ", staff_sex=" + staff_sex +
-                ", staff_idcard='" + staff_idcard + '\'' +
-                ", staff_phone='" + staff_phone + '\'' +
-                ", staff_in=" + staff_in +
-                ", staff_out=" + staff_out +
-                ", staff_state=" + staff_state +
-                ", role_id=" + role_id +
-                ", user_isexpired=" + user_isexpired +
-                ", user_islocked=" + user_islocked +
-                ", user_isCreExpired=" + user_isCreExpired +
-                ", user_isenable=" + user_isenable +
-                ", authorityList=" + authorityList +
-                ", tbRole=" + tbRole +
-                '}';
+        return "{" +
+                "\"staff_id\":" + staff_id +
+                ", \"staff_name\":\"" + staff_name + '\"' +
+                ", \"staff_number\":\"" + staff_number + '\"' +
+                ", \"staff_pwd\":\"" + staff_pwd + '\"' +
+                ", \"staff_sex\":" + staff_sex +
+                ", \"staff_idcard\":\"" + staff_idcard + '\"' +
+                ", \"staff_phone\":\"" + staff_phone + '\"' +
+                /*", staff_in:" + staff_in +
+                ", staff_out:" + staff_out +*/
+                ", \"staff_state\":" + staff_state +
+                ", \"role_id\":" + role_id +
+                ", \"user_isexpired\":" + user_isexpired +
+                ", \"user_islocked\":" + user_islocked +
+                ", \"user_isCreExpired\":" + user_isCreExpired +
+                ", \"user_isenable\":" + user_isenable +
+                ", \"authorityList\":\"" +  authorityList+'\"' +
+                ", \"tbRole\":" + tbRole +
+                "}";
     }
 }

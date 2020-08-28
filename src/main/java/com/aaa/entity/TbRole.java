@@ -10,7 +10,17 @@ public class TbRole implements Serializable {
 
     private String role_name;
 
+    private String role_admin_name;
+
     private static final long serialVersionUID = 1L;
+
+    public String getRole_admin_name() {
+        return role_admin_name;
+    }
+
+    public void setRole_admin_name(String role_admin_name) {
+        this.role_admin_name = role_admin_name;
+    }
 
     public Integer getRole_id() {
         return role_id;
@@ -30,14 +40,10 @@ public class TbRole implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", role_id=").append(role_id);
-        sb.append(", role_name=").append(role_name);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "TbRole{" +
+                "role_id=" + role_id +
+                ", role_name='" + role_name + '\'' +
+                ", role_admin_name='" + role_admin_name + '\'' +
+                '}';
     }
 }
