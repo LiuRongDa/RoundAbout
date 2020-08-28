@@ -1,6 +1,7 @@
 package com.aaa.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_issue")
@@ -15,6 +16,27 @@ public class TbIssue implements Serializable {
     private Integer user_id;
 
     private static final long serialVersionUID = 1L;
+
+    private List<TbArticle> tbArticles;
+
+    @Override
+    public String toString() {
+        return "TbIssue{" +
+                "issue_id=" + issue_id +
+                ", issue_title='" + issue_title + '\'' +
+                ", issue_content='" + issue_content + '\'' +
+                ", user_id=" + user_id +
+                ", tbArticles=" + tbArticles +
+                '}';
+    }
+
+    public List<TbArticle> getTbArticles() {
+        return tbArticles;
+    }
+
+    public void setTbArticles(List<TbArticle> tbArticles) {
+        this.tbArticles = tbArticles;
+    }
 
     /**
      * @return issue_id
@@ -72,18 +94,4 @@ public class TbIssue implements Serializable {
         this.user_id = user_id;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", issue_id=").append(issue_id);
-        sb.append(", issue_title=").append(issue_title);
-        sb.append(", issue_content=").append(issue_content);
-        sb.append(", user_id=").append(user_id);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }

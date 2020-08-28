@@ -5,7 +5,34 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="article_id" jdbcType="INTEGER" property="articleId" />
-    <result column="gambit_id" jdbcType="INTEGER" property="gambitId" />
+    <result column="article_id" jdbcType="INTEGER" property="article_id" />
+    <result column="gambit_id" jdbcType="INTEGER" property="gambit_id" />
+
+
+    <association property="tbArticle" column="article_id" javaType="com.aaa.entity.TbArticle" autoMapping="true">
+      <id column="article_id" property="article_id" />
+      <result column="article_title" property="article_title" />
+      <result column="article_content" property="article_content" />
+      <result column="user_id" property="user_id" />
+      <result column="article_photo"  property="article_photo" />
+      <result column="article_state" property="article_state" />
+      <result column="article_count" property="article_count" />
+      <result column="count" property="count" />
+      <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
+        <id column="user_id" property="user_id" />
+      </association>
+    </association>
+
+    <association property="tbGambit" column="gambit_id" javaType="com.aaa.entity.TbGambit" autoMapping="true">
+      <id column="gambit_id" property="gambit_id" />
+      <result column="gambit_name" property="gambit_name" />
+    </association>
+
   </resultMap>
+
+  <select id="queryAll" resultMap="BaseResultMap">
+      select a.*,g.*,u.* from tb_article a LEFT JOIN tb_article_gambit ag on a.article_id=ag.article_id
+      LEFT JOIN tb_gambit g on ag.gambit_id=g.gambit_id
+      LEFT JOIN tb_user u on u.user_id=a.user_id where a.article_title is not null order by a.article_date desc
+  </select>
 </mapper>

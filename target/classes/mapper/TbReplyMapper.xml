@@ -5,11 +5,11 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="reply_id" jdbcType="INTEGER" property="replyId" />
-    <result column="reply_content" jdbcType="VARCHAR" property="replyContent" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="comment_id" jdbcType="INTEGER" property="commentId" />
-    <result column="reply_idto" jdbcType="INTEGER" property="replyIdto" />
-    <result column="reply_date" jdbcType="TIMESTAMP" property="replyDate" />
+    <id column="reply_id" jdbcType="INTEGER" property="reply_id" />
+    <result column="reply_content" jdbcType="VARCHAR" property="reply_content" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="comment_id" jdbcType="INTEGER" property="comment_id" />
+    <result column="reply_idto" jdbcType="INTEGER" property="reply_idto" />
+    <result column="reply_date" jdbcType="TIMESTAMP" property="reply_date" />
   </resultMap>
 </mapper>

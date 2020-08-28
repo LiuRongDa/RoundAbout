@@ -15,14 +15,13 @@ import java.util.List;
  * @time: 2020/8/24 18:40
  */
 @RestController
-@RequestMapping("tbUser")
+@RequestMapping("/Reception/tbUser")
 public class TbUserController {
     @Resource
     TbUserService tbUserService;
 
-  /*  @RequestMapping("query")
+    @RequestMapping("query")
     public TbUser query(){
         return tbUserService.queryProfession();
-    }*/
-
+    }
 }

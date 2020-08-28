@@ -11,44 +11,49 @@ public class TbArticleGambit implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * @return article_id
-     */
+    private TbArticle tbArticle;
+
+    private TbGambit tbGambit;
+
+    @Override
+    public String toString() {
+        return "TbArticleGambit{" +
+                "article_id=" + article_id +
+                ", gambit_id=" + gambit_id +
+                ", tbArticle=" + tbArticle +
+                ", tbGambit=" + tbGambit +
+                '}';
+    }
+
     public Integer getArticle_id() {
         return article_id;
     }
 
-    /**
-     * @param article_id
-     */
     public void setArticle_id(Integer article_id) {
         this.article_id = article_id;
     }
 
-    /**
-     * @return gambit_id
-     */
     public Integer getGambit_id() {
         return gambit_id;
     }
 
-    /**
-     * @param gambit_id
-     */
     public void setGambit_id(Integer gambit_id) {
         this.gambit_id = gambit_id;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", article_id=").append(article_id);
-        sb.append(", gambit_id=").append(gambit_id);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    public TbArticle getTbArticle() {
+        return tbArticle;
+    }
+
+    public void setTbArticle(TbArticle tbArticle) {
+        this.tbArticle = tbArticle;
+    }
+
+    public TbGambit getTbGambit() {
+        return tbGambit;
+    }
+
+    public void setTbGambit(TbGambit tbGambit) {
+        this.tbGambit = tbGambit;
     }
 }

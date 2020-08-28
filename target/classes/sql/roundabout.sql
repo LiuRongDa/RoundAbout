@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2020-08-25 11:23:18
+Date: 2020-08-28 08:53:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,10 +32,10 @@ CREATE TABLE `tb_article` (
 -- ----------------------------
 -- Records of tb_article
 -- ----------------------------
-INSERT INTO `tb_article` VALUES ('1', '孩子玩手机到底对不对？', 'null', '1', 'null', '0');
-INSERT INTO `tb_article` VALUES ('2', '睡前多喝水好不好', 'null', '2', 'null', '0');
-INSERT INTO `tb_article` VALUES ('3', '多吃水果有什么好处?', 'null', '3', 'null', '0');
-INSERT INTO `tb_article` VALUES ('4', '老鼠吃盐会变成蝙蝠吗', 'null', '4', 'null', '0');
+INSERT INTO `tb_article` VALUES ('1', '', '孩子玩手机到底对不对？', '1', 'null', '0');
+INSERT INTO `tb_article` VALUES ('2', '', '睡前多喝水好不好', '2', 'null', '0');
+INSERT INTO `tb_article` VALUES ('3', '', '多吃水果有什么好处?', '3', 'null', '0');
+INSERT INTO `tb_article` VALUES ('4', '老鼠吃盐会变成蝙蝠吗', '我是老鼠，我今天吃了盐，为什么还没有变在线等，急！！！', '4', 'null', '0');
 
 -- ----------------------------
 -- Table structure for tb_article_gambit
@@ -156,16 +156,17 @@ CREATE TABLE `tb_comment` (
   `comment_content` varchar(1000) NOT NULL,
   `user_id` int(11) NOT NULL,
   `comment_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `article_id` int(11) NOT NULL,
   PRIMARY KEY (`comment_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of tb_comment
 -- ----------------------------
-INSERT INTO `tb_comment` VALUES ('1', '淘米水根本就不能美白，用淘米谁做面膜只能是暂时性的使皮肤变白，一般来说5分钟之后就变回原来的肤色了，因为那只是相当于在脸上涂了一层白色的物质，根本就没用。', '1', '2020-08-24 18:59:09');
-INSERT INTO `tb_comment` VALUES ('2', '不建议晚上睡前喝水。晚上喝水以后，人处于睡眠状态是属于相对静止的状态，血液循环，体内代谢都比较缓慢，水湿停留于体内时间长容易加重脏腑的功能负担。如果水湿不能够及时排出体外，也会出现颜面浮肿等现象；如果体内水湿，及时排出体外，晚上小便次数过多，又会影响人体正常的睡眠时间，不能够保证睡眠质量。如果天气炎热，房间内温度比较高，比较干燥，体内出现口干口渴缺水的状态，在睡觉前半个小时可以适当的喝少量的水以补充体液，可以稀释血液，促进血液循环，有利于心脑血管的健康。 ', '2', '2020-08-24 19:00:11');
-INSERT INTO `tb_comment` VALUES ('3', '水果中含有非常丰富的果酸、果糖、纤维素、维生素等成分，经常吃水果，可以有效地吸收其中的微量元素，不但可以促进食欲，增加饱腹感，还可以加速肠道蠕动，改善便秘现象。\r\n对于咽喉肿痛、口舌生疮有改善功效，还可以补充丰富的维生素C和维生素E，起到美白皮肤的作用。但是需要注意，水果吃得太多，也有可能升高体内的酸性，对于胃粘膜溃疡的人群不利。\r\n', '3', '2020-08-24 19:54:36');
-INSERT INTO `tb_comment` VALUES ('4', '蝙蝠和老鼠都是哺乳动物，前者是翼手目，后者是啮齿目，所以演化路径不同。那么蝙蝠究竟是什么动物呢？其实它既不和老鼠同类，也不和鸟同类，而是独霸了翼手目这一个类目，是哺乳动物中仅次于啮齿目动物的第二大类群。蝙蝠它可以像鸟一样鼓翼飞行，这一点是其他任何哺乳动物所不具备的，据生物学家考证翼手目很可能和灵长目有着共同的祖先，可见蝙蝠和老鼠并没有多么亲近的血缘关系，而大家一直相信传说，也不过是因为二者长得像声音像而已。', '4', '2020-08-24 19:56:34');
+INSERT INTO `tb_comment` VALUES ('1', '淘米水根本就不能美白，用淘米谁做面膜只能是暂时性的使皮肤变白，一般来说5分钟之后就变回原来的肤色了，因为那只是相当于在脸上涂了一层白色的物质，根本就没用。', '1', '2020-08-24 18:59:09', '1');
+INSERT INTO `tb_comment` VALUES ('2', '不建议晚上睡前喝水。晚上喝水以后，人处于睡眠状态是属于相对静止的状态，血液循环，体内代谢都比较缓慢，水湿停留于体内时间长容易加重脏腑的功能负担。如果水湿不能够及时排出体外，也会出现颜面浮肿等现象；如果体内水湿，及时排出体外，晚上小便次数过多，又会影响人体正常的睡眠时间，不能够保证睡眠质量。如果天气炎热，房间内温度比较高，比较干燥，体内出现口干口渴缺水的状态，在睡觉前半个小时可以适当的喝少量的水以补充体液，可以稀释血液，促进血液循环，有利于心脑血管的健康。 ', '2', '2020-08-24 19:00:11', '1');
+INSERT INTO `tb_comment` VALUES ('3', '水果中含有非常丰富的果酸、果糖、纤维素、维生素等成分，经常吃水果，可以有效地吸收其中的微量元素，不但可以促进食欲，增加饱腹感，还可以加速肠道蠕动，改善便秘现象。\r\n对于咽喉肿痛、口舌生疮有改善功效，还可以补充丰富的维生素C和维生素E，起到美白皮肤的作用。但是需要注意，水果吃得太多，也有可能升高体内的酸性，对于胃粘膜溃疡的人群不利。\r\n', '3', '2020-08-24 19:54:36', '1');
+INSERT INTO `tb_comment` VALUES ('4', '蝙蝠和老鼠都是哺乳动物，前者是翼手目，后者是啮齿目，所以演化路径不同。那么蝙蝠究竟是什么动物呢？其实它既不和老鼠同类，也不和鸟同类，而是独霸了翼手目这一个类目，是哺乳动物中仅次于啮齿目动物的第二大类群。蝙蝠它可以像鸟一样鼓翼飞行，这一点是其他任何哺乳动物所不具备的，据生物学家考证翼手目很可能和灵长目有着共同的祖先，可见蝙蝠和老鼠并没有多么亲近的血缘关系，而大家一直相信传说，也不过是因为二者长得像声音像而已。', '4', '2020-08-24 19:56:34', '1');
 
 -- ----------------------------
 -- Table structure for tb_degree
@@ -193,9 +194,9 @@ CREATE TABLE `tb_education` (
   `education_id` int(11) NOT NULL AUTO_INCREMENT,
   `education_school` varchar(50) NOT NULL,
   `education_specialty` varchar(50) DEFAULT NULL,
-  `occupation_id` int(11) NOT NULL,
-  `year_in_id` int(11) NOT NULL,
-  `year_out_id` int(11) NOT NULL,
+  `education_occupation` varchar(20) NOT NULL,
+  `education_inyear` int(11) NOT NULL,
+  `education_outyear` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`education_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -203,10 +204,10 @@ CREATE TABLE `tb_education` (
 -- ----------------------------
 -- Records of tb_education
 -- ----------------------------
-INSERT INTO `tb_education` VALUES ('1', '河南致远', '软件开发', '1', '1', '1', '1');
-INSERT INTO `tb_education` VALUES ('2', '郑州大学', '土木工程', '2', '2', '2', '2');
-INSERT INTO `tb_education` VALUES ('3', '郑州工商', '金融管理', '3', '3', '3', '3');
-INSERT INTO `tb_education` VALUES ('4', '郑州铁路', '铁路管理', '4', '4', '4', '4');
+INSERT INTO `tb_education` VALUES ('1', '河南致远', '软件开发', '1', '2000', '2004', '1');
+INSERT INTO `tb_education` VALUES ('2', '郑州大学', '土木工程', '2', '2000', '2004', '2');
+INSERT INTO `tb_education` VALUES ('3', '郑州工商', '金融管理', '3', '2000', '2004', '3');
+INSERT INTO `tb_education` VALUES ('4', '郑州铁路', '铁路管理', '4', '2000', '2004', '4');
 
 -- ----------------------------
 -- Table structure for tb_gambit
@@ -281,7 +282,6 @@ CREATE TABLE `tb_issue_article` (
 INSERT INTO `tb_issue_article` VALUES ('1', '1');
 INSERT INTO `tb_issue_article` VALUES ('2', '2');
 INSERT INTO `tb_issue_article` VALUES ('3', '3');
-INSERT INTO `tb_issue_article` VALUES ('4', '4');
 
 -- ----------------------------
 -- Table structure for tb_issue_gambit
@@ -383,16 +383,28 @@ DROP TABLE IF EXISTS `tb_power`;
 CREATE TABLE `tb_power` (
   `power_id` int(11) NOT NULL AUTO_INCREMENT,
   `power_name` varchar(50) NOT NULL,
-  `power_url` varchar(200) DEFAULT NULL,
+  `power_url` varchar(220) DEFAULT NULL,
+  `fid` int(11) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`power_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of tb_power
 -- ----------------------------
-INSERT INTO `tb_power` VALUES ('1', 'ROLE_ADMIN', 'null');
-INSERT INTO `tb_power` VALUES ('2', 'ROLE_FINANCE', 'null');
-INSERT INTO `tb_power` VALUES ('3', 'ROLE_APPEAL', 'null');
+INSERT INTO `tb_power` VALUES ('1', '用户管理', '#', '0', 'el-icon-loading');
+INSERT INTO `tb_power` VALUES ('2', '员工管理', '#1', '0', 'el-icon-monitor');
+INSERT INTO `tb_power` VALUES ('3', '财务中心', '#2', '0', 'el-icon-bank-card');
+INSERT INTO `tb_power` VALUES ('4', '权限管理', '#3', '0', 'el-icon-mobile');
+INSERT INTO `tb_power` VALUES ('5', '申诉管理', '#4', '0', 'el-icon-message');
+INSERT INTO `tb_power` VALUES ('6', '个人中心', 'personal', '0', 'el-icon-user-solid');
+INSERT INTO `tb_power` VALUES ('7', '用户详情', 'dashboard', '1', null);
+INSERT INTO `tb_power` VALUES ('8', '员工详情', 'staff', '2', null);
+INSERT INTO `tb_power` VALUES ('9', '统计', '#6', '3', null);
+INSERT INTO `tb_power` VALUES ('10', '报表', '#7', '3', null);
+INSERT INTO `tb_power` VALUES ('11', '设置权限', '#8', '4', null);
+INSERT INTO `tb_power` VALUES ('12', '查看详情', '#9', '5', null);
+INSERT INTO `tb_power` VALUES ('13', '申诉', '#10', '5', null);
 
 -- ----------------------------
 -- Table structure for tb_praise
@@ -512,16 +524,16 @@ DROP TABLE IF EXISTS `tb_role`;
 CREATE TABLE `tb_role` (
   `role_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(20) NOT NULL,
+  `role_admin_name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of tb_role
 -- ----------------------------
-INSERT INTO `tb_role` VALUES ('1', '黄金用户');
-INSERT INTO `tb_role` VALUES ('2', '铂金用户');
-INSERT INTO `tb_role` VALUES ('3', '钻石用户');
-INSERT INTO `tb_role` VALUES ('4', '黑卡用户');
+INSERT INTO `tb_role` VALUES ('1', '管理员', 'ROLE_ADMIN');
+INSERT INTO `tb_role` VALUES ('2', '财务', 'ROLE_FINANCE');
+INSERT INTO `tb_role` VALUES ('3', '申诉', 'ROLE_APPEAL');
 
 -- ----------------------------
 -- Table structure for tb_role_power
@@ -535,10 +547,26 @@ CREATE TABLE `tb_role_power` (
 -- ----------------------------
 -- Records of tb_role_power
 -- ----------------------------
+INSERT INTO `tb_role_power` VALUES ('1', '7');
+INSERT INTO `tb_role_power` VALUES ('1', '2');
 INSERT INTO `tb_role_power` VALUES ('1', '1');
-INSERT INTO `tb_role_power` VALUES ('2', '2');
-INSERT INTO `tb_role_power` VALUES ('3', '3');
-INSERT INTO `tb_role_power` VALUES ('4', '4');
+INSERT INTO `tb_role_power` VALUES ('1', '5');
+INSERT INTO `tb_role_power` VALUES ('1', '4');
+INSERT INTO `tb_role_power` VALUES ('1', '6');
+INSERT INTO `tb_role_power` VALUES ('1', '3');
+INSERT INTO `tb_role_power` VALUES ('1', '8');
+INSERT INTO `tb_role_power` VALUES ('1', '9');
+INSERT INTO `tb_role_power` VALUES ('1', '10');
+INSERT INTO `tb_role_power` VALUES ('1', '11');
+INSERT INTO `tb_role_power` VALUES ('1', '12');
+INSERT INTO `tb_role_power` VALUES ('1', '13');
+INSERT INTO `tb_role_power` VALUES ('2', '3');
+INSERT INTO `tb_role_power` VALUES ('2', '6');
+INSERT INTO `tb_role_power` VALUES ('2', '9');
+INSERT INTO `tb_role_power` VALUES ('2', '10');
+INSERT INTO `tb_role_power` VALUES ('3', '5');
+INSERT INTO `tb_role_power` VALUES ('3', '6');
+INSERT INTO `tb_role_power` VALUES ('3', '12');
 
 -- ----------------------------
 -- Table structure for tb_sgs
@@ -582,7 +610,7 @@ CREATE TABLE `tb_staff` (
   `staff_idcard` varchar(20) NOT NULL,
   `staff_phone` varchar(20) DEFAULT NULL,
   `staff_in` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `staff_out` datetime NOT NULL,
+  `staff_out` datetime DEFAULT NULL,
   `staff_state` int(11) NOT NULL DEFAULT '0',
   `role_id` int(11) NOT NULL,
   `user_isexpired` int(11) NOT NULL DEFAULT '1',
@@ -590,15 +618,18 @@ CREATE TABLE `tb_staff` (
   `user_isCreExpired` int(11) NOT NULL DEFAULT '1',
   `user_isenable` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of tb_staff
 -- ----------------------------
-INSERT INTO `tb_staff` VALUES ('1', '曹操', 'cao123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '0', '412821200837165012', '12345678910', '2020-08-24 19:22:29', '2020-08-24 19:22:47', '0', '1', '1', '1', '1', '1');
-INSERT INTO `tb_staff` VALUES ('2', '刘备', 'liu123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '0', '412743188612126012', '10987654321', '2020-08-25 09:19:17', '2020-08-25 09:19:20', '0', '2', '1', '1', '1', '1');
-INSERT INTO `tb_staff` VALUES ('3', '大乔', 'qiao123456', '$2a$10$9Q/nLjkhJupLgIl2.OF52O8zZrgndecWzv3oPY9rK64PWCxt2iEvi', '1', '427361199611156022', '98765432110', '2020-08-25 09:21:08', '2020-08-25 09:21:11', '0', '3', '1', '1', '1', '1');
-INSERT INTO `tb_staff` VALUES ('4', '孙尚香', 'sun123456', 'sun123456', '1', '431862200207156842', '10293847561', '2020-08-25 09:22:38', '2020-08-25 09:22:41', '0', '4', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('1', 'zss', 'zs', '$2a$10$6dIwfb97VItaWsu12W3zme34QoV7EKQW1vJO4dtfF7nIIf72hctiu', '0', '412821200837165012', '12345678910', '2020-08-24 19:22:29', '2020-08-24 19:22:47', '0', '1', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('2', '刘备', 'liu123456', '$2a$10$SDzTDQZnT8fk69Qqoqlos..hxblvDwkfw2/mg7yH1igmeOYobpT/S', '0', '412743188612126012', '10987654321', '2020-08-25 09:19:17', '2020-08-25 09:19:20', '0', '2', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('3', '大乔', 'qiao123456', '$2a$10$SDzTDQZnT8fk69Qqoqlos..hxblvDwkfw2/mg7yH1igmeOYobpT/S', '1', '427361199611156022', '98765432110', '2020-08-25 09:21:08', '2020-08-25 09:21:11', '0', '3', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('4', '孙尚香', 'sun123456', 'sun123456', '1', '431862200207156842', '10293847561', '2020-08-25 09:22:38', '2020-08-25 09:22:41', '0', '1', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('6', '123', '123', '123', '1', '123', '123', '2020-08-26 19:18:59', null, '0', '2', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('7', 'aa', 'aaa', 'a', '1', '123', '123', '2020-08-26 19:24:46', null, '1', '1', '1', '1', '1', '1');
+INSERT INTO `tb_staff` VALUES ('10', 'ww', '123', '$2a$10$QwA/XvBsuwV.k7fv6ljy8./ZhKt3h/q1SNbvqLPdwrXY3RU5pu3Hi', '1', '123', '123', '2020-08-27 09:59:48', null, '0', '1', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for tb_topic
@@ -680,4 +711,4 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` VALUES ('1', 'zs', 'null', 'null', '12345678910', '12345@qq.com', '$2a$10$Iqq0rAnbwVrBpo4V7DNWueQVUe3FsoEmZT3lrJHtTDpJv0w7CROBq', '0', '个性签名', '河南郑州', '1', '个人简介', '0', '0', '2020-08-24 18:27:30', '0');
 INSERT INTO `tb_user` VALUES ('2', '李四', 'null', 'null', '66666666666', '23456@qq.com', '$2a$10$6HdiJ6f/kTvzliZWpzyp/e41TW1AnyYyfHP/8Ik3Bu5vjldrVxF0a', '0', '因为不个性，所以不签名', '河南南阳', '2', '个人简介', '0', '0', '2020-08-25 09:28:25', '0');
 INSERT INTO `tb_user` VALUES ('3', '王五', 'null', 'null', '77777777777', '34567@qq.com', '$2a$10$ejYT9Csh.X32FAZhgzHDBuwxaTwNDb7xyvWKcPr.oKm1sE/9rUlVm', '0', '个性签名', '河南信阳', '3', '个人简介', '0', '0', '2020-08-25 09:30:50', '0');
-INSERT INTO `tb_user` VALUES ('4', '赵六', 'null', 'null', '99999999999', '45678@qq.com', 'admin', '0', '个性签名', '河南濮阳', '4', '个人简介', '0', '0', '2020-08-25 09:31:32', '0');
+INSERT INTO `tb_user` VALUES ('4', '赵六', 'null', 'null', '99999999999', '45678@qq.com', 'admin', '0', '个性签名', '河南濮阳', '2', '个人简介', '0', '0', '2020-08-25 09:31:32', '0');

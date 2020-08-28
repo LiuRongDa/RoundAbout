@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="occupation_id" jdbcType="INTEGER" property="occupationId" />
-    <result column="occupation_name" jdbcType="VARCHAR" property="occupationName" />
+    <id column="occupation_id" jdbcType="INTEGER" property="occupation_id" />
+    <result column="occupation_name" jdbcType="VARCHAR" property="occupation_name" />
   </resultMap>
 </mapper>

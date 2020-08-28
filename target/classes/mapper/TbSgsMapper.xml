@@ -5,18 +5,18 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="sgs_id" jdbcType="INTEGER" property="sgsId" />
-    <result column="sgs_school" jdbcType="VARCHAR" property="sgsSchool" />
-    <result column="sgs_info" jdbcType="VARCHAR" property="sgsInfo" />
-    <result column="sgs_prove" jdbcType="VARCHAR" property="sgsProve" />
-    <result column="sgs_name" jdbcType="VARCHAR" property="sgsName" />
-    <result column="sgs_idcard" jdbcType="VARCHAR" property="sgsIdcard" />
-    <result column="sgs_photo" jdbcType="VARCHAR" property="sgsPhoto" />
-    <result column="occupation_id" jdbcType="INTEGER" property="occupationId" />
-    <result column="degree_id" jdbcType="INTEGER" property="degreeId" />
-    <result column="career_id" jdbcType="INTEGER" property="careerId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="sgs_time" jdbcType="TIMESTAMP" property="sgsTime" />
-    <result column="sgs_result" jdbcType="INTEGER" property="sgsResult" />
+    <id column="sgs_id" jdbcType="INTEGER" property="sgs_id" />
+    <result column="sgs_school" jdbcType="VARCHAR" property="sgs_school" />
+    <result column="sgs_info" jdbcType="VARCHAR" property="sgs_info" />
+    <result column="sgs_prove" jdbcType="VARCHAR" property="sgs_prove" />
+    <result column="sgs_name" jdbcType="VARCHAR" property="sgs_name" />
+    <result column="sgs_idcard" jdbcType="VARCHAR" property="sgs_idcard" />
+    <result column="sgs_photo" jdbcType="VARCHAR" property="sgs_photo" />
+    <result column="occupation_id" jdbcType="INTEGER" property="occupation_id" />
+    <result column="degree_id" jdbcType="INTEGER" property="degree_id" />
+    <result column="career_id" jdbcType="INTEGER" property="career_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="sgs_time" jdbcType="TIMESTAMP" property="sgs_time" />
+    <result column="sgs_result" jdbcType="INTEGER" property="sgs_result" />
   </resultMap>
 </mapper>

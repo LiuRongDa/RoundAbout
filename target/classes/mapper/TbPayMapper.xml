@@ -5,10 +5,10 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="pay_id" jdbcType="INTEGER" property="payId" />
-    <result column="pay_money" jdbcType="DOUBLE" property="payMoney" />
-    <result column="pay_data" jdbcType="TIMESTAMP" property="payData" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="pay_state" jdbcType="INTEGER" property="payState" />
+    <id column="pay_id" jdbcType="INTEGER" property="pay_id" />
+    <result column="pay_money" jdbcType="DOUBLE" property="pay_money" />
+    <result column="pay_data" jdbcType="TIMESTAMP" property="pay_data" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="pay_state" jdbcType="INTEGER" property="pay_state" />
   </resultMap>
 </mapper>
