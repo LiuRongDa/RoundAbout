@@ -1,5 +1,7 @@
 package com.aaa.service;
 
+import com.aaa.dao.TbArticleMapper;
+import com.aaa.entity.TbArticle;
 import com.aaa.dao.TbArticleGambitMapper;
 import com.aaa.entity.TbArticleGambit;
 import com.github.pagehelper.PageHelper;
@@ -10,11 +12,17 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * @description:
+ * @author: LRD
+ * @time: 2020/8/28 13:55
  * @author Artls
  * @date 2020/8/28 10:44
  */
 @Service
 public class TbArticleService {
+    @Resource
+    TbArticleMapper tbArticleMapper;
+
     @Resource
     TbArticleGambitMapper tbArticleGambitMapper;
 

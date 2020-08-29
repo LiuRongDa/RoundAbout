@@ -1,6 +1,6 @@
 package com.aaa.security;
 
-import com.aaa.controller.TbstaffController;
+import com.aaa.controller.back.TbstaffController;
 import com.aaa.entity.TbStaff;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;

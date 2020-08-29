@@ -1,4 +1,4 @@
-package com.aaa.controller;
+package com.aaa.controller.front;
 
 import com.aaa.service.TbArticleService;
 import com.github.pagehelper.PageInfo;

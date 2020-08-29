@@ -1,13 +1,10 @@
-package com.aaa.controller;
+package com.aaa.controller.front;
 
-import com.aaa.entity.TbIssue;
 import com.aaa.service.TbIssueService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author Artls

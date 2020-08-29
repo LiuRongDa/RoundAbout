@@ -32,12 +32,13 @@ public class TbPowerService {
             it.setTitle(t.getPower_name());
             Integer id = t.getPower_id();
             for (TbPower t1 : tbPowers) {
+                //判断当前id 是否有匹配他的fid  如果有就证明他还有子级 调用addStair方法添加子级
                 if (id == t1.getFid()) {
                     it = addStair(it, t, tbPowers);
                     break;
                 }
             }
-            //判断是否是一级菜单
+            //fid 为0 就是一级菜单
             if (t.getFid() == 0)
             itemsArrayList.add(it);
         }

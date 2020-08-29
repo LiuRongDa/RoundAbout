@@ -13,6 +13,7 @@
     <result column="article_state" jdbcType="INTEGER" property="article_state" />
     <result column="article_count" jdbcType="INTEGER" property="article_count" />
     <result column="article_date" jdbcType="VARCHAR" property="article_date" />
+    <result column="count" jdbcType="INTEGER" property="count" />
     <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
       <id column="user_id" property="user_id" />
     </association>

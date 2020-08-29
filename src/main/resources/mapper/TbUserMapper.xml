@@ -22,4 +22,8 @@
     <result column="user_joindate" jdbcType="TIMESTAMP" property="user_joindate" />
     <result column="user_state" jdbcType="INTEGER" property="user_state" />
   </resultMap>
+  
+  <select id="userAndTradeQueryAll" resultMap="BaseResultMap">
+    select * from tb_user u LEFT JOIN tb_trade t on u.user_trade=t.trade_id ORDER BY u.user_id desc
+  </select>
 </mapper>

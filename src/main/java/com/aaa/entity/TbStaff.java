@@ -27,9 +27,9 @@ public class TbStaff implements Serializable, UserDetails {
 
     private String staff_phone;
 
-    private Date staff_in;
+    private String staff_in;
 
-    private Date staff_out;
+    private String staff_out;
 
     private Integer staff_state;
 
@@ -107,19 +107,19 @@ public class TbStaff implements Serializable, UserDetails {
         this.staff_phone = staff_phone;
     }
 
-    public Date getStaff_in() {
+    public String getStaff_in() {
         return staff_in;
     }
 
-    public void setStaff_in(Date staff_in) {
+    public void setStaff_in(String staff_in) {
         this.staff_in = staff_in;
     }
 
-    public Date getStaff_out() {
+    public String getStaff_out() {
         return staff_out;
     }
 
-    public void setStaff_out(Date staff_out) {
+    public void setStaff_out(String staff_out) {
         this.staff_out = staff_out;
     }
 
@@ -232,8 +232,8 @@ public class TbStaff implements Serializable, UserDetails {
                 ", \"staff_sex\":" + staff_sex +
                 ", \"staff_idcard\":\"" + staff_idcard + '\"' +
                 ", \"staff_phone\":\"" + staff_phone + '\"' +
-                /*", staff_in:" + staff_in +
-                ", staff_out:" + staff_out +*/
+                ", \"staff_in\":\"" + staff_in + '\"' +
+                ", \"staff_out\":\"" + staff_out + '\"' +
                 ", \"staff_state\":" + staff_state +
                 ", \"role_id\":" + role_id +
                 ", \"user_isexpired\":" + user_isexpired +
@@ -244,4 +244,30 @@ public class TbStaff implements Serializable, UserDetails {
                 ", \"tbRole\":" + tbRole +
                 "}";
     }
+
+    /*@Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", staff_id=").append(staff_id);
+        sb.append(", staff_number=").append(staff_number);
+        sb.append(", staff_pwd=").append(staff_pwd);
+        sb.append(", staff_sex=").append(staff_sex);
+        sb.append(", staff_idcard=").append(staff_idcard);
+        sb.append(", staff_phone=").append(staff_phone);
+        sb.append(", staff_in=").append(staff_in);
+        sb.append(", staff_out=").append(staff_out);
+        sb.append(", staff_state=").append(staff_state);
+        sb.append(", role_id=").append(role_id);
+        sb.append(", user_isexpired=").append(user_isexpired);
+        sb.append(", user_islocked=").append(user_islocked);
+        sb.append(", user_isCreExpired=").append(user_isCreExpired);
+        sb.append(", user_isenable=").append(user_isenable);
+        sb.append(", authorityList=").append(authorityList);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }*/
 }
