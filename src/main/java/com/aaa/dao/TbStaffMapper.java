@@ -42,5 +42,14 @@ public interface TbStaffMapper extends MyMapper<TbStaff> {
      */
     PageInfo<TbStaff> selePage(@Param("pageNum") Integer pageNum,@Param("pageSize") Integer pageSize);
 
-    /*List<TbStaff> seleSeche(@Param("staff_name") String staff_name);*/
+    Boolean upInfo(@Param("staff_id")Integer staff_id,@Param("staff_name")String staff_name,@Param("staff_idcard")String staff_idcard,@Param("staff_phone")String staff_phone);
+
+    /**
+     * 修改密码
+     * @param staff_pwd
+     * @param staff_id
+     * @return
+     */
+    Boolean upPwd(@Param("staff_pwd")String staff_pwd,@Param("staff_id")Integer staff_id);
+
 }

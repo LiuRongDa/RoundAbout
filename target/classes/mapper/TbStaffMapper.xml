@@ -27,8 +27,52 @@
     </association>
   </resultMap>
 
+
+
+  <sql id="save">
+    staff_name,staff_number,staff_pwd,staff_sex,staff_idcard,staff_phone,role_id
+  </sql>
   <!-- 关联role表查询-->
   <select id="queryStallAndRole" resultMap="BaseResultMap">
     select * from tb_staff s LEFT JOIN tb_role r on s.role_id=r.role_id
+     <where>
+       staff_state=0
+       <if test="staff_name !='undefined' and staff_name != '' and staff_name != null ">
+         and staff_name like CONCAT("%", #{staff_name}, "%")
+       </if>
+     </where>
+      ORDER BY s.staff_id desc
   </select>
+
+ <!-- <select id="queryStallAndRole" resultMap="BaseResultMap">
+    select * from tb_staff s LEFT JOIN tb_role r on s.role_id=r.role_id where staff_state=0 ORDER BY s.staff_id desc
+  </select>
+-->
+  <insert id="add" parameterType="com.aaa.entity.TbStaff">
+    insert into tb_staff(<include refid="save"/>)
+    values(#{staff_name},#{staff_number},#{staff_pwd},#{staff_sex},#{staff_idcard},#{staff_phone},#{role_id})
+  </insert>
+  
+  <update id="update" parameterType="com.aaa.entity.TbStaff">
+    update tb_staff set staff_name=#{staff_name},staff_number=#{staff_number},staff_pwd=#{staff_pwd},staff_sex=#{staff_sex},staff_idcard=#{staff_idcard},staff_phone=#{staff_phone},role_id=#{role_id} where staff_id=#{staff_id}
+  </update>
+
+  <update id="upState" parameterType="com.aaa.entity.TbStaff">
+    update tb_staff set staff_state=1 where staff_id=#{staff_id}
+  </update>
+
+  <!--分页-->
+  <select id="selePage" resultMap="BaseResultMap">
+    select * from tb_staff s LEFT JOIN tb_role r on s.role_id=r.role_id where staff_state=0  ORDER BY s.staff_id desc  limit pageNum=#{pageNum},pageSize=#{pageSize}
+  </select>
+
+  <!-- 修改个人信息-->
+  <update id="upInfo" parameterType="com.aaa.entity.TbStaff">
+    update tb_staff set staff_name=#{staff_name},staff_idcard=#{staff_idcard},staff_phone=#{staff_phone} where staff_id=#{staff_id}
+  </update>
+
+  <!-- 修改密码-->
+  <update id="upPwd" parameterType="com.aaa.entity.TbStaff">
+
+  </update>
 </mapper>

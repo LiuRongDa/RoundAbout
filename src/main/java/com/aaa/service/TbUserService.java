@@ -3,9 +3,9 @@ package com.aaa.service;
 import com.aaa.dao.TbEducationMapper;
 import com.aaa.dao.TbProfessionMapper;
 import com.aaa.dao.TbUserMapper;
-import com.aaa.entity.TbEducation;
-import com.aaa.entity.TbProfession;
 import com.aaa.entity.TbUser;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -47,4 +47,22 @@ public class TbUserService {
         return tbUser;
     }*/
 
+    /**
+     * 关联 trade 表 分页 +模糊搜索
+     * @return
+     */
+    public PageInfo<TbUser> selePage(Integer pageNum,Integer pageSize){
+        if(pageNum==null || pageNum==0){
+            PageHelper.startPage(1,2);
+        }else if(pageSize==null || pageSize==0){
+            PageHelper.startPage(pageNum,2);
+        }else{
+            PageHelper.startPage(pageNum,pageSize);
+        }
+        List<TbUser> tbUsers = tbUserMapper.userAndTradeQueryAll();
+        System.out.println(tbUsers);
+        PageInfo<TbUser> pageInfo=new PageInfo<>(tbUsers);
+        System.out.println(pageInfo);
+        return pageInfo;
+    }
 }

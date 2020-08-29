@@ -4,6 +4,8 @@ import com.aaa.dao.TbStaffMapper;
 import com.aaa.entity.TbStaff;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -88,14 +90,38 @@ public class TbStaffService {
         return pageInfo;
     }
 
-
     /**
-     * 模糊查询
+     * 修改个人信息
+     * @param staff_id
      * @param staff_name
+     * @param staff_idcard
+     * @param staff_phone
      * @return
      */
-   /* public List<TbStaff> seleSeche(String staff_name){
-        List<TbStaff> tbStaffs = tbStaffMapper.queryStallAndRole(staff_name);
-        return tbStaffs;
-    }*/
+    public Boolean upInfo(Integer staff_id,String staff_name,String staff_idcard,String staff_phone){
+        Boolean aBoolean = tbStaffMapper.upInfo(staff_id, staff_name, staff_idcard, staff_phone);
+        return aBoolean;
+    }
+
+
+    /**
+     * 校验密码是否一致
+     * @param staff_id
+     * @return
+     */
+    public Boolean oldPwd(Integer staff_id){
+        TbStaff staff = tbStaffMapper.selectByPrimaryKey(staff_id);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        //(staff.getStaff_pwd() 前台传的值  (staff.getStaff_pwd() 数据库的值
+        System.out.println("1-----"+staff.getPassword());
+        System.out.println("2-----"+staff.getStaff_pwd());
+        System.out.println("3-----"+staff.getStaff_pwd());
+        if(!bCryptPasswordEncoder.matches(staff.getPassword(),staff.getStaff_pwd())){
+            System.out.println("失败----"+bCryptPasswordEncoder.matches(staff.getStaff_pwd(),staff.getStaff_pwd()));
+            return false;
+        }else{
+            System.out.println("成功----"+bCryptPasswordEncoder.matches(staff.getStaff_pwd(),staff.getStaff_pwd()));
+            return true;
+        }
+    }
 }

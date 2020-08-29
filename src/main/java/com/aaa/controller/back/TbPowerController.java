@@ -1,4 +1,4 @@
-package com.aaa.controller;
+package com.aaa.controller.back;
 
 import com.aaa.service.TbPowerService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +19,11 @@ public class TbPowerController {
     @Resource
     TbPowerService tbPowerService;
 
+    /**
+     * 权限
+     * @param role_id
+     * @return
+     */
     @RequestMapping("queryStair")
     public String queryStair(Integer role_id){
         System.out.println(role_id);

@@ -1,4 +1,4 @@
-package com.aaa.controller;
+package com.aaa.controller.back;
 
 import com.aaa.entity.TbStaff;
 import com.aaa.service.TbStaffService;
@@ -6,10 +6,14 @@ import com.aaa.utils.JacksonUtils;
 import com.github.pagehelper.PageInfo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 /**
@@ -109,15 +113,21 @@ public class TbstaffController {
         return pageInfo;
     }
 
+    @RequestMapping("upInfo")
+    public Boolean upInfo(Integer staff_id,String staff_name,String staff_idcard,String staff_phone){
+        Boolean aBoolean = tbStaffService.upInfo(staff_id, staff_name, staff_idcard, staff_phone);
+        return aBoolean;
+    }
+
     /**
-     * 模糊查询
-     * @param staff_name
+     * 校验密码是否一致
      * @return
      */
-   /* @RequestMapping("seleSeche")
-    public List<TbStaff> seleSeche(String staff_name){
-        System.out.println("--------------------"+staff_name);
-        List<TbStaff> tbStaffs = tbStaffService.seleSeche(staff_name);
-        return tbStaffs;
-    }*/
+    @RequestMapping("oldPwd")
+    public Boolean oldPwd(Integer staff_id){
+        Boolean aBoolean = tbStaffService.oldPwd(staff_id);
+        return aBoolean;
+    }
+
+
 }

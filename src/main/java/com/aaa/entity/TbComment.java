@@ -19,6 +19,7 @@ public class TbComment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
     /**
      * @return comment_id
      */

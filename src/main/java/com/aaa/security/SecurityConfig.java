@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
         // 使用form表单登录
         http.formLogin()
-                .loginPage("/login.html")
+                .loginPage("/qlogin.html")
                 .loginProcessingUrl("/login-check")
                 .usernameParameter("name")
                 .passwordParameter("pwd")
