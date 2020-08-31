@@ -7,5 +7,26 @@
     -->
     <result column="gambit_id" jdbcType="INTEGER" property="gambit_id" />
     <result column="issue_id" jdbcType="INTEGER" property="issue_id" />
+
+    <!--<association property="tbGambit" column="gambit_id" javaType="com.aaa.entity.TbGambit" autoMapping="true">
+      <id column="gambit_id" property="gambit_id" />
+    </association>-->
+    <association property="tbIssue" column="issue_id" javaType="com.aaa.entity.TbIssue" autoMapping="true">
+      <id column="issue_id" property="issue_id" />
+      <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
+        <id column="user_id" property="user_id" />
+      </association>
+    </association>
   </resultMap>
+
+  <select id="queryAll" resultMap="BaseResultMap">
+      select i.*,u.* from tb_issue i
+      LEFT JOIN tb_user u on u.user_id=i.user_id
+      order by i.issue_date desc
+  </select>
+
+  <select id="queryById" resultMap="BaseResultMap">
+      select i.*,u.* from tb_issue i
+      LEFT JOIN tb_user u on u.user_id=i.user_id where i.issue_id=#{issue_id}
+  </select>
 </mapper>
