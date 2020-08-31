@@ -4,8 +4,10 @@ import com.aaa.dao.TbEducationMapper;
 import com.aaa.dao.TbProfessionMapper;
 import com.aaa.dao.TbUserMapper;
 import com.aaa.entity.TbUser;
+import com.aaa.security.BCryptPasswordEncoderRun;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -26,6 +28,28 @@ public class TbUserService {
 
     @Resource
     TbEducationMapper tbEducationMapper;
+
+    @Resource
+    BCryptPasswordEncoderRun bCryptPasswordEncoderRun;
+
+    /**
+     * wh
+     * 登录
+     */
+    public TbUser toLogin(String email,String pwd){
+        TbUser tbUser = new TbUser();
+        if (email.contains("@"))
+            tbUser.setUser_email(email);
+        else
+            tbUser.setUser_phone(email);
+        TbUser tbUser1 = tbUserMapper.selectOne(tbUser);
+        boolean matches = bCryptPasswordEncoderRun.passwordEncoder().matches(pwd, tbUser1.getUser_pwd());
+        if (matches)
+            return tbUser1;
+        else
+            return null;
+    }
+
 
     /**
      * 查询用户
