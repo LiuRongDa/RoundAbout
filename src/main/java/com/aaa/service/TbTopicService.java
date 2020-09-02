@@ -62,9 +62,7 @@ public class TbTopicService {
         int i=0;
         for (TbTopic t :tbTopics) {
             if(t.getTbArticle().get(0).getArticle_content()==null || t.getTbArticle().get(0).getArticle_content()== ""){
-                System.out.println("删除");
                 i= tbTopicMapper.deleteByPrimaryKey(topic_id);
-                System.out.println("nei"+i);
             }
         }
         if(i==1)return true;
