@@ -7,5 +7,28 @@
     -->
     <id column="gambit_id" jdbcType="INTEGER" property="gambit_id" />
     <result column="gambit_name" jdbcType="VARCHAR" property="gambit_name" />
+
+    <collection property="tbArticleGambit" column="gambit_id" ofType="com.aaa.entity.TbArticleGambit" autoMapping="true">
+      <id column="gambit" property="gambit_id"></id>
+    </collection>
+
+    <collection property="tbArticle" column="article_id" ofType="com.aaa.entity.TbArticle" autoMapping="true">
+      <id column="article_id" property="article_id"></id>
+    </collection>
   </resultMap>
+
+  <select id="queryAll" resultMap="BaseResultMap">
+    select * from tb_gambit LEFT JOIN tb_article_gambit on tb_gambit.gambit_id=tb_article_gambit.gambit_id
+    LEFT JOIN tb_article on tb_article.article_id=tb_article_gambit.article_id
+    <where>
+      1=1
+      <if test="gambit_id!=null and gambit_id!=''">
+        and tb_gambit.gambit_id=#{gambit_id}
+      </if>
+      <if test="gambit_name != 'undefined' and gambit_name != null and gambit_name != '' ">
+        and tb_gambit.gambit_name like CONCAT("%", #{gambit_name}, "%")
+      </if>
+    </where>
+    ORDER BY tb_gambit.gambit_id DESC
+  </select>
 </mapper>
