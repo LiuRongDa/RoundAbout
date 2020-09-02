@@ -21,22 +21,18 @@ public class TbIssue implements Serializable {
 
     private Integer count;
 
+    private TbIssueUser tbIssueUser;
+
     private static final long serialVersionUID = 1L;
 
     private TbUser tbUser;
 
-    @Override
-    public String toString() {
-        return "TbIssue{" +
-                "issue_id=" + issue_id +
-                ", issue_title='" + issue_title + '\'' +
-                ", issue_content='" + issue_content + '\'' +
-                ", user_id=" + user_id +
-                ", issue_date='" + issue_date + '\'' +
-                ", issue_count=" + issue_count +
-                ", count=" + count +
-                ", tbUser=" + tbUser +
-                '}';
+    public TbIssueUser getTbIssueUser() {
+        return tbIssueUser;
+    }
+
+    public void setTbIssueUser(TbIssueUser tbIssueUser) {
+        this.tbIssueUser = tbIssueUser;
     }
 
     public String getIssue_date() {
@@ -127,4 +123,18 @@ public class TbIssue implements Serializable {
         this.user_id = user_id;
     }
 
+    @Override
+    public String toString() {
+        return "TbIssue{" +
+                "issue_id=" + issue_id +
+                ", issue_title='" + issue_title + '\'' +
+                ", issue_content='" + issue_content + '\'' +
+                ", user_id=" + user_id +
+                ", issue_date='" + issue_date + '\'' +
+                ", issue_count=" + issue_count +
+                ", count=" + count +
+                ", tbIssueUser=" + tbIssueUser +
+                ", tbUser=" + tbUser +
+                '}';
+    }
 }
