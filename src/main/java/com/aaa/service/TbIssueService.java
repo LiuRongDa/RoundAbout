@@ -1,13 +1,15 @@
 package com.aaa.service;
 
 import com.aaa.dao.TbIssueGambitMapper;
-import com.aaa.dao.TbIssueMapper;
-import com.aaa.entity.TbGambit;
-import com.aaa.entity.TbIssue;
+import com.aaa.entity.TbComment;
 import com.aaa.entity.TbIssueGambit;
+import com.aaa.entity.TbUser;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
+import com.aaa.dao.TbIssueMapper;
+import com.aaa.entity.TbGambit;
+import com.aaa.entity.TbIssue;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,7 +29,7 @@ public class TbIssueService {
     TbIssueMapper tbIssueMapper;
 
     /**
-     * 查询所有问题基本信息(分页)
+     * 查询所有问题基本信息(时间倒序  分页)
      * @param pageNum
      * @param pageSize
      * @return
@@ -39,6 +41,23 @@ public class TbIssueService {
             PageHelper.startPage(pageNum,pageSize);
         }
         List<TbIssueGambit> tbIssueGambits = tbIsseGambitMapper.queryAll();
+        PageInfo pageInfo = new PageInfo(tbIssueGambits);
+        return pageInfo;
+    }
+
+    /**
+     * 查询所有问题基本信息(浏览数量倒序  分页)
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public PageInfo queryhot(Integer pageNum,Integer pageSize){
+        if (pageNum == null) {
+            PageHelper.startPage(1,2);
+        }else{
+            PageHelper.startPage(pageNum,pageSize);
+        }
+        List<TbIssueGambit> tbIssueGambits = tbIsseGambitMapper.queryhot();
         PageInfo pageInfo = new PageInfo(tbIssueGambits);
         return pageInfo;
     }
@@ -85,4 +104,5 @@ public class TbIssueService {
             return false;
         }
     }
+
 }

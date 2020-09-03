@@ -212,61 +212,61 @@
                     <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
                         <li><a href="java:script:(0)">等待回复</a></li>
                         <li><a href="java:script:(0)">推荐</a></li>
-                        <li class="active"><a href="java:script:(0)">问题</a></li>
-                        <li><a th:href="@{tb_Article/queryAll}">文章</a></li>
+                        <li><a th:href="@{tb_Issue/queryAll}">问题</a></li>
+                        <li class="active"><a href="java:script:(0)">文章</a></li>
                         <h2 class="hidden-xs">主页·发现</h2>
                     </ul>
                     <!-- end tab切换 -->
-
                     <!-- 自定义tab切换 -->
                     <div class="aw-tabs">
                         <ul>
-                            <li class="active"><a href="javascript:;">最新</a></li>
-                            <li><a th:href="@{tb_Issue/queryhot}">热门</a></li>
+                            <li><a th:href="@{tb_Article/queryAll}">最新</a></li>
+                            <li class="active"><a href="javascript:;">热门</a></li>
                         </ul>
                     </div>
                     <!-- end 自定义tab切换 -->
 
-                    <!--<h4 th:each="a : ${iss.list}">
-                        <h4 th:text="${a}"></h4>
-                    </h4>-->
+                    <h4 th:each="a : ${art.list}">
+                        <h4 th:text="${a.TbArticle}"></h4>
+                    </h4>
+
                     <div class="aw-mod aw-explore-list">
                         <div class="mod-body">
-                            <div class="aw-common-list" th:each="item : ${iss.list}">
+                            <div class="aw-common-list" th:each="item : ${art.list}">
                                 <!--提问-->
                                 <div class="aw-item article" data-topic-id="30,2,3,">
                                     <div class="aw-question-content">
                                         <h4>
-                                            <a th:href="@{tb_Issue/queryById(id=${item.TbIssue.issue_id})}" th:text="${item.TbIssue.issue_title}">身边的人是怎么靠生活经验赚钱的？</a>
+                                            <a th:href="@{tb_Article/queryById(id=${item.TbArticle.article_id})}"><span th:text="${item.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
                                         </h4>
-                                            <p>
-                                                <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbIssue.TbUser.user_name}">
-                                                    <i class="icon icon-user"></i>豆豆龙
-                                                </a>
-                                                发表了文章
-                                                <span><i class="icon icon-comment"></i><span th:text="${item.TbIssue.count}">4</span> 个评论</span>
-                                                <span><i class="icon icon-preview"></i><span th:text="${item.TbIssue.issue_count}">766</span> 次浏览</span>
-                                                <span><i class="icon icon-date"></i><span th:text="${item.TbIssue.issue_date}">2019-05-17 14:56</span></span>
-                                                <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
-                                            </p>
+                                        <p>
+                                            <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbArticle.TbUser.user_name}">
+                                                <i class="icon icon-user"></i>豆豆龙
+                                            </a>
+                                            发表了文章
+                                            <span><i class="icon icon-comment"></i><span th:text="${item.TbArticle.count}">4</span> 个评论</span>
+                                            <span><i class="icon icon-preview"></i><span th:text="${item.TbArticle.article_count}">766</span> 次浏览</span>
+                                            <span><i class="icon icon-date"></i><span th:text="${item.TbArticle.article_date}">2019-05-17 14:56</span></span>
+                                            <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
+                                        </p>
 
-                                            <!-- 文章内容调用    onclick="window.location.href='article/6'"-->
-                                            <div class="markitup-box" style="cursor: pointer;">
-                                                <div class="img pull-right"></div>
-                                                <h2 th:text="${item.TbIssue.issue_content}">aaaaaaaaaaaaaa</h2>
-                                            </div>
-                                            <div class="collapse all-content">
-                                                <img src="http://azhihu.cssroom.com/uploads/article/20190517/ce6b85e5d2c9bf215918c765f663ae3b.jpg?7411" />
-                                                <!--<p>麻辣烫，手抓饼，奶茶店，买空卖空的淘宝包邮？你们的智商都去哪里了？没有智商了，那你们的生活经验去哪里了？</p>
-                                                <p>以前的“我要当科学家”、“我要当老师”、“我要当工程师”、哪怕“我要当程序员”这些“梦想去哪里了”？ 君见几个卖麻辣烫，手抓饼和奶茶店的财务自由了。说不定好多场外开麻辣烫、手抓饼、奶茶店的人也正关注这个问题呢，密切的关注着有没有新的出路，脱离这起早贪黑、费力不赚钱，看不到希望的苦逼的麻辣烫，奶茶店。</p>
-                                                <p>或许有一些做的很好的麻辣烫或者奶茶店，但是他们背后的苦和心酸绝不是一个“一杯奶茶的成本7分钱，而售价却在8块到15块不等”这样的计算能衡量的。每一门生意都不简单，都是整套的系统，产品设计与创新，推广营销，客户管理，客户服务，成本控制……能成就一个赚钱的生意，都是一整套的系统在天时地利人和的情况的偶然的必然，如果只是一句简单的计算能日进斗金，那请你出门左转然后自己去试试。
-                                                    <img src="/ueditor/php/upload/image/20190517/1558076175422458.png" title="1558076175422458.png" alt="image.png"/>
-                                                </p>
-                                                <p><br/></p>
-                                                <p>这个问题下有很多回答的确让人眼前一亮耳目一新，隔行如隔山嘛，在这个问题下，我们可以看见好多其不起眼的行业的套路，但是请年轻的你，一定一定一定要有定力，不要被这些东西左右了自己的心智。360行，行行出状元，每个行业有每个行业的门道（套路），不要见到了别人的一些巧妙的门道（套路）就跨入这一行。</p>
-                                                <p><br/></p>-->
-                                            </div>
-                                            <!-- end 文章内容调用 -->
+                                        <!-- 文章内容调用    onclick="window.location.href='article/6'"-->
+                                        <div class="markitup-box" style="cursor: pointer;">
+                                            <div class="img pull-right"></div>
+                                            <h2 th:text="${item.TbArticle.article_content}"></h2>
+                                        </div>
+                                        <div class="collapse all-content">
+                                            <img src="http://azhihu.cssroom.com/uploads/article/20190517/ce6b85e5d2c9bf215918c765f663ae3b.jpg?7411" />
+                                            <!--<p>麻辣烫，手抓饼，奶茶店，买空卖空的淘宝包邮？你们的智商都去哪里了？没有智商了，那你们的生活经验去哪里了？</p>
+                                            <p>以前的“我要当科学家”、“我要当老师”、“我要当工程师”、哪怕“我要当程序员”这些“梦想去哪里了”？ 君见几个卖麻辣烫，手抓饼和奶茶店的财务自由了。说不定好多场外开麻辣烫、手抓饼、奶茶店的人也正关注这个问题呢，密切的关注着有没有新的出路，脱离这起早贪黑、费力不赚钱，看不到希望的苦逼的麻辣烫，奶茶店。</p>
+                                            <p>或许有一些做的很好的麻辣烫或者奶茶店，但是他们背后的苦和心酸绝不是一个“一杯奶茶的成本7分钱，而售价却在8块到15块不等”这样的计算能衡量的。每一门生意都不简单，都是整套的系统，产品设计与创新，推广营销，客户管理，客户服务，成本控制……能成就一个赚钱的生意，都是一整套的系统在天时地利人和的情况的偶然的必然，如果只是一句简单的计算能日进斗金，那请你出门左转然后自己去试试。
+                                                <img src="/ueditor/php/upload/image/20190517/1558076175422458.png" title="1558076175422458.png" alt="image.png"/>
+                                            </p>
+                                            <p><br/></p>
+                                            <p>这个问题下有很多回答的确让人眼前一亮耳目一新，隔行如隔山嘛，在这个问题下，我们可以看见好多其不起眼的行业的套路，但是请年轻的你，一定一定一定要有定力，不要被这些东西左右了自己的心智。360行，行行出状元，每个行业有每个行业的门道（套路），不要见到了别人的一些巧妙的门道（套路）就跨入这一行。</p>
+                                            <p><br/></p>-->
+                                        </div>
+                                        <!-- end 文章内容调用 -->
                                     </div>
                                 </div>
 
@@ -275,20 +275,20 @@
                         <div class="mod-footer">
                             <div class="page-control">
                                 <ul class="pagination pull-right">
-                                    <li th:if="${iss.isLastPage}">
-                                        <a th:href="@{tb_Issue/queryAll(pageNum=${iss.navigateFirstPage},pageSize=${iss.pageSize})}">首页</a>
+                                    <li th:if="${art.isLastPage}">
+                                        <a th:href="@{tb_Article/queryhot(pageNum=${art.navigateFirstPage},pageSize=${art.pageSize})}">首页</a>
                                     </li>
-                                    <li th:if="${iss.prePage}">
-                                        <a th:href="@{tb_Issue/queryAll(pageNum=${iss.pageNum-1},pageSize=${iss.pageSize})}">上一页</a>
+                                    <li th:if="${art.prePage}">
+                                        <a th:href="@{tb_Article/queryhot(pageNum=${art.pageNum-1},pageSize=${art.pageSize})}">上一页</a>
                                     </li>
                                     <li>
-                                        <a href="javascript:;" th:text="${iss.pageNum}">2</a>
+                                        <a href="javascript:;" th:text="${art.pageNum}">2</a>
                                     </li>
-                                    <li th:if="${iss.nextPage}">
-                                        <a th:href="@{tb_Issue/queryAll(pageNum=${iss.pageNum+1},pageSize=${iss.pageSize})}">下一页</a>
+                                    <li th:if="${art.nextPage}">
+                                        <a th:href="@{tb_Article/queryhot(pageNum=${art.pageNum+1},pageSize=${art.pageSize})}">下一页</a>
                                     </li>
-                                    <li th:if="${iss.isFirstPage}">
-                                        <a th:href="@{tb_Issue/queryAll(pageNum=${iss.navigateLastPage},pageSize=${iss.pageSize})}">尾页</a>
+                                    <li th:if="${art.isFirstPage}">
+                                        <a th:href="@{tb_Article/queryhot(pageNum=${art.navigateLastPage},pageSize=${art.pageSize})}">尾页</a>
                                     </li>
                                 </ul>
                             </div>

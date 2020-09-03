@@ -236,6 +236,10 @@
 </style>
 
 <h4 th:text="${issue}"></h4>
+<h4 th:each="a : ${art}">
+    <h4 th:text="${a}"></h4>
+</h4>
+
 
 <div class="aw-container-wrap">
     <div class="container">
@@ -328,33 +332,35 @@
                         <div class="mod-head common-head">
                             <h2><span th:text="${issue[0].TbIssue.count}">5</span> 个评论</h2>
                         </div>
-                        <div class="mod-body aw-feed-list">
+                        <div class="mod-body aw-feed-list" th:each="a : ${art}">
                             <div class="aw-item" id="answer_list_11">
                                 <div class="mod-head">
                                     <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
                                         <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
                                     </a>
                                     <p>
-                                        <a href="javascript:;">evz03424</a>
+                                        <a href="javascript:;" th:text="${a.TbUser.user_name}">evz03424</a>
                                     </p>
                                 </div>
                                 <a class="anchor" name="answer_11"></a>
                                 <div class="mod-body">
                                     <div class="markitup-box">
-                                        <h4>abc</h4>
+                                        <h4 th:text="${a.article_content}">abc</h4>
                                     </div>
                                 </div>
                                 <div class="mod-footer">
                                     <div class="meta">
-                                        <span class="pull-right text-color-999">2019-10-09 14:18</span>
-                                        <a class="text-color-999 "
-                                           onclick="AWS.User.article_comment_vote($(this), 11, 1)"><i
-                                                class="icon icon-agree"></i> 0 赞</a>
-                                        <a class="aw-article-comment text-color-999" data-id="57"><i
-                                                class="icon icon-comment"></i> 回复</a>
-                                        <a href="javascript:;" class="text-color-999"
-                                           onclick="AWS.dialog('report', {item_type:'article_answer', item_id:11,item_reson:''})"><i
-                                                class="icon icon-report"></i>举报</a></div>
+                                        <span class="pull-right text-color-999" th:text="${a.article_date}">2019-10-09 14:18</span>
+                                        <a class="text-color-999 " onclick="AWS.User.article_comment_vote($(this), 11, 1)">
+                                            <i class="icon icon-agree"></i> 0 赞
+                                        </a>
+                                        <a class="aw-article-comment text-color-999" data-id="57">
+                                            <i class="icon icon-comment"></i> 回复
+                                        </a>
+                                        <a href="javascript:;" class="text-color-999" onclick="AWS.dialog('report', {item_type:'article_answer', item_id:11,item_reson:''})">
+                                            <i class="icon icon-report"></i>举报
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 

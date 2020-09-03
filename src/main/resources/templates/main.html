@@ -220,9 +220,8 @@
                     <!-- 自定义tab切换 -->
                     <div class="aw-tabs">
                         <ul>
-                            <li class="active"><a>最新</a></li>
-                            <li><a>热门</a></li>
-                            <li><a></a></li>
+                            <li class="active"><a href="javascript:;">最新</a></li>
+                            <li><a th:href="@{tb_Article/queryhot}">热门</a></li>
                         </ul>
                     </div>
                     <!-- end 自定义tab切换 -->
@@ -238,7 +237,7 @@
                                 <div class="aw-item article" data-topic-id="30,2,3,">
                                     <div class="aw-question-content">
                                         <h4>
-                                            <a th:href="@{tb_Article/queryById(id=${item.TbArticle.article_id})}"><span th:text="${item.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
+                                            <a th:href="@{tb_Article/addcount(id=${item.TbArticle.article_id})}"><span th:text="${item.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
                                         </h4>
                                         <p>
                                             <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbArticle.TbUser.user_name}">
