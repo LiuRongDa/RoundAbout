@@ -1,7 +1,6 @@
 package com.aaa.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_article_gambit")
@@ -14,6 +13,7 @@ public class TbArticleGambit implements Serializable {
 
     private TbArticle tbArticle;
 
+    private TbGambit tbGambit;
 
     @Override
     public String toString() {
@@ -21,6 +21,7 @@ public class TbArticleGambit implements Serializable {
                 "article_id=" + article_id +
                 ", gambit_id=" + gambit_id +
                 ", tbArticle=" + tbArticle +
+                ", tbGambit=" + tbGambit +
                 '}';
     }
 
@@ -46,5 +47,13 @@ public class TbArticleGambit implements Serializable {
 
     public void setTbArticle(TbArticle tbArticle) {
         this.tbArticle = tbArticle;
+    }
+
+    public TbGambit getTbGambit() {
+        return tbGambit;
+    }
+
+    public void setTbGambit(TbGambit tbGambit) {
+        this.tbGambit = tbGambit;
     }
 }

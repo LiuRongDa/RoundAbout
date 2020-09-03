@@ -1,7 +1,6 @@
 package com.aaa.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_topic")
@@ -13,47 +12,7 @@ public class TbTopic implements Serializable {
 
     private Integer user_id;
 
-    private List<TbUser> tbUser;
-
-    private List<TbTopicUser> tbTopicUser;
-
-    private List<TbArticleTopic> tbArticleTopic;
-
-    private List<TbArticle> tbArticle;
-
     private static final long serialVersionUID = 1L;
-
-    public List<TbArticle> getTbArticle() {
-        return tbArticle;
-    }
-
-    public void setTbArticle(List<TbArticle> tbArticle) {
-        this.tbArticle = tbArticle;
-    }
-
-    public List<TbArticleTopic> getTbArticleTopic() {
-        return tbArticleTopic;
-    }
-
-    public void setTbArticleTopic(List<TbArticleTopic> tbArticleTopic) {
-        this.tbArticleTopic = tbArticleTopic;
-    }
-
-    public List<TbTopicUser> getTbTopicUser() {
-        return tbTopicUser;
-    }
-
-    public void setTbTopicUser(List<TbTopicUser> tbTopicUser) {
-        this.tbTopicUser = tbTopicUser;
-    }
-
-    public List<TbUser> getTbUser() {
-        return tbUser;
-    }
-
-    public void setTbUser(List<TbUser> tbUser) {
-        this.tbUser = tbUser;
-    }
 
     /**
      * @return topic_id
@@ -97,7 +56,7 @@ public class TbTopic implements Serializable {
         this.user_id = user_id;
     }
 
-  /*  @Override
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getClass().getSimpleName());
@@ -109,18 +68,5 @@ public class TbTopic implements Serializable {
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
-    }*/
-
-    @Override
-    public String toString() {
-        return "TbTopic{" +
-                "topic_id=" + topic_id +
-                ", topic_name='" + topic_name + '\'' +
-                ", user_id=" + user_id +
-                ", tbUser=" + tbUser +
-                ", tbTopicUser=" + tbTopicUser +
-                ", tbArticleTopic=" + tbArticleTopic +
-                ", tbArticle=" + tbArticle +
-                '}';
     }
 }

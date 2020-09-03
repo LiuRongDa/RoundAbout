@@ -8,6 +8,7 @@
     <result column="article_id" jdbcType="INTEGER" property="article_id" />
     <result column="gambit_id" jdbcType="INTEGER" property="gambit_id" />
 
+
     <association property="tbArticle" column="article_id" javaType="com.aaa.entity.TbArticle" autoMapping="true">
       <id column="article_id" property="article_id" />
       <result column="article_title" property="article_title" />
@@ -18,37 +19,21 @@
       <result column="article_count" property="article_count" />
       <result column="count" property="count" />
       <result column="article_date" property="article_date" />
-      <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
+      <association property="tbUser" column="" javaType="com.aaa.entity.TbUser" autoMapping="true">
         <id column="user_id" property="user_id" />
       </association>
-      <!--<collection property="tbComment" column="tbArticle.article_id" ofType="com.aaa.entity.TbComment" autoMapping="true">
-        <id column="comment_id" property="comment_id" />
-        <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
-          <id column="user_id" property="user_id" />
-        </association>
-      </collection>-->
     </association>
-    <!--<collection property="tbGambit" column="gambit_id" ofType="com.aaa.entity.TbGambit" autoMapping="true">
+
+    <association property="tbGambit" column="gambit_id" javaType="com.aaa.entity.TbGambit" autoMapping="true">
       <id column="gambit_id" property="gambit_id" />
       <result column="gambit_name" property="gambit_name" />
-    </collection>-->
+    </association>
+
   </resultMap>
 
   <select id="queryAll" resultMap="BaseResultMap">
-      select a.*,u.* from tb_article a
+      select a.*,g.*,u.* from tb_article a LEFT JOIN tb_article_gambit ag on a.article_id=ag.article_id
+      LEFT JOIN tb_gambit g on ag.gambit_id=g.gambit_id
       LEFT JOIN tb_user u on u.user_id=a.user_id where a.article_title is not null order by a.article_date desc
   </select>
-
-  <!--<select id="queryById" resultMap="BaseResultMap">
-    select a.*,g.*,u.*,c.*,u2.* from tb_article a
-    LEFT JOIN tb_article_gambit ag on a.article_id=ag.article_id LEFT JOIN tb_gambit g on ag.gambit_id=g.gambit_id
-    left join tb_user u on u.user_id=a.user_id left JOIN tb_comment c on c.article_id=a.article_id
-    left join tb_user u2 on u2.user_id=c.user_id where a.article_id=#{article_id} group by a.article_id
-  </select>-->
-
-  <select id="queryById" resultMap="BaseResultMap">
-    select a.*,u.* from tb_article a
-    LEFT JOIN tb_user u on u.user_id=a.user_id where a.article_id=#{article_id}
-  </select>
-
 </mapper>

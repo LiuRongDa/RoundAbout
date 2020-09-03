@@ -15,56 +15,27 @@ public class TbIssue implements Serializable {
 
     private Integer user_id;
 
-    private String issue_date;;
-
-    private Integer issue_count;
-
-    private Integer count;
-
-    private TbIssueUser tbIssueUser;
-
     private static final long serialVersionUID = 1L;
 
-    private TbUser tbUser;
+    private List<TbArticle> tbArticles;
 
-    public TbIssueUser getTbIssueUser() {
-        return tbIssueUser;
+    @Override
+    public String toString() {
+        return "TbIssue{" +
+                "issue_id=" + issue_id +
+                ", issue_title='" + issue_title + '\'' +
+                ", issue_content='" + issue_content + '\'' +
+                ", user_id=" + user_id +
+                ", tbArticles=" + tbArticles +
+                '}';
     }
 
-    public void setTbIssueUser(TbIssueUser tbIssueUser) {
-        this.tbIssueUser = tbIssueUser;
+    public List<TbArticle> getTbArticles() {
+        return tbArticles;
     }
 
-    public String getIssue_date() {
-        return issue_date;
-    }
-
-    public void setIssue_date(String issue_date) {
-        this.issue_date = issue_date;
-    }
-
-    public Integer getIssue_count() {
-        return issue_count;
-    }
-
-    public void setIssue_count(Integer issue_count) {
-        this.issue_count = issue_count;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
-    }
-
-    public TbUser getTbUser() {
-        return tbUser;
-    }
-
-    public void setTbUser(TbUser tbUser) {
-        this.tbUser = tbUser;
+    public void setTbArticles(List<TbArticle> tbArticles) {
+        this.tbArticles = tbArticles;
     }
 
     /**
@@ -123,18 +94,4 @@ public class TbIssue implements Serializable {
         this.user_id = user_id;
     }
 
-    @Override
-    public String toString() {
-        return "TbIssue{" +
-                "issue_id=" + issue_id +
-                ", issue_title='" + issue_title + '\'' +
-                ", issue_content='" + issue_content + '\'' +
-                ", user_id=" + user_id +
-                ", issue_date='" + issue_date + '\'' +
-                ", issue_count=" + issue_count +
-                ", count=" + count +
-                ", tbIssueUser=" + tbIssueUser +
-                ", tbUser=" + tbUser +
-                '}';
-    }
 }

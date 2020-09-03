@@ -21,46 +21,9 @@
     <result column="user_count" jdbcType="INTEGER" property="user_count" />
     <result column="user_joindate" jdbcType="TIMESTAMP" property="user_joindate" />
     <result column="user_state" jdbcType="INTEGER" property="user_state" />
-
-    <association property="tbTrade" column="user_trade" javaType="com.aaa.entity.TbTrade" autoMapping="true">
-      <id column="trade_id" property="trade_id"></id>
-    </association>
-
-    <collection property="tbTopicUser" column="topic_id" ofType="com.aaa.entity.TbTopicUser" autoMapping="true">
-      <id column="topic_id" property="topic_id"></id>
-    </collection>
-
-
   </resultMap>
-
-  <sql id="add">
-    user_name,user_phone,user_pwd,user_email,user_sign,user_sex,user_brief,user_trade
-  </sql>
-
+  
   <select id="userAndTradeQueryAll" resultMap="BaseResultMap">
-    select * from tb_user u LEFT JOIN tb_trade t on u.user_trade=t.trade_id
-    <where>
-      <if test="user_name != 'undefined' and user_name!=null and user_name != ''">
-        u.user_name like CONCAT("%", #{user_name}, "%")
-      </if>
-    </where>
-    ORDER BY u.user_id desc
+    select * from tb_user u LEFT JOIN tb_trade t on u.user_trade=t.trade_id ORDER BY u.user_id desc
   </select>
-
-
-  <insert id="add" parameterType="com.aaa.entity.TbUser">
-    insert into tb_user(<include refid="add"/>) values(#{user_name},#{user_phone},#{user_pwd},#{user_email},#{user_sign},#{user_sex},#{user_brief},#{user_trade})
-  </insert>
-
-  <!-- 修改状态 正常 封禁-->
-  <update id="upState" parameterType="com.aaa.entity.TbUser">
-    update tb_user set
-     <if test="user_state==0">
-       user_state=1
-     </if>
-    <if test="user_state==1">
-      user_state=0
-    </if>
-     where user_id=#{user_id}
-  </update>
 </mapper>

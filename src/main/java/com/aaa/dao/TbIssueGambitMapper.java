@@ -1,21 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.TbIssueGambit;
-import org.apache.ibatis.annotations.Param;
 import tk.mybatis.MyMapper;
 
-import java.util.List;
-
 public interface TbIssueGambitMapper extends MyMapper<TbIssueGambit> {
-    /**
-     * 查询所有问题基本信息
-     * @return
-     */
-    List<TbIssueGambit> queryAll();
-
-    /**
-     * 查询单个问题
-     */
-
-    List<TbIssueGambit> queryById(@Param("issue_id") Integer issue_id);
 }

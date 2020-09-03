@@ -1,7 +1,6 @@
 package com.aaa.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_article")
@@ -19,15 +18,17 @@ public class TbArticle implements Serializable {
 
     private Integer article_state;
 
+    private static final long serialVersionUID = 1L;
+
     private Integer article_count;
 
     private TbUser tbUser;
 
+    private TbComment tbComment;
+
     private Integer count;
 
     private String article_date;
-
-    private static final long serialVersionUID = 1L;
 
     @Override
     public String toString() {
@@ -40,9 +41,18 @@ public class TbArticle implements Serializable {
                 ", article_state=" + article_state +
                 ", article_count=" + article_count +
                 ", tbUser=" + tbUser +
+                ", tbComment=" + tbComment +
                 ", count=" + count +
                 ", article_date='" + article_date + '\'' +
                 '}';
+    }
+
+    public String getArticle_date() {
+        return article_date;
+    }
+
+    public void setArticle_date(String article_date) {
+        this.article_date = article_date;
     }
 
     public Integer getArticle_id() {
@@ -93,6 +103,10 @@ public class TbArticle implements Serializable {
         this.article_state = article_state;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public Integer getArticle_count() {
         return article_count;
     }
@@ -109,19 +123,19 @@ public class TbArticle implements Serializable {
         this.tbUser = tbUser;
     }
 
+    public TbComment getTbComment() {
+        return tbComment;
+    }
+
+    public void setTbComment(TbComment tbComment) {
+        this.tbComment = tbComment;
+    }
+
     public Integer getCount() {
         return count;
     }
 
     public void setCount(Integer count) {
         this.count = count;
-    }
-
-    public String getArticle_date() {
-        return article_date;
-    }
-
-    public void setArticle_date(String article_date) {
-        this.article_date = article_date;
     }
 }

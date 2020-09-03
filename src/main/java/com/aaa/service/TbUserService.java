@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -49,7 +50,23 @@ public class TbUserService {
         else
             return null;
     }
-
+    //查询邮箱是否存在
+    public TbUser byemail(String email){
+        TbUser tbUser = new TbUser();
+        tbUser.setUser_email(email);
+        return tbUserMapper.selectOne(tbUser);
+    }
+    //设置密码
+    public boolean setpwd(int id, String pwd){
+        TbUser tbUser = new TbUser();
+        tbUser.setUser_id(id);
+        tbUser.setUser_pwd(bCryptPasswordEncoderRun.passwordEncoder().encode(pwd));
+        int i = tbUserMapper.updateByPrimaryKeySelective(tbUser);
+        if (i>0)
+            return true;
+        else
+            return false;
+    }
 
     /**
      * 查询用户
@@ -72,10 +89,10 @@ public class TbUserService {
     }*/
 
     /**
-     *  LRD 后台 关联 trade 表 分页 +模糊搜索
+     * 关联 trade 表 分页 +模糊搜索
      * @return
      */
-    public PageInfo<TbUser> selePage(Integer pageNum,Integer pageSize,String user_name){
+    public PageInfo<TbUser> selePage(Integer pageNum,Integer pageSize){
         if(pageNum==null || pageNum==0){
             PageHelper.startPage(1,2);
         }else if(pageSize==null || pageSize==0){
@@ -83,42 +100,10 @@ public class TbUserService {
         }else{
             PageHelper.startPage(pageNum,pageSize);
         }
-        List<TbUser> tbUsers = tbUserMapper.userAndTradeQueryAll(user_name);
+        List<TbUser> tbUsers = tbUserMapper.userAndTradeQueryAll();
+        System.out.println(tbUsers);
         PageInfo<TbUser> pageInfo=new PageInfo<>(tbUsers);
+        System.out.println(pageInfo);
         return pageInfo;
-    }
-
-
-    /**
-     *  LRD  后台添加
-     * @param tbUser
-     * @return
-     */
-    public Boolean add(TbUser tbUser){
-        //加密
-        BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
-        String pwd = bCrypt.encode(tbUser.getUser_pwd());
-        tbUser.setUser_pwd(pwd);
-        Boolean add = tbUserMapper.add(tbUser);
-        return add;
-    }
-
-    /**
-     * LRD 后台 修改状态
-     * @param user_state
-     * @param user_id
-     * @return
-     */
-    public Boolean upState(Integer user_state,Integer user_id){
-        Boolean aBoolean = tbUserMapper.upState(user_state, user_id);
-        return aBoolean;
-    }
-
-    /**
-     * LRD 后台 查询全部用户
-     * @return
-     */
-    public List<TbUser> queryAll(){
-        return tbUserMapper.selectAll();
     }
 }

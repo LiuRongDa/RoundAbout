@@ -40,41 +40,13 @@ public class TbUser implements Serializable {
 
     private Integer user_state;
 
+
     private List<TbProfession> tbProfessionList;
 
     private List<TbEducation> tbEducations;
 
-    private TbTrade tbTrade;
-
-    private List<TbTopicUser> tbTopicUser;
-
-    private List<TbArticle> tbArticle;
 
     private static final long serialVersionUID = 1L;
-
-    public List<TbArticle> getTbArticle() {
-        return tbArticle;
-    }
-
-    public void setTbArticle(List<TbArticle> tbArticle) {
-        this.tbArticle = tbArticle;
-    }
-
-    public List<TbTopicUser> getTbTopicUser() {
-        return tbTopicUser;
-    }
-
-    public void setTbTopicUser(List<TbTopicUser> tbTopicUser) {
-        this.tbTopicUser = tbTopicUser;
-    }
-
-    public TbTrade getTbTrade() {
-        return tbTrade;
-    }
-
-    public void setTbTrade(TbTrade tbTrade) {
-        this.tbTrade = tbTrade;
-    }
 
     public List<TbProfession> getTbProfessionList() {
         return tbProfessionList;
@@ -337,9 +309,6 @@ public class TbUser implements Serializable {
                 ", user_state=" + user_state +
                 ", tbProfessionList=" + tbProfessionList +
                 ", tbEducations=" + tbEducations +
-                ", tbTrade=" + tbTrade +
-                ", tbTopicUser=" + tbTopicUser +
-                ", tbArticle=" + tbArticle +
                 '}';
     }
 }
