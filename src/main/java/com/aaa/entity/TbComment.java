@@ -17,8 +17,29 @@ public class TbComment implements Serializable {
 
     private Integer article_id;
 
+    private TbUser tbUser;
+
     private static final long serialVersionUID = 1L;
 
+    @Override
+    public String toString() {
+        return "TbComment{" +
+                "comment_id=" + comment_id +
+                ", comment_content='" + comment_content + '\'' +
+                ", user_id=" + user_id +
+                ", comment_date=" + comment_date +
+                ", article_id=" + article_id +
+                ", tbUser=" + tbUser +
+                '}';
+    }
+
+    public TbUser getTbUser() {
+        return tbUser;
+    }
+
+    public void setTbUser(TbUser tbUser) {
+        this.tbUser = tbUser;
+    }
 
     /**
      * @return comment_id
@@ -90,19 +111,4 @@ public class TbComment implements Serializable {
         this.article_id = article_id;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", comment_id=").append(comment_id);
-        sb.append(", comment_content=").append(comment_content);
-        sb.append(", user_id=").append(user_id);
-        sb.append(", comment_date=").append(comment_date);
-        sb.append(", article_id=").append(article_id);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }

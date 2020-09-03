@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta name="renderer" content="webkit">
+	<title>基本资料</title>
+	<meta name="keywords" content="WeCenter3.31仿知乎模板">
+	<meta name="description" content="WeCenter仿知乎模板，支持WeCenter3.31，WeCenter3.32，WeCenter3.33">
+	<base href="http://localhost:8088/springboot/">
+	<!--[if IE]></base><![endif]-->
+	<link href="css/azhihu/img/favicon.ico?v=20200516" rel="shortcut icon" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/icon.css">
+	<link href="css/default/common.css?v=20200516" rel="stylesheet" type="text/css" />
+	<link href="css/default/link.css?v=20200516" rel="stylesheet" type="text/css" />
+	<link href="js/plug_module/style.css?v=20200516" rel="stylesheet" type="text/css" />
+	<link href="css/user-setting.css" rel="stylesheet" type="text/css">
+	<link href="css/azhihu/azhihu.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="js/highlight/styles/tomorrow.css">
+	<script src="js/hm.js"></script>
+	<script type="text/javascript">
+		var _EEE69DFCFAFA3FCC102E61EF6227535E = "7343be5318c167b2ef5e1cb87e5b8a60";
+		var G_POST_HASH = _EEE69DFCFAFA3FCC102E61EF6227535E;
+		var G_INDEX_SCRIPT = "?/";
+		//var G_SITE_NAME = "WeCenter仿知乎模板";
+		var G_BASE_URL = "http://localhost:8088/springboot";
+		//var G_STATIC_URL = "http://azhihu.cssroom.com/static";
+		//var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";
+		var G_USER_ID = "108";
+		var G_USER_NAME = "a123";
+		var G_UPLOAD_ENABLE = "N";
+		var G_UNREAD_NOTIFICATION = 0;
+		var G_NOTIFICATION_INTERVAL = 100000;
+		var G_CAN_CREATE_TOPIC = "";
+		var G_ADVANCED_EDITOR_ENABLE = "Y";
+		var FILE_TYPES = "jpg,jpeg,png,gif,zip,doc,docx,rar,pdf,psd";
+		var G_DRAFT_ENABLED = "N";
+		var G_PER_PAGE = "10";
+		var G_INDEX_PER_PAGE = "20";
+		var G_PRIVATEKEY = "pvjxzjmzvewfscft";
+		var G_IV = "qvibvaiwgouxwjeu";
+		var G_QUICK_PUBLISH_HUMAN_VALID = "0";
+		var editor_type = "wangeditor";
+	</script>
+	<script src="js/jquery.2.js" type="text/javascript"></script>
+	<script src="js/jquery.form.js" type="text/javascript"></script>
+	<script src="js/plug_module/plug-in_module.js" type="text/javascript"></script>
+	<script src="js/aws.js" type="text/javascript"></script>
+	<script src="js/aw_template.js" type="text/javascript"></script>
+	<script src="js/layer/layer.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="js/layer/theme/default/layer.css" id="layuicss-layer">
+	<script src="js/app.js" type="text/javascript"></script>
+	<script src="js/fileupload.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/compatibility.js"></script>
+	<script type="text/javascript" src="js/laydate/laydate.js"></script>
+	<link rel="stylesheet" href="js/laydate/theme/default/laydate.css" id="layuicss-laydate">
+	<script type="text/javascript" src="js/slide_captcha/gt.js"></script>
+	<script src="js/crypto-js.js"></script>
+	<script src="js/highlight/highlight.pack.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', (event) => {
+			document.querySelectorAll('pre').forEach((block) => {
+				hljs.highlightBlock(block);
+		});
+		});
+	</script>
+	<style type="text/css">
+		.geetest_radar_tip_content {
+			position: initial !important;
+		}
+	</style>
+	<!--[if lte IE 8]>
+	<script type="text/javascript" src="js/respond.js"></script>
+	<![endif]-->
+	<!--头部公共注入钩子-->
+	<!--end头部公共注入钩子-->
+	<style type="text/css">
+		.fancybox-margin {
+			margin-right: 17px;
+		}
+	</style>
+</head>
+<body class="vsc-initialized"><noscript unselectable="on" id="noscript">
+	<div class="aw-404 aw-404-wrap container">
+		<img src="common/no-js.jpg">
+		<p>你的浏览器禁用了JavaScript, 请开启后刷新浏览器获得更好的体验!</p>
+	</div>
+</noscript>
+<div class="aw-top-menu-wrap">
+	<div class="container" style="padding-right:0px;">
+		<!-- logo -->
+		<div class="aw-logo hidden-xs">
+			<a href="http://azhihu.cssroom.com/">
+				<img src="images/logo_(1).png" height="40">
+			</a>
+		</div>
+		<!-- end logo -->
+		<!-- 导航 -->
+		<div class="aw-top-nav navbar">
+			<div class="navbar-header">
+				<button class="navbar-toggle pull-left">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="http://azhihu.cssroom.com/?/explore"><i class=""></i> 首页</a>
+					</li>
+					<li>
+						<a href="http://azhihu.cssroom.com/?/column"><i class=""></i> 专栏</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!-- end 导航 -->
+		<!-- 搜索框 -->
+		<div class="aw-search-box  hidden-xs hidden-sm">
+			<form class="navbar-search" action="http://azhihu.cssroom.com/?/search/" id="global_search_form" method="post">
+				<label class="oldPwdTip aw-search-query-label" onclick="$(this).hide();$('#aw-search-query').focus();">搜索问题、话题或人...</label>
+				<input class="form-control search-query" type="text" value="" autocomplete="off" name="q" id="aw-search-query"
+					   onfocus="hideOldPwdTip('aw-search-query');" onblur="toggleOldPwdTip('aw-search-query',this.value);">
+				<span title="搜索" id="global_search_btns" onclick="$('#global_search_form').submit();"><i class="icon icon-search"></i></span>
+				<div class="aw-dropdown">
+					<div class="mod-body">
+						<p class="title">输入关键字进行搜索</p>
+						<ul class="aw-dropdown-list collapse"></ul>
+						<p class="search"><span>搜索:</span><a onclick="$('#global_search_form').submit();"></a></p>
+					</div>
+					<div class="mod-footer">
+						<a href="javascript:;" onclick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- end 搜索框 -->
+		<!-- 发起 -->
+		<div class="aw-publish-btn">
+
+			<a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/" onclick="AWS.dialog('publish', {'category_enable':'0', 'category_id':'0', 'topic_title':''}); return false;">发起</a>
+			<div class="dropdown-list pull-right">
+				<ul>
+					<li>
+						<form method="post" action="http://azhihu.cssroom.com/?/publish/">
+							<a onclick="$(this).parents('form').submit();">问题</a>
+						</form>
+
+					</li>
+
+				</ul>
+			</div>
+		</div>
+		<!-- end 发起 -->
+		<!-- 用户栏 -->
+		<div class="aw-user-nav">
+			<!-- 登陆&注册栏 -->
+			<a href="http://azhihu.cssroom.com/?/people/108" class="aw-user-nav-dropdown">
+				<img alt="a123" src="images/avatar-mid-img.png">
+
+			</a>
+			<div class="aw-dropdown dropdown-list pull-right">
+				<ul class="aw-dropdown-list">
+					<li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse"
+																											 id="inbox_unread" style="display: none;">0</span></a></li>
+					<li class="hidden-xs"><a href="http://azhihu.cssroom.com/?/account/setting/profile/"><i class="icon icon-setting"></i>
+						设置</a></li>
+					<!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
+					<li><a href="http://azhihu.cssroom.com/?/account/logout/"><i class="icon icon-logout"></i> 退出</a></li>
+				</ul>
+			</div>
+			<!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
+                <ul class="aw-dropdown-list">
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=common"><i class="icon icon-draft"></i> 默认&nbsp;&nbsp;√</a></li>
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=green"><i class="icon icon-draft"></i> 绿色&nbsp;&nbsp;</a></li>
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=orange"><i class="icon icon-draft"></i> 橙色&nbsp;&nbsp;</a></li>
+                </ul>
+            </div> -->
+			<!-- end 登陆&注册栏 -->
+		</div>
+		<!-- end 用户栏 -->
+
+	</div>
+</div>
+
+<script>
+	$(function () {
+		var $changeSkin = $("#changeSkin"), $skinList = $("#skinList");
+		$changeSkin.mouseenter(function () {
+			$skinList.stop(true,true).show();
+		});
+		$changeSkin.mouseleave(function (e) {
+			$skinList.hide();
+		});
+		$skinList.mouseover(function () {
+			$(this).stop(true,true).show();
+		});
+		$skinList.mouseleave(function (e) {
+			$(this).hide();
+		})
+	})
+</script>
+<div class="aw-container-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="aw-content-wrap clearfix">
+				<div class="aw-user-setting bgw">
+					<div class="tabbable">
+						<ul class="nav nav-tabs aw-nav-tabs active">
+							<li><a href="http://azhihu.cssroom.com/?/account/setting/verify/">申请认证</a></li>
+							<li><a href="http://azhihu.cssroom.com/?/account/setting/security/">安全设置</a></li>
+							<li><a href="http://azhihu.cssroom.com/?/account/setting/privacy/">隐私/提醒</a></li>
+							<li class="active"><a href="http://azhihu.cssroom.com/?/account/setting/profile/">基本资料</a></li>
+
+							<h2><i class="icon icon-setting"></i> 用户设置</h2>
+						</ul>
+					</div>
+					<span th:text="${session.user}"></span>
+					<div class="tab-content clearfix">
+						<!-- 基本信息 -->
+						<div class="aw-mod">
+							<div class="mod-body">
+								<form id="setting_form" method="post" action="http://azhihu.cssroom.com/?/account/ajax/profile_setting/">
+									<div class="aw-mod mod-base">
+										<div class="mod-head">
+											<h3>基本信息</h3>
+										</div>
+										<div class="mod-body">
+											<dl>
+												<dt>用户名:</dt>
+												<dd th:text="${session.user.user_name}"></dd>
+											</dl>
+											<dl>
+												<dt>邮箱:</dt>
+												<dd><span th:text="${session.user.user_email}"></span> &nbsp; (<a onclick="AWS.ajax_request(G_BASE_URL + '/account/ajax/send_valid_mail/');">重发验证邮件</a>)</dd>
+											</dl>
+
+											<dl>
+												<dt>性别:</dt>
+												<dd>
+													<label>
+														<input name="sex" id="sex" value="1" type="radio"> 男 </label>
+													<label>
+														<input name="sex" id="sex" value="2" type="radio"> 女 </label>
+													<label>
+														<input name="sex" id="sex" value="3" type="radio" checked="checked"> 保密 </label>
+												</dd>
+											</dl>
+											<dl>
+												<dt>生日:</dt>
+												<dd>
+													<select name="birthday_y" style="display: inline-block" class="form-control">
+														<option value=""></option>
+														<option value="2020">2020</option>
+														<option value="2019">2019</option>
+														<option value="2018">2018</option>
+														<option value="2017">2017</option>
+														<option value="2016">2016</option>
+														<option value="2015">2015</option>
+														<option value="2014">2014</option>
+														<option value="2013">2013</option>
+														<option value="2012">2012</option>
+														<option value="2011">2011</option>
+														<option value="2010">2010</option>
+														<option value="2009">2009</option>
+														<option value="2008">2008</option>
+														<option value="2007">2007</option>
+														<option value="2006">2006</option>
+														<option value="2005">2005</option>
+														<option value="2004">2004</option>
+														<option value="2003">2003</option>
+														<option value="2002">2002</option>
+														<option value="2001">2001</option>
+														<option value="2000">2000</option>
+														<option value="1999">1999</option>
+														<option value="1998">1998</option>
+														<option value="1997">1997</option>
+														<option value="1996">1996</option>
+														<option value="1995">1995</option>
+														<option value="1994">1994</option>
+														<option value="1993">1993</option>
+														<option value="1992">1992</option>
+														<option value="1991">1991</option>
+														<option value="1990">1990</option>
+														<option value="1989">1989</option>
+														<option value="1988">1988</option>
+														<option value="1987">1987</option>
+														<option value="1986">1986</option>
+														<option value="1985">1985</option>
+														<option value="1984">1984</option>
+														<option value="1983">1983</option>
+														<option value="1982">1982</option>
+														<option value="1981">1981</option>
+														<option value="1980">1980</option>
+														<option value="1979">1979</option>
+														<option value="1978">1978</option>
+														<option value="1977">1977</option>
+														<option value="1976">1976</option>
+														<option value="1975">1975</option>
+														<option value="1974">1974</option>
+														<option value="1973">1973</option>
+														<option value="1972">1972</option>
+														<option value="1971">1971</option>
+														<option value="1970" selected="">1970</option>
+														<option value="1969">1969</option>
+														<option value="1968">1968</option>
+														<option value="1967">1967</option>
+														<option value="1966">1966</option>
+														<option value="1965">1965</option>
+														<option value="1964">1964</option>
+														<option value="1963">1963</option>
+														<option value="1962">1962</option>
+														<option value="1961">1961</option>
+														<option value="1960">1960</option>
+														<option value="1959">1959</option>
+														<option value="1958">1958</option>
+														<option value="1957">1957</option>
+														<option value="1956">1956</option>
+														<option value="1955">1955</option>
+														<option value="1954">1954</option>
+														<option value="1953">1953</option>
+														<option value="1952">1952</option>
+														<option value="1951">1951</option>
+														<option value="1950">1950</option>
+														<option value="1949">1949</option>
+														<option value="1948">1948</option>
+														<option value="1947">1947</option>
+														<option value="1946">1946</option>
+														<option value="1945">1945</option>
+														<option value="1944">1944</option>
+														<option value="1943">1943</option>
+														<option value="1942">1942</option>
+														<option value="1941">1941</option>
+														<option value="1940">1940</option>
+														<option value="1939">1939</option>
+														<option value="1938">1938</option>
+														<option value="1937">1937</option>
+														<option value="1936">1936</option>
+														<option value="1935">1935</option>
+														<option value="1934">1934</option>
+														<option value="1933">1933</option>
+														<option value="1932">1932</option>
+														<option value="1931">1931</option>
+														<option value="1930">1930</option>
+														<option value="1929">1929</option>
+														<option value="1928">1928</option>
+														<option value="1927">1927</option>
+														<option value="1926">1926</option>
+														<option value="1925">1925</option>
+														<option value="1924">1924</option>
+														<option value="1923">1923</option>
+														<option value="1922">1922</option>
+														<option value="1921">1921</option>
+														<option value="1920">1920</option>
+														<option value="1919">1919</option>
+														<option value="1918">1918</option>
+														<option value="1917">1917</option>
+														<option value="1916">1916</option>
+														<option value="1915">1915</option>
+														<option value="1914">1914</option>
+														<option value="1913">1913</option>
+														<option value="1912">1912</option>
+														<option value="1911">1911</option>
+														<option value="1910">1910</option>
+														<option value="1909">1909</option>
+														<option value="1908">1908</option>
+														<option value="1907">1907</option>
+														<option value="1906">1906</option>
+														<option value="1905">1905</option>
+														<option value="1904">1904</option>
+														<option value="1903">1903</option>
+														<option value="1902">1902</option>
+														<option value="1901">1901</option>
+													</select>
+													年 <select name="birthday_m" style="display: inline-block" class="form-control">
+													<option value=""></option>
+													<option value="1" selected="">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+													<option value="11">11</option>
+													<option value="12">12</option>
+												</select>
+													月 <select name="birthday_d " style="display: inline-block" class="form-control">
+													<option value=""></option>
+													<option value="1" selected="">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+													<option value="11">11</option>
+													<option value="12">12</option>
+													<option value="13">13</option>
+													<option value="14">14</option>
+													<option value="15">15</option>
+													<option value="16">16</option>
+													<option value="17">17</option>
+													<option value="18">18</option>
+													<option value="19">19</option>
+													<option value="20">20</option>
+													<option value="21">21</option>
+													<option value="22">22</option>
+													<option value="23">23</option>
+													<option value="24">24</option>
+													<option value="25">25</option>
+													<option value="26">26</option>
+													<option value="27">27</option>
+													<option value="28">28</option>
+													<option value="29">29</option>
+													<option value="30">30</option>
+													<option value="31">31</option>
+												</select>
+													日 </dd>
+											</dl>
+											<dl>
+												<dt><label>现居:</label></dt>
+												<dd>
+													<select name="province" class="select_area  form-control" style="display: inline-block">
+														<option value="">请选择省份或直辖市</option>
+														<option value="安徽省">安徽省</option>
+														<option value="北京市">北京市</option>
+														<option value="福建省">福建省</option>
+														<option value="甘肃省">甘肃省</option>
+														<option value="广东省">广东省</option>
+														<option value="广西壮族自治区">广西壮族自治区</option>
+														<option value="贵州省">贵州省</option>
+														<option value="海南省">海南省</option>
+														<option value="河北省">河北省</option>
+														<option value="河南省">河南省</option>
+														<option value="黑龙江省">黑龙江省</option>
+														<option value="湖北省">湖北省</option>
+														<option value="湖南省">湖南省</option>
+														<option value="吉林省">吉林省</option>
+														<option value="江苏省">江苏省</option>
+														<option value="江西省">江西省</option>
+														<option value="辽宁省">辽宁省</option>
+														<option value="内蒙古自治区">内蒙古自治区</option>
+														<option value="宁夏回族自治区">宁夏回族自治区</option>
+														<option value="青海省">青海省</option>
+														<option value="山东省">山东省</option>
+														<option value="山西省">山西省</option>
+														<option value="陕西省">陕西省</option>
+														<option value="上海市">上海市</option>
+														<option value="四川省">四川省</option>
+														<option value="天津市">天津市</option>
+														<option value="西藏自治区">西藏自治区</option>
+														<option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
+														<option value="云南省">云南省</option>
+														<option value="浙江省">浙江省</option>
+														<option value="重庆市">重庆市</option>
+														<option value="香港">香港</option>
+														<option value="澳门">澳门</option>
+														<option value="台湾">台湾</option>
+													</select> <select name="city" class="select_area form-control" style="display: inline-block"></select>
+												</dd>
+											</dl>
+											<dl>
+												<dt><label>职业:</label></dt>
+												<dd>
+													<select name="job_id" class="form-control">
+														<option value="0">--</option>
+														<option value="1">销售</option>
+														<option value="2">市场/市场拓展/公关</option>
+														<option value="3">商务/采购/贸易</option>
+														<option value="4">计算机软、硬件/互联网/IT</option>
+														<option value="5">电子/半导体/仪表仪器</option>
+														<option value="6">通信技术</option>
+														<option value="7">客户服务/技术支持</option>
+														<option value="8">行政/后勤</option>
+														<option value="9">人力资源</option>
+														<option value="10">高级管理</option>
+														<option value="11">生产/加工/制造</option>
+														<option value="12">质控/安检</option>
+														<option value="13">工程机械</option>
+														<option value="14">技工</option>
+														<option value="15">财会/审计/统计</option>
+														<option value="16">金融/银行/保险/证券/投资</option>
+														<option value="17">建筑/房地产/装修/物业</option>
+														<option value="18">交通/仓储/物流</option>
+														<option value="19">普通劳动力/家政服务</option>
+														<option value="20">零售业</option>
+														<option value="21">教育/培训</option>
+														<option value="22">咨询/顾问</option>
+														<option value="23">学术/科研</option>
+														<option value="24">法律</option>
+														<option value="25">美术/设计/创意</option>
+														<option value="26">编辑/文案/传媒/影视/新闻</option>
+														<option value="27">酒店/餐饮/旅游/娱乐</option>
+														<option value="28">化工</option>
+														<option value="29">能源/矿产/地质勘查</option>
+														<option value="30">医疗/护理/保健/美容</option>
+														<option value="31">生物/制药/医疗器械</option>
+														<option value="32">翻译（口译与笔译）</option>
+														<option value="33">公务员</option>
+														<option value="34">环境科学/环保</option>
+														<option value="35">农/林/牧/渔业</option>
+														<option value="36">兼职/临时/培训生/储备干部</option>
+														<option value="37">在校学生</option>
+														<option value="38">其他</option>
+													</select>
+												</dd>
+											</dl>
+											<dl>
+												<dt><label>介绍:</label></dt>
+												<dd class="introduce"><input class="form-control" name="signature" maxlength="128" type="text" value="" th:placeholder="${session.user.user_brief}"></dd>
+											</dl>
+											<!-- 上传头像 -->
+											<div class="side-bar">
+												<dl>
+													<dt class="pull-left"><img class="aw-border-radius-5" width="100" height="100" src="images/avatar-max-img.png"
+																			   alt="" id="avatar_src"></dt>
+													<dd class="pull-left">
+														<h5>头像设置</h5>
+														<p>支持 jpg、gif、png 等格式</p>
+														<a class="btn btn-mini btn-success" id="avatar_uploader" href="javascript:;">
+															<form method="post" enctype="multipart/form-data" id="upload-form-" class="upload-form" action="http://azhihu.cssroom.com/?/account/ajax/avatar_upload/"
+																  target="ajaxUpload"><input type="submit" class="submit"><input type="file" class="file-input" name="aws_upload_file"
+																																 multiple="multiple" accept=""></form>上传头像
+														</a> <span id="avatar_uploading_status" class="collapse"><i class="aw-loading"></i> 文件上传中...</span>
+													</dd>
+												</dl>
+											</div>
+											<!-- end 上传头像 -->
+										</div>
+									</div>
+									<!-- end 基本信息 -->
+									<!-- 联系方式 -->
+									<div class="aw-mod mod-contact">
+										<div class="mod-head">
+											<h3>联系方式</h3>
+										</div>
+										<div class="mod-body clearfix">
+											<ul>
+												<li>
+													<label for="input-qq">QQ:</label>
+													<input class="form-control" type="text" id="input-qq" name="qq" value="">
+												</li>
+												<li>
+													<label for="input-mobile">手机号码:</label>
+													<input class="form-control" type="text" id="input-mobile" name="mobile" value="">
+												</li>
+												<li>
+													<label for="input-common-email">常用邮箱:</label>
+													<input class="form-control" type="text" id="input-common-email" name="common_email" value="">
+												</li>
+												<li>
+													<label for="input-homepage">网站:</label>
+													<input class="form-control" type="text" id="input-homepage" name="homepage" value="">
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!-- end 联系方式 -->
+								</form>
+
+								<!-- 教育经历 -->
+								<div class="aw-mod aw-user-educate">
+									<div class="mod-head">
+										<h3>教育经历</h3>
+									</div>
+									<div class="mod-body">
+										<table class="table">
+											<thead>
+											<tr>
+												<th>学校名称</th>
+												<th>所在院系</th>
+												<th width="20%">入学年份</th>
+												<th width="20%">操作</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													<input type="text" class="school form-control" placeholder="如:xx大学...">
+												</td>
+												<td>
+													<input type="text" class="departments form-control" placeholder="如:工程学院计算机系...">
+												</td>
+												<td>
+													<select class="year form-control" style="display: inline-block">
+														<option value=""></option>
+														<option value="2020">2020</option>
+														<option value="2019">2019</option>
+														<option value="2018">2018</option>
+														<option value="2017">2017</option>
+														<option value="2016">2016</option>
+														<option value="2015">2015</option>
+														<option value="2014">2014</option>
+														<option value="2013">2013</option>
+														<option value="2012">2012</option>
+														<option value="2011">2011</option>
+														<option value="2010">2010</option>
+														<option value="2009">2009</option>
+														<option value="2008">2008</option>
+														<option value="2007">2007</option>
+														<option value="2006">2006</option>
+														<option value="2005">2005</option>
+														<option value="2004">2004</option>
+														<option value="2003">2003</option>
+														<option value="2002">2002</option>
+														<option value="2001">2001</option>
+														<option value="2000">2000</option>
+														<option value="1999">1999</option>
+														<option value="1998">1998</option>
+														<option value="1997">1997</option>
+														<option value="1996">1996</option>
+														<option value="1995">1995</option>
+														<option value="1994">1994</option>
+														<option value="1993">1993</option>
+														<option value="1992">1992</option>
+														<option value="1991">1991</option>
+														<option value="1990">1990</option>
+														<option value="1989">1989</option>
+														<option value="1988">1988</option>
+														<option value="1987">1987</option>
+														<option value="1986">1986</option>
+														<option value="1985">1985</option>
+														<option value="1984">1984</option>
+														<option value="1983">1983</option>
+														<option value="1982">1982</option>
+														<option value="1981">1981</option>
+														<option value="1980">1980</option>
+														<option value="1979">1979</option>
+														<option value="1978">1978</option>
+														<option value="1977">1977</option>
+														<option value="1976">1976</option>
+														<option value="1975">1975</option>
+														<option value="1974">1974</option>
+														<option value="1973">1973</option>
+														<option value="1972">1972</option>
+														<option value="1971">1971</option>
+														<option value="1970">1970</option>
+														<option value="1969">1969</option>
+														<option value="1968">1968</option>
+														<option value="1967">1967</option>
+														<option value="1966">1966</option>
+														<option value="1965">1965</option>
+														<option value="1964">1964</option>
+														<option value="1963">1963</option>
+														<option value="1962">1962</option>
+														<option value="1961">1961</option>
+														<option value="1960">1960</option>
+														<option value="1959">1959</option>
+														<option value="1958">1958</option>
+														<option value="1957">1957</option>
+														<option value="1956">1956</option>
+														<option value="1955">1955</option>
+														<option value="1954">1954</option>
+														<option value="1953">1953</option>
+														<option value="1952">1952</option>
+														<option value="1951">1951</option>
+														<option value="1950">1950</option>
+														<option value="1949">1949</option>
+														<option value="1948">1948</option>
+														<option value="1947">1947</option>
+														<option value="1946">1946</option>
+														<option value="1945">1945</option>
+														<option value="1944">1944</option>
+														<option value="1943">1943</option>
+														<option value="1942">1942</option>
+														<option value="1941">1941</option>
+														<option value="1940">1940</option>
+														<option value="1939">1939</option>
+														<option value="1938">1938</option>
+														<option value="1937">1937</option>
+														<option value="1936">1936</option>
+														<option value="1935">1935</option>
+														<option value="1934">1934</option>
+														<option value="1933">1933</option>
+														<option value="1932">1932</option>
+														<option value="1931">1931</option>
+														<option value="1930">1930</option>
+														<option value="1929">1929</option>
+														<option value="1928">1928</option>
+														<option value="1927">1927</option>
+														<option value="1926">1926</option>
+														<option value="1925">1925</option>
+														<option value="1924">1924</option>
+														<option value="1923">1923</option>
+														<option value="1922">1922</option>
+														<option value="1921">1921</option>
+														<option value="1920">1920</option>
+														<option value="1919">1919</option>
+														<option value="1918">1918</option>
+														<option value="1917">1917</option>
+														<option value="1916">1916</option>
+														<option value="1915">1915</option>
+														<option value="1914">1914</option>
+														<option value="1913">1913</option>
+														<option value="1912">1912</option>
+														<option value="1911">1911</option>
+														<option value="1910">1910</option>
+														<option value="1909">1909</option>
+														<option value="1908">1908</option>
+														<option value="1907">1907</option>
+														<option value="1906">1906</option>
+														<option value="1905">1905</option>
+														<option value="1904">1904</option>
+														<option value="1903">1903</option>
+														<option value="1902">1902</option>
+														<option value="1901">1901</option>
+													</select>
+													年 </td>
+												<td><a class="add-educate">添加</a></td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!-- end 教育经历 -->
+
+								<!-- 工作经历 -->
+								<div class="aw-mod aw-user-work">
+									<div class="mod-head">
+										<h3>工作经历</h3>
+									</div>
+									<div class="mod-body">
+										<table class="table">
+											<thead>
+											<tr>
+												<th width="30%">公司名称</th>
+												<th>所在职位</th>
+												<th>工作时间</th>
+												<th width="15%">操作</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													<input type="text" class="company form-control" placeholder="xx上市公司...">
+												</td>
+												<td>
+													<select class="work form-control" style="display: inline-block">
+														<option value=""></option>
+														<option value="1">销售</option>
+														<option value="2">市场/市场拓展/公关</option>
+														<option value="3">商务/采购/贸易</option>
+														<option value="4">计算机软、硬件/互联网/IT</option>
+														<option value="5">电子/半导体/仪表仪器</option>
+														<option value="6">通信技术</option>
+														<option value="7">客户服务/技术支持</option>
+														<option value="8">行政/后勤</option>
+														<option value="9">人力资源</option>
+														<option value="10">高级管理</option>
+														<option value="11">生产/加工/制造</option>
+														<option value="12">质控/安检</option>
+														<option value="13">工程机械</option>
+														<option value="14">技工</option>
+														<option value="15">财会/审计/统计</option>
+														<option value="16">金融/银行/保险/证券/投资</option>
+														<option value="17">建筑/房地产/装修/物业</option>
+														<option value="18">交通/仓储/物流</option>
+														<option value="19">普通劳动力/家政服务</option>
+														<option value="20">零售业</option>
+														<option value="21">教育/培训</option>
+														<option value="22">咨询/顾问</option>
+														<option value="23">学术/科研</option>
+														<option value="24">法律</option>
+														<option value="25">美术/设计/创意</option>
+														<option value="26">编辑/文案/传媒/影视/新闻</option>
+														<option value="27">酒店/餐饮/旅游/娱乐</option>
+														<option value="28">化工</option>
+														<option value="29">能源/矿产/地质勘查</option>
+														<option value="30">医疗/护理/保健/美容</option>
+														<option value="31">生物/制药/医疗器械</option>
+														<option value="32">翻译（口译与笔译）</option>
+														<option value="33">公务员</option>
+														<option value="34">环境科学/环保</option>
+														<option value="35">农/林/牧/渔业</option>
+														<option value="36">兼职/临时/培训生/储备干部</option>
+														<option value="37">在校学生</option>
+														<option value="38">其他</option>
+													</select>
+												</td>
+												<td>
+													<select class="syear form-control" style="display: inline-block">
+														<option value=""></option>
+														<option value="2020">2020</option>
+														<option value="2019">2019</option>
+														<option value="2018">2018</option>
+														<option value="2017">2017</option>
+														<option value="2016">2016</option>
+														<option value="2015">2015</option>
+														<option value="2014">2014</option>
+														<option value="2013">2013</option>
+														<option value="2012">2012</option>
+														<option value="2011">2011</option>
+														<option value="2010">2010</option>
+														<option value="2009">2009</option>
+														<option value="2008">2008</option>
+														<option value="2007">2007</option>
+														<option value="2006">2006</option>
+														<option value="2005">2005</option>
+														<option value="2004">2004</option>
+														<option value="2003">2003</option>
+														<option value="2002">2002</option>
+														<option value="2001">2001</option>
+														<option value="2000">2000</option>
+														<option value="1999">1999</option>
+														<option value="1998">1998</option>
+														<option value="1997">1997</option>
+														<option value="1996">1996</option>
+														<option value="1995">1995</option>
+														<option value="1994">1994</option>
+														<option value="1993">1993</option>
+														<option value="1992">1992</option>
+														<option value="1991">1991</option>
+														<option value="1990">1990</option>
+														<option value="1989">1989</option>
+														<option value="1988">1988</option>
+														<option value="1987">1987</option>
+														<option value="1986">1986</option>
+														<option value="1985">1985</option>
+														<option value="1984">1984</option>
+														<option value="1983">1983</option>
+														<option value="1982">1982</option>
+														<option value="1981">1981</option>
+														<option value="1980">1980</option>
+														<option value="1979">1979</option>
+														<option value="1978">1978</option>
+														<option value="1977">1977</option>
+														<option value="1976">1976</option>
+														<option value="1975">1975</option>
+														<option value="1974">1974</option>
+														<option value="1973">1973</option>
+														<option value="1972">1972</option>
+														<option value="1971">1971</option>
+														<option value="1970">1970</option>
+														<option value="1969">1969</option>
+														<option value="1968">1968</option>
+														<option value="1967">1967</option>
+														<option value="1966">1966</option>
+														<option value="1965">1965</option>
+														<option value="1964">1964</option>
+														<option value="1963">1963</option>
+														<option value="1962">1962</option>
+														<option value="1961">1961</option>
+														<option value="1960">1960</option>
+														<option value="1959">1959</option>
+														<option value="1958">1958</option>
+														<option value="1957">1957</option>
+														<option value="1956">1956</option>
+														<option value="1955">1955</option>
+														<option value="1954">1954</option>
+														<option value="1953">1953</option>
+														<option value="1952">1952</option>
+														<option value="1951">1951</option>
+														<option value="1950">1950</option>
+														<option value="1949">1949</option>
+														<option value="1948">1948</option>
+														<option value="1947">1947</option>
+														<option value="1946">1946</option>
+														<option value="1945">1945</option>
+														<option value="1944">1944</option>
+														<option value="1943">1943</option>
+														<option value="1942">1942</option>
+														<option value="1941">1941</option>
+														<option value="1940">1940</option>
+														<option value="1939">1939</option>
+														<option value="1938">1938</option>
+														<option value="1937">1937</option>
+														<option value="1936">1936</option>
+														<option value="1935">1935</option>
+														<option value="1934">1934</option>
+														<option value="1933">1933</option>
+														<option value="1932">1932</option>
+														<option value="1931">1931</option>
+														<option value="1930">1930</option>
+														<option value="1929">1929</option>
+														<option value="1928">1928</option>
+														<option value="1927">1927</option>
+														<option value="1926">1926</option>
+														<option value="1925">1925</option>
+														<option value="1924">1924</option>
+														<option value="1923">1923</option>
+														<option value="1922">1922</option>
+														<option value="1921">1921</option>
+														<option value="1920">1920</option>
+														<option value="1919">1919</option>
+														<option value="1918">1918</option>
+														<option value="1917">1917</option>
+														<option value="1916">1916</option>
+														<option value="1915">1915</option>
+														<option value="1914">1914</option>
+														<option value="1913">1913</option>
+														<option value="1912">1912</option>
+														<option value="1911">1911</option>
+														<option value="1910">1910</option>
+														<option value="1909">1909</option>
+														<option value="1908">1908</option>
+														<option value="1907">1907</option>
+														<option value="1906">1906</option>
+														<option value="1905">1905</option>
+														<option value="1904">1904</option>
+														<option value="1903">1903</option>
+														<option value="1902">1902</option>
+														<option value="1901">1901</option>
+													</select>
+													&nbsp;&nbsp;年 &nbsp;&nbsp; 至&nbsp;&nbsp;
+													<select class="eyear form-control" style="display: inline-block">
+														<option value=""></option>
+														<option value="2020">2020</option>
+														<option value="2019">2019</option>
+														<option value="2018">2018</option>
+														<option value="2017">2017</option>
+														<option value="2016">2016</option>
+														<option value="2015">2015</option>
+														<option value="2014">2014</option>
+														<option value="2013">2013</option>
+														<option value="2012">2012</option>
+														<option value="2011">2011</option>
+														<option value="2010">2010</option>
+														<option value="2009">2009</option>
+														<option value="2008">2008</option>
+														<option value="2007">2007</option>
+														<option value="2006">2006</option>
+														<option value="2005">2005</option>
+														<option value="2004">2004</option>
+														<option value="2003">2003</option>
+														<option value="2002">2002</option>
+														<option value="2001">2001</option>
+														<option value="2000">2000</option>
+														<option value="1999">1999</option>
+														<option value="1998">1998</option>
+														<option value="1997">1997</option>
+														<option value="1996">1996</option>
+														<option value="1995">1995</option>
+														<option value="1994">1994</option>
+														<option value="1993">1993</option>
+														<option value="1992">1992</option>
+														<option value="1991">1991</option>
+														<option value="1990">1990</option>
+														<option value="1989">1989</option>
+														<option value="1988">1988</option>
+														<option value="1987">1987</option>
+														<option value="1986">1986</option>
+														<option value="1985">1985</option>
+														<option value="1984">1984</option>
+														<option value="1983">1983</option>
+														<option value="1982">1982</option>
+														<option value="1981">1981</option>
+														<option value="1980">1980</option>
+														<option value="1979">1979</option>
+														<option value="1978">1978</option>
+														<option value="1977">1977</option>
+														<option value="1976">1976</option>
+														<option value="1975">1975</option>
+														<option value="1974">1974</option>
+														<option value="1973">1973</option>
+														<option value="1972">1972</option>
+														<option value="1971">1971</option>
+														<option value="1970">1970</option>
+														<option value="1969">1969</option>
+														<option value="1968">1968</option>
+														<option value="1967">1967</option>
+														<option value="1966">1966</option>
+														<option value="1965">1965</option>
+														<option value="1964">1964</option>
+														<option value="1963">1963</option>
+														<option value="1962">1962</option>
+														<option value="1961">1961</option>
+														<option value="1960">1960</option>
+														<option value="1959">1959</option>
+														<option value="1958">1958</option>
+														<option value="1957">1957</option>
+														<option value="1956">1956</option>
+														<option value="1955">1955</option>
+														<option value="1954">1954</option>
+														<option value="1953">1953</option>
+														<option value="1952">1952</option>
+														<option value="1951">1951</option>
+														<option value="1950">1950</option>
+														<option value="1949">1949</option>
+														<option value="1948">1948</option>
+														<option value="1947">1947</option>
+														<option value="1946">1946</option>
+														<option value="1945">1945</option>
+														<option value="1944">1944</option>
+														<option value="1943">1943</option>
+														<option value="1942">1942</option>
+														<option value="1941">1941</option>
+														<option value="1940">1940</option>
+														<option value="1939">1939</option>
+														<option value="1938">1938</option>
+														<option value="1937">1937</option>
+														<option value="1936">1936</option>
+														<option value="1935">1935</option>
+														<option value="1934">1934</option>
+														<option value="1933">1933</option>
+														<option value="1932">1932</option>
+														<option value="1931">1931</option>
+														<option value="1930">1930</option>
+														<option value="1929">1929</option>
+														<option value="1928">1928</option>
+														<option value="1927">1927</option>
+														<option value="1926">1926</option>
+														<option value="1925">1925</option>
+														<option value="1924">1924</option>
+														<option value="1923">1923</option>
+														<option value="1922">1922</option>
+														<option value="1921">1921</option>
+														<option value="1920">1920</option>
+														<option value="1919">1919</option>
+														<option value="1918">1918</option>
+														<option value="1917">1917</option>
+														<option value="1916">1916</option>
+														<option value="1915">1915</option>
+														<option value="1914">1914</option>
+														<option value="1913">1913</option>
+														<option value="1912">1912</option>
+														<option value="1911">1911</option>
+														<option value="1910">1910</option>
+														<option value="1909">1909</option>
+														<option value="1908">1908</option>
+														<option value="1907">1907</option>
+														<option value="1906">1906</option>
+														<option value="1905">1905</option>
+														<option value="1904">1904</option>
+														<option value="1903">1903</option>
+														<option value="1902">1902</option>
+														<option value="1901">1901</option>
+													</select>
+													年 </td>
+												<td><a class="add-work">添加</a></td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!-- end 工作经历 -->
+							</div>
+							<div class="mod-footer clearfix">
+								<a href="javascript:;" class="btn btn-large btn-success pull-right" onclick="AWS.ajax_post($('#setting_form'));">保存</a>
+							</div>
+						</div>
+
+						<script type="text/javascript">
+							$(document).ready(function() {
+								$('.select_area').LocationSelect({
+									labels: ["请选择省份或直辖市", "请选择城市"],
+									elements: document.getElementsByTagName("select"),
+									detector: function() {
+										this.select(["", ""]);
+									},
+									dataUrl: G_BASE_URL.replace('/?', '') + '/static/js/areas.js'
+								});
+								var fileUpload = new FileUpload('avatar', $('#avatar_uploader'), $('#avatar_src'), G_BASE_URL +
+										'/account/ajax/avatar_upload/', {
+									'loading_status': '#avatar_uploading_status'
+								});
+							});
+						</script>
+						<script type="text/javascript" src="js/setting.js"></script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="aw-footer-wrap">
+	<div class="aw-footer">
+		Copyright © 2020, All Rights Reserved
+		<span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 3.5.1</a></span>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?1a4884ec01ab4ea9a8280251bbd1a95d";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</div>
+</div>
+<a class="aw-back-top hidden-xs" href="javascript:;" onclick="$.scrollTo(1, 600, {queue:true});"><i class="icon icon-up"></i></a>
+<!--底部公共注入钩子-->
+<!--end底部公共注入钩子-->
+<!-- DO NOT REMOVE -->
+<div id="aw-ajax-box" class="aw-ajax-box"></div>
+<!--<div style="display:none;" id="__crond"><img src="js/common/saved_resource" width="1" height="1"></div>-->
+<!-- Escape time: 0.050643920898438 -->
+</body>
+</html>

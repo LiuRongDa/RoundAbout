@@ -9,6 +9,25 @@ public class TbIssueGambit implements Serializable {
 
     private Integer issue_id;
 
+    private TbIssue tbIssue;
+
+    @Override
+    public String toString() {
+        return "TbIssueGambit{" +
+                "gambit_id=" + gambit_id +
+                ", issue_id=" + issue_id +
+                ", tbIssue=" + tbIssue +
+                '}';
+    }
+
+    public TbIssue getTbIssue() {
+        return tbIssue;
+    }
+
+    public void setTbIssue(TbIssue tbIssue) {
+        this.tbIssue = tbIssue;
+    }
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -39,16 +58,4 @@ public class TbIssueGambit implements Serializable {
         this.issue_id = issue_id;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", gambit_id=").append(gambit_id);
-        sb.append(", issue_id=").append(issue_id);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }

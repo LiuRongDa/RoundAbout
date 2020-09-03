@@ -9,8 +9,41 @@
     <result column="issue_title" jdbcType="VARCHAR" property="issue_title" />
     <result column="issue_content" jdbcType="VARCHAR" property="issue_content" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="issue_date" jdbcType="VARCHAR" property="issue_date" />
+    <result column="issue_count" jdbcType="INTEGER" property="issue_count" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
+      <id column="user_id" property="user_id" />
+    </association>
+
+    <association property="tbIssueUser" column="issue_id" javaType="com.aaa.entity.TbIssueUser" autoMapping="true">
+      <id column="issue_id" property="issue_id"></id>
+    </association>
   </resultMap>
   <sql id="selectAll">
     issue_id,issue_title,issue_content,user_id
   </sql>
+
+  <select id="selePage" resultMap="BaseResultMap">
+    select * from tb_issue LEFT JOIN tb_issue_user on tb_issue.issue_id=tb_issue_user.issue_id LEFT JOIN
+    tb_user on tb_issue_user.user_id=tb_user.user_id
+      <where>
+        1=1
+        <if test="issue_title != 'undefined' and issue_title != null and issue_title != '' ">
+          and tb_issue.issue_title like CONCAT("%", #{issue_title}, "%")
+        </if>
+        <if test="issue_content != 'undefined' and issue_content != null and issue_content != '' ">
+          and tb_issue.issue_content like CONCAT("%", #{issue_content}, "%")
+        </if>
+      </where>
+    ORDER BY tb_issue.issue_id DESC
+  </select>
+
+  <insert id="add" parameterType="com.aaa.entity.TbIssue">
+    insert into tb_issue(issue_title,issue_content,user_id) values(#{issue_title},#{issue_content},#{user_id})
+  </insert>
+
+  <update id="update" parameterType="com.aaa.entity.TbIssue">
+    update tb_issue set issue_title=#{issue_title},issue_content=#{issue_content},user_id=#{user_id} where issue_id=#{issue_id}
+  </update>
 </mapper>
