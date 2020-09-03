@@ -9,5 +9,27 @@
     <result column="idea_content" jdbcType="VARCHAR" property="idea_content" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="idea_date" jdbcType="TIMESTAMP" property="idea_date" />
+
+    <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
+      <id column="user_id" property="user_id"></id>
+    </association>
   </resultMap>
+
+  <select id="selePage" resultMap="BaseResultMap">
+    select * from tb_idea LEFT JOIN tb_user on tb_idea.user_id=tb_user.user_id
+     <where>
+       1=1
+       <if test="idea_content != 'undefined' and idea_content != null and idea_content != '' ">
+         and tb_idea.idea_content like CONCAT("%", #{idea_content}, "%")
+       </if>
+     </where>
+     ORDER BY tb_idea.idea_id DESC
+  </select>
+
+  <insert id="add" parameterType="com.aaa.entity.TbIdea">
+    insert into tb_idea(idea_content,user_id) values(#{idea_content},#{user_id})
+  </insert>
+  <update id="update" parameterType="com.aaa.entity.TbIdea">
+    update tb_idea set idea_content=#{idea_content},user_id=#{user_id} where idea_id=#{idea_id}
+  </update>
 </mapper>

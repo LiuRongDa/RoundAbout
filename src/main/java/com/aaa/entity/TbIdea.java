@@ -15,7 +15,17 @@ public class TbIdea implements Serializable {
 
     private Date idea_date;
 
+    private TbUser tbUser;
+
     private static final long serialVersionUID = 1L;
+
+    public TbUser getTbUser() {
+        return tbUser;
+    }
+
+    public void setTbUser(TbUser tbUser) {
+        this.tbUser = tbUser;
+    }
 
     /**
      * @return idea_id
@@ -75,16 +85,12 @@ public class TbIdea implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", idea_id=").append(idea_id);
-        sb.append(", idea_content=").append(idea_content);
-        sb.append(", user_id=").append(user_id);
-        sb.append(", idea_date=").append(idea_date);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "TbIdea{" +
+                "idea_id=" + idea_id +
+                ", idea_content='" + idea_content + '\'' +
+                ", user_id=" + user_id +
+                ", idea_date=" + idea_date +
+                ", tbUser=" + tbUser +
+                '}';
     }
 }
