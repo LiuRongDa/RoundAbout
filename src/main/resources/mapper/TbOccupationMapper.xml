@@ -8,7 +8,4 @@
     <id column="occupation_id" jdbcType="INTEGER" property="occupation_id" />
     <result column="occupation_name" jdbcType="VARCHAR" property="occupation_name" />
   </resultMap>
-  <sql id="selectAll">
-    occupation_id,occupation_name
-  </sql>
 </mapper>

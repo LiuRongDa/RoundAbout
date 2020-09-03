@@ -20,9 +20,6 @@
       <id column="issue_id" property="issue_id"></id>
     </association>
   </resultMap>
-  <sql id="selectAll">
-    issue_id,issue_title,issue_content,user_id
-  </sql>
 
   <select id="selePage" resultMap="BaseResultMap">
     select * from tb_issue LEFT JOIN tb_issue_user on tb_issue.issue_id=tb_issue_user.issue_id LEFT JOIN

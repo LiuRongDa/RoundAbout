@@ -16,9 +16,6 @@
       <id column="article_id" property="article_id"></id>
     </collection>
   </resultMap>
-  <sql id="selectAll">
-    gambit_id,gambit_name
-  </sql>
 
   <select id="queryAll" resultMap="BaseResultMap">
     select * from tb_gambit LEFT JOIN tb_article_gambit on tb_gambit.gambit_id=tb_article_gambit.gambit_id

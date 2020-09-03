@@ -14,9 +14,6 @@
       <id column="user_id" property="user_id"></id>
     </association>
   </resultMap>
-  <sql id="selectAll">
-    idea_id,idea_content,user_id,idea_date
-  </sql>
 
   <select id="selePage" resultMap="BaseResultMap">
     select * from tb_idea LEFT JOIN tb_user on tb_idea.user_id=tb_user.user_id

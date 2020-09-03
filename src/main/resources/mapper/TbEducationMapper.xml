@@ -13,7 +13,4 @@
     <result column="education_outyear" jdbcType="INTEGER" property="education_outyear" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
-  <sql id="selectAll">
-    education_id,education_school,education_specialty,education_occupation,education_inyear,education_outyear,user_id
-  </sql>
 </mapper>

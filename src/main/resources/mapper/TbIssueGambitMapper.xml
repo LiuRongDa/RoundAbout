@@ -18,9 +18,6 @@
       </association>
     </association>
   </resultMap>
-  <sql id="selectAll">
-    gambit_id,issue_id
-  </sql>
 
   <select id="queryAll" resultMap="BaseResultMap">
       select i.*,u.* from tb_issue i

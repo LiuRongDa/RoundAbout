@@ -9,7 +9,4 @@
     <result column="role_name" jdbcType="VARCHAR" property="role_name" />
     <result column="role_admin_name" jdbcType="VARCHAR" property="role_admin_name" />
   </resultMap>
-  <sql id="selectAll">
-    role_id,role_name
-  </sql>
 </mapper>

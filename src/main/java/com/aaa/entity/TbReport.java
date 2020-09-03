@@ -2,6 +2,7 @@ package com.aaa.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_report")
@@ -22,6 +23,22 @@ public class TbReport implements Serializable {
     private Integer comment_id;
 
     private Integer reply_id;
+
+    private Integer bereport_user_id;
+
+    private TbUser tbUser;
+
+    //问题表
+    private TbIssue tbIssue;
+
+    //文章
+    private TbArticle tbArticle;
+
+    //评论
+    private TbComment tbComment;
+
+    //回复
+    private TbReply tbReply;
 
     private static final long serialVersionUID = 1L;
 
@@ -137,22 +154,71 @@ public class TbReport implements Serializable {
         this.reply_id = reply_id;
     }
 
+    public TbIssue getTbIssue() {
+        return tbIssue;
+    }
+
+    public void setTbIssue(TbIssue tbIssue) {
+        this.tbIssue = tbIssue;
+    }
+
+    public TbArticle getTbArticle() {
+        return tbArticle;
+    }
+
+    public void setTbArticle(TbArticle tbArticle) {
+        this.tbArticle = tbArticle;
+    }
+
+    public TbComment getTbComment() {
+        return tbComment;
+    }
+
+    public void setTbComment(TbComment tbComment) {
+        this.tbComment = tbComment;
+    }
+
+    public TbReply getTbReply() {
+        return tbReply;
+    }
+
+    public void setTbReply(TbReply tbReply) {
+        this.tbReply = tbReply;
+    }
+
+    public TbUser getTbUser() {
+        return tbUser;
+    }
+
+    public void setTbUser(TbUser tbUser) {
+        this.tbUser = tbUser;
+    }
+
+    public Integer getBereport_user_id() {
+        return bereport_user_id;
+    }
+
+    public void setBereport_user_id(Integer bereport_user_id) {
+        this.bereport_user_id = bereport_user_id;
+    }
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", report_id=").append(report_id);
-        sb.append(", user_id=").append(user_id);
-        sb.append(", report_data=").append(report_data);
-        sb.append(", report_content=").append(report_content);
-        sb.append(", issue_id=").append(issue_id);
-        sb.append(", article_id=").append(article_id);
-        sb.append(", comment_id=").append(comment_id);
-        sb.append(", reply_id=").append(reply_id);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "TbReport{" +
+                "report_id=" + report_id +
+                ", user_id=" + user_id +
+                ", report_data=" + report_data +
+                ", report_content='" + report_content + '\'' +
+                ", issue_id=" + issue_id +
+                ", article_id=" + article_id +
+                ", comment_id=" + comment_id +
+                ", reply_id=" + reply_id +
+                ", bereport_user_id=" + bereport_user_id +
+                ", tbUser=" + tbUser +
+                ", tbIssue=" + tbIssue +
+                ", tbArticle=" + tbArticle +
+                ", tbComment=" + tbComment +
+                ", tbReply=" + tbReply +
+                '}';
     }
 }

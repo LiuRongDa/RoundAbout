@@ -12,7 +12,4 @@
     <result column="reply_id" jdbcType="INTEGER" property="reply_id" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
   </resultMap>
-  <sql id="selectAll">
-    praise_id,article_id,issue_id,comment_id,reply_id,user_id
-  </sql>
 </mapper>

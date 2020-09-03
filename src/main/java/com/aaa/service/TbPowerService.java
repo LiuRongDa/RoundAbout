@@ -48,7 +48,6 @@ public class TbPowerService {
             e.printStackTrace();
         }
         s = s.replaceAll("\",\"subs\":null", "\"");
-        System.out.println(s);
         return s;
 
         /*","subs":null*/

@@ -9,7 +9,4 @@
     <result column="career_name" jdbcType="VARCHAR" property="career_name" />
     <result column="degree_id" jdbcType="INTEGER" property="degree_id" />
   </resultMap>
-  <sql id="selectAll">
-    career_id,career_name,degree_id
-  </sql>
 </mapper>

@@ -13,8 +13,34 @@
     <result column="article_id" jdbcType="INTEGER" property="article_id" />
     <result column="comment_id" jdbcType="INTEGER" property="comment_id" />
     <result column="reply_id" jdbcType="INTEGER" property="reply_id" />
+    <result column="bereport_user_id" jdbcType="INTEGER" property="bereport_user_id" />
+
+    <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
+      <id column="user_id" property="user_id"></id>
+      <result column="user_name" property="user_name"></result>
+    </association>
+
+    <association property="tbIssue" column="issue_id" javaType="com.aaa.entity.TbIssue" autoMapping="true">
+      <id column="issue_id" property="issue_id"></id>
+    </association>
+
+    <association property="tbArticle" column="article_id" javaType="com.aaa.entity.TbArticle" autoMapping="true">
+      <id column="article_id" property="article_id"></id>
+    </association>
+
+    <association property="tbComment" column="comment_id" javaType="com.aaa.entity.TbComment" autoMapping="true">
+      <id column="comment_id" property="comment_id"></id>
+    </association>
+
+    <association property="tbReply" column="reply_id" javaType="com.aaa.entity.TbReply" autoMapping="true">
+      <id column="reply_id" property="reply_id"></id>
+    </association>
   </resultMap>
-  <sql id="selectAll">
-    report_id,user_id,report_data,report_content,issue_id,article_id,comment_id,reply_id
-  </sql>
+
+  <select id="selePage" resultMap="BaseResultMap">
+    select * from tb_report LEFT JOIN tb_issue on tb_issue.issue_id=tb_report.issue_id LEFT JOIN tb_article on tb_article.article_id=tb_report.article_id
+    LEFT JOIN tb_comment on tb_comment.comment_id=tb_report.comment_id LEFT JOIN tb_reply on tb_reply.reply_id=tb_report.reply_id LEFT JOIN tb_user ON
+    tb_report.user_id=tb_user.user_id
+    ORDER BY tb_report.report_id DESC
+  </select>
 </mapper>

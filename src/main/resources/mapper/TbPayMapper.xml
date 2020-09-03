@@ -11,7 +11,4 @@
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="pay_state" jdbcType="INTEGER" property="pay_state" />
   </resultMap>
-  <sql id="selectAll">
-    pay_id,pay_money,pay_data,user_id,pay_state
-  </sql>
 </mapper>

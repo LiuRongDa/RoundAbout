@@ -12,7 +12,4 @@
     <result column="reply_idto" jdbcType="INTEGER" property="reply_idto" />
     <result column="reply_date" jdbcType="TIMESTAMP" property="reply_date" />
   </resultMap>
-  <sql id="selectAll">
-    reply_id,reply_content,user_id,comment_id,reply_idto,reply_date
-  </sql>
 </mapper>

@@ -8,7 +8,4 @@
     <result column="topic_id" jdbcType="INTEGER" property="topic_id" />
     <result column="article_id" jdbcType="INTEGER" property="article_id" />
   </resultMap>
-  <sql id="selectAll">
-    topic_id,article_id
-  </sql>
 </mapper>
