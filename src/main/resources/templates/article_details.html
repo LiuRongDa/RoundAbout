@@ -229,7 +229,7 @@
     }
 </style>
 
-<h4 th:text="${art}"></h4>
+<!--<h4 th:text="${art}"></h4>-->
 <!--<h4 th:text="${gambits}"></h4>-->
 <!--<h4 th:each="tbComment : ${tbComments}">
     <h4 th:each="a : ${tbComment.tbReplies}">
@@ -340,7 +340,7 @@
                                     </div>
                                     <div hidden>
                                         <!--回复人id-->
-                                        <input type="text" name="user_id" value="1" hidden>
+                                        <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden>
                                         <!--回复id-->
                                         <input type="text" name="comment_id" value="" th:value="${tbComment.comment_id}" hidden>
                                         <input type="text" name="article_id" value="" th:value="${tbComment.article_id}" hidden>
@@ -402,7 +402,7 @@
                                                     </div>
                                                     <div hidden>
                                                         <!--回复人id-->
-                                                        <input type="text" name="user_id" value="1" hidden>
+                                                        <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden>
                                                         <!--这条回复id-->
                                                         <input type="text" name="reply_idto" value="" th:value="${a.reply_id}" hidden>
                                                         <!--回复评论id-->
@@ -448,7 +448,7 @@
                     <div class="aw-mod aw-article-replay-box">
                         <a name="answer_form"></a>
                         <form action="tb_Article/addComment" method="post">
-                            <input type="text" name="user_id" value="1" hidden/>
+                            <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden/>
                             <input type="text" name="article_id" value="" th:value="${art[0].article_id}" hidden/>
                             <div class="mod-head">
                                 <a href="http://azhihu.cssroom.com/?/people/" class="aw-user-name">
