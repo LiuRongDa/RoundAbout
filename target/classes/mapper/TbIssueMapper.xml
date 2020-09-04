@@ -16,9 +16,9 @@
       <id column="user_id" property="user_id" />
     </association>
 
-    <association property="tbIssueUser" column="issue_id" javaType="com.aaa.entity.TbIssueUser" autoMapping="true">
+    <!--<association property="tbIssueUser" column="issue_id" javaType="com.aaa.entity.TbIssueUser" autoMapping="true">
       <id column="issue_id" property="issue_id"></id>
-    </association>
+    </association>-->
   </resultMap>
 
   <select id="selePage" resultMap="BaseResultMap">

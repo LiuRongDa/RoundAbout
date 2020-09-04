@@ -41,6 +41,21 @@
     select * from tb_report LEFT JOIN tb_issue on tb_issue.issue_id=tb_report.issue_id LEFT JOIN tb_article on tb_article.article_id=tb_report.article_id
     LEFT JOIN tb_comment on tb_comment.comment_id=tb_report.comment_id LEFT JOIN tb_reply on tb_reply.reply_id=tb_report.reply_id LEFT JOIN tb_user ON
     tb_report.user_id=tb_user.user_id
+    <where>
+      1=1
+      <if test="bereport_user_id !=null and bereport_user_id !=''">
+        and tb_report.bereport_user_id=#{bereport_user_id}
+      </if>
+      <if test="report_id !=null and report_id !=''">
+        and tb_report.report_id=#{report_id}
+      </if>
+      <if test="report_content != 'undefined' and report_content != null and report_content != '' ">
+        and tb_report.report_content like CONCAT("%", #{report_content}, "%")
+      </if>
+      <if test="report_data != 'undefined' and report_data != null and report_data != '' ">
+        and datediff(tb_report.report_data,#{report_data})=0
+      </if>
+    </where>
     ORDER BY tb_report.report_id DESC
   </select>
 </mapper>

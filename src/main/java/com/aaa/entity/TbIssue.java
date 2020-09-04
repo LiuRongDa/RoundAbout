@@ -21,19 +21,19 @@ public class TbIssue implements Serializable {
 
     private Integer count;
 
-    private TbIssueUser tbIssueUser;
+    /*private TbIssueUser tbIssueUser;*/
 
     private static final long serialVersionUID = 1L;
 
     private TbUser tbUser;
-
+/*
     public TbIssueUser getTbIssueUser() {
         return tbIssueUser;
     }
 
     public void setTbIssueUser(TbIssueUser tbIssueUser) {
         this.tbIssueUser = tbIssueUser;
-    }
+    }*/
 
     public String getIssue_date() {
         return issue_date;
@@ -133,7 +133,6 @@ public class TbIssue implements Serializable {
                 ", issue_date='" + issue_date + '\'' +
                 ", issue_count=" + issue_count +
                 ", count=" + count +
-                ", tbIssueUser=" + tbIssueUser +
                 ", tbUser=" + tbUser +
                 '}';
     }
