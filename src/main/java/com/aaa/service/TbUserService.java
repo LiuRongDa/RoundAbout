@@ -104,6 +104,7 @@ public class TbUserService {
      * 关联 trade 表 分页 +模糊搜索
      * @return
      */
+    //bufs
     public PageInfo<TbUser> selePage(Integer pageNum,Integer pageSize,String user_name){
         if(pageNum==null || pageNum==0){
             PageHelper.startPage(1,2);
