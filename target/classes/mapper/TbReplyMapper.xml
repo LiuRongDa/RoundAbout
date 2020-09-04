@@ -10,6 +10,6 @@
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="comment_id" jdbcType="INTEGER" property="comment_id" />
     <result column="reply_idto" jdbcType="INTEGER" property="reply_idto" />
-    <result column="reply_date" jdbcType="TIMESTAMP" property="reply_date" />
+    <result column="reply_date" jdbcType="VARCHAR" property="reply_date" />
   </resultMap>
 </mapper>

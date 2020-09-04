@@ -60,7 +60,7 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelectorAll('pre').forEach((block) => {
                 hljs.highlightBlock(block);
-            });
+        });
         });
     </script>
     <style type="text/css">
@@ -214,48 +214,48 @@
                     <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
                         <li><a href="java:script:(0)">等待回复</a></li>
                         <li><a href="java:script:(0)">推荐</a></li>
-                        <li><a th:href="@{tb_Issue/queryAll}">问题</a></li>
-                        <li class="active"><a href="java:script:(0)">文章</a></li>
+                        <li class="active"><a href="java:script:(0)">问题</a></li>
+                        <li><a th:href="@{tb_Article/queryAll}">文章</a></li>
                         <h2 class="hidden-xs">主页·发现</h2>
                     </ul>
                     <!-- end tab切换 -->
+
                     <!-- 自定义tab切换 -->
                     <div class="aw-tabs">
                         <ul>
-                            <li class="active"><a href="javascript:;">最新</a></li>
-                            <li><a th:href="@{tb_Article/queryhot}">热门</a></li>
+                            <li><a th:href="@{tb_Issue/queryAll}">最新</a></li>
+                            <li class="active"><a href="javascript:;">热门</a></li>
                         </ul>
                     </div>
                     <!-- end 自定义tab切换 -->
 
-                    <h4 th:each="a : ${art.list}">
-                        <h4 th:text="${a.TbArticle}"></h4>
-                    </h4>
-
+                    <!--<h4 th:each="a : ${iss.list}">
+                        <h4 th:text="${a}"></h4>
+                    </h4>-->
                     <div class="aw-mod aw-explore-list">
                         <div class="mod-body">
-                            <div class="aw-common-list" th:each="item : ${art.list}">
+                            <div class="aw-common-list" th:each="item : ${iss.list}">
                                 <!--提问-->
                                 <div class="aw-item article" data-topic-id="30,2,3,">
                                     <div class="aw-question-content">
                                         <h4>
-                                            <a th:href="@{tb_Article/addcount(id=${item.TbArticle.article_id})}"><span th:text="${item.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
+                                            <a th:href="@{tb_Issue/queryById(id=${item.TbIssue.issue_id})}" th:text="${item.TbIssue.issue_title}">身边的人是怎么靠生活经验赚钱的？</a>
                                         </h4>
                                         <p>
-                                            <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbArticle.TbUser.user_name}">
+                                            <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbIssue.TbUser.user_name}">
                                                 <i class="icon icon-user"></i>豆豆龙
                                             </a>
                                             发表了文章
-                                            <span><i class="icon icon-comment"></i><span th:text="${item.TbArticle.count}">4</span> 个评论</span>
-                                            <span><i class="icon icon-preview"></i><span th:text="${item.TbArticle.article_count}">766</span> 次浏览</span>
-                                            <span><i class="icon icon-date"></i><span th:text="${item.TbArticle.article_date}">2019-05-17 14:56</span></span>
+                                            <span><i class="icon icon-comment"></i><span th:text="${item.TbIssue.count}">4</span> 个评论</span>
+                                            <span><i class="icon icon-preview"></i><span th:text="${item.TbIssue.issue_count}">766</span> 次浏览</span>
+                                            <span><i class="icon icon-date"></i><span th:text="${item.TbIssue.issue_date}">2019-05-17 14:56</span></span>
                                             <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
                                         </p>
 
                                         <!-- 文章内容调用    onclick="window.location.href='article/6'"-->
                                         <div class="markitup-box" style="cursor: pointer;">
                                             <div class="img pull-right"></div>
-                                            <h2 th:text="${item.TbArticle.article_content}"></h2>
+                                            <h2 th:text="${item.TbIssue.issue_content}">aaaaaaaaaaaaaa</h2>
                                         </div>
                                         <div class="collapse all-content">
                                             <img src="http://azhihu.cssroom.com/uploads/article/20190517/ce6b85e5d2c9bf215918c765f663ae3b.jpg?7411" />
@@ -277,20 +277,20 @@
                         <div class="mod-footer">
                             <div class="page-control">
                                 <ul class="pagination pull-right">
-                                    <li th:if="${art.isLastPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.navigateFirstPage},pageSize=${art.pageSize})}">首页</a>
+                                    <li th:if="${iss.isLastPage}">
+                                        <a th:href="@{tb_Issue/queryhot(pageNum=${iss.navigateFirstPage},pageSize=${iss.pageSize})}">首页</a>
                                     </li>
-                                    <li th:if="${art.prePage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.pageNum-1},pageSize=${art.pageSize})}">上一页</a>
+                                    <li th:if="${iss.prePage}">
+                                        <a th:href="@{tb_Issue/queryhot(pageNum=${iss.pageNum-1},pageSize=${iss.pageSize})}">上一页</a>
                                     </li>
                                     <li>
-                                        <a href="javascript:;" th:text="${art.pageNum}">2</a>
+                                        <a href="javascript:;" th:text="${iss.pageNum}">2</a>
                                     </li>
-                                    <li th:if="${art.nextPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.pageNum+1},pageSize=${art.pageSize})}">下一页</a>
+                                    <li th:if="${iss.nextPage}">
+                                        <a th:href="@{tb_Issue/queryhot(pageNum=${iss.pageNum+1},pageSize=${iss.pageSize})}">下一页</a>
                                     </li>
-                                    <li th:if="${art.isFirstPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.navigateLastPage},pageSize=${art.pageSize})}">尾页</a>
+                                    <li th:if="${iss.isFirstPage}">
+                                        <a th:href="@{tb_Issue/queryhot(pageNum=${iss.navigateLastPage},pageSize=${iss.pageSize})}">尾页</a>
                                     </li>
                                 </ul>
                             </div>

@@ -27,6 +27,8 @@ public class TbArticle implements Serializable {
 
     private String article_date;
 
+    public List<TbComment> tbComments;
+
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -42,7 +44,16 @@ public class TbArticle implements Serializable {
                 ", tbUser=" + tbUser +
                 ", count=" + count +
                 ", article_date='" + article_date + '\'' +
+                ", tbComments=" + tbComments +
                 '}';
+    }
+
+    public List<TbComment> getTbComments() {
+        return tbComments;
+    }
+
+    public void setTbComments(List<TbComment> tbComments) {
+        this.tbComments = tbComments;
     }
 
     public Integer getArticle_id() {

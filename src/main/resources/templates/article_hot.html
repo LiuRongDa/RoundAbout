@@ -60,7 +60,7 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelectorAll('pre').forEach((block) => {
                 hljs.highlightBlock(block);
-            });
+        });
         });
     </script>
     <style type="text/css">
@@ -222,8 +222,8 @@
                     <!-- 自定义tab切换 -->
                     <div class="aw-tabs">
                         <ul>
-                            <li class="active"><a href="javascript:;">最新</a></li>
-                            <li><a th:href="@{tb_Article/queryhot}">热门</a></li>
+                            <li><a th:href="@{tb_Article/queryAll}">最新</a></li>
+                            <li class="active"><a href="javascript:;">热门</a></li>
                         </ul>
                     </div>
                     <!-- end 自定义tab切换 -->
@@ -239,7 +239,7 @@
                                 <div class="aw-item article" data-topic-id="30,2,3,">
                                     <div class="aw-question-content">
                                         <h4>
-                                            <a th:href="@{tb_Article/addcount(id=${item.TbArticle.article_id})}"><span th:text="${item.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
+                                            <a th:href="@{tb_Article/queryById(id=${item.TbArticle.article_id})}"><span th:text="${item.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
                                         </h4>
                                         <p>
                                             <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbArticle.TbUser.user_name}">
@@ -278,19 +278,19 @@
                             <div class="page-control">
                                 <ul class="pagination pull-right">
                                     <li th:if="${art.isLastPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.navigateFirstPage},pageSize=${art.pageSize})}">首页</a>
+                                        <a th:href="@{tb_Article/queryhot(pageNum=${art.navigateFirstPage},pageSize=${art.pageSize})}">首页</a>
                                     </li>
                                     <li th:if="${art.prePage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.pageNum-1},pageSize=${art.pageSize})}">上一页</a>
+                                        <a th:href="@{tb_Article/queryhot(pageNum=${art.pageNum-1},pageSize=${art.pageSize})}">上一页</a>
                                     </li>
                                     <li>
                                         <a href="javascript:;" th:text="${art.pageNum}">2</a>
                                     </li>
                                     <li th:if="${art.nextPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.pageNum+1},pageSize=${art.pageSize})}">下一页</a>
+                                        <a th:href="@{tb_Article/queryhot(pageNum=${art.pageNum+1},pageSize=${art.pageSize})}">下一页</a>
                                     </li>
                                     <li th:if="${art.isFirstPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.navigateLastPage},pageSize=${art.pageSize})}">尾页</a>
+                                        <a th:href="@{tb_Article/queryhot(pageNum=${art.navigateLastPage},pageSize=${art.pageSize})}">尾页</a>
                                     </li>
                                 </ul>
                             </div>

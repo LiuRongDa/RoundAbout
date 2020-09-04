@@ -25,6 +25,12 @@
       order by i.issue_date desc
   </select>
 
+    <select id="queryhot" resultMap="BaseResultMap">
+      select i.*,u.* from tb_issue i
+      LEFT JOIN tb_user u on u.user_id=i.user_id
+      order by i.issue_count desc
+  </select>
+
   <select id="queryById" resultMap="BaseResultMap">
       select i.*,u.* from tb_issue i
       LEFT JOIN tb_user u on u.user_id=i.user_id where i.issue_id=#{issue_id}

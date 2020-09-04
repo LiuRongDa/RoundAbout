@@ -9,10 +9,16 @@ import java.util.List;
 public interface TbArticleGambitMapper extends MyMapper<TbArticleGambit> {
 
     /**
-     * 查询所有文章的基本信息
+     * 查询所有文章的基本信息(文章，用户  时间倒序)
      * @return
      */
     List<TbArticleGambit> queryAll();
+
+    /**
+     *查询所有文章的基本信息(文章，用户  浏览数倒序)
+     * @return
+     */
+    List<TbArticleGambit> queryhot();
 
     /**
      * 查询单个文章

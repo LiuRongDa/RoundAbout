@@ -2,6 +2,7 @@ package com.aaa.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "tb_reply")
@@ -17,108 +18,89 @@ public class TbReply implements Serializable {
 
     private Integer reply_idto;
 
-    private Date reply_date;
+    private String reply_date;
+
+    private TbReply tbReplies;
+
+    private TbUser tbUser;
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * @return reply_id
-     */
+    @Override
+    public String toString() {
+        return "TbReply{" +
+                "reply_id=" + reply_id +
+                ", reply_content='" + reply_content + '\'' +
+                ", user_id=" + user_id +
+                ", comment_id=" + comment_id +
+                ", reply_idto=" + reply_idto +
+                ", reply_date=" + reply_date +
+                ", tbReplies=" + tbReplies +
+                ", tbUser=" + tbUser +
+                '}';
+    }
+
     public Integer getReply_id() {
         return reply_id;
     }
 
-    /**
-     * @param reply_id
-     */
     public void setReply_id(Integer reply_id) {
         this.reply_id = reply_id;
     }
 
-    /**
-     * @return reply_content
-     */
     public String getReply_content() {
         return reply_content;
     }
 
-    /**
-     * @param reply_content
-     */
     public void setReply_content(String reply_content) {
         this.reply_content = reply_content;
     }
 
-    /**
-     * @return user_id
-     */
     public Integer getUser_id() {
         return user_id;
     }
 
-    /**
-     * @param user_id
-     */
     public void setUser_id(Integer user_id) {
         this.user_id = user_id;
     }
 
-    /**
-     * @return comment_id
-     */
     public Integer getComment_id() {
         return comment_id;
     }
 
-    /**
-     * @param comment_id
-     */
     public void setComment_id(Integer comment_id) {
         this.comment_id = comment_id;
     }
 
-    /**
-     * @return reply_idto
-     */
     public Integer getReply_idto() {
         return reply_idto;
     }
 
-    /**
-     * @param reply_idto
-     */
     public void setReply_idto(Integer reply_idto) {
         this.reply_idto = reply_idto;
     }
 
-    /**
-     * @return reply_date
-     */
-    public Date getReply_date() {
+    public String getReply_date() {
         return reply_date;
     }
 
-    /**
-     * @param reply_date
-     */
-    public void setReply_date(Date reply_date) {
+    public void setReply_date(String reply_date) {
         this.reply_date = reply_date;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", reply_id=").append(reply_id);
-        sb.append(", reply_content=").append(reply_content);
-        sb.append(", user_id=").append(user_id);
-        sb.append(", comment_id=").append(comment_id);
-        sb.append(", reply_idto=").append(reply_idto);
-        sb.append(", reply_date=").append(reply_date);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    public TbReply getTbReplies() {
+        return tbReplies;
+    }
+
+    public void setTbReplies(TbReply tbReplies) {
+        this.tbReplies = tbReplies;
+    }
+
+    public TbUser getTbUser() {
+        return tbUser;
+    }
+
+    public void setTbUser(TbUser tbUser) {
+        this.tbUser = tbUser;
     }
 }

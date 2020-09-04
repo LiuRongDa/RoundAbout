@@ -11,6 +11,7 @@ public class TbIssueGambit implements Serializable {
 
     private TbIssue tbIssue;
 
+
     @Override
     public String toString() {
         return "TbIssueGambit{" +
@@ -29,6 +30,7 @@ public class TbIssueGambit implements Serializable {
     }
 
     private static final long serialVersionUID = 1L;
+
 
     /**
      * @return gambit_id
