@@ -54,13 +54,7 @@
     <script type="text/javascript" src="js/slide_captcha/gt.js"></script>
     <script src="js/crypto-js.js"></script>
     <script src="js/highlight/highlight.pack.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelectorAll('pre').forEach((block) => {
-                hljs.highlightBlock(block);
-        });
-        });
-    </script>
+    <script src="js/jquery-2.1.4.min.js"></script>
     <style type="text/css">
         .geetest_radar_tip_content{
             position: initial !important;
@@ -240,7 +234,6 @@
     <h4 th:text="${a}"></h4>
 </h4>
 
-
 <div class="aw-container-wrap">
     <div class="container">
         <div class="row">
@@ -249,15 +242,11 @@
                     <!--话题-->
                     <div class="aw-mod aw-topic-bar" id="question_topic_editor" data-type="article" data-id="6">
                         <div class="tag-bar clearfix">
+
                             <span class="topic-tag" data-id="30">
-                                <a class="text" href="http://azhihu.cssroom.com/?/topic/30">风险投资</a>
+                                <a class="text">风险投资</a>
                             </span>
-                            <span class="topic-tag" data-id="2">
-                                <a class="text" href="http://azhihu.cssroom.com/?/topic/2">赚钱</a>
-                            </span>
-                            <span class="topic-tag" data-id="3">
-                                <a class="text" href="http://azhihu.cssroom.com/?/topic/3">财富</a>
-                            </span>
+
                         </div>
                     </div>
 
@@ -270,16 +259,7 @@
                         <div class="mod-body">
                             <div class="content markitup-box">
                                 <p th:text="${issue[0].TbIssue.issue_content}"></p>
-                                <!--<p>麻辣烫，手抓饼，奶茶店，买空卖空的淘宝包邮？你们的智商都去哪里了？没有智商了，那你们的生活经验去哪里了？</p>
-                                <p>以前的“我要当科学家”、“我要当老师”、“我要当工程师”、哪怕“我要当程序员”这些“梦想去哪里了”？
-                                    君见几个卖麻辣烫，手抓饼和奶茶店的财务自由了。说不定好多场外开麻辣烫、手抓饼、奶茶店的人也正关注这个问题呢，密切的关注着有没有新的出路，脱离这起早贪黑、费力不赚钱，看不到希望的苦逼的麻辣烫，奶茶店。</p>
-                                <p>
-                                    或许有一些做的很好的麻辣烫或者奶茶店，但是他们背后的苦和心酸绝不是一个“一杯奶茶的成本7分钱，而售价却在8块到15块不等”这样的计算能衡量的。每一门生意都不简单，都是整套的系统，产品设计与创新，推广营销，客户管理，客户服务，成本控制……能成就一个赚钱的生意，都是一整套的系统在天时地利人和的情况的偶然的必然，如果只是一句简单的计算能日进斗金，那请你出门左转然后自己去试试。
-                                    <img src="/ueditor/php/upload/image/20190517/1558076175422458.png" title="1558076175422458.png" alt="image.png"/></p>
-                                <p><br/></p>
-                                <p>
-                                    这个问题下有很多回答的确让人眼前一亮耳目一新，隔行如隔山嘛，在这个问题下，我们可以看见好多其不起眼的行业的套路，但是请年轻的你，一定一定一定要有定力，不要被这些东西左右了自己的心智。360行，行行出状元，每个行业有每个行业的门道（套路），不要见到了别人的一些巧妙的门道（套路）就跨入这一行。</p>
-                                <p><br/></p>-->
+
                             </div>
                             <div class="meta clearfix">
                                 <div class="aw-article-vote pull-left">
@@ -291,31 +271,13 @@
                                             class="icon icon-disagree"></i></a>
                                 </div>
                                 <span class="pull-right  more-operate">
-                                    <a href="javascript:;" onclick="AWS.dialog('favorite', {item_id:6, item_type:'article'});"  class="text-color-999"><i class="icon icon-favor"></i> 收藏</a>
-                                    <!--<a class="text-color-999 dropdown-toggle" data-toggle="dropdown" id="article_share">
-                                        <i class="icon icon-share"></i> 分享
+                                    <a href="javascript:;" onclick="AWS.dialog('favorite', {item_id:6, item_type:'article'});"  class="text-color-999">
+                                        <i class="icon icon-favor"></i> 收藏
                                     </a>
-                                    <div class="aw-dropdown shareout pull-right bdsharebuttonbox">
-                                        <ul class="aw-dropdown-list">
-                                            <li><a href="javascript:;" class="bds_weixin"
-                                                   onclick="javascript:bShare.share(event,'weixin');return false;"
-                                                   title="分享到微信"> 微信</a></li>
-											<li><a href="javascript:;" class="bds_sqq"
-                                                   onclick="javascript:bShare.share(event,'qqim');return false;"
-                                                   title="分享到QQ"> QQ</a></li>
-											<li><a href="javascript:;" class="bds_tsina"
-                                                   onclick="javascript:bShare.share(event,'sinaminiblog');return false;"
-                                                   title="分享到新浪微博"> 微博</a></li>
-											<li><a href="javascript:;" class="bds_qzone"
-                                                   onclick="javascript:bShare.share(event,'qzone');return false;"
-                                                   title="分享到QQ空间"> 空间</a></li>
-                                        </ul>
-                                    </div>-->
                                     <a href="javascript:;" class="text-color-999" onclick="AWS.dialog('report', {item_type:'article', item_id:6,item_reson:''})">
-                                        <i class="icon icon-report"></i>
-                                        举报
+                                        <i class="icon icon-report"></i>举报
                                     </a>
-                                    <em class="text-color-999">2019-05-17</em>
+                                    <em class="text-color-999" >2019-05-17</em>
                                 </span>
                             </div>
                         </div>
@@ -332,39 +294,128 @@
                         <div class="mod-head common-head">
                             <h2><span th:text="${issue[0].TbIssue.count}">5</span> 个评论</h2>
                         </div>
-                        <div class="mod-body aw-feed-list" th:each="a : ${art}">
-                            <div class="aw-item" id="answer_list_11">
-                                <div class="mod-head">
-                                    <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
-                                        <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
-                                    </a>
-                                    <p>
-                                        <a href="javascript:;" th:text="${a.TbUser.user_name}">evz03424</a>
-                                    </p>
-                                </div>
-                                <a class="anchor" name="answer_11"></a>
-                                <div class="mod-body">
-                                    <div class="markitup-box">
-                                        <h4 th:text="${a.article_content}">abc</h4>
+                        <div id="div1" th:fragment="div1">
+
+                            <div class="mod-body aw-feed-list" th:each="a : ${art}">
+                                <div class="aw-item" id="answer_list_11">
+                                    <div class="mod-head">
+                                        <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
+                                            <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
+                                        </a>
+                                        <p>
+                                            <a href="javascript:;" th:text="${a.TbUser.user_name}">evz03424</a>
+                                        </p>
                                     </div>
-                                </div>
-                                <div class="mod-footer">
-                                    <div class="meta">
-                                        <span class="pull-right text-color-999" th:text="${a.article_date}">2019-10-09 14:18</span>
-                                        <a class="text-color-999 " onclick="AWS.User.article_comment_vote($(this), 11, 1)">
-                                            <i class="icon icon-agree"></i> 0 赞
-                                        </a>
-                                        <a class="aw-article-comment text-color-999" data-id="57">
-                                            <i class="icon icon-comment"></i> 回复
-                                        </a>
-                                        <a href="javascript:;" class="text-color-999" onclick="AWS.dialog('report', {item_type:'article_answer', item_id:11,item_reson:''})">
-                                            <i class="icon icon-report"></i>举报
-                                        </a>
+                                    <a class="anchor" name="answer_11"></a>
+                                    <div class="mod-body">
+                                        <div class="markitup-box">
+                                            <h4 th:text="${a.article_content}">abc</h4>
+                                        </div>
+                                    </div>
+                                    <div class="mod-footer">
+                                        <div class="meta">
+                                            <span class="pull-right text-color-999" th:text="${a.article_date}">2019-10-09 14:18</span>
+                                            <a class="text-color-999 ">
+                                                <i class="icon icon-agree"></i> 0 赞
+                                            </a>
+                                            <a class="aw-article-comment text-color-999" th:onclick="showcomm(this,[[${a.article_id}]])">
+                                                <i class="icon icon-comment"></i> 查看评论
+                                            </a>
+                                            <a class="aw-article-comment text-color-999" onclick="if($(this).parent().next().css('display')=='none'){$(this).parent().next().next().hide();$(this).parent().next().show()}else{$(this).parent().next().hide()}">
+                                                <i class="icon icon-comment"></i> 回复
+                                            </a>
+                                            <a href="javascript:;" class="text-color-999">
+                                                <i class="icon icon-report"></i>举报
+                                            </a>
+                                            <script type="text/javascript" th:inline="javascript">
+                                                function showcomm(a,id){
+                                                    if($(a).parent().next().next().css("display")=="none"){
+                                                        $(a).parent().next().hide();
+                                                        $(a).parent().next().next().show();
+                                                    }else{
+                                                        $(a).parent().next().next().hide();
+                                                    }
+                                                    $.ajax({
+                                                        type:"post",
+                                                        url:"tb_Issue/showcomm",
+                                                        data:{"id":id},
+                                                        success:function(date){
+                                                            $(a).parent().next().next().html(date);
+                                                        }
+                                                    })
+                                                }
+                                            </script>
+                                        </div>
+                                        <div hidden>
+                                            <!--回复人id-->
+                                            <input type="text" name="user_id" value="1">
+                                            <!--回答id-->
+                                            <input type="text" name="article_id" value="" th:value="${a.article_id}">
+                                            <input type="text" name="comment_content" value="">
+                                            <input class="btn btn-success" type="button" value="回复" onclick="addcomm(this)">
+
+                                            <script type="text/javascript" th:inline="javascript">
+                                                function addcomm(a){
+                                                    var user_id = $(a).parent().find("[name='user_id']").val();
+                                                    var article_id = $(a).parent().find("[name='article_id']").val();
+                                                    var comment_content = $(a).parent().find("[name='comment_content']").val();
+
+                                                    $.ajax({
+                                                        type:'post',
+                                                        url:'tb_Issue/addcomm',
+                                                        data:{'user_id':user_id,'comment_content':comment_content,'article_id':article_id},
+                                                        success:function(date){
+                                                            $(a).parent().next().html(date);
+                                                            $(a).parent().hide();
+                                                        }})
+                                                }
+                                            </script>
+                                        </div>
+
+                                        <div id="div2" th:fragment="div2">
+                                        <!--回复框开始-->
+                                            <!--<div class="panel panel-default">
+                                                <div class="panel-body">-->
+                                                    <div th:each="tbComment : ${tbComments}">
+                                                        <div class="mod-head">
+                                                            <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
+                                                                <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
+                                                            </a>
+                                                            <p>
+                                                                <a href="javascript:;" th:text="${tbComment.TbUser.user_name}">evz03424</a>
+                                                            </p>
+                                                        </div>
+                                                        <div class="mod-body">
+                                                            <div class="markitup-box">
+                                                                <h4 th:text="${tbComment.comment_content}">abc</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mod-footer">
+                                                            <div class="meta">
+                                                                <span class="pull-right text-color-999" th:text="${tbComment.comment_date}">2019-10-09 14:18</span>
+                                                                <a class="text-color-999">
+                                                                    <i class="icon icon-agree"></i> 0 赞
+                                                                </a>
+                                                                <a class="aw-article-comment text-color-999">
+                                                                    <i class="icon icon-comment"></i> 回复
+                                                                </a>
+                                                                <a href="javascript:;" class="text-color-999">
+                                                                    <i class="icon icon-report"></i>举报
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                <!--</div>
+                                            </div>-->
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+
                     </div>
                     <!-- end 文章评论 -->
                     <!-- 回复编辑器 -->
@@ -420,7 +471,7 @@
                         <div class="mod-footer clearfix">
                             <div class="aw-topic-bar">
                                 <div class="topic-bar clearfix">
-                                    <!--<span class="pull-left text-color-999">
+                                    <span class="pull-left text-color-999">
                                         擅长话题 : &nbsp;
                                     </span>
                                     <span class="topic-tag">
@@ -438,7 +489,7 @@
                                     </span>
                                     <span class="topic-tag">
                                         <a href="http://azhihu.cssroom.com/?/topic/40" class="text" data-id="40">食物</a>
-                                    </span>-->
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -463,7 +514,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" charset="utf-8" src="js/share/buttonLite.js"></script>
 <script type="text/javascript">
     var ANSWER_EDIT_TIME = 30;
     $(document).ready(function () {
@@ -481,7 +531,7 @@
         AWS.Init.init_article_comment_box($('.aw-article-comment'));
     });
 </script>
-<div class="aw-footer-wrap">
+<!--<div class="aw-footer-wrap">
     <div class="aw-footer">
         Copyright © 2020, All Rights Reserved</span>
         <span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 3.5.1</a></span>
@@ -495,18 +545,7 @@
             })();
         </script>
     </div>
-</div>
-<a class="aw-back-top hidden-xs" href="javascript:;" onclick="$.scrollTo(1, 600, {queue:true});"><i class="icon icon-up"></i></a>
-<!--底部公共注入钩子-->
-<!--end底部公共注入钩子-->
-<!-- DO NOT REMOVE -->
-<div id="aw-ajax-box" class="aw-ajax-box"></div>
-<div style="display:none;" id="__crond">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#__crond').html(unescape('%3Cimg%20src%3D%22' + G_BASE_URL + '/crond/run/1598669496%22%20width%3D%221%22%20height%3D%221%22%20/%3E'));
-        });
-    </script>
-</div>
+</div>-->
+
 <!-- Escape time: 0.081415891647339 --></body>
 </html>

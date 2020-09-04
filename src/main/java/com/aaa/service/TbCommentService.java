@@ -31,6 +31,24 @@ public class TbCommentService {
     @Resource
     TbIssueArticleMapper tbIssueArticleMapper;
 
+
+    /**
+     * 添加问题评论
+     */
+    public Integer insertIssComment(Integer user_id,String comment_content,Integer article_id){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(new Date());
+        TbComment tbComment = new TbComment();
+        tbComment.setArticle_id(article_id);
+        tbComment.setUser_id(user_id);
+        tbComment.setComment_content(comment_content);
+        tbComment.setComment_date(dateString);
+
+        int insert = tbCommentMapper.insert(tbComment);
+        return insert;
+    }
+
+
     /**
      * 添加评论
      */
@@ -97,7 +115,6 @@ public class TbCommentService {
      * 查询指定文章下的评论(带用户),回复(带用户)
      */
     public List<TbComment> queryById(Integer article_id){
-
         TbComment tbComment = new TbComment();
         tbComment.setArticle_id(article_id);
         List<TbComment> tbComments = tbCommentMapper.select(tbComment);
