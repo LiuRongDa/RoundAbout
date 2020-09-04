@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @description:
@@ -21,10 +23,29 @@ public class TbReportController {
     @Resource
     TbReportService tbReportService;
 
-
+    /**
+     * 分页 =+模糊查询
+     * @param pageNum
+     * @param pageSize
+     * @param report_content
+     * @param report_data
+     * @param report_id
+     * @return
+     */
     @RequestMapping("selePage")
-    public PageInfo<TbReport> selePage(Integer pageNum, Integer pageSize){
-        PageInfo<TbReport> tbReportPageInfo = tbReportService.selePage(pageNum, pageSize);
+    public PageInfo<TbReport> selePage(Integer pageNum, Integer pageSize, String report_content, String report_data,Integer report_id){
+        PageInfo<TbReport> tbReportPageInfo = tbReportService.selePage(pageNum, pageSize,report_content,report_data,report_id,null);
         return tbReportPageInfo;
+    }
+
+    /**
+     * 查看详情
+     * @param report_id
+     * @return
+     */
+    @RequestMapping("showMore")
+    public List<TbReport> showMore(Integer report_id,Integer bereport_user_id){
+        List<TbReport> tbReports = tbReportService.showMore(report_id,bereport_user_id);
+        return tbReports;
     }
 }
