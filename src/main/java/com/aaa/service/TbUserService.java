@@ -104,7 +104,7 @@ public class TbUserService {
      * 关联 trade 表 分页 +模糊搜索
      * @return
      */
-    public PageInfo<TbUser> selePage(Integer pageNum,Integer pageSize){
+    public PageInfo<TbUser> selePage(Integer pageNum,Integer pageSize,String user_name){
         if(pageNum==null || pageNum==0){
             PageHelper.startPage(1,2);
         }else if(pageSize==null || pageSize==0){
@@ -112,7 +112,7 @@ public class TbUserService {
         }else{
             PageHelper.startPage(pageNum,pageSize);
         }
-        List<TbUser> tbUsers = tbUserMapper.userAndTradeQueryAll();
+        List<TbUser> tbUsers = tbUserMapper.userAndTradeQueryAll(user_name);
         System.out.println(tbUsers);
         PageInfo<TbUser> pageInfo=new PageInfo<>(tbUsers);
         System.out.println(pageInfo);
