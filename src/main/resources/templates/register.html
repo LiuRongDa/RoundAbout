@@ -25,10 +25,10 @@
         var _1147EE59C2EAF626C82066D5B32FD65B="";
         var G_POST_HASH=_1147EE59C2EAF626C82066D5B32FD65B;
         var G_INDEX_SCRIPT = "?/";
-        var G_SITE_NAME = "WeCenter仿知乎模板";
-        var G_BASE_URL = "http://localhost:8088";
-        var G_STATIC_URL = "http://azhihu.cssroom.com/static";
-        var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";
+        //var G_SITE_NAME = "WeCenter仿知乎模板";
+        var G_BASE_URL = "http://localhost:8088/springboot";
+        //var G_STATIC_URL = "http://azhihu.cssroom.com/static";
+        //var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";
         var G_USER_ID = "";
         var G_USER_NAME = "";
         var G_UPLOAD_ENABLE = "N";
@@ -152,77 +152,33 @@
         <h1>注册新用户</h1>
     </div>
     <div class="mod-body">
-        <form class="aw-register-form" action="http://azhihu.cssroom.com/?/account/ajax/register_process/type-email" method="post" id="register_form">
-
+        <form class="aw-register-form" id="register_form">
             <ul>
                 <li class="alert alert-danger collapse error_message text-left">
                     <i class="icon icon-delete"></i> <em></em>
                 </li>
                 <li>
-                    <input class="aw-register-name form-control" type="text" name="user_name" placeholder="用户名" tips="请输入一个2-14 位的用户名" errortips="用户名长度不符合" value="" />
-                </li>
-
-                <li>
                     <input class="aw-register-email form-control" type="text" placeholder="邮箱" name="email" tips="请输入你常用的电子邮箱作为你的账号" value="" errortips="邮箱格式不正确" />
                 </li>
-
                 <li>
                     <label class="oldPwdTip aw-register-pwd-label" onclick="$(this).hide();$('#aw-register-pwd').focus();">密码</label>
-                    <input class="aw-register-pwd form-control" id='aw-register-pwd' type="password" tips="请输入 6-16 个字符,区分大小写" errortips="密码不符合规则" onfocus="hideOldPwdTip('aw-register-pwd');" onblur="toggleOldPwdTip('aw-register-pwd',this.value);"/>
+                    <input class="aw-register-pwd form-control" id='aw-register-pwd' name="password" type="password" tips="请输入 6-16 个字符,区分大小写" errortips="密码不符合规则" onfocus="hideOldPwdTip('aw-register-pwd');" onblur="toggleOldPwdTip('aw-register-pwd',this.value);"/>
                     <input id="aw-login-user-repassword" type="hidden" name="password" />
                 </li>
-                <li class="more-information collapse">
-                    <ul>
-                        <li>
-                            性别:
-                            <label>
-                                <input name="sex" value="1" type="radio" /> 男                            </label>&nbsp;
-                            <label>
-                                <input name="sex" value="2" type="radio" /> 女 </label>&nbsp;
-                            <label>
-                                <input name="sex" value="3" type="radio" checked="checked" /> 保密                            </label>
-                        </li>
-                        <li>
-                            职业:
-                            <select name="job_id">
-                                <option value="">--</option>
-                                <option value="1">销售</option><option value="2">市场/市场拓展/公关</option><option value="3">商务/采购/贸易</option><option value="4">计算机软、硬件/互联网/IT</option><option value="5">电子/半导体/仪表仪器</option><option value="6">通信技术</option><option value="7">客户服务/技术支持</option><option value="8">行政/后勤</option><option value="9">人力资源</option><option value="10">高级管理</option><option value="11">生产/加工/制造</option><option value="12">质控/安检</option><option value="13">工程机械</option><option value="14">技工</option><option value="15">财会/审计/统计</option><option value="16">金融/银行/保险/证券/投资</option><option value="17">建筑/房地产/装修/物业</option><option value="18">交通/仓储/物流</option><option value="19">普通劳动力/家政服务</option><option value="20">零售业</option><option value="21">教育/培训</option><option value="22">咨询/顾问</option><option value="23">学术/科研</option><option value="24">法律</option><option value="25">美术/设计/创意</option><option value="26">编辑/文案/传媒/影视/新闻</option><option value="27">酒店/餐饮/旅游/娱乐</option><option value="28">化工</option><option value="29">能源/矿产/地质勘查</option><option value="30">医疗/护理/保健/美容</option><option value="31">生物/制药/医疗器械</option><option value="32">翻译（口译与笔译）</option><option value="33">公务员</option><option value="34">环境科学/环保</option><option value="35">农/林/牧/渔业</option><option value="36">兼职/临时/培训生/储备干部</option><option value="37">在校学生</option><option value="38">其他</option>                            </select>
-                        </li>
-                        <li>
-                            所在城市:
-                            <select name="province" class="select_area" style="display:inline-block"></select>
-
-                            <select name="city" class="select_area"></select>
-                        </li>
-                        <li>
-                            <input type="text" class="form-control" placeholder="一句话介绍" id="welcome_signature" value="" name="signature" />
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <hr />
-                    <a class="more-information-btn">更多资料</a>
-                </li>
                 <li class="aw-register-verify">
-                    <div class="embed-captcha"></div>
-                    <p class="wait">正在加载验证码......</p>
+                    <!--style="background-color: #92B8B1;" class="pull-right" id="captcha"-->
+                    <button type="button" id="second" class="pull-right" style="width: 100px;height: 40px;border-radius: 15px;background-color:#69b5ff;opacity:0.5;outline: none;" value="123">获取验证码</button>
+                    <input type="text" id="random" class="form-control" name="seccode_verify" placeholder="验证码" />
+                    <input type="text" id="span" hidden>
                 </li>
-                <!-- <li class="aw-register-verify">
-                    <img class="pull-right" id="captcha" onclick="this.src = G_BASE_URL + '/account/captcha/' + Math.floor(Math.random() * 10000);" src="">
-
-                    <input type="text" class="form-control" name="seccode_verify" placeholder="验证码" />
-                </li> -->
                 <li class="last">
-                    <label><input type="checkbox" checked="checked" value="agree" name="agreement_chk" /> 我同意</label>
+                    <label><input type="checkbox" id="cb" value="agree" name="agreement_chk" /> 我同意</label>
                     <a href="javascript:;" class="aw-agreement-btn">用户协议</a>
                     <a href="login.html" class="pull-right">已有账号?</a>
                     <!-- <a style="margin-right:8px;" href="http://azhihu.cssroom.com/?/account/register/type-email" class="pull-right">邮箱注册</a> -->
-                    <div class="aw-register-agreement collapse">
-                        <div class="aw-register-agreement-txt" id="register_agreement"></div>
-                    </div>
                 </li>
                 <li class="clearfix">
-                    <button class="btn btn-large btn-blue btn-block" id="zhuce"  >注册</button>
+                    <input type="button" class="btn btn-large btn-blue btn-block" value="注册" onclick="zc()">
                 </li>
             </ul>
         </form>
@@ -230,331 +186,151 @@
     <div class="mod-footer"></div>
 </div>
 <script type="text/javascript">
-    $(".aw-register-pwd").prev(".oldPwdTip").click(function(){
-        $(".aw-register-pwd").focus();
+    function zc(){
+        if (yemail()){
+            if (ypwd()) {
+                console.log($("#cb").is(":checked"));
+                if ($("#random").val() == $("#span").val()) {
+                    if ($("#cb").is(":checked")){
+                        alert("注册")
+                        $.ajax({
+                            type:"post",
+                            data:{email:$("[name=email]").val(),pwd:$("[name=password]").val()},
+                            url:"L/toRegister",
+                            async:true,
+                            success:function (da) {
+                                console.log(da)
+                                if (da){
+                                    $.ajax({
+                                        type:"post",
+                                        data:{email:$("[name=email]").val(),pwd:$("[name=password]").val()},
+                                        url:"L/toLogin",
+                                        async:true,
+                                        success:function (da) {
+                                            console.log(da)
+                                            if (da){
+                                                window.location.href="tb_Article/queryAll";
+                                            }else
+                                                alert("注册失败")
+                                        }
+                                    })
+                                }else
+                                    alert("注册失败")
+                            }
+                        })
+                    }else
+                        alert("请选择我同意用户协议")
+                } else {
+                    alert("验证码不正确")
+                }
+            }
+        }
+    }
+
+    $("#second").click(function (){
+        if ( yemail()){
+            byemail();
+            if ($("#span").val()!='')
+                setTime($("#second"));//开始倒计时
+            else
+                alert("邮箱已存在")
+        }
     });
-    $(".aw-register-pwd").focus(function(){
-        $(".oldPwdTip").hide();
-    });
-    $(".aw-register-pwd").blur(function(){
-        if(!$(this).val())
-            $(".oldPwdTip").show();
-    });
-    var mobile;
+    //查询邮箱是否存在
+    function byemail() {
+        $.ajax({
+            type:"post",
+            data:{email:$("[name=email]").val()},
+            url:"User/byEmail",
+            async:false,
+            success:function (da) {
+                var a = da.indexOf("_");
+                if (a<0)
+                $("#span").val(da);
+            }
+        })
+    }
+    //60s倒计时实现逻辑
+    var countdown = 60;
+    function setTime(obj) {
+        if (countdown == 0) {
+            obj.prop('disabled', false);
+            obj.text("获取验证码");
+            countdown = 60;//60秒过后button上的文字初始化,计时器初始化;
+            return;
+        } else {
+            obj.prop('disabled', true);
+            obj.text("("+countdown+"s)") ;
+            countdown--;
+        }
+        setTimeout(function() { setTime(obj) },1000) //每1000毫秒执行一次
+    }
+    //验证email
+    function yemail(){
+        $("[name=email]").trigger("blur");
+        if ($("[name=email]").parent().find(".no").length>0)
+            return false;
+        else{
+            return true;
+        }
+    }
+    //验证密码
+    function ypwd(){
+        $("[name=password]").trigger("blur");
+        if ($("[name=password]").parent().find(".no").length>0)
+            return false;
+        else{
+            return true;
+        }
+    }
     $(document).ready(function ()
     {
-        $.get(G_BASE_URL + '/account/ajax/register_agreement/', function (result) { $('#register_agreement').html(result.err); }, 'json');
-
-        $('.aw-agreement-btn').click(function()
-        {
-            if ($('.aw-register-agreement').is(':visible'))
-            {
-                $('.aw-register-agreement').hide();
-            }
-            else
-            {
-                $('.aw-register-agreement').show();
-            }
-        });
-
-        $('.more-information-btn').click(function()
-        {
-            $('.more-information').fadeIn();
-            $(this).parent().hide();
-        });
-
         verify_register_form('#register_form');
-
         /* 注册页面验证 */
-        function verify_register_form(element)
-        {
-
+        function verify_register_form(element){
             $(element).find('[type=text], [type=password]').on({
-                focus : function()
-                {
+                focus : function(){
                     if (typeof $(this).attr('tips') != 'undefined' && $(this).attr('tips') != '')
                     {
                         $(this).parent().append('<b class="aw-reg-tips">' + $(this).attr('tips') + '</b>');
                     }
                 },
-                blur : function()
-                {
-                    if ($(this).attr('tips') != '')
-                    {
-                        switch ($(this).attr('name'))
-                        {
-                            case 'user_name' :
-                                var _this = $(this);
-                                var min_length=2;
-                                var max_length=14;
-                                $(this).parent().find('.aw-reg-tips').detach();
-                                if (strlen($(this).val()) >= 0 && strlen($(this).val())< min_length)
-                                {
-                                    $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
-                                    return;
-                                }
-                                if (strlen($(this).val()) > max_length)
-                                {
-                                    $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
-                                    return;
-                                }
-                                else
-                                {
-                                    $.post(G_BASE_URL + '/account/ajax/check_username/',
-                                        {
-                                            username: $(this).val()
-                                        }, function (result)
-                                        {
-                                            if (result.errno == -1)
-                                            {
-                                                _this.parent().find('.aw-reg-tips').detach();
-                                                _this.parent().append('<b class="aw-reg-tips aw-reg-err"><i class="aw-icon i-err"></i>' + result.err + '</b>');
-                                            }
-                                            else
-                                            {
-                                                _this.parent().find('.aw-reg-tips').detach();
-                                                _this.parent().append('<b class="aw-reg-tips aw-reg-right"><i class="aw-icon i-followed"></i></b>');
-                                            }
-                                        }, 'json');
-                                }
-                                return;
-
+                blur : function(){
+                    if ($(this).attr('tips') != ''){
+                        switch ($(this).attr('name')){
                             case 'email' :
                                 $(this).parent().find('.aw-reg-tips').detach();
                                 var emailreg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-                                if (!emailreg.test($(this).val()))
-                                {
+                                if (!emailreg.test($(this).val())){
                                     $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
+                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><span class="no"></span><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
                                     return;
-                                }
-                                else
-                                {
+                                }else{
                                     $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-right"><i class="aw-icon i-followed"></i></b>');
+                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-right"><span class="ok"></span><i class="aw-icon i-followed"></i></b>');
                                 }
                                 return;
-
                             case 'password' :
                                 $(this).parent().find('.aw-reg-tips').detach();
-                                if ($(this).val().length >= 0 && $(this).val().length < 6)
-                                {
+                                if ($(this).val().length >= 0 && $(this).val().length < 6){
                                     $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
+                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><span class="no"></span><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
                                     return;
-                                }
-                                if ($(this).val().length > 17)
-                                {
+                                }if ($(this).val().length > 17){
                                     $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
+                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><span class="no"></span><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
                                     return;
-                                }
-                                else
-                                {
+                                }else{
                                     $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-right"><i class="aw-icon i-followed"></i></b>');
+                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-right"><span class="ok"></span><i class="aw-icon i-followed"></i></b>');
                                 }
                                 return;
-
-                            case 'mobile':
-                                $(this).parent().find('.aw-reg-tips').detach();
-                                var phonereg = /^1[345789]\d{9}$/;
-                                if (!phonereg.test($(this).val()))
-                                {
-                                    $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
-                                    return;
-                                }
-                                else
-                                {
-                                    $(this).parent().find('.aw-reg-tips').detach();
-                                }
-                                return;
-
-                            case 'smscode':
-                                $(this).parent().find('.aw-reg-tips').detach();
-                                if (!$(this).val())
-                                {
-                                    $(this).parent().find('.aw-reg-tips').detach();
-                                    $(this).parent().append('<b class="aw-reg-tips aw-reg-err"><i class="aw-icon i-err"></i>' + $(this).attr('errortips') + '</b>');
-                                    return;
-                                }
-                                else
-                                {
-                                    $(this).parent().find('.aw-reg-tips').detach();
-                                }
-                                return;
-
                         }
                     }
 
                 }
             });
         }
-
-        //判断字符长度
-        function strlen(str){
-            var len = 0;
-            for (var i=0; i<str.length; i++) {
-                var c = str.charCodeAt(i);
-                //单字节加1
-                if ((c >= 0x0001 && c <= 0x007e) || (0xff60<=c && c<=0xff9f)) {
-                    len++;
-                }
-                else {
-                    len+=2;
-                }
-            }
-            return len;
-        }
-
-        $('.select_area').LocationSelect({
-            labels: ["请选择省份或直辖市", "请选择城市"],
-            elements: document.getElementsByTagName("select"),
-            detector: function () {
-                this.select(["", ""]);
-            },
-            dataUrl: G_BASE_URL.replace('/?', '') + '/static/js/areas.js'
-        });
-
-
-        /*仿刷新：检测是否存在cookie*/
-        if($.cookie("captcha")){
-            var count = $.cookie("captcha");
-            var btn = $('#Smsbtn');
-            $('#Smsbtn').prop('disabled', true);
-            btn.text(count+'秒');
-            var resend = setInterval(function(){
-                count--;
-                if (count > 0){
-                    btn.text(count+'秒');
-                    $.cookie("captcha", count, {path: '/', expires: (1/86400)*count});
-                }else {
-                    $('#Smsbtn').prop('disabled', false);
-                    clearInterval(resend);
-                    btn.text("获取验证码")
-                }
-            }, 1000);
-        }
-
-        var handlerEmbed = function (captchaObj) {
-            $("#Smsbtn").click(function (e) {
-                var phonereg = /^1[3456789]\d{9}$/;
-                var mobile = $('input[name="mobile"]').val();
-
-                if(mobile=='' ){
-                    AWS.alert("请输入手机号");
-                    return false;
-                }
-                if(!phonereg.test(mobile)){
-                    AWS.alert("手机号格式不正确");
-                    return false;
-                }
-                if($('#Smsbtn').text()!="获取验证码"){
-                    return false;
-                }
-
-                var validate = captchaObj.getValidate();
-                if (!validate) {
-                    AWS.alert("请先完成验证");
-                    return false;
-                } else{
-                    $.post(G_BASE_URL + '/account/ajax/check_mobile/',{
-                        mobile:mobile,
-                        type:'regist',
-                    }, function (result)
-                    {
-                        if (result.errno == -1)
-                        {
-                            AWS.alert("手机号已经注册！");
-                            captchaObj.reset();
-                            return false;
-                        }else{
-                            $.ajax({
-                                url: G_BASE_URL + '/tools/sendSms/',
-                                type: "post",
-                                dataType: "json",
-                                data: {
-                                    mobile: mobile,
-                                    challenge: '',
-                                    geetest_challenge: validate.geetest_challenge,
-                                    geetest_validate: validate.geetest_validate,
-                                    geetest_seccode: validate.geetest_seccode,
-                                    client_type: 'web',
-                                    genre: '1'
-                                },
-                                success: function (result) {
-                                    if(result.errno == -1)
-                                    {
-                                        AWS.alert(result.err);
-                                        captchaObj.reset(); // 调用该接口进行重置
-                                        return false;
-                                    }else
-                                    {
-                                        AWS.alert(result.err);
-                                        var count = 60;
-                                        var inl = setInterval(function () {
-                                            $('#Smsbtn').prop('disabled', true);
-                                            count -= 1;
-                                            var text = count + ' 秒';
-                                            $.cookie("captcha", count, {path: '/', expires: (1/86400)*count});
-                                            $('#Smsbtn').text(text);
-                                            if (count <= 0) {
-                                                clearInterval(inl);
-                                                $('#Smsbtn').prop('disabled', false);
-                                                $('#Smsbtn').text('获取验证码');
-                                            }
-                                        }, 1000);
-                                        return true;
-                                    }
-
-                                }
-                            });
-                        }
-                    }, 'json');
-                }
-            });
-            $('#zhuce').click(function(){
-                var validate = captchaObj.getValidate();
-                if (!validate) {
-                    AWS.alert("请先完成验证");
-                    return false;
-                } else{
-                    $('#aw-login-user-repassword').val(encrypt_pass($('#aw-register-pwd').val()));
-                    AWS.ajax_post($('#register_form'), AWS.ajax_processer, 'error_message');
-                    captchaObj.reset(); // 调用该接口进行重置
-                    return false;
-                }
-            });
-            // 将验证码加到id为captcha的元素里，同时会有三个input的值：geetest_challenge, geetest_validate, geetest_seccode
-            captchaObj.appendTo(".embed-captcha");
-            captchaObj.onReady(function () {
-                $(".wait").css('display','none');
-            });
-        };
-
-        $.ajax({
-            // 获取id，challenge，success（是否启用failback）
-            url: G_BASE_URL+ "/account/slide_captcha/?t=" + (new Date()).getTime()+"&client_type='web'", // 加随机数防止缓存
-            type: "get",
-            dataType: "json",
-            success: function (data) {
-                var dataObj = eval('(' + data.rsm + ')');
-                // 使用initGeetest接口
-                // 参数1：配置参数
-                // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
-                initGeetest({
-                    gt: dataObj.gt,
-                    challenge: dataObj.challenge,
-                    new_captcha: dataObj.new_captcha,
-                    offline: !dataObj.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
-                    product: "embed", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
-                    width: '100%' // 设置按钮宽度, 与父元素宽度一致
-                }, handlerEmbed);
-            }
-        });
     });
 </script>
 
@@ -562,28 +338,7 @@
     <div class="aw-footer">
         Copyright © 2020, All Rights Reserved</span>
         <span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 3.5.1</a></span>
-        <script>
-            var _hmt = _hmt || [];
-            (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?1a4884ec01ab4ea9a8280251bbd1a95d";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
     </div>
 </div>
-<a class="aw-back-top hidden-xs" href="javascript:;" onclick="$.scrollTo(1, 600, {queue:true});"><i class="icon icon-up"></i></a>
-<!--底部公共注入钩子-->
-<!--end底部公共注入钩子-->
-<!-- DO NOT REMOVE -->
-<div id="aw-ajax-box" class="aw-ajax-box"></div>
-<div style="display:none;" id="__crond">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#__crond').html(unescape('%3Cimg%20src%3D%22' + G_BASE_URL + '/crond/run/1598517341%22%20width%3D%221%22%20height%3D%221%22%20/%3E'));
-        });
-    </script>
-</div>
-<!-- Escape time: 0.046350955963135 --></body>
+</body>
 </html>
