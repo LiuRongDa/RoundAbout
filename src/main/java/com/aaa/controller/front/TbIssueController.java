@@ -1,9 +1,6 @@
 package com.aaa.controller.front;
 
-import com.aaa.entity.TbArticle;
-import com.aaa.entity.TbArticleGambit;
-import com.aaa.entity.TbComment;
-import com.aaa.entity.TbIssueGambit;
+import com.aaa.entity.*;
 import com.aaa.service.TbArticleService;
 import com.aaa.service.TbCommentService;
 import com.aaa.service.TbIssueService;
@@ -55,10 +52,19 @@ public class TbIssueController {
 
     }
 
+    @RequestMapping("showReply")
+    public String showReply(Model model,Integer comment_id){
+        System.out.println(comment_id);
+        List<TbReply> tbReplies = tbCommentService.queryByIdReply(comment_id);
+        model.addAttribute("tbReplies",tbReplies);
+        System.out.println(tbReplies);
+        return "issue_details::div3";
+    }
+
     @RequestMapping("showcomm")
-    public String showcomm(Model model,Integer id){
-        System.out.println(id);
-        List<TbComment> tbComments = tbCommentService.queryById(id);
+    public String showcomm(Model model,Integer article_id){
+        System.out.println(article_id);
+        List<TbComment> tbComments = tbCommentService.queryByIdComm(article_id);
         System.out.println(tbComments);
         model.addAttribute("tbComments",tbComments);
         return "issue_details::div2";
@@ -68,7 +74,6 @@ public class TbIssueController {
     public String queryById(Model model,Integer id){
         List<TbIssueGambit> tbIssueGambits = tbIssueService.queryById(id);
         List<TbArticle> tbArticles = tbArticleService.queryByIdIss(id);
-        List<TbComment> tbComments = tbCommentService.queryById(1);
         model.addAttribute("art",tbArticles);
         model.addAttribute("issue",tbIssueGambits);
         return "issue_details";

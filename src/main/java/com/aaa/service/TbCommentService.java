@@ -112,6 +112,51 @@ public class TbCommentService {
     }
 
     /**
+     * 查询指定文章下的评论
+     * @param article_id
+     * @return
+     */
+    public List<TbComment> queryByIdComm(Integer article_id){
+        TbComment tbComment = new TbComment();
+        tbComment.setArticle_id(article_id);
+
+        List<TbComment> tbComments= tbCommentMapper.select(tbComment);
+
+        TbUser tbUser = new TbUser();
+        for (TbComment tc:tbComments){
+            tbUser.setUser_id(tc.getUser_id());
+            TbUser tbUser1 = tbUserMapper.selectOne(tbUser);
+            tc.setTbUser(tbUser1);
+        }
+        return tbComments;
+    }
+
+    /**
+     * 查询指定评论下的回复
+     */
+    public List<TbReply> queryByIdReply(Integer comment_id){
+        TbReply tbReply = new TbReply();
+        tbReply.setComment_id(comment_id);
+
+        List<TbReply> tbReplies = tbReplyMapper.select(tbReply);
+        TbUser tbUser = new TbUser();
+        for(TbReply tr : tbReplies){
+            tbUser.setUser_id(tr.getUser_id());
+            TbUser tbUser1 = tbUserMapper.selectOne(tbUser);
+            tr.setTbUser(tbUser1);
+            if(tr.getReply_idto() != 0){
+                TbReply tbReply1 = tbReplyMapper.selectByPrimaryKey(tr.getReply_idto());
+                tbUser.setUser_id(tbReply1.getUser_id());
+                TbUser tbUser2 = tbUserMapper.selectOne(tbUser);
+                tbReply1.setTbUser(tbUser2);
+                tr.setTbReplies(tbReply1);
+            }
+        }
+        return tbReplies;
+    }
+
+
+    /**
      * 查询指定文章下的评论(带用户),回复(带用户)
      */
     public List<TbComment> queryById(Integer article_id){
@@ -127,6 +172,7 @@ public class TbCommentService {
             tbUser.setUser_id(tc.getUser_id());
             //评论人
             TbUser tbUser1 = tbUserMapper.selectOne(tbUser);
+
 
             tc.setTbUser(tbUser1);
             tbReply.setComment_id(tc.getComment_id());

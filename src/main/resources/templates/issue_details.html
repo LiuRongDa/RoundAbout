@@ -338,7 +338,7 @@
                                                     $.ajax({
                                                         type:"post",
                                                         url:"tb_Issue/showcomm",
-                                                        data:{"id":id},
+                                                        data:{"article_id":id},
                                                         success:function(date){
                                                             $(a).parent().next().next().html(date);
                                                         }
@@ -348,7 +348,7 @@
                                         </div>
                                         <div hidden>
                                             <!--回复人id-->
-                                            <input type="text" name="user_id" value="1">
+                                            <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden>
                                             <!--回答id-->
                                             <input type="text" name="article_id" value="" th:value="${a.article_id}">
                                             <input type="text" name="comment_content" value="">
@@ -373,43 +373,103 @@
                                         </div>
 
                                         <div id="div2" th:fragment="div2">
-                                        <!--回复框开始-->
-                                            <!--<div class="panel panel-default">
-                                                <div class="panel-body">-->
-                                                    <div th:each="tbComment : ${tbComments}">
-                                                        <div class="mod-head">
-                                                            <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
-                                                                <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
-                                                            </a>
-                                                            <p>
-                                                                <a href="javascript:;" th:text="${tbComment.TbUser.user_name}">evz03424</a>
-                                                            </p>
-                                                        </div>
-                                                        <div class="mod-body">
-                                                            <div class="markitup-box">
-                                                                <h4 th:text="${tbComment.comment_content}">abc</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class="mod-footer">
-                                                            <div class="meta">
-                                                                <span class="pull-right text-color-999" th:text="${tbComment.comment_date}">2019-10-09 14:18</span>
-                                                                <a class="text-color-999">
-                                                                    <i class="icon icon-agree"></i> 0 赞
-                                                                </a>
-                                                                <a class="aw-article-comment text-color-999">
-                                                                    <i class="icon icon-comment"></i> 回复
-                                                                </a>
-                                                                <a href="javascript:;" class="text-color-999">
-                                                                    <i class="icon icon-report"></i>举报
-                                                                </a>
-                                                            </div>
+                                            <div th:each="tbComment : ${tbComments}">
+                                                <div class="mod-head">
+                                                    <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
+                                                        <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
+                                                    </a>
+                                                    <p>
+                                                        <a href="javascript:;" th:text="${tbComment.TbUser.user_name}">evz03424</a>
+                                                    </p>
+                                                </div>
+                                                <div class="mod-body">
+                                                    <div class="markitup-box">
+                                                        <h4 th:text="${tbComment.comment_content}">abc</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="mod-footer">
+                                                    <div class="meta">
+                                                        <span class="pull-right text-color-999" th:text="${tbComment.comment_date}">2019-10-09 14:18</span>
+                                                        <a class="text-color-999">
+                                                            <i class="icon icon-agree"></i> 0 赞
+                                                        </a>
+                                                        <a class="aw-article-comment text-color-999" th:onclick="showReply(this,[[${tbComment.comment_id}]])">
+                                                            <i class="icon icon-comment"></i> 查看回复
+                                                        </a>
+                                                        <a class="aw-article-comment text-color-999" onclick="$(this).parent().next().show()">
+                                                            <i class="icon icon-comment"></i> 回复
+                                                        </a>
+                                                        <a href="javascript:;" class="text-color-999">
+                                                            <i class="icon icon-report"></i>举报
+                                                        </a>
+                                                        <script type="text/javascript" th:inline="javascript">
+                                                            function showReply(a,id){
+                                                                if($(a).parent().next().css('display')=='none'){
 
+                                                                    $(a).parent().next().show();
+                                                                }else{
+                                                                    $(a).parent().next().hide();
+                                                                }
+                                                                $.ajax({
+                                                                    type:"post",
+                                                                    url:"tb_Issue/showReply",
+                                                                    data:{"comment_id":id},
+                                                                    success:function(date){
+                                                                        $(a).parent().next().html(date);
+                                                                    }
+                                                                })
+                                                            }
+                                                        </script>
+                                                    </div>
+
+                                                    <div>
+                                                        <!--回复人id-->
+                                                        <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden>
+                                                        <!--回答id-->
+                                                        <input type="text" name="article_id" value="">
+                                                        <input type="text" name="comment_content" value="">
+                                                        <input class="btn btn-success" type="button" value="回复">
+                                                        <script type="text/javascript" th:inline="javascript">
+                                                        </script>
+                                                    </div>
+
+                                                    <div id="div3" th:fragment="div3">
+                                                        <div th:each="tbRaply : ${tbReplies}">
+                                                            <div class="mod-head">
+                                                                <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
+                                                                    <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
+                                                                </a>
+                                                                <p>
+                                                                    <a href="javascript:;" th:text="${tbRaply.TbUser.user_name}">evz03424</a>
+                                                                </p>
+                                                            </div>
+                                                            <div class="mod-body">
+                                                                <div class="markitup-box">
+                                                                    <h4 th:text="${tbRaply.reply_content}">abc</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mod-footer">
+                                                                <div class="meta">
+                                                                    <span class="pull-right text-color-999" th:text="${tbRaply.reply_date}">2019-10-09 14:18</span>
+                                                                    <a class="text-color-999">
+                                                                        <i class="icon icon-agree"></i> 0 赞
+                                                                    </a>
+                                                                    <a class="aw-article-comment text-color-999">
+                                                                        <i class="icon icon-comment"></i> 回复
+                                                                    </a>
+                                                                    <a href="javascript:;" class="text-color-999">
+                                                                        <i class="icon icon-report"></i>举报
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                <!--</div>
-                                            </div>-->
-                                        </div>
 
+                                                </div>
+                                            </div>
+
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
