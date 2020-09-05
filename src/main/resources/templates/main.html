@@ -146,11 +146,13 @@
         <!-- 用户栏 -->
         <div class="aw-user-nav">
             <!-- 登陆&注册栏 -->
-            <a href="User/toMessage" class="aw-user-nav-dropdown">
-                <img alt="Artls" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" />
-            </a>
+            <!--<a href="User/toOneHome" class="aw-user-nav-dropdown"></a>-->
+                <img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" />
+
             <div class="aw-dropdown dropdown-list pull-right">
                 <ul class="aw-dropdown-list">
+                    <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                        个人主页</a></li>
                     <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
                     <li class="hidden-xs"><a href="http://azhihu.cssroom.com/?/account/setting/profile/"><i class="icon icon-setting"></i> 设置</a></li>
                     <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->

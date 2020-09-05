@@ -1,15 +1,21 @@
 package com.aaa.controller;
 
 import com.aaa.entity.TbUser;
+import com.aaa.service.TbArticleService;
 import com.aaa.service.TbUserService;
 import com.aaa.utils.EmailHelper;
+import com.aaa.utils.FileUtil;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
 
 /**
  * @author WH
@@ -20,6 +26,42 @@ import javax.servlet.http.HttpSession;
 public class UserMessageController {
     @Resource
     TbUserService tbUserService;
+
+    @Resource
+    FileUtil fileUtil;
+
+    @Resource
+    TbArticleService tbArticleService;
+
+    //上传图片
+    @RequestMapping("/uploadImage")
+    @ResponseBody
+    public String uploadNew(HttpSession session,@RequestParam(value = "file" ,required = false) MultipartFile uploadFile){
+        TbUser user = (TbUser) session.getAttribute("user");
+        try {
+            //检查是否是图片
+            BufferedImage bi = ImageIO.read(uploadFile.getInputStream());
+            if(bi == null){
+                return null;
+            }else{
+                String upload = fileUtil.upload(uploadFile);
+                if (tbUserService.setHeadImg(user.getUser_id(),upload))
+                    return upload;
+                else
+                    return "error";
+            }
+        }catch (Exception e){
+            return "error";
+        }
+    }
+    //跳转到个人主页
+    @RequestMapping("/toOneHome")
+    public String toOneHome(HttpSession session,Model model){
+        Integer id = (Integer) session.getAttribute("id");
+        tbArticleService.queryUser(id);
+        model.addAttribute("article",tbArticleService.queryUser(id));
+        return "onehome";
+    }
 
     //跳转到个人信息编辑页面
     @RequestMapping("/toMessage")

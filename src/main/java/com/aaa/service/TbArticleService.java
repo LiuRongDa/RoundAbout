@@ -35,6 +35,15 @@ public class TbArticleService {
     @Resource
     TbUserMapper tbUserMapper;
 
+    // wh 查询用户的文章
+    public List<TbArticle> queryUser(Integer id){
+        TbArticle tbArticle = new TbArticle();
+        tbArticle.setUser_id(id);
+        List<TbArticle> select = tbArticleMapper.select(tbArticle);
+        System.out.println(select);
+        return select;
+    }
+
     /**
      * 查询所有文章的基本信息(文章，用户  时间倒序,分页)
      *

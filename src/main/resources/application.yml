@@ -24,3 +24,8 @@ spring:
 mybatis:
   type-aliases-package: com.aaa.entity
   mapper-locations: classpath:mapper/*.xml
+
+#上传图片的映射路径/保存路径
+upload:
+  relativePath: imgs/
+  profile: D:/S3/

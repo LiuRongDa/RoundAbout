@@ -30,6 +30,7 @@ public class LoginController {
     public boolean toLogin(HttpSession session, @RequestParam("email") String email,@RequestParam("pwd") String pwd){
         TbUser tbUser = tbUserService.toLogin(email, pwd);
         session.setAttribute("user",tbUser);
+        session.setAttribute("id",tbUser.getUser_id());
         if (tbUser==null)
             return false;
         else

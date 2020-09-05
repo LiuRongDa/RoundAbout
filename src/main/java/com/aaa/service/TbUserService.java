@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,23 @@ public class TbUserService {
 
     @Resource
     BCryptPasswordEncoderRun bCryptPasswordEncoderRun;
+
+    //查询关注的人
+    public void queryAttentionUser(){
+
+    }
+
+    //设置头像
+    public boolean setHeadImg(Integer id,String image){
+        TbUser tbUser = new TbUser();
+        tbUser.setUser_id(id);
+        tbUser.setUser_photo(image);
+        int i = tbUserMapper.updateByPrimaryKeySelective(tbUser);
+        if (i>0)
+            return true;
+        else
+            return false;
+    }
 
     //注册
     public int toRegister(String email,String pwd){
