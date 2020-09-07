@@ -45,6 +45,12 @@ public interface TbStaffMapper extends MyMapper<TbStaff> {
     Boolean upInfo(@Param("staff_id")Integer staff_id,@Param("staff_name")String staff_name,@Param("staff_idcard")String staff_idcard,@Param("staff_phone")String staff_phone);
 
     /**
+     * 查询管理员账号
+     * @return
+     */
+    List<TbStaff> seleNum();
+
+    /**
      * 修改密码
      * @param staff_pwd
      * @param staff_id
