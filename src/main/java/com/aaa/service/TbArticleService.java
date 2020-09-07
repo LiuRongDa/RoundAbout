@@ -89,7 +89,7 @@ public class TbArticleService {
     }
 
     /**
-     * 查询指定问题下的 评论 回复,[回复]
+     * 查询指定问题下的 回答
      */
     public List<TbArticle> queryByIdIss(Integer issue_id){
         TbIssueArticle tbIssueArticle = new TbIssueArticle();

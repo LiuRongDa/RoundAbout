@@ -10,6 +10,7 @@
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="comment_date" jdbcType="VARCHAR" property="comment_date" />
     <result column="article_id" jdbcType="INTEGER" property="article_id" />
+    <result column="comment_count" jdbcType="INTEGER" property="comment_count" />
     <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
       <id column="user_id" property="user_id" />
     </association>

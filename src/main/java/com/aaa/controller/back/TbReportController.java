@@ -48,4 +48,13 @@ public class TbReportController {
         List<TbReport> tbReports = tbReportService.showMore(report_id,bereport_user_id);
         return tbReports;
     }
+
+
+    @RequestMapping("del")
+    public PageInfo<TbReport> del(Integer report_id){
+        Boolean del = tbReportService.del(report_id);
+        System.out.println(del);
+        if(del)return selePage(null,null,null,null,null);
+        return null;
+    }
 }
