@@ -71,6 +71,10 @@
     update tb_staff set staff_name=#{staff_name},staff_idcard=#{staff_idcard},staff_phone=#{staff_phone} where staff_id=#{staff_id}
   </update>
 
+  <select id="seleNum" resultMap="BaseResultMap">
+    select staff_number from tb_staff
+  </select>
+
   <!-- 修改密码-->
   <update id="upPwd" parameterType="com.aaa.entity.TbStaff">
 
