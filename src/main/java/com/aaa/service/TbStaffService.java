@@ -115,7 +115,6 @@ public class TbStaffService {
         //(staff.getStaff_pwd() 前台传的值  (staff.getStaff_pwd() 数据库的值
         System.out.println("1-----"+staff.getPassword());
         System.out.println("2-----"+staff.getStaff_pwd());
-        System.out.println("3-----"+staff.getStaff_pwd());
         if(!bCryptPasswordEncoder.matches(staff.getPassword(),staff.getStaff_pwd())){
             System.out.println("失败----"+bCryptPasswordEncoder.matches(staff.getStaff_pwd(),staff.getStaff_pwd()));
             return false;
