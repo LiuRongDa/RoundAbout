@@ -71,6 +71,17 @@ public class TbUserService {
         return tbUsers;
     }
 
+    //设置背景图
+    public boolean setbgImg(Integer id,String image){
+        TbUser tbUser = new TbUser();
+        tbUser.setUser_id(id);
+        tbUser.setUser_backdrop(image);
+        int i = tbUserMapper.updateByPrimaryKeySelective(tbUser);
+        if (i>0)
+            return true;
+        else
+            return false;
+    }
     //设置头像
     public boolean setHeadImg(Integer id,String image){
         TbUser tbUser = new TbUser();

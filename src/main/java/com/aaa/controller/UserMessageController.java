@@ -39,19 +39,31 @@ public class UserMessageController {
     //上传图片
     @RequestMapping("/uploadImage")
     @ResponseBody
-    public String uploadNew(HttpSession session,@RequestParam(value = "file" ,required = false) MultipartFile uploadFile){
+    public String uploadNew(HttpSession session,@RequestParam(value = "file" ,required = false) MultipartFile uploadFile,@RequestParam(value = "sta" ,required = false) Integer sta){
         TbUser user = (TbUser) session.getAttribute("user");
+        System.out.println(sta);
+        if(sta==null)
+            sta=0;
         try {
             //检查是否是图片
             BufferedImage bi = ImageIO.read(uploadFile.getInputStream());
             if(bi == null){
                 return null;
-            }else{
+            }else {
                 String upload = fileUtil.upload(uploadFile);
-                if (tbUserService.setHeadImg(user.getUser_id(),upload))
-                    return upload;
-                else
-                    return "error";
+                if (sta != 0) {
+                    if (tbUserService.setbgImg(user.getUser_id(), upload)) {
+                        session.setAttribute("user", tbUserService.queryById((Integer) session.getAttribute("id")));
+                        return upload;
+                    } else
+                        return "error";
+                } else {
+                    if (tbUserService.setHeadImg(user.getUser_id(), upload)) {
+                        session.setAttribute("user", tbUserService.queryById((Integer) session.getAttribute("id")));
+                        return upload;
+                    } else
+                        return "error";
+                }
             }
         }catch (Exception e){
             return "error";
