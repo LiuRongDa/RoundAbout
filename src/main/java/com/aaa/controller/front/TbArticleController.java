@@ -51,12 +51,33 @@ public class TbArticleController {
         return integer;
     }
 
+    /**
+     * 点赞评论
+     * @param comment_id
+     * @param user_id
+     * @return
+     */
     @RequestMapping("praiseComment")
     @ResponseBody
     public Integer praiseComment(Integer comment_id,Integer user_id){
         System.out.println("comment_id--->"+comment_id);
         System.out.println("user_id--->"+user_id);
         Integer integer = tbPraiseService.praiseComment(comment_id,user_id);
+        return integer;
+    }
+
+    /**
+     * 点赞回复
+     * @param reply_id
+     * @param user_id
+     * @return
+     */
+    @RequestMapping("praiseReply")
+    @ResponseBody
+    public Integer praiseReply(Integer reply_id,Integer user_id){
+        System.out.println("reply_id--->"+reply_id);
+        System.out.println("user_id--->"+user_id);
+        Integer integer = tbPraiseService.praiseReply(reply_id,user_id);
         return integer;
     }
 

@@ -265,17 +265,30 @@
                             </div>
                             <div class="meta clearfix">
                                 <div class="aw-article-vote pull-left">
-                                    <a href="javascript:;" class="agree"
-                                       onclick="AWS.User.article_vote($(this), 6, 1);"><i class="icon icon-agree"></i>
-                                        <b>5</b></a>
-                                    <a href="javascript:;" class="disagree"
-                                       onclick="AWS.User.article_vote($(this), 6, -1);"><i
-                                            class="icon icon-disagree"></i></a>
+                                    <a href="javascript:;" class="agree" th:onclick="i_count(this,[[${issue[0].TbIssue.issue_id}]])">
+                                        <i class="icon icon-agree"></i>
+                                        <b id="count" th:text="${issue[0].TbIssue.praise_count}">5</b>
+                                    </a>
+                                    <script type="text/javascript" th:inline="javascript">
+                                        function i_count(a,issue_id){
+                                            var user_id=[[${session.user.user_id}]];
+                                            var count = $("#count").text();
+                                            $.ajax({
+                                                type:"post",
+                                                url:"tb_Issue/praiseIssue",
+                                                data:{"issue_id":issue_id,"user_id":user_id},
+                                                success:function(date){
+                                                    if(date == 1){
+                                                        $("#count").text(parseInt(count+1))
+                                                    }else{
+                                                        $("#count").text(parseInt(count-1));
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    </script>
                                 </div>
                                 <span class="pull-right  more-operate">
-                                    <a href="javascript:;" onclick="AWS.dialog('favorite', {item_id:6, item_type:'article'});"  class="text-color-999">
-                                        <i class="icon icon-favor"></i> 收藏
-                                    </a>
                                     <a href="javascript:;" class="text-color-999" onclick="AWS.dialog('report', {item_type:'article', item_id:6,item_reson:''})">
                                         <i class="icon icon-report"></i>举报
                                     </a>
@@ -317,9 +330,30 @@
                                     <div class="mod-footer">
                                         <div class="meta">
                                             <span class="pull-right text-color-999" th:text="${a.article_date}">2019-10-09 14:18</span>
-                                            <a class="text-color-999 ">
-                                                <i class="icon icon-agree"></i> 0 赞
+                                            <a class="text-color-999" th:onclick="a_count(this,[[${a.article_id}]])" >
+                                                <i class="icon icon-agree"></i>
+                                                <span th:text="${a.praise_count}">0</span> 赞
                                             </a>
+                                            <script type="text/javascript" th:inline="javascript">
+                                                function a_count(a,article_id){
+                                                    var user_id=[[${session.user.user_id}]];
+                                                    var count = $(a).children("span").text();
+
+                                                    $.ajax({
+                                                        type:"post",
+                                                        url:"tb_Issue/praiseArticle",
+                                                        data:{"article_id":article_id,"user_id":user_id},
+                                                        success:function(date){
+                                                            if(date == 1){
+                                                                $(a).children("span").text(parseInt(count+1))
+                                                            }else{
+                                                                $(a).children("span").text(parseInt(count-1));
+                                                            }
+                                                        }
+
+                                                    })
+                                                }
+                                            </script>
                                             <a class="aw-article-comment text-color-999" th:onclick="showcomm(this,[[${a.article_id}]])">
                                                 <i class="icon icon-comment"></i> <span class="pl" th:text="${a.count}">0</span>条评论
                                             </a>
@@ -394,9 +428,30 @@
                                                 <div class="mod-footer">
                                                     <div class="meta">
                                                         <span class="pull-right text-color-999" th:text="${tbComment.comment_date}">2019-10-09 14:18</span>
-                                                        <a class="text-color-999">
-                                                            <i class="icon icon-agree"></i> 0 赞
+                                                        <a class="text-color-999" th:onclick="c_count(this,[[${tbComment.comment_id}]])">
+                                                            <i class="icon icon-agree"></i>
+                                                            <span th:text="${tbComment.praise_count}">0</span> 赞
                                                         </a>
+                                                        <script type="text/javascript" th:inline="javascript">
+                                                            function c_count(a,comment_id){
+                                                                var user_id=[[${session.user.user_id}]];
+                                                                var count = $(a).children("span").text();
+
+                                                                $.ajax({
+                                                                    type:"post",
+                                                                    url:"tb_Issue/praiseComment",
+                                                                    data:{"comment_id":comment_id,"user_id":user_id},
+                                                                    success:function(date){
+                                                                        if(date == 1){
+                                                                            $(a).children("span").text(parseInt(count+1))
+                                                                        }else{
+                                                                            $(a).children("span").text(parseInt(count-1));
+                                                                        }
+                                                                    }
+
+                                                                })
+                                                            }
+                                                        </script>
                                                         <a class="aw-article-comment text-color-999" th:onclick="showReply(this,[[${tbComment.comment_id}]])">
                                                             <i class="icon icon-comment"></i> <span class="hf" th:text="${tbComment.comment_count}">0</span>条回复
                                                         </a>
@@ -476,9 +531,30 @@
                                                             <div class="mod-footer">
                                                                 <div class="meta">
                                                                     <span class="pull-right text-color-999" th:text="${tbRaply.reply_date}">2019-10-09 14:18</span>
-                                                                    <a class="text-color-999">
-                                                                        <i class="icon icon-agree"></i> 0 赞
+                                                                    <a class="text-color-999" th:onclick="r_count(this,[[${tbRaply.reply_id}]])">
+                                                                        <i class="icon icon-agree"></i>
+                                                                        <span th:text="${tbRaply.praise_count}">0</span> 赞
                                                                     </a>
+                                                                    <script type="text/javascript" th:inline="javascript">
+                                                                        function r_count(a,reply_id){
+                                                                            var user_id=[[${session.user.user_id}]];
+                                                                            var count = $(a).children("span").text();
+
+                                                                            $.ajax({
+                                                                                type:"post",
+                                                                                url:"tb_Issue/praiseReply",
+                                                                                data:{"reply_id":reply_id,"user_id":user_id},
+                                                                                success:function(date){
+                                                                                    if(date == 1){
+                                                                                        $(a).children("span").text(parseInt(count+1))
+                                                                                    }else{
+                                                                                        $(a).children("span").text(parseInt(count-1));
+                                                                                    }
+                                                                                }
+
+                                                                            })
+                                                                        }
+                                                                    </script>
                                                                     <a class="aw-article-comment text-color-999" onclick="if($(this).parent().parent().next().css('display')=='none'){$(this).parent().parent().next().show()}else{$(this).parent().parent().next().hide()}">
                                                                         <i class="icon icon-comment"></i> 回复
                                                                     </a>

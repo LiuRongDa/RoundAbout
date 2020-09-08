@@ -59,6 +59,7 @@ public class TbArticleService {
         tbArticle.setArticle_state(0);
         tbArticle.setArticle_count(0);
         tbArticle.setCount(0);
+        tbArticle.setPraise_count(0);
         tbArticle.setArticle_date(dateString);
         int insert = tbArticleMapper.insert(tbArticle);
 
@@ -88,6 +89,7 @@ public class TbArticleService {
         tbArticle.setArticle_content(article_content);
         tbArticle.setArticle_count(0);
         tbArticle.setCount(0);
+        tbArticle.setPraise_count(0);
         tbArticle.setArticle_state(0);
         tbArticle.setArticle_date(dateString);
 

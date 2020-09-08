@@ -44,6 +44,7 @@ public class TbCommentService {
         tbComment.setComment_content(comment_content);
         tbComment.setComment_date(dateString);
         tbComment.setComment_count(0);
+        tbComment.setPraise_count(0);
 
         int insert = tbCommentMapper.insert(tbComment);
 
@@ -73,6 +74,7 @@ public class TbCommentService {
         tbComment.setArticle_id(article_id);
         tbComment.setComment_date(dateString);
         tbComment.setComment_count(0);
+        tbComment.setPraise_count(0);
 
         int insert = tbCommentMapper.insert(tbComment);
 
@@ -102,6 +104,7 @@ public class TbCommentService {
         }else{
             tbReply.setReply_idto(0);
         }
+        tbReply.setPraise_count(0);
         tbReply.setComment_id(comment_id);
         tbReply.setReply_content(comment_content);
         tbReply.setReply_date(dateString);

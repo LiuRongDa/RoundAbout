@@ -30,6 +30,70 @@ public class TbIssueController {
     @Resource
     TbGambitService tbGambitService;
 
+    @Resource
+    TbPraiseService tbPraiseService;
+
+
+    /**
+     * 点赞问题
+     * @param issue_id
+     * @param user_id
+     * @return
+     */
+    @RequestMapping("praiseIssue")
+    @ResponseBody
+    public Integer praiseIssue(Integer issue_id,Integer user_id){
+        System.out.println("issue_id--->"+issue_id);
+        System.out.println("user_id--->"+user_id);
+        Integer integer = tbPraiseService.praiseIssue(issue_id, user_id);
+        return integer;
+    }
+
+    /**
+     * 点赞回答
+     * @param article_id
+     * @param user_id
+     * @return
+     */
+    @RequestMapping("praiseArticle")
+    @ResponseBody
+    public Integer praiseArticle(Integer article_id,Integer user_id){
+        System.out.println("article_id--->"+article_id);
+        System.out.println("user_id--->"+user_id);
+        Integer integer = tbPraiseService.praiseArticle(article_id, user_id);
+        return integer;
+    }
+
+    /**
+     * 点赞评论
+     * @param comment_id
+     * @param user_id
+     * @return
+     */
+    @RequestMapping("praiseComment")
+    @ResponseBody
+    public Integer praiseComment(Integer comment_id,Integer user_id){
+        System.out.println("comment_id--->"+comment_id);
+        System.out.println("user_id--->"+user_id);
+        Integer integer = tbPraiseService.praiseComment(comment_id,user_id);
+        return integer;
+    }
+
+    /**
+     * 点赞回复
+     * @param reply_id
+     * @param user_id
+     * @return
+     */
+    @RequestMapping("praiseReply")
+    @ResponseBody
+    public Integer praiseReply(Integer reply_id,Integer user_id){
+        System.out.println("reply_id--->"+reply_id);
+        System.out.println("user_id--->"+user_id);
+        Integer integer = tbPraiseService.praiseReply(reply_id,user_id);
+        return integer;
+    }
+
 
     /**
      * 跳转

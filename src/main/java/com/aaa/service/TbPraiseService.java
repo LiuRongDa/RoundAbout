@@ -1,11 +1,7 @@
 package com.aaa.service;
 
-import com.aaa.dao.TbArticleMapper;
-import com.aaa.dao.TbCommentMapper;
-import com.aaa.dao.TbPraiseMapper;
-import com.aaa.entity.TbArticle;
-import com.aaa.entity.TbComment;
-import com.aaa.entity.TbPraise;
+import com.aaa.dao.*;
+import com.aaa.entity.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,6 +21,12 @@ public class TbPraiseService {
 
     @Resource
     TbCommentMapper tbCommentMapper;
+
+    @Resource
+    TbReplyMapper tbReplyMapper;
+
+    @Resource
+    TbIssueMapper tbIssueMapper;
 
     /**
      * 点赞文章
@@ -64,6 +66,7 @@ public class TbPraiseService {
 
         if(select.size() != 0){
             int delete = tbPraiseMapper.delete(tbPraise);
+
             TbComment tbComment = tbCommentMapper.selectByPrimaryKey(comment_id);
             tbComment.setPraise_count(tbComment.getPraise_count()-1);
             int i = tbCommentMapper.updateByPrimaryKey(tbComment);
@@ -77,5 +80,54 @@ public class TbPraiseService {
         }
     }
 
+    /**
+     * 点赞回复
+     * @param reply_id
+     * @param user_id
+     * @return
+     */
+    public Integer praiseReply(Integer reply_id,Integer user_id){
+        TbPraise tbPraise = new TbPraise();
+        tbPraise.setReply_id(reply_id);
+        tbPraise.setUser_id(user_id);
+        List<TbPraise> select = tbPraiseMapper.select(tbPraise);
 
+        if(select.size() != 0){
+            int delete = tbPraiseMapper.delete(tbPraise);
+            TbReply tbReply = tbReplyMapper.selectByPrimaryKey(reply_id);
+            tbReply.setPraise_count(tbReply.getPraise_count()-1);
+            int i = tbReplyMapper.updateByPrimaryKey(tbReply);
+            return 0;
+        }else{
+            int insert = tbPraiseMapper.insert(tbPraise);
+            TbReply tbReply = tbReplyMapper.selectByPrimaryKey(reply_id);
+            tbReply.setPraise_count(tbReply.getPraise_count()+1);
+            int i = tbReplyMapper.updateByPrimaryKey(tbReply);
+            return 1;
+        }
+    }
+
+    /**
+     * 点赞文章
+     */
+    public Integer praiseIssue(Integer issue_id,Integer user_id){
+        TbPraise tbPraise = new TbPraise();
+        tbPraise.setIssue_id(issue_id);
+        tbPraise.setUser_id(user_id);
+        List<TbPraise> select = tbPraiseMapper.select(tbPraise);
+
+        if(select.size() != 0){
+            int delete = tbPraiseMapper.delete(tbPraise);
+            TbIssue tbIssue = tbIssueMapper.selectByPrimaryKey(issue_id);
+            tbIssue.setPraise_count(tbIssue.getPraise_count()-1);
+            int i = tbIssueMapper.updateByPrimaryKey(tbIssue);
+            return 0;
+        }else{
+            int insert = tbPraiseMapper.insert(tbPraise);
+            TbIssue tbIssue = tbIssueMapper.selectByPrimaryKey(issue_id);
+            tbIssue.setPraise_count(tbIssue.getPraise_count()+1);
+            int i = tbIssueMapper.updateByPrimaryKey(tbIssue);
+            return 1;
+        }
+    }
 }

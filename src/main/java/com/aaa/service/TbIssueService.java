@@ -69,6 +69,8 @@ public class TbIssueService {
         tbIssue.setIssue_date(dateString);
         tbIssue.setIssue_count(0);
         tbIssue.setCount(0);
+        tbIssue.setPraise_count(0);
+
         int insert = tbIssueMapper.insert(tbIssue);
         if(topics!=null && topics!=""){
             tbIssue = tbIssueMapper.selectOne(tbIssue);

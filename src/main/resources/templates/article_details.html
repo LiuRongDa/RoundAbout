@@ -358,7 +358,6 @@
                                                         }
                                                     }
                                                 })
-
                                             }
                                         </script>
 
@@ -426,10 +425,29 @@
                                                 <div class="mod-footer">
                                                     <div class="meta">
                                                         <span class="pull-right text-color-999" th:text="${a.reply_date}">2019-10-09 14:18</span>
-                                                        <a class="text-color-999">
+                                                        <a class="text-color-999" th:onclick="r_count(this,[[${a.reply_id}]])">
                                                             <i class="icon icon-agree"></i>
                                                             <span th:text="${a.praise_count}">0</span> 赞
                                                         </a>
+                                                        <script type="text/javascript" th:inline="javascript">
+                                                            function r_count(a,reply_id){
+                                                                var count = $(a).children("span").text();
+                                                                var user_id = [[${session.user.user_id}]];
+
+                                                                $.ajax({
+                                                                    type:"post",
+                                                                    url:"tb_Article/praiseReply",
+                                                                    data:{"user_id":user_id,"reply_id":reply_id},
+                                                                    success:function(date){
+                                                                        if(date == 1){
+                                                                            $(a).children("span").text(parseInt(count+1));
+                                                                        }else{
+                                                                            $(a).children("span").text(parseInt(count-1));
+                                                                        }
+                                                                    }
+                                                                })
+                                                            }
+                                                        </script>
                                                         <a class="aw-article-comment text-color-999" id="" onclick="if($(this).parent().next().css('display')=='none'){ $(this).parent().next().show(); }else{ $(this).parent().next().hide(); }">
                                                             <i class="icon icon-comment"></i> 回复
                                                         </a>
