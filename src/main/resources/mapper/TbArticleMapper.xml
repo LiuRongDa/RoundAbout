@@ -18,4 +18,22 @@
       <id column="user_id" property="user_id" />
     </association>
   </resultMap>
+
+  <select id="selePage" resultMap="BaseResultMap">
+    select * from tb_article LEFT JOIN tb_user on tb_article.user_id=tb_user.user_id
+    <where>
+        1=1
+      <if test="article_title != 'undefined' and article_title!=null and article_title != ''">
+        and tb_article.article_title like CONCAT("%", #{article_title}, "%")
+      </if>
+      <if test="article_content != 'undefined' and article_content!=null and article_content != ''">
+       and  tb_article.article_content like CONCAT("%", #{article_content}, "%")
+      </if>
+      <if test="article_date != 'undefined' and article_date!=null and article_date != ''">
+       and  datediff(tb_article.article_date,#{article_date})=0
+      </if>
+    </where>
+    ORDER BY tb_article.article_id DESC
+  </select>
+
 </mapper>

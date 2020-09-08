@@ -35,6 +35,9 @@ public class TbArticleService {
     @Resource
     TbUserMapper tbUserMapper;
 
+    @Resource
+    TbReportService tbReportService;
+
     // wh 查询用户的文章
     public List<TbArticle> queryUser(Integer id){
         TbArticle tbArticle = new TbArticle();
@@ -119,4 +122,40 @@ public class TbArticleService {
         return art;
     }
 
+    /**
+     * LRD 后台 分页+模糊查询
+     * @param pageNum
+     * @param pageSize
+     * @param article_title
+     * @param article_content
+     * @return
+     */
+    public PageInfo<TbArticle> selePage(Integer pageNum, Integer pageSize,String article_title,String article_content,String article_date){
+        if(pageNum==null || pageNum==0) pageNum = 1;
+        if(pageSize==null || pageSize==0) pageSize = 5;
+        PageHelper.startPage(pageNum,pageSize);
+        List<TbArticle> tbArticles =tbArticleMapper.selePage(article_title,article_content,article_date);
+        PageInfo<TbArticle> pageInfo=new PageInfo<>(tbArticles);
+        return pageInfo;
+    }
+
+    /**
+     * LRD 后台 查看详情
+     * @param article_id
+     * @return
+     */
+    public TbArticle seleOne(Integer article_id){
+        TbArticle tbArticle=new TbArticle();
+        tbArticle.setArticle_id(article_id);
+        TbArticle selectOne = tbArticleMapper.selectOne(tbArticle);
+        return selectOne;
+    }
+
+    /**
+     * LRD 后台 删除文章
+     * @param article_id
+     */
+    public void del(Integer article_id){
+        tbReportService.delArticle(article_id);
+    }
 }
