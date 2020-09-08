@@ -125,9 +125,17 @@ public class TbstaffController {
      */
     @RequestMapping("oldPwd")
     public Boolean oldPwd(Integer staff_id){
-        Boolean aBoolean = tbStaffService.oldPwd(staff_id);
-        return aBoolean;
+        return tbStaffService.oldPwd(staff_id);
     }
 
-
+    /**
+     * 修改密码
+     * @param staff_pwd
+     * @param staff_id
+     * @return
+     */
+    @RequestMapping("upPwd")
+    public Boolean upPwd(String staff_pwd,Integer staff_id){
+        return tbStaffService.upPwd(staff_pwd, staff_id);
+    }
 }

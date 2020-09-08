@@ -7,6 +7,7 @@ import com.aaa.dao.TbUserMapper;
 import com.aaa.entity.TbAttention;
 import com.aaa.entity.TbUser;
 import com.aaa.security.BCryptPasswordEncoderRun;
+import com.aaa.utils.EmailSendUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,6 +32,9 @@ public class TbUserService {
 
     @Resource
     TbEducationMapper tbEducationMapper;
+
+    @Resource
+    EmailSendUtils emailSendUtils;
 
     @Resource
     BCryptPasswordEncoderRun bCryptPasswordEncoderRun;
@@ -146,9 +150,9 @@ public class TbUserService {
      */
     public PageInfo<TbUser> selePage(Integer pageNum,Integer pageSize,String user_name){
         if(pageNum==null || pageNum==0){
-            PageHelper.startPage(1,2);
+            PageHelper.startPage(1,5);
         }else if(pageSize==null || pageSize==0){
-            PageHelper.startPage(pageNum,2);
+            PageHelper.startPage(pageNum,5);
         }else{
             PageHelper.startPage(pageNum,pageSize);
         }
@@ -169,6 +173,7 @@ public class TbUserService {
         BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
         String pwd = bCrypt.encode(tbUser.getUser_pwd());
         tbUser.setUser_pwd(pwd);
+        tbUser.setUser_photo("cat.gif");
         Boolean add = tbUserMapper.add(tbUser);
         return add;
     }
@@ -180,6 +185,14 @@ public class TbUserService {
      * @return
      */
     public Boolean upState(Integer user_state,Integer user_id){
+        TbUser tbUser=new TbUser();
+        tbUser.setUser_id(user_id);
+        TbUser user = tbUserMapper.selectOne(tbUser);
+        if(user_state==0){
+            emailSendUtils.sendSimple("大问号","您的账户已被封禁！",user.getUser_email());
+        }else{
+            emailSendUtils.sendSimple("大问号","您的账户已被解封！",user.getUser_email());
+        }
         Boolean aBoolean = tbUserMapper.upState(user_state, user_id);
         return aBoolean;
     }
@@ -200,5 +213,13 @@ public class TbUserService {
     public TbUser queryById(Integer user_id){
         TbUser tbUser = tbUserMapper.selectByPrimaryKey(user_id);
         return tbUser;
+    }
+
+
+    public TbUser queryByUserId(Integer user_id){
+        TbUser tbUser=new TbUser();
+        tbUser.setUser_id(user_id);
+        TbUser selectOne = tbUserMapper.selectOne(tbUser);
+        return selectOne;
     }
 }

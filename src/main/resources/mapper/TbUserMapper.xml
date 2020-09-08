@@ -34,7 +34,7 @@
   </resultMap>
 
   <sql id="add">
-    user_name,user_phone,user_pwd,user_email,user_sign,user_sex,user_brief,user_trade
+    user_name,user_photo,user_phone,user_pwd,user_email,user_sign,user_sex,user_brief,user_trade
   </sql>
   <!-- 查询被谁关注-->
   <select id="queryAttentionUser" resultMap="BaseResultMap">
@@ -58,7 +58,7 @@
 
 
   <insert id="add" parameterType="com.aaa.entity.TbUser">
-    insert into tb_user(<include refid="add"/>) values(#{user_name},#{user_phone},#{user_pwd},#{user_email},#{user_sign},#{user_sex},#{user_brief},#{user_trade})
+    insert into tb_user(<include refid="add"/>) values(#{user_name},#{user_photo},#{user_phone},#{user_pwd},#{user_email},#{user_sign},#{user_sex},#{user_brief},#{user_trade})
   </insert>
 
   <!-- 修改状态 正常 封禁-->

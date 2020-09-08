@@ -105,22 +105,27 @@ public class TbStaffService {
 
 
     /**
-     * 校验密码是否一致
+     * LRD 后台 校验密码是否一致
      * @param staff_id
      * @return
      */
     public Boolean oldPwd(Integer staff_id){
         TbStaff staff = tbStaffMapper.selectByPrimaryKey(staff_id);
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        //(staff.getStaff_pwd() 前台传的值  (staff.getStaff_pwd() 数据库的值
-        System.out.println("1-----"+staff.getPassword());
-        System.out.println("2-----"+staff.getStaff_pwd());
-        if(!bCryptPasswordEncoder.matches(staff.getPassword(),staff.getStaff_pwd())){
-            System.out.println("失败----"+bCryptPasswordEncoder.matches(staff.getStaff_pwd(),staff.getStaff_pwd()));
-            return false;
-        }else{
-            System.out.println("成功----"+bCryptPasswordEncoder.matches(staff.getStaff_pwd(),staff.getStaff_pwd()));
-            return true;
-        }
+        if(staff.getPassword().equals(staff.getStaff_pwd()))return true;
+        return false;
+    }
+
+    /**
+     * 修改密码
+     * @param staff_pwd
+     * @param staff_id
+     * @return
+     */
+    public Boolean upPwd(String staff_pwd,Integer staff_id){
+        //密码加密
+        BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
+        String encode = bCrypt.encode(staff_pwd);
+        Boolean aBoolean = tbStaffMapper.upPwd(encode, staff_id);
+        return aBoolean;
     }
 }

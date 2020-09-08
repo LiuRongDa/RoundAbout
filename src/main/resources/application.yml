@@ -20,7 +20,17 @@ spring:
 
   resources:
     static-locations: classpath:/META- INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/ # 静态资源路径
-
+  mail:
+    host: smtp.qq.com
+    username: 1404292909@qq.com
+    password: twtcrmpymcnvbahb
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 mybatis:
   type-aliases-package: com.aaa.entity
   mapper-locations: classpath:mapper/*.xml

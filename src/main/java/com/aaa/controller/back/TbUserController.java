@@ -1,7 +1,11 @@
 package com.aaa.controller.back;
 
+import com.aaa.entity.Operation;
 import com.aaa.entity.TbUser;
+import com.aaa.service.TbOperationService;
 import com.aaa.service.TbUserService;
+import com.aaa.utils.EmailHelper;
+import com.aaa.utils.EmailSendUtils;
 import com.aaa.utils.JacksonUtils;
 import com.github.pagehelper.PageInfo;
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -24,7 +28,10 @@ import java.util.List;
 public class TbUserController {
     @Resource
     TbUserService tbUserService;
+    @Resource
+    TbOperationService tbOperationService;
 
+    Operation operation=new Operation();
    /* @RequestMapping("query")
     public TbUser query(){
         return tbUserService.queryProfession();
@@ -50,7 +57,7 @@ public class TbUserController {
      * @return
      */
   @RequestMapping("add")
-  public PageInfo<TbUser> add(String tbUser){
+  public PageInfo<TbUser> add(String tbUser,Integer staff_id){
       TbUser t=new TbUser();
       try {
           t=JacksonUtils.json2pojo(tbUser,TbUser.class);
@@ -58,8 +65,15 @@ public class TbUserController {
           e.printStackTrace();
       }
       Boolean add = tbUserService.add(t);
-      if(add)return userAndTradeQueryAll(null,null,null);
-      return null;
+      if(add){
+          operation.setStaff_id(staff_id);
+          operation.setUser_name(t.getUser_name());
+          operation.setOperation_content("添加用户信息");
+          tbOperationService.add(operation);
+          return userAndTradeQueryAll(null,null,null);
+      }else{
+          return null;
+      }
   }
 
     /**
@@ -69,10 +83,22 @@ public class TbUserController {
      * @return
      */
     @RequestMapping("upState")
-  public PageInfo<TbUser> upState(Integer user_state,Integer user_id){
+  public PageInfo<TbUser> upState(Integer user_state,Integer user_id,Integer staff_id){
       Boolean aBoolean = tbUserService.upState(user_state, user_id);
-      if(aBoolean) return userAndTradeQueryAll(null,null,null);
-      return null;
+        TbUser tbUser = tbUserService.queryByUserId(user_id);
+        if(aBoolean){
+          operation.setStaff_id(staff_id);
+          operation.setUser_name(tbUser.getUser_name());
+          if(user_state==0){
+              operation.setOperation_content("禁用用户");
+          }else{
+              operation.setOperation_content("解封用户");
+          }
+          tbOperationService.add(operation);
+          return userAndTradeQueryAll(null,null,null);
+      }else{
+          return null;
+      }
   }
 
     /**

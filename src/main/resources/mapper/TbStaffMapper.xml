@@ -77,6 +77,6 @@
 
   <!-- 修改密码-->
   <update id="upPwd" parameterType="com.aaa.entity.TbStaff">
-
+    update tb_staff set staff_pwd=#{staff_pwd} where staff_id#{staff_id}
   </update>
 </mapper>
