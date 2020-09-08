@@ -96,7 +96,7 @@
 	<div class="container" style="padding-right:0px;">
 		<!-- logo -->
 		<div class="aw-logo hidden-xs">
-			<a href="http://azhihu.cssroom.com/">
+			<a href="tb_Article/queryAll">
 				<img src="images/logo_(1).png" height="40">
 			</a>
 		</div>
@@ -113,7 +113,7 @@
 			<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="http://azhihu.cssroom.com/?/explore"><i class=""></i> 首页</a>
+						<a href="tb_Article/queryAll"><i class=""></i> 首页</a>
 					</li>
 					<li>
 						<a href="http://azhihu.cssroom.com/?/column"><i class=""></i> 专栏</a>
@@ -168,7 +168,9 @@
 			</a>
 			<div class="aw-dropdown dropdown-list pull-right">
 				<ul class="aw-dropdown-list">
-					<li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse"
+					<li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+						个人主页</a></li>
+					<li><a href=""><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse"
 																											 id="inbox_unread" style="display: none;">0</span></a></li>
 					<li class="hidden-xs"><a href="http://azhihu.cssroom.com/?/account/setting/profile/"><i class="icon icon-setting"></i>
 						设置</a></li>
@@ -214,28 +216,25 @@
 				<div class="aw-user-setting bgw">
 					<div class="tabbable">
 						<ul class="nav nav-tabs aw-nav-tabs active">
-							<li><a href="http://azhihu.cssroom.com/?/account/setting/verify/">申请认证</a></li>
 							<li><a href="http://azhihu.cssroom.com/?/account/setting/security/">安全设置</a></li>
-							<li><a href="http://azhihu.cssroom.com/?/account/setting/privacy/">隐私/提醒</a></li>
 							<li class="active"><a href="http://azhihu.cssroom.com/?/account/setting/profile/">基本资料</a></li>
 
 							<h2><i class="icon icon-setting"></i> 用户设置</h2>
 						</ul>
 					</div>
-					<span th:text="${session.user}"></span>
 					<div class="tab-content clearfix">
 						<!-- 上传头像 -->
-						<div class="side-bar">
+						<div class="side-bar" style="float: right;padding-top: 150px">
 							<dl>
 								<dt class="pull-left">
 									<!--class="aw-border-radius-5"-->
-									<img width="100" height="100" src="images/avatar-max-img.png" alt="" class="head_photo"  ></dt>
+									<img width="100" height="100" th:src="${session.user.user_photo}" alt="" class="head_photo"  ></dt>
 								<dd class="pull-left">
 									<h5>头像设置</h5>
 									<p>支持 jpg、gif、png 等格式</p>
 									<form id="form" method="post"  onsubmit="return false" enctype="multipart/form-data" action="uploadNew">
 										<input type="file" id="file"  name="file" multiple="multiple"  style='display:none;'>
-										<input type="button" onclick="login()" value="提交"><br>
+										<input type="button" onclick="login()" value="更改"><br>
 										<!--<img src="images/login.jpg" id="head_photo" style="width: 200px;height: 100px">-->
 									</form>
 									<script type="text/javascript">
@@ -270,20 +269,21 @@
 									</script>
 								</dd>
 							</dl>
-						</div><br><br><br><br>
+						</div>
 						<!-- end 上传头像 -->
 						<!-- 基本信息 -->
 						<div class="aw-mod">
-							<div class="mod-body">
+							<div class="mod-body" >
 								<form id="setting_form" method="post" action="http://azhihu.cssroom.com/?/account/ajax/profile_setting/">
-									<div class="aw-mod mod-base">
+									<div class="aw-mod mod-base" style="width: 70%;">
 										<div class="mod-head">
 											<h3>基本信息</h3>
 										</div>
 										<div class="mod-body">
 											<dl>
-												<dt>用户名:</dt>
-												<dd th:text="${session.user.user_name}"></dd>
+												<dt><label>用户名:</label></dt>
+												<dd class="introduce"><input class="form-control"  name="signature" maxlength="128" type="text" value="" th:placeholder="${session.user.user_name}"></dd>
+											</dl>
 											</dl>
 											<dl>
 												<dt>邮箱:</dt>
@@ -294,14 +294,14 @@
 												<dt>性别:</dt>
 												<dd>
 													<label>
-														<input name="sex" id="sex" value="1" type="radio"> 男 </label>
+														<input name="sex"  value="0" type="radio"> 男 </label>
 													<label>
-														<input name="sex" id="sex" value="2" type="radio"> 女 </label>
+														<input name="sex"  value="1" type="radio"> 女 </label>
 													<label>
-														<input name="sex" id="sex" value="3" type="radio" checked="checked"> 保密 </label>
+														<input name="sex"  value="2" type="radio" checked="checked"> 保密 </label>
 												</dd>
 											</dl>
-											<dl>
+											<!--<dl>
 												<dt>生日:</dt>
 												<dd>
 													<select name="birthday_y" style="display: inline-block" class="form-control">
@@ -519,7 +519,7 @@
 														<option value="台湾">台湾</option>
 													</select> <select name="city" class="select_area form-control" style="display: inline-block"></select>
 												</dd>
-											</dl>
+											</dl>-->
 											<dl>
 												<dt><label>职业:</label></dt>
 												<dd>
@@ -567,15 +567,18 @@
 												</dd>
 											</dl>
 											<dl>
-												<dt><label>介绍:</label></dt>
-												<dd class="introduce"><input class="form-control" name="signature" maxlength="128" type="text" value="" th:placeholder="${session.user.user_brief}"></dd>
+												<dt><label>个性签名:</label></dt>
+												<dd class="introduce"><input class="form-control" name="signature" maxlength="128" type="text" value="" th:placeholder="${session.user.user_sign}"></dd>
 											</dl>
-
+											<dl>
+												<dt><label>现居住地:</label></dt>
+												<dd class="introduce"><input class="form-control" name="signature" maxlength="128" type="text" value="" th:placeholder="${session.user.user_residence}"></dd>
+											</dl>
 										</div>
 									</div>
 									<!-- end 基本信息 -->
 									<!-- 联系方式 -->
-									<div class="aw-mod mod-contact">
+									<!--<div class="aw-mod mod-contact">
 										<div class="mod-head">
 											<h3>联系方式</h3>
 										</div>
@@ -590,16 +593,12 @@
 													<input class="form-control" type="text" id="input-mobile" name="mobile" value="">
 												</li>
 												<li>
-													<label for="input-common-email">常用邮箱:</label>
-													<input class="form-control" type="text" id="input-common-email" name="common_email" value="">
-												</li>
-												<li>
 													<label for="input-homepage">网站:</label>
 													<input class="form-control" type="text" id="input-homepage" name="homepage" value="">
 												</li>
 											</ul>
 										</div>
-									</div>
+									</div>-->
 									<!-- end 联系方式 -->
 								</form>
 
@@ -760,7 +759,7 @@
 								<!-- end 教育经历 -->
 
 								<!-- 工作经历 -->
-								<div class="aw-mod aw-user-work">
+								<!--<div class="aw-mod aw-user-work">
 									<div class="mod-head">
 										<h3>工作经历</h3>
 									</div>
@@ -1076,7 +1075,7 @@
 											</tbody>
 										</table>
 									</div>
-								</div>
+								</div>-->
 								<!-- end 工作经历 -->
 							</div>
 							<div class="mod-footer clearfix">
