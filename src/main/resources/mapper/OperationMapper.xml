@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.OperationMapper">
+  <resultMap id="BaseResultMap" type="com.aaa.entity.Operation">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="operation_id" jdbcType="INTEGER" property="operation_id" />
+    <result column="operation_content" jdbcType="VARCHAR" property="operation_content" />
+    <result column="operation_time" jdbcType="TIMESTAMP" property="operation_time" />
+    <result column="staff_id" jdbcType="INTEGER" property="staff_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="user_name" jdbcType="VARCHAR" property="user_name" />
+
+    <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
+      <id column="user_id" property="user_id"></id>
+    </association>
+
+    <association property="tbStaff" column="staff_id" javaType="com.aaa.entity.TbStaff" autoMapping="true">
+      <id column="staff_id" property="staff_id"></id>
+    </association>
+  </resultMap>
+
+  <select id="selePage" resultMap="BaseResultMap">
+    select * from operation LEFT JOIN tb_staff on operation.staff_id=tb_staff.staff_id LEFT JOIN tb_user on operation.user_id =tb_user.user_id
+    <where>
+      1=1
+      <if test="operation_content !='undefined' and operation_content != '' and operation_content != null ">
+        and operation.operation_content like CONCAT("%", #{operation_content}, "%")
+      </if>
+      <if test="operation_time != 'undefined' and operation_time != null and operation_time != '' ">
+        and datediff(operation.operation_time,#{operation_time})=0
+      </if>
+    </where>
+    ORDER BY operation.operation_id DESC
+  </select>
+  
+  <insert id="add" parameterType="com.aaa.entity.Operation">
+    insert into operation(operation_content,user_name,staff_id) values(#{operation_content},#{user_name},#{staff_id})
+  </insert>
+</mapper>
