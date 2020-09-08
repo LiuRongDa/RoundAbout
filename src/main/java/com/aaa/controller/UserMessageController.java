@@ -2,6 +2,7 @@ package com.aaa.controller;
 
 import com.aaa.entity.TbUser;
 import com.aaa.service.TbArticleService;
+import com.aaa.service.TbIssueService;
 import com.aaa.service.TbUserService;
 import com.aaa.utils.EmailHelper;
 import com.aaa.utils.FileUtil;
@@ -32,6 +33,8 @@ public class UserMessageController {
 
     @Resource
     TbArticleService tbArticleService;
+    @Resource
+    TbIssueService tbIssueService;
 
     //上传图片
     @RequestMapping("/uploadImage")
@@ -58,9 +61,45 @@ public class UserMessageController {
     @RequestMapping("/toOneHome")
     public String toOneHome(HttpSession session,Model model){
         Integer id = (Integer) session.getAttribute("id");
-        tbArticleService.queryUser(id);
+        //查询用户的文章
         model.addAttribute("article",tbArticleService.queryUser(id));
+        //查询关注的人
+        model.addAttribute("userAttention",tbUserService.queryUserAttention(id));
+        //查询用户被谁关注
+        model.addAttribute("attentionUser",tbUserService.queryAttentionUser(id));
+        //用户的问题
+        model.addAttribute("userIssue",tbIssueService.userIssue(id));
+
         return "onehome";
+    }
+    //关注 取消
+    @RequestMapping("/attention")
+    @ResponseBody
+    public String attention(HttpSession session,Integer id,Integer sta){
+        System.out.println(sta);
+        tbUserService.attention((Integer) session.getAttribute("id"),id,sta);
+        return null;
+    }
+    //跳转到别人主页
+    @RequestMapping("/toElseHome")
+    public String toElseHome(HttpSession session,Integer id,Model model){
+        if (id==session.getAttribute("id")){
+            return "redirect:toOneHome";
+        }else{
+            //查询是否关注某人
+            model.addAttribute("booleanUser",tbUserService.booleanUser((Integer) session.getAttribute("id"),id));
+            //基本信息
+            model.addAttribute("elseUser",tbUserService.queryById(id));
+            //查询用户的文章
+            model.addAttribute("article",tbArticleService.queryUser(id));
+            //查询关注的人
+            model.addAttribute("userAttention",tbUserService.queryUserAttention(id));
+            //查询用户被谁关注
+            model.addAttribute("attentionUser",tbUserService.queryAttentionUser(id));
+            //用户的问题
+            model.addAttribute("userIssue",tbIssueService.userIssue(id));
+            return "else_userhome";
+        }
     }
 
     //跳转到个人信息编辑页面

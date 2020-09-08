@@ -1,8 +1,10 @@
 package com.aaa.service;
 
+import com.aaa.dao.TbAttentionMapper;
 import com.aaa.dao.TbEducationMapper;
 import com.aaa.dao.TbProfessionMapper;
 import com.aaa.dao.TbUserMapper;
+import com.aaa.entity.TbAttention;
 import com.aaa.entity.TbUser;
 import com.aaa.security.BCryptPasswordEncoderRun;
 import com.github.pagehelper.PageHelper;
@@ -11,8 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.mail.Session;
-import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -34,10 +34,41 @@ public class TbUserService {
 
     @Resource
     BCryptPasswordEncoderRun bCryptPasswordEncoderRun;
+    @Resource
+    TbAttentionMapper tbAttentionMapper;//关注表
 
+    //关注 取消
+    public void attention(Integer id,Integer id1,Integer sta){
+        TbAttention tbAttention = new TbAttention();
+        tbAttention.setUser_id(id);
+        tbAttention.setUser_idl(id1);
+        if (sta!=0) {
+            System.out.println(1);//取消关注
+            System.out.println(tbAttentionMapper.delete(tbAttention));
+        }else {//关注
+            System.out.println(tbAttentionMapper.insert(tbAttention));
+        }
+    }
+    //查询是否关注了某人
+    public boolean booleanUser(Integer id,Integer idl){
+        TbAttention tbAttention = new TbAttention();
+        tbAttention.setUser_id(id);
+        tbAttention.setUser_idl(idl);
+        List<TbAttention> select = tbAttentionMapper.select(tbAttention);
+        if (select.size()!=0){
+            return true;
+        }else
+            return false;
+    }
+    //查询被谁关注
+    public List<TbUser> queryAttentionUser(Integer user_id){
+        List<TbUser> tbUsers = tbUserMapper.queryAttentionUser(user_id);
+        return tbUsers;
+    }
     //查询关注的人
-    public void queryAttentionUser(){
-
+    public List<TbUser> queryUserAttention(Integer user_id){
+        List<TbUser> tbUsers = tbUserMapper.queryUserAttention(user_id);
+        return tbUsers;
     }
 
     //设置头像

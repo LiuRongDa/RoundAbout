@@ -28,6 +28,16 @@ public class TbIssueService {
     @Resource
     TbIssueMapper tbIssueMapper;
 
+    /*
+    *查询用户问题
+     */
+    public List<TbIssue> userIssue(Integer user_id){
+        TbIssue tbIssue = new TbIssue();
+        tbIssue.setUser_id(user_id);
+        List<TbIssue> tbIssues = tbIssueMapper.select(tbIssue);
+        System.out.println(tbIssues);
+        return tbIssues;
+    }
     /**
      * 查询所有问题基本信息(时间倒序  分页)
      * @param pageNum

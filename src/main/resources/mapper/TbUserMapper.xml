@@ -36,6 +36,15 @@
   <sql id="add">
     user_name,user_phone,user_pwd,user_email,user_sign,user_sex,user_brief,user_trade
   </sql>
+  <!-- 查询被谁关注-->
+  <select id="queryAttentionUser" resultMap="BaseResultMap">
+    select * from tb_user where user_id In(select user_id from tb_attention where user_idl=#{user_id})
+  </select>
+  <!-- 查询关注的人-->
+  <select id="queryUserAttention" resultMap="BaseResultMap">
+    select * from tb_user where user_id In(select user_idl from tb_attention where user_id=#{user_id})
+  </select>
+
 
   <select id="userAndTradeQueryAll" resultMap="BaseResultMap">
     select * from tb_user u LEFT JOIN tb_trade t on u.user_trade=t.trade_id
