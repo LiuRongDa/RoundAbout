@@ -43,23 +43,8 @@ public class TbCommentService {
         tbComment.setUser_id(user_id);
         tbComment.setComment_content(comment_content);
         tbComment.setComment_date(dateString);
+        tbComment.setComment_count(0);
 
-        int insert = tbCommentMapper.insert(tbComment);
-        return insert;
-    }
-
-
-    /**
-     * 添加评论
-     */
-    public Integer insertComment(Integer article_id,String comment_content,Integer user_id){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateString = formatter.format(new Date());
-        TbComment tbComment = new TbComment();
-        tbComment.setUser_id(user_id);
-        tbComment.setComment_content(comment_content);
-        tbComment.setArticle_id(article_id);
-        tbComment.setComment_date(dateString);
         int insert = tbCommentMapper.insert(tbComment);
 
         TbArticle tbArticle = new TbArticle();
@@ -75,6 +60,34 @@ public class TbCommentService {
         return insert;
     }
 
+
+    /**
+     * 添加评论
+     */
+    public Integer insertComment(Integer article_id,String comment_content,Integer user_id){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(new Date());
+        TbComment tbComment = new TbComment();
+        tbComment.setUser_id(user_id);
+        tbComment.setComment_content(comment_content);
+        tbComment.setArticle_id(article_id);
+        tbComment.setComment_date(dateString);
+        tbComment.setComment_count(0);
+
+        int insert = tbCommentMapper.insert(tbComment);
+
+        TbArticle tbArticle = new TbArticle();
+        if(insert > 0){
+            tbArticle.setArticle_id(article_id);
+            tbArticle = tbArticleMapper.selectOne(tbArticle);
+            Integer count = tbArticle.getCount()+1;
+            tbArticle.setCount(count);
+
+            int i = tbArticleMapper.updateByPrimaryKey(tbArticle);
+            System.out.println(i);
+        }
+        return insert;
+    }
 
     /**
      * 添加回复
@@ -94,8 +107,13 @@ public class TbCommentService {
         tbReply.setReply_date(dateString);
         int insert = tbReplyMapper.insert(tbReply);
 
-        TbUser tbUser = new TbUser();
-
+        TbComment tbComment = new TbComment();
+        if(insert > 0){
+            tbComment.setComment_id(comment_id);
+            tbComment = tbCommentMapper.selectOne(tbComment);
+            tbComment.setComment_count(tbComment.getComment_count()+1);
+            int i = tbCommentMapper.updateByPrimaryKey(tbComment);
+        }
         return insert;
     }
 

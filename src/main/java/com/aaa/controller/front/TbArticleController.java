@@ -7,6 +7,7 @@ import com.aaa.entity.TbReply;
 import com.aaa.service.TbArticleService;
 import com.aaa.service.TbCommentService;
 import com.aaa.service.TbGambitService;
+import com.aaa.service.TbPraiseService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,56 @@ public class TbArticleController {
 
     @Resource
     TbCommentService tbCommentService;
+
+    @Resource
+    TbPraiseService tbPraiseService;
+
+    /**
+     * 点赞文章
+     * @param article_id
+     * @param user_id
+     * @return
+     */
+    @RequestMapping("praiseArticle")
+    @ResponseBody
+    public Integer praiseArticle(Integer article_id,Integer user_id){
+        System.out.println("article_id--->"+article_id);
+        System.out.println("user_id--->"+user_id);
+        Integer integer = tbPraiseService.praiseArticle(article_id, user_id);
+        return integer;
+    }
+
+    @RequestMapping("praiseComment")
+    @ResponseBody
+    public Integer praiseComment(Integer comment_id,Integer user_id){
+        System.out.println("comment_id--->"+comment_id);
+        System.out.println("user_id--->"+user_id);
+        Integer integer = tbPraiseService.praiseComment(comment_id,user_id);
+        return integer;
+    }
+
+    /**
+     * 发布问题
+     */
+    @RequestMapping("insertArticle")
+    public String insertArticle(Integer user_id,String article_title,String article_content,String topics){
+        System.out.println("user_id--->"+user_id);
+        System.out.println("article_title--->"+article_title);
+        System.out.println("article_content--->"+article_content);
+        System.out.println("topics---->"+topics);
+        Integer integer = tbArticleService.insertArticle(user_id, article_title, article_content, topics);
+        return "redirect:../tb_Article/queryAll";
+    }
+
+
+    @RequestMapping("w_a")
+    public String write_article(Model model){
+
+        List<TbGambit> query = tbGambitService.query();
+        model.addAttribute("gambits",query);
+
+        return "write_article";
+    }
 
     /**
      * 最新文章 分页
@@ -115,4 +166,5 @@ public class TbArticleController {
         model.addAttribute("art",tbArticleGambits);
         return "article_details";
     }
+
 }

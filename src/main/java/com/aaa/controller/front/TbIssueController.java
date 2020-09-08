@@ -1,13 +1,12 @@
 package com.aaa.controller.front;
 
 import com.aaa.entity.*;
-import com.aaa.service.TbArticleService;
-import com.aaa.service.TbCommentService;
-import com.aaa.service.TbIssueService;
+import com.aaa.service.*;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -28,6 +27,53 @@ public class TbIssueController {
     @Resource
     TbCommentService tbCommentService;
 
+    @Resource
+    TbGambitService tbGambitService;
+
+
+    /**
+     * 跳转
+     * @return
+     */
+    @RequestMapping("w_i")
+    public String write_issue(Model model){
+        List<TbGambit> query = tbGambitService.query();
+        model.addAttribute("gambits",query);
+        return "write_issue";
+    }
+
+    /**
+     * 发布问题
+     */
+    @RequestMapping("insertIssue")
+    public String insertIssue(Integer user_id,String issue_title,String issue_content,String topics){
+        System.out.println("user_id--->"+user_id);
+        System.out.println("issue_title--->"+issue_title);
+        System.out.println("issue_content--->"+issue_content);
+        System.out.println("topics---->"+topics);
+        Integer integer = tbIssueService.insertIssue(user_id, issue_title, issue_content,topics);
+        return "redirect:../tb_Article/queryAll";
+    }
+
+    @RequestMapping("addcount")
+    public String addcount(Integer id){
+        tbIssueService.addCount(id);
+        return "redirect:queryById?id="+id+"";
+    }
+
+    /**
+     * 添加回答
+     * @param issue_id
+     * @param user_id
+     * @param article_content
+     * @return
+     */
+    @RequestMapping("addArticle")
+    @ResponseBody
+    public Integer addArticle(Integer issue_id,Integer user_id,String article_content){
+        Integer integer = tbArticleService.addArticle(issue_id, user_id, article_content);
+        return integer;
+    }
 
     @RequestMapping("queryAll")
     public String queryAll(Model model,Integer pageNum,Integer pageSize){
@@ -43,13 +89,40 @@ public class TbIssueController {
         return "issue_hot";
     }
 
+    /**
+     * 添加回复的回复
+     */
+    @RequestMapping("insertReply")
+    public String insertReply(Model model,Integer user_id,Integer reply_idto,Integer comment_id,String comment_content){
+        Integer integer = tbCommentService.insertReply(user_id, reply_idto, comment_id, comment_content);
+        List<TbReply> tbReplies = tbCommentService.queryByIdReply(comment_id);
+        model.addAttribute("tbReplies",tbReplies);
+        return "issue_details::div3";
+    }
+
+    /**
+     * 添加回复
+     * @param model
+     * @param user_id
+     * @param reply_idto
+     * @param comment_id
+     * @param comment_content
+     * @return
+     */
+    @RequestMapping("addreply")
+    public String addreply(Model model,Integer user_id,Integer reply_idto,Integer comment_id,String comment_content){
+        Integer integer = tbCommentService.insertReply(user_id, reply_idto, comment_id, comment_content);
+        List<TbReply> tbReplies = tbCommentService.queryByIdReply(comment_id);
+        model.addAttribute("tbReplies",tbReplies);
+        return "issue_details::div3";
+    }
+
     @RequestMapping("addcomm")
     public String addcomm(Model model,Integer user_id,String comment_content,Integer article_id){
         Integer integer = tbCommentService.insertIssComment(user_id, comment_content, article_id);
         List<TbComment> tbComments = tbCommentService.queryById(article_id);
         model.addAttribute("tbComments",tbComments);
         return "issue_details::div2";
-
     }
 
     @RequestMapping("showReply")
@@ -74,8 +147,10 @@ public class TbIssueController {
     public String queryById(Model model,Integer id){
         List<TbIssueGambit> tbIssueGambits = tbIssueService.queryById(id);
         List<TbArticle> tbArticles = tbArticleService.queryByIdIss(id);
+        List<TbGambit> gambits = tbGambitService.queryByIdIss(id);
         model.addAttribute("art",tbArticles);
         model.addAttribute("issue",tbIssueGambits);
+        model.addAttribute("gambits",gambits);
         return "issue_details";
     }
 }

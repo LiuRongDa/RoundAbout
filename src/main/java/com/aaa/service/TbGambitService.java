@@ -2,9 +2,9 @@ package com.aaa.service;
 
 import com.aaa.dao.TbArticleGambitMapper;
 import com.aaa.dao.TbGambitMapper;
-import com.aaa.entity.TbArticleGambit;
-import com.aaa.entity.TbGambit;
-import com.aaa.entity.TbTopic;
+import com.aaa.dao.TbIssueArticleMapper;
+import com.aaa.dao.TbIssueGambitMapper;
+import com.aaa.entity.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -24,6 +24,37 @@ public class TbGambitService {
 
     @Resource
     TbArticleGambitMapper tbArticleGambitMapper;
+
+    @Resource
+    TbIssueGambitMapper tbIssueGambitMapper;
+
+    /**
+     * 查找所有的话题
+     * @return
+     */
+    public List<TbGambit> query(){
+        List<TbGambit> tbGambits = tbGambitMapper.selectAll();
+        return tbGambits;
+    }
+
+    /**
+     * 查询指定问题的话题
+     * @param issue_id
+     * @return
+     */
+    public List<TbGambit> queryByIdIss(Integer issue_id){
+        TbIssueGambit tbIssueGambit = new TbIssueGambit();
+        tbIssueGambit.setIssue_id(issue_id);
+
+        List<TbIssueGambit> tbIssueGambits = tbIssueGambitMapper.select(tbIssueGambit);
+        List<TbGambit> tbGambits = new ArrayList<>();
+
+        for(int i = 0;i<tbIssueGambits.size();i++){
+            TbGambit tbGambit1 = tbGambitMapper.selectByPrimaryKey(tbIssueGambits.get(i).getGambit_id());
+            tbGambits.add(i,tbGambit1);
+        }
+        return tbGambits;
+    }
 
     /**
      *查询指定文章的话题

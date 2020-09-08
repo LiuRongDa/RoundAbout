@@ -6,9 +6,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +37,76 @@ public class TbArticleService {
 
     @Resource
     TbUserMapper tbUserMapper;
+
+    @Resource
+    TbIssueMapper tbIssueMapper;
+
+    /**
+     *
+     * @param user_id
+     * @param article_title
+     * @param article_content
+     * @param topics
+     * @return
+     */
+    public Integer insertArticle(Integer user_id,String article_title,String article_content,String topics){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(new Date());
+        TbArticle tbArticle = new TbArticle();
+        tbArticle.setUser_id(user_id);
+        tbArticle.setArticle_title(article_title);
+        tbArticle.setArticle_content(article_content);
+        tbArticle.setArticle_state(0);
+        tbArticle.setArticle_count(0);
+        tbArticle.setCount(0);
+        tbArticle.setArticle_date(dateString);
+        int insert = tbArticleMapper.insert(tbArticle);
+
+        if(topics!=null && topics!=""){
+            tbArticle = tbArticleMapper.selectOne(tbArticle);
+            TbArticleGambit tbArticleGambit = new TbArticleGambit();
+            tbArticleGambit.setArticle_id(tbArticle.getArticle_id());
+            char[] chars = topics.toCharArray();
+            for (int i = 0;i<chars.length;i++){
+                int a = Integer.parseInt(String.valueOf(chars[i]));
+                tbArticleGambit.setGambit_id(a);
+                int insert1 = tbArticleGambitMapper.insert(tbArticleGambit);
+            }
+        }
+        return insert;
+    }
+
+    /**
+     * 添加回答
+     * @return
+     */
+    public Integer addArticle(Integer issue_id,Integer user_id,String article_content){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(new Date());
+        TbArticle tbArticle = new TbArticle();
+        tbArticle.setUser_id(user_id);
+        tbArticle.setArticle_content(article_content);
+        tbArticle.setArticle_count(0);
+        tbArticle.setCount(0);
+        tbArticle.setArticle_state(0);
+        tbArticle.setArticle_date(dateString);
+
+        int insert = tbArticleMapper.insert(tbArticle);
+        if(insert > 0){
+            TbArticle tbArticle1 = tbArticleMapper.selectOne(tbArticle);
+            Integer article_id = tbArticle1.getArticle_id();
+            TbIssueArticle tbIssueArticle = new TbIssueArticle();
+            tbIssueArticle.setIssue_id(issue_id);
+            tbIssueArticle.setArticle_id(article_id);
+            int insert1 = tbIssueArticleMapper.insert(tbIssueArticle);
+
+            TbIssue tbIssue = tbIssueMapper.selectByPrimaryKey(issue_id);
+            int i = tbIssue.getCount() + 1;
+            tbIssue.setCount(i);
+            int up = tbIssueMapper.updateByPrimaryKey(tbIssue);
+        }
+        return insert;
+    }
 
     @Resource
     TbReportService tbReportService;

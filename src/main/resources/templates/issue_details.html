@@ -54,7 +54,9 @@
     <script type="text/javascript" src="js/slide_captcha/gt.js"></script>
     <script src="js/crypto-js.js"></script>
     <script src="js/highlight/highlight.pack.js"></script>
-    <script src="js/jquery-2.1.4.min.js"></script>
+    <!--<script src="js/jquery-2.1.4.min.js"></script>-->
+    <script type="text/javascript" src="js/wangEditor.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
     <style type="text/css">
         .geetest_radar_tip_content{
             position: initial !important;
@@ -229,10 +231,10 @@
     }
 </style>
 
-<h4 th:text="${issue}"></h4>
+<!--<h4 th:text="${issue}"></h4>
 <h4 th:each="a : ${art}">
     <h4 th:text="${a}"></h4>
-</h4>
+</h4>-->
 
 <div class="aw-container-wrap">
     <div class="container">
@@ -243,8 +245,8 @@
                     <div class="aw-mod aw-topic-bar" id="question_topic_editor" data-type="article" data-id="6">
                         <div class="tag-bar clearfix">
 
-                            <span class="topic-tag" data-id="30">
-                                <a class="text">风险投资</a>
+                            <span class="topic-tag" data-id="30" th:each="item : ${gambits}" >
+                                <a class="text" th:text="${item.gambit_name}">风险投资</a>
                             </span>
 
                         </div>
@@ -258,7 +260,7 @@
                         </div>
                         <div class="mod-body">
                             <div class="content markitup-box">
-                                <p th:text="${issue[0].TbIssue.issue_content}"></p>
+                                <p th:utext="${issue[0].TbIssue.issue_content}"></p>
 
                             </div>
                             <div class="meta clearfix">
@@ -292,7 +294,7 @@
                     <!-- 文章评论 -->
                     <div class="aw-mod">
                         <div class="mod-head common-head">
-                            <h2><span th:text="${issue[0].TbIssue.count}">5</span> 个评论</h2>
+                            <h2><span th:text="${issue[0].TbIssue.count}">5</span> 个回答</h2>
                         </div>
                         <div id="div1" th:fragment="div1">
 
@@ -309,7 +311,7 @@
                                     <a class="anchor" name="answer_11"></a>
                                     <div class="mod-body">
                                         <div class="markitup-box">
-                                            <h4 th:text="${a.article_content}">abc</h4>
+                                            <h4 th:utext="${a.article_content}">abc</h4>
                                         </div>
                                     </div>
                                     <div class="mod-footer">
@@ -319,7 +321,7 @@
                                                 <i class="icon icon-agree"></i> 0 赞
                                             </a>
                                             <a class="aw-article-comment text-color-999" th:onclick="showcomm(this,[[${a.article_id}]])">
-                                                <i class="icon icon-comment"></i> 查看评论
+                                                <i class="icon icon-comment"></i> <span class="pl" th:text="${a.count}">0</span>条评论
                                             </a>
                                             <a class="aw-article-comment text-color-999" onclick="if($(this).parent().next().css('display')=='none'){$(this).parent().next().next().hide();$(this).parent().next().show()}else{$(this).parent().next().hide()}">
                                                 <i class="icon icon-comment"></i> 回复
@@ -350,7 +352,7 @@
                                             <!--回复人id-->
                                             <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden>
                                             <!--回答id-->
-                                            <input type="text" name="article_id" value="" th:value="${a.article_id}">
+                                            <input type="text" name="article_id" value="" th:value="${a.article_id}" hidden>
                                             <input type="text" name="comment_content" value="">
                                             <input class="btn btn-success" type="button" value="回复" onclick="addcomm(this)">
 
@@ -367,6 +369,8 @@
                                                         success:function(date){
                                                             $(a).parent().next().html(date);
                                                             $(a).parent().hide();
+                                                            var pl = $(a).parent().prev().find(".pl").text();
+                                                            $(a).parent().prev().find(".pl").text(parseInt(pl)+1);
                                                         }})
                                                 }
                                             </script>
@@ -394,9 +398,9 @@
                                                             <i class="icon icon-agree"></i> 0 赞
                                                         </a>
                                                         <a class="aw-article-comment text-color-999" th:onclick="showReply(this,[[${tbComment.comment_id}]])">
-                                                            <i class="icon icon-comment"></i> 查看回复
+                                                            <i class="icon icon-comment"></i> <span class="hf" th:text="${tbComment.comment_count}">0</span>条回复
                                                         </a>
-                                                        <a class="aw-article-comment text-color-999" onclick="$(this).parent().next().show()">
+                                                        <a class="aw-article-comment text-color-999" onclick="if($(this).next().next().next().next().css('display')=='none'){$(this).parent().next().hide();$(this).next().next().next().next().show()}else{$(this).next().next().next().next().hide()}">
                                                             <i class="icon icon-comment"></i> 回复
                                                         </a>
                                                         <a href="javascript:;" class="text-color-999">
@@ -405,7 +409,7 @@
                                                         <script type="text/javascript" th:inline="javascript">
                                                             function showReply(a,id){
                                                                 if($(a).parent().next().css('display')=='none'){
-
+                                                                    $(a).next().next().next().next().next().hide();
                                                                     $(a).parent().next().show();
                                                                 }else{
                                                                     $(a).parent().next().hide();
@@ -419,28 +423,49 @@
                                                                     }
                                                                 })
                                                             }
-                                                        </script>
-                                                    </div>
+                                                        </script><br/>
+                                                        <div hidden>
+                                                            <!--回复人id-->
+                                                            <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden>
+                                                            <input type="text" name="comment_id" value="" th:value="${tbComment.comment_id}" hidden>
+                                                            <input type="text" name="comment_content" value="">
+                                                            <input class="btn btn-success" type="button" value="回复" onclick="addreply(this)">
+                                                            <script type="text/javascript" th:inline="javascript">
+                                                                function addreply(a){
+                                                                    var user_id = $(a).parent().find("[name='user_id']").val();
+                                                                    var comment_id = $(a).parent().find("[name='comment_id']").val();
+                                                                    var comment_content = $(a).parent().find("[name='comment_content']").val();
 
-                                                    <div>
-                                                        <!--回复人id-->
-                                                        <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden>
-                                                        <!--回答id-->
-                                                        <input type="text" name="article_id" value="">
-                                                        <input type="text" name="comment_content" value="">
-                                                        <input class="btn btn-success" type="button" value="回复">
-                                                        <script type="text/javascript" th:inline="javascript">
-                                                        </script>
+                                                                    $.ajax({
+                                                                        type:"post",
+                                                                        url:"tb_Issue/addreply",
+                                                                        data:{'user_id':user_id,'reply_idto':null,'comment_id':comment_id,'comment_content':comment_content},
+                                                                        success:function(date){
+                                                                            $(a).parent().parent().next().html(date);
+                                                                            $(a).parent().find("[name='comment_content']").val("");
+                                                                            $(a).parent().hide();
+                                                                            var hf = $(a).parent().parent().find(".hf").text();
+                                                                            $(a).parent().parent().find(".hf").text(parseInt(hf)+1);
+                                                                        }
+                                                                    })
+
+                                                                }
+                                                            </script>
+                                                        </div>
                                                     </div>
 
                                                     <div id="div3" th:fragment="div3">
                                                         <div th:each="tbRaply : ${tbReplies}">
+
                                                             <div class="mod-head">
                                                                 <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
                                                                     <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
                                                                 </a>
-                                                                <p>
+                                                                <p th:if="${tbRaply.reply_idto == 0}">
                                                                     <a href="javascript:;" th:text="${tbRaply.TbUser.user_name}">evz03424</a>
+                                                                </p>
+                                                                <p th:if="${tbRaply.reply_idto != 0}">
+                                                                    <a href="javascript:;" th:text="${tbRaply.TbUser.user_name}+回复+${tbRaply.tbReplies.TbUser.user_name}">evz03424</a>
                                                                 </p>
                                                             </div>
                                                             <div class="mod-body">
@@ -454,7 +479,7 @@
                                                                     <a class="text-color-999">
                                                                         <i class="icon icon-agree"></i> 0 赞
                                                                     </a>
-                                                                    <a class="aw-article-comment text-color-999">
+                                                                    <a class="aw-article-comment text-color-999" onclick="if($(this).parent().parent().next().css('display')=='none'){$(this).parent().parent().next().show()}else{$(this).parent().parent().next().hide()}">
                                                                         <i class="icon icon-comment"></i> 回复
                                                                     </a>
                                                                     <a href="javascript:;" class="text-color-999">
@@ -462,6 +487,35 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
+
+                                                            <div hidden>
+                                                                <!--回复人id-->
+                                                                <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden>
+                                                                <input type="text" name="reply_idto" value="1" th:value="${tbRaply.reply_id}" hidden>
+                                                                <input type="text" name="comment_id" value="" th:value="${tbRaply.comment_id}" hidden>
+                                                                <input type="text" name="comment_content" value="">
+                                                                <input class="btn btn-success" type="button" value="回复" onclick="insertReply(this)">
+                                                                <script type="text/javascript" th:inline="javascript">
+                                                                    function insertReply(a){
+                                                                        var user_id = $(a).parent().find("[name='user_id']").val();
+                                                                        var reply_id = $(a).parent().find("[name='reply_idto']").val();
+                                                                        var comment_id = $(a).parent().find("[name='comment_id']").val();
+                                                                        var comment_content = $(a).parent().find("[name='comment_content']").val();
+
+                                                                        $.ajax({
+                                                                            type:"post",
+                                                                            url:"tb_Issue/insertReply",
+                                                                            data:{'user_id':user_id,'reply_idto':reply_id,'comment_id':comment_id,'comment_content':comment_content},
+                                                                            success:function(date){
+                                                                                $(a).parent().parent().parent().html(date);
+                                                                                $(a).parent().find("[name='comment_content']").val("");
+                                                                                $(a).parent().hide();
+                                                                            }
+                                                                        })
+                                                                    }
+                                                                </script>
+                                                            </div>
+
                                                         </div>
                                                     </div>
 
@@ -480,26 +534,57 @@
                     <!-- end 文章评论 -->
                     <!-- 回复编辑器 -->
                     <div class="aw-mod aw-article-replay-box">
-                        <a name="answer_form"></a>
-                        <form action="http://azhihu.cssroom.com/?/article/ajax/save_comment/" onsubmit="return false;"
-                              method="post" id="answer_form" onkeydown="if(event.keyCode==13)return false;">
-                            <input type="hidden" name="post_hash" value="2b7e9e56bf33a1838a3b4766824b50ae"/>
-                            <input type="hidden" name="article_id" value="6"/>
-                            <div class="mod-head">
-                                <a href="http://azhihu.cssroom.com/?/people/" class="aw-user-name"><img alt="Artls"
-                                                                                                        src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png"/></a>
+                        <div class="mod-body">
+                            <input type="text" id="issid" value="" th:value="${issue[0].TbIssue.issue_id}" hidden>
+                            <input type="text" id="userid" value="" th:value="${session.user.user_id}" hidden>
+                            <div id="editor">
+
                             </div>
-                            <div class="mod-body">
-                                <textarea rows="3" name="message" id="comment_editor" class="form-control autosize"
-                                          placeholder="写下你的评论..."/></textarea>
-                            </div>
-                            <div class="mod-footer clearfix">
-                                <a href="javascript:;"
-                                   onclick="AWS.ajax_post($('#answer_form'), AWS.ajax_processer, 'reply');"
-                                   class="btn btn-normal btn-success pull-right btn-submit btn-reply"
-                                   id='publish_submit'>回复</a>
-                            </div>
-                        </form>
+                        </div>
+                        <div class="mod-footer clearfix">
+                            <a href="javascript:;" class="btn btn-normal btn-success pull-right btn-reply" id='publish_submit'>回复</a>
+                        </div>
+                        <script type="text/javascript">
+                            var E = window.wangEditor;
+                            var editor = new E('#editor');
+
+                            editor.customConfig.uploadImgServer = 'editor/upload';
+                            // 将图片大小限制为 3M
+                            editor.customConfig.uploadImgMaxSize = 5 * 1024 * 1024;
+                            // 自定义上传参数
+                            editor.customConfig.uploadFileName = 'file';
+                            editor.customConfig.uploadImgHooks = {
+                                // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
+                                // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
+                                customInsert : function(insertImg, result, editor) {
+                                    // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+                                    // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+                                    // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
+                                    var url = result.url;
+                                    console.log(url);
+                                    insertImg(url);
+                                    // result 必须是一个 JSON 格式字符串！！！否则报错
+                                }
+                            };
+                            // 必须放到有关于编辑器设置前面
+                            editor.create();
+
+                            document.getElementById('publish_submit').addEventListener('click', function () {
+                                // 读取 html
+                                var issid = document.getElementById('issid').value;
+                                var userid = document.getElementById('userid').value;
+
+                                $.ajax({
+                                    type:"post",
+                                    url:"tb_Issue/addArticle",
+                                    data:{"issue_id":issid,"user_id":userid,"article_content":editor.txt.html()},
+                                    success:function(date){
+                                        window.location="http://localhost:8088/springboot/tb_Issue/queryById?id="+issid+"";
+                                    }
+                                })
+                            }, false);
+                        </script>
+
                     </div>
                     <!-- end 回复编辑器 -->
                 </div>
@@ -574,38 +659,57 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    var ANSWER_EDIT_TIME = 30;
-    $(document).ready(function () {
-        if ($('.aw-article-vote.disabled').length) {
-            $('.aw-article-vote.disabled a').attr('onclick', '');
-        }
-        $('.operate .btn-group').click(function () {
-            if ($(this).hasClass('open')) {
-                $(this).removeClass('open');
-            } else {
-                $(this).addClass('open');
-            }
-        });
-        AWS.at_user_lists('#wmd-input');
-        AWS.Init.init_article_comment_box($('.aw-article-comment'));
-    });
-</script>
-<!--<div class="aw-footer-wrap">
-    <div class="aw-footer">
-        Copyright © 2020, All Rights Reserved</span>
-        <span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 3.5.1</a></span>
-        <script>
-            var _hmt = _hmt || [];
-            (function () {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?1a4884ec01ab4ea9a8280251bbd1a95d";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
-    </div>
-</div>-->
 
-<!-- Escape time: 0.081415891647339 --></body>
+<style type="text/css">
+    .w-e-toolbar {
+        flex-wrap: wrap;
+        -webkit-box-lines: multiple;
+    }
+
+    .w-e-toolbar .w-e-menu:hover {
+        z-index: 10002 !important;
+    }
+
+    .w-e-menu a {
+        text-decoration: none;
+    }
+
+    .fullscreen-editor {
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+        left: 0px !important;
+        top: 0px !important;
+        background-color: white;
+        z-index: 9999;
+    }
+
+    .fullscreen-editor .w-e-text-container {
+        width: 100% !important;
+        height: 95% !important;
+    }
+
+    .w-e-toolbar .w-e-menu:hover {
+        z-index: 10002 !important;
+    }
+
+    .w-e-menu {
+        z-index: 1049;
+    }
+
+    .w-e-menu a {
+        text-decoration: none;
+    }
+
+    .btn_viewSource img {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .markitup-box pre br {
+        display: block
+    }
+</style>
+
+</body>
 </html>

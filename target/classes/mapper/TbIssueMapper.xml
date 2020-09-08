@@ -12,6 +12,7 @@
     <result column="issue_date" jdbcType="VARCHAR" property="issue_date" />
     <result column="issue_count" jdbcType="INTEGER" property="issue_count" />
     <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="praise_count" jdbcType="INTEGER" property="praise_count" />
     <association property="tbUser" column="user_id" javaType="com.aaa.entity.TbUser" autoMapping="true">
       <id column="user_id" property="user_id" />
     </association>

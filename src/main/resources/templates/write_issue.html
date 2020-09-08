@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <meta name="renderer" content="webkit" />
+    <title>发布</title>
+    <meta name="keywords" content="WeCenter3.31仿知乎模板" />
+    <meta name="description" content="WeCenter仿知乎模板，支持WeCenter3.31，WeCenter3.32，WeCenter3.33"  />
+    <base href="http://localhost:8088/springboot/" /><!--[if IE]></base><![endif]-->
+    <link href="css/azhihu/img/favicon.ico?v=20200516" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/icon.css" />
+    <link href="css/default/common.css?v=20200516" rel="stylesheet" type="text/css" />
+    <link href="css/default/link.css?v=20200516" rel="stylesheet" type="text/css" />
+    <link href="js/plug_module/style.css?v=20200516" rel="stylesheet" type="text/css" />
+    <link href="css/azhihu/azhihu.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="js/highlight/styles/tomorrow.css">
+    <script type="text/javascript">
+        var _FC2D2FED7725C1CC91F0E4CCEAE79D29="9283ffb5c9c34e00db3b3894d41e571e";
+        var G_POST_HASH=_FC2D2FED7725C1CC91F0E4CCEAE79D29;
+        var G_INDEX_SCRIPT = "?/";
+        /*var G_SITE_NAME = "WeCenter仿知乎模板";*/
+        var G_BASE_URL = "http://localhost:8088/springboot";
+        /*var G_STATIC_URL = "http://azhihu.cssroom.com/static";
+        var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";*/
+        var G_USER_ID = "110";
+        var G_USER_NAME = "qwer";
+        var G_UPLOAD_ENABLE = "N";
+        var G_UNREAD_NOTIFICATION = 0;
+        var G_NOTIFICATION_INTERVAL = 100000;
+        var G_CAN_CREATE_TOPIC = "";
+        var G_ADVANCED_EDITOR_ENABLE = "Y";
+        var FILE_TYPES = "jpg,jpeg,png,gif,zip,doc,docx,rar,pdf,psd";
+        var G_DRAFT_ENABLED = "N";
+        var G_PER_PAGE = "10";
+        var G_INDEX_PER_PAGE = "20";
+        var G_PRIVATEKEY = "pvjxzjmzvewfscft";
+        var G_IV = "qvibvaiwgouxwjeu";
+        var G_QUICK_PUBLISH_HUMAN_VALID = "0";
+        var editor_type="wangeditor";
+    </script>
+    <script src="js/jquery.2.js?v=20200516" type="text/javascript"></script>
+    <script src="js/jquery.form.js?v=20200516" type="text/javascript"></script>
+    <script src="js/plug_module/plug-in_module.js?v=20200516" type="text/javascript"></script>
+    <script src="js/aws.js?v=20200516" type="text/javascript"></script>
+    <script src="js/aw_template.js?v=20200516" type="text/javascript"></script>
+    <script src="js/layer/layer.js?v=20200516" type="text/javascript"></script>
+    <script src="js/app.js?v=20200516" type="text/javascript"></script>
+    <script src="js/app/publish.js?v=20200516" type="text/javascript"></script>
+    <script type="text/javascript" src="js/compatibility.js"></script>
+    <script type="text/javascript" src="js/laydate/laydate.js"></script>
+    <script type="text/javascript" src="js/slide_captcha/gt.js"></script>
+    <script src="js/crypto-js.js"></script>
+    <script src="js/highlight/highlight.pack.js"></script>
+    <script type="text/javascript" src="js/wangEditor.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+    <style type="text/css">
+        .geetest_radar_tip_content{
+            position: initial !important;
+        }
+    </style>
+    <!--[if lte IE 8]>
+    <script type="text/javascript" src="js/respond.js"></script>
+    <![endif]-->
+    <!--头部公共注入钩子-->
+    <!--end头部公共注入钩子-->
+</head>
+<noscript unselectable="on" id="noscript">
+    <div class="aw-404 aw-404-wrap container">
+        <img src="http://azhihu.cssroom.com/static/common/no-js.jpg">
+        <p>你的浏览器禁用了JavaScript, 请开启后刷新浏览器获得更好的体验!</p>
+    </div>
+</noscript><body>
+<div class="aw-top-menu-wrap">
+    <div class="container" style="padding-right:0px;">
+        <!-- logo -->
+        <div class="aw-logo hidden-xs">
+            <a href="http://azhihu.cssroom.com">
+                <img src="http://azhihu.cssroom.com/uploads/logo/20200525/logo_(1).png"  height="40">
+            </a>
+        </div>
+        <!-- end logo -->
+        <!-- 导航 -->
+        <div class="aw-top-nav navbar">
+            <div class="navbar-header">
+                <button  class="navbar-toggle pull-left">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
+                    </li>
+                    <li>
+                        <a href="http://azhihu.cssroom.com/?/column"><i class=""></i> 专栏</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- end 导航 -->
+        <!-- 搜索框 -->
+        <div class="aw-search-box  hidden-xs hidden-sm">
+            <form class="navbar-search" action="http://azhihu.cssroom.com/?/search/" id="global_search_form" method="post">
+                <label class="oldPwdTip aw-search-query-label" onclick="$(this).hide();$('#aw-search-query').focus();">搜索问题、话题或人...</label> 					<input class="form-control search-query" type="text" value=""  autocomplete="off" name="q" id="aw-search-query" onfocus="hideOldPwdTip('aw-search-query');" onblur="toggleOldPwdTip('aw-search-query',this.value);" />
+                <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();"><i class="icon icon-search"></i></span>
+                <div class="aw-dropdown">
+                    <div class="mod-body">
+                        <p class="title">输入关键字进行搜索</p>
+                        <ul class="aw-dropdown-list collapse"></ul>
+                        <p class="search"><span>搜索:</span><a onClick="$('#global_search_form').submit();"></a></p>
+                    </div>
+                    <div class="mod-footer">
+                        <a href="javascript:;" onClick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- end 搜索框 -->
+        <!-- 发起 -->
+        <div class="aw-publish-btn">
+            <a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/" onclick="AWS.dialog('publish', {'category_enable':'0', 'category_id':'0', 'topic_title':''}); return false;">发起</a>
+            <div class="dropdown-list pull-right">
+                <ul>
+                    <li>
+                        <form method="post" action="http://azhihu.cssroom.com/?/publish/">
+                            <a onclick="$(this).parents('form').submit();">问题</a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end 发起 -->
+        <!-- 用户栏 -->
+        <div class="aw-user-nav">
+            <!-- 登陆&注册栏 -->
+            <!--<a href="User/toOneHome" class="aw-user-nav-dropdown"></a>-->
+            <img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" />
+
+            <div class="aw-dropdown dropdown-list pull-right">
+                <ul class="aw-dropdown-list">
+                    <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                        个人主页</a></li>
+                    <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
+                    <li class="hidden-xs"><a href="http://azhihu.cssroom.com/?/account/setting/profile/"><i class="icon icon-setting"></i> 设置</a></li>
+                    <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
+                    <li><a href="http://azhihu.cssroom.com/?/account/logout/"><i class="icon icon-logout"></i> 退出</a></li>
+                </ul>
+            </div>
+            <!-- end 登陆&注册栏 -->
+        </div>
+        <!-- end 用户栏 -->
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $changeSkin = $("#changeSkin"), $skinList = $("#skinList");
+        $changeSkin.mouseenter(function () {
+            $skinList.stop(true,true).show();
+        });
+        $changeSkin.mouseleave(function (e) {
+            $skinList.hide();
+        });
+        $skinList.mouseover(function () {
+            $(this).stop(true,true).show();
+        });
+        $skinList.mouseleave(function (e) {
+            $(this).hide();
+        })
+    })
+</script>
+<div class="aw-container-wrap">
+    <div class="container aw-publish">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <!-- tab 切换 -->
+                    <ul class="nav nav-tabs aw-nav-tabs active">
+                        <li class="active"><a href="javascript:;">问题</a></li>
+                        <h2 class="hidden-xs"><i class="icon icon-ask"></i> 发起</h2>
+                    </ul>
+                    <!-- end tab 切换 -->
+                    <form action="tb_Issue/insertIssue" method="post">
+                        <input type="text" name="user_id" value="" th:value="${session.user.user_id}" hidden/>
+                        <div class="aw-mod aw-mod-publish">
+                            <div class="mod-body">
+                                <h3>问题标题:</h3>
+                                <!-- 问题标题 -->
+                                <div class="aw-publish-title active">
+                                    <!--<div>
+                                        <label class="oldPwdTip question_contents-label" onclick="$(this).hide();$('#question_contents').focus();">问题标题...</label>
+                                        <input type="text" name="question_content" id="question_contents" value="" class="form-control" onfocus="hideOldPwdTip('question_contents');" onblur="toggleOldPwdTip('question_contents',this.value);"/>
+                                        <div class="aw-publish-suggest-question collapse">
+                                            <p class="text-color-999">你的问题可能已经有答案</p>
+                                            <ul class="aw-dropdown-list">
+                                            </ul>
+                                        </div>
+                                    </div>-->
+                                    <input type="text" name="issue_title" value="" class="form-control"/>
+
+                                </div>
+                                <!-- end 问题标题 -->
+                                <h3>问题补充 (选填):</h3>
+                                <div class="aw-mod aw-editor-box">
+                                    <div id="editor">
+
+                                    </div>
+                                    <input type="text" name="issue_content" id="is" value="" hidden>
+                                </div>
+
+                                <h3>添加话题:</h3>
+                                <div class="aw-topic-bar" data-type="publish">
+                                    <div class="tag-bar clearfix" style="display: block;">
+                                        <span class="topic-tag" id="weiz">
+
+                                        </span>
+
+                                        <input type="text" value="" name="topics" hidden>
+
+                                        <span class="aw-edit-topic icon-inverse" id="aaa" style="display: block;" onclick="$(this).hide();$(this).parent().next().show();">
+                                            <i class="icon icon-edit"></i> 编辑话题
+                                        </span>
+                                    </div>
+                                    <div class="aw-edit-topic-box form-inline" style="display: none;">
+
+                                        <a th:each="gambit : ${gambits}">
+                                            <a onclick="addgam(this)">[[${gambit.gambit_name}]]</a>
+                                            <a hidden>[[${gambit.gambit_id}]]</a>
+                                        </a>
+
+                                        <script type="text/javascript" th:inline="javascript">
+                                            function addgam(a){
+                                                var str = ""+$("[name='topics']").val()+"";
+                                                var str1 = ""+$(a).next().text()+"";
+                                                if(str.indexOf(str1) == -1){
+                                                    $("#weiz").append("<a onclick=\"remo(this)\">"+$(a).text()+"<i class=\"icon icon-delete\"></i><span hidden>"+$(a).next().text()+"</span></a>");
+                                                    if($("[name='topics']").val() == "" || $("[name='topics']").val()==null){
+                                                        $("[name='topics']").val($(a).next().text());
+                                                    }else{
+                                                        $("[name='topics']").val($("[name='topics']").val()+$(a).next().text());
+                                                    }
+                                                }
+                                            }
+                                            function remo(a){
+                                                var str = $("[name='topics']").val();
+                                                alert(str);
+                                                var str2 = $(a).children().next().text();
+                                                alert(str2);
+                                                var resou = str.replace(str2,"");
+                                                $(a).remove();
+                                                $("[name='topics']").val(resou);
+                                            }
+
+                                        </script>
+
+                                        <a class="btn btn-normal btn-gray close-edit" onclick="$('#aaa').show();$(this).parent().hide()">收起</a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="mod-footer clearfix">
+                                <button class="btn-success btn-publish-submit" id="publish_submit">确认发起</button>
+                            </div>
+
+                            <script type="text/javascript">
+                                var E = window.wangEditor;
+                                var editor = new E('#editor');
+
+                                editor.customConfig.uploadImgServer = 'editor/upload';
+                                // 将图片大小限制为 3M
+                                editor.customConfig.uploadImgMaxSize = 5 * 1024 * 1024;
+                                // 自定义上传参数
+                                editor.customConfig.uploadFileName = 'file';
+                                editor.customConfig.uploadImgHooks = {
+                                    // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
+                                    // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
+                                    customInsert : function(insertImg, result, editor) {
+                                        // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+                                        // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+                                        // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
+                                        var url = result.url;
+                                        console.log(url);
+                                        insertImg(url);
+                                        // result 必须是一个 JSON 格式字符串！！！否则报错
+                                    }
+                                };
+                                // 必须放到有关于编辑器设置前面
+                                editor.create();
+
+                                document.getElementById('publish_submit').addEventListener('click', function () {
+                                    var a = editor.txt.html();
+                                    document.getElementById('is').value=a;
+                                }, false);
+                            </script>
+
+                        </div>
+                    </form>
+                </div>
+                <!-- 侧边栏 -->
+                <div class="col-sm-12 col-md-3 aw-side-bar hidden-xs">
+                    <!-- 问题发起指南 -->
+                    <div class="aw-mod publish-help">
+                        <div class="mod-head">
+                            <h3>问题发起指南</h3>
+                        </div>
+                        <div class="mod-body">
+                            <p><b>• 问题标题:</b> 请用准确的语言描述您发布的问题思想</p>
+                            <p><b>• 问题补充:</b> 详细补充您的问题内容, 并提供一些相关的素材以供参与者更多的了解您所要问题的主题思想</p>
+                            <p><b>• 选择话题:</b> 选择一个或者多个合适的话题, 让您发布的问题得到更多有相同兴趣的人参与. 所有人可以在您发布问题之后添加和编辑该问题所属的话题</p>
+                        </div>
+                    </div>
+                    <!-- end 问题发起指南 -->
+                </div>
+                <!-- end 侧边栏 -->
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .w-e-toolbar {
+        flex-wrap: wrap;
+        -webkit-box-lines: multiple;
+    }
+
+    .w-e-toolbar .w-e-menu:hover {
+        z-index: 10002 !important;
+    }
+
+    .w-e-menu a {
+        text-decoration: none;
+    }
+
+    .fullscreen-editor {
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+        left: 0px !important;
+        top: 0px !important;
+        background-color: white;
+        z-index: 9999;
+    }
+
+    .fullscreen-editor .w-e-text-container {
+        width: 100% !important;
+        height: 95% !important;
+    }
+
+    .w-e-toolbar .w-e-menu:hover {
+        z-index: 10002 !important;
+    }
+
+    .w-e-menu {
+        z-index: 1049;
+    }
+
+    .w-e-menu a {
+        text-decoration: none;
+    }
+
+    .btn_viewSource img {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .markitup-box pre br {
+        display: block
+    }
+</style>
+</body>
+</html>

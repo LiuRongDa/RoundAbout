@@ -13,6 +13,8 @@ import com.aaa.entity.TbIssue;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -38,6 +40,51 @@ public class TbIssueService {
         System.out.println(tbIssues);
         return tbIssues;
     }
+    /**
+     * 浏览次数+1
+     * @return
+     */
+    public Integer addCount(Integer id){
+        TbIssue tbIssue = new TbIssue();
+        tbIssue.setIssue_id(id);
+        tbIssue = tbIssueMapper.selectOne(tbIssue);
+        tbIssue.setIssue_count(tbIssue.getIssue_count()+1);
+        int i = tbIssueMapper.updateByPrimaryKey(tbIssue);
+        return i;
+    }
+
+    /**
+     * 发布问题
+     * @return
+     */
+    public Integer insertIssue(Integer user_id,String issue_title,String issue_content,String topics){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(new Date());
+        TbIssue tbIssue = new TbIssue();
+        tbIssue.setIssue_title(issue_title);
+        if(issue_content != null || issue_content != ""){
+            tbIssue.setIssue_content(issue_content);
+        }
+        tbIssue.setUser_id(user_id);
+        tbIssue.setIssue_date(dateString);
+        tbIssue.setIssue_count(0);
+        tbIssue.setCount(0);
+        int insert = tbIssueMapper.insert(tbIssue);
+        if(topics!=null && topics!=""){
+            tbIssue = tbIssueMapper.selectOne(tbIssue);
+            TbIssueGambit tbIssueGambit = new TbIssueGambit();
+            tbIssueGambit.setIssue_id(tbIssue.getIssue_id());
+            char[] chars = topics.toCharArray();
+            for (int i = 0;i<chars.length;i++){
+                int a = Integer.parseInt(String.valueOf(chars[i]));
+                tbIssueGambit.setGambit_id(a);
+                int insert1 = tbIsseGambitMapper.insert(tbIssueGambit);
+            }
+        }
+
+        return insert;
+    }
+
     /**
      * 查询所有问题基本信息(时间倒序  分页)
      * @param pageNum

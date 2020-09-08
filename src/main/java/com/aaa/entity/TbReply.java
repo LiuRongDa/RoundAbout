@@ -20,6 +20,8 @@ public class TbReply implements Serializable {
 
     private String reply_date;
 
+    private Integer praise_count;
+
     private TbReply tbReplies;
 
     private TbUser tbUser;
@@ -34,10 +36,19 @@ public class TbReply implements Serializable {
                 ", user_id=" + user_id +
                 ", comment_id=" + comment_id +
                 ", reply_idto=" + reply_idto +
-                ", reply_date=" + reply_date +
+                ", reply_date='" + reply_date + '\'' +
+                ", praise_count=" + praise_count +
                 ", tbReplies=" + tbReplies +
                 ", tbUser=" + tbUser +
                 '}';
+    }
+
+    public Integer getPraise_count() {
+        return praise_count;
+    }
+
+    public void setPraise_count(Integer praise_count) {
+        this.praise_count = praise_count;
     }
 
     public Integer getReply_id() {

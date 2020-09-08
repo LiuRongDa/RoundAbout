@@ -21,9 +21,34 @@ public class TbIssue implements Serializable {
 
     private Integer count;
 
+    private Integer praise_count;
+
     /*private TbIssueUser tbIssueUser;*/
 
     private static final long serialVersionUID = 1L;
+
+    @Override
+    public String toString() {
+        return "TbIssue{" +
+                "issue_id=" + issue_id +
+                ", issue_title='" + issue_title + '\'' +
+                ", issue_content='" + issue_content + '\'' +
+                ", user_id=" + user_id +
+                ", issue_date='" + issue_date + '\'' +
+                ", issue_count=" + issue_count +
+                ", count=" + count +
+                ", praise_count=" + praise_count +
+                ", tbUser=" + tbUser +
+                '}';
+    }
+
+    public Integer getPraise_count() {
+        return praise_count;
+    }
+
+    public void setPraise_count(Integer praise_count) {
+        this.praise_count = praise_count;
+    }
 
     private TbUser tbUser;
 /*
@@ -123,17 +148,4 @@ public class TbIssue implements Serializable {
         this.user_id = user_id;
     }
 
-    @Override
-    public String toString() {
-        return "TbIssue{" +
-                "issue_id=" + issue_id +
-                ", issue_title='" + issue_title + '\'' +
-                ", issue_content='" + issue_content + '\'' +
-                ", user_id=" + user_id +
-                ", issue_date='" + issue_date + '\'' +
-                ", issue_count=" + issue_count +
-                ", count=" + count +
-                ", tbUser=" + tbUser +
-                '}';
-    }
 }

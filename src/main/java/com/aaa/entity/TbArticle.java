@@ -27,6 +27,8 @@ public class TbArticle implements Serializable {
 
     private String article_date;
 
+    private Integer praise_count;
+
     public List<TbComment> tbComments;
 
     private static final long serialVersionUID = 1L;
@@ -44,8 +46,17 @@ public class TbArticle implements Serializable {
                 ", tbUser=" + tbUser +
                 ", count=" + count +
                 ", article_date='" + article_date + '\'' +
+                ", praise_count=" + praise_count +
                 ", tbComments=" + tbComments +
                 '}';
+    }
+
+    public Integer getPraise_count() {
+        return praise_count;
+    }
+
+    public void setPraise_count(Integer praise_count) {
+        this.praise_count = praise_count;
     }
 
     public List<TbComment> getTbComments() {

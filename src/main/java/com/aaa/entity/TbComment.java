@@ -20,6 +20,8 @@ public class TbComment implements Serializable {
 
     private Integer comment_count;
 
+    private Integer praise_count;
+
     private TbUser tbUser;
 
     private List<TbReply> tbReplies;
@@ -35,9 +37,18 @@ public class TbComment implements Serializable {
                 ", comment_date='" + comment_date + '\'' +
                 ", article_id=" + article_id +
                 ", comment_count=" + comment_count +
+                ", praise_count=" + praise_count +
                 ", tbUser=" + tbUser +
                 ", tbReplies=" + tbReplies +
                 '}';
+    }
+
+    public Integer getPraise_count() {
+        return praise_count;
+    }
+
+    public void setPraise_count(Integer praise_count) {
+        this.praise_count = praise_count;
     }
 
     public Integer getComment_count() {
