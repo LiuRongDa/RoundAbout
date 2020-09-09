@@ -64,6 +64,14 @@
     <script src="onehome_files/crypto-js.js"></script>
     <script src="onehome_files/highlight.pack.js"></script>
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/toastr.min.js"></script>
+    <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        toastr.options.positionClass = 'toast-center-center';
+        toastr.options.showDuration = '1000';
+        toastr.options.hideDuration = '3000';
+        toastr.options.timeOut = '1500';
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelectorAll('pre').forEach((block) => {
@@ -98,7 +106,7 @@
     <div class="container" style="padding-right:0px;">
         <!-- logo -->
         <div class="aw-logo hidden-xs">
-            <a href="http://azhihu.cssroom.com/">
+            <a href="tb_Article/queryAll">
                 <img src="onehome_files/logo_(1).png" height="40">
             </a>
         </div>
@@ -115,7 +123,7 @@
             <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="http://azhihu.cssroom.com/?/explore"><i class=""></i> 首页</a>
+                        <a href="tb_Article/queryAll"><i class=""></i> 首页</a>
                     </li>
                     <li>
                         <a href="http://azhihu.cssroom.com/?/column"><i class=""></i> 专栏</a>
@@ -418,7 +426,7 @@
                                                         <li th:each="l : ${userAttention}">
                                                             <div class="mod-head">
                                                                 <a class="aw-user-img pull-left aw-border-radius-5" data-id="1" th:href="@{User/toElseHome(id=${l.user_id})}">
-                                                                    <img src="${l.user_photo}" th:alt="${l.user_name}">
+                                                                    <img th:src="${l.user_photo}" th:alt="${l.user_name}">
                                                                 </a>
                                                                 <p><a th:href="@{User/toElseHome(id=${l.user_id})}">[[${l.user_name}]]</a></p>
                                                             </div>
@@ -449,7 +457,7 @@
                                                         <li th:each="l : ${attentionUser}">
                                                             <div class="mod-head">
                                                                 <a class="aw-user-img pull-left aw-border-radius-5" data-id="1" th:href="@{User/toElseHome(id=${l.user_id})}">
-                                                                    <img src="${l.user_photo}" th:alt="${l.user_name}">
+                                                                    <img th:src="${l.user_photo}" th:alt="${l.user_name}">
                                                                 </a>
                                                                 <p><a th:href="@{User/toElseHome(id=${l.user_id})}">[[${l.user_name}]]</a></p>
                                                             </div>
@@ -678,73 +686,12 @@
         </div>
     </div>
 </div>
-
-    <script type="text/javascript">
-        var PEOPLE_USER_ID = '108';
-        var INIT_TAB = '';
-        var ACTIVITY_ACTIONS = '101,201,105,204,401,406,501,502,503';
-
-        function withdraw() {
-            var url = "account/setting/withdraw/";
-            var cash = "";
-            var cash_date = "";
-            var day = "31";
-            var haspass = "";
-
-            if (haspass == 0) {
-                layer.msg('你还没有设置交易密码', {
-                    icon: 0
-                }, function() {
-                    location.href = G_BASE_URL + '/account/setting/trade/';
-                });
-            } else {
-                if (cash == 1) {
-                    if (!cash_date) {
-                        AWS.alert('还没有设置提现日期，请联系管理员设置。');
-                        return false;
-                    }
-
-                    if (day != cash_date) {
-                        AWS.alert('每月的' + cash_date + '日才能提现');
-                        return false;
-                    }
-                }
-                location.href = url;
-            }
-        }
-
-        function ask_people() {
-            var verified = "";
-            if (!verified) {
-                AWS.alert('该用户未认证，暂不能咨询！');
-                return false;
-            }
-
-            location.href = "http://azhihu.cssroom.com/?/plugins/p-consult__a-edit__at_uid-108";
-        }
-    </script>
     <script type="text/javascript" src="onehome_files/people.js"></script>
     <div class="aw-footer-wrap">
         <div class="aw-footer">
             Copyright © 2020, All Rights Reserved
             <span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 3.5.1</a></span>
-            <script>
-                var _hmt = _hmt || [];
-                (function() {
-                    var hm = document.createElement("script");
-                    hm.src = "https://hm.baidu.com/hm.js?1a4884ec01ab4ea9a8280251bbd1a95d";
-                    var s = document.getElementsByTagName("script")[0];
-                    s.parentNode.insertBefore(hm, s);
-                })();
-            </script>
         </div>
     </div>
-    <a class="aw-back-top hidden-xs" href="javascript:;" onclick="$.scrollTo(1, 600, {queue:true});"><i class="icon icon-up"></i></a>
-    <!--底部公共注入钩子-->
-    <!--end底部公共注入钩子-->
-    <!-- DO NOT REMOVE -->
-    <div id="aw-ajax-box" class="aw-ajax-box"></div>
-    <div style="display:none;" id="__crond"><img src="common/saved_resource" width="1" height="1"></div>
-    <!-- Escape time: 0.080562114715576 -->
 </noscript>
 </html>

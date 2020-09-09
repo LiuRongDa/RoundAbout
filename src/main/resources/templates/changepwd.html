@@ -64,6 +64,14 @@
     <script src="js/crypto-js.js"></script>
     <script src="js/highlight/highlight.pack.js"></script>
     <script src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/toastr.min.js"></script>
+    <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        toastr.options.positionClass = 'toast-center-center';
+        toastr.options.showDuration = '1000';
+        toastr.options.hideDuration = '3000';
+        toastr.options.timeOut = '1500';
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelectorAll('pre').forEach((block) => {
@@ -244,7 +252,7 @@
                                                 <label class="control-label" >新的密码</label>
                                                 <div class="row">
                                                     <div class="col-lg-4">
-                                                        <input type="password" class="form-control" id="newpwd" name="newpwd">
+                                                        <input type="password" class="form-control" id="newpwd" name="newpwd" placeholder="密码为8到16位数字和字母组合">
                                                     </div>
                                                 </div>
                                             </div>
@@ -252,7 +260,7 @@
                                                 <label class="control-label">确认密码</label>
                                                 <div class="row">
                                                     <div class="col-lg-4">
-                                                        <input type="password" class="form-control" id="newpwds" name="newpwds">
+                                                        <input type="password" class="form-control" id="newpwds" name="newpwds" placeholder="密码为8到16位数字和字母组合">
                                                     </div>
                                                 </div>
                                             </div>
@@ -270,16 +278,16 @@
                                     //var pwdReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;//6到16位数字与字母组合
                                     //去除字符串内所有的空格：str = str.replace(/\s*/g,"");
                                     if ($("#pwd").val()=="" || $("#newpwd").val()=="" || $("#newpwds").val()==""){
-                                        console.log("不能为空")
+                                        toastr.warning("不能为空")
                                         return;
                                     }
 
                                     if (!reg.test($("#newpwd").val().replace(/\s*/g,"")) || !reg.test($("#newpwds").val().replace(/\s*/g,""))){
-                                        console.log("密码为6到16位数字与字母组合")
+                                        toastr.warning("密码为6到16位数字和字母组合")
                                         return;
                                     }
                                     if ($("#pwd").val().replace(/\s*/g,"") == $("#newpwd").val().replace(/\s*/g,"")){
-                                        console.log("新密码不能是原密码")
+                                        toastr.warning("新密码不能是原密码")
                                         return;
                                     }
                                     if ($("#newpwd").val()==$("#newpwds").val()){
@@ -289,17 +297,17 @@
                                             data:{oldpwd:$("#pwd").val().replace(/\s*/g,""),newpwd:$("#newpwd").val().replace(/\s*/g,"")},
                                             success:function(data){
                                                 if (data==0)
-                                                    alert("原密码错误")
+                                                    toastr.warning("原密码错误")
                                                 if (data==1){
-                                                    alert("修改成功")
+                                                    toastr.info("修改成功")
                                                     window.location.href="L/exit";
                                                 }
                                                 if (data==2)
-                                                    alert("修改失败")
+                                                    toastr.warning("修改失败")
                                             }
                                         })
                                     } else
-                                        alert("两次输入密码不一致")
+                                        toastr.warning("两次输入密码不一致")
                                 }
                             </script>
                         </div>

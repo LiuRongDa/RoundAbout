@@ -40,7 +40,7 @@
                type="XMLMAPPER"/>
 
        <!-- 配置需要指定生成的数据库和表，% 代表所有表 -->
-       <table catalog="roundabout" tableName="%">
+       <table catalog="roundabout" tableName="operation">
            <!--自动生成的实体类的tablename 为表名  不加上数据库名-->
            <!-- 默认为false，如果设置为true，在生成的SQL中，table名字不会加上catalog或schema； -->
            <property name="ignoreQualifiersAtRuntime" value="false"/>
