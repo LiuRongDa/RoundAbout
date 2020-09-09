@@ -105,15 +105,15 @@
 	<div class="container" style="padding-right:0px;">
 		<!-- logo -->
 		<div class="aw-logo hidden-xs">
-			<a href="tb_Article/queryAll">
-				<img src="images/logo_(1).png" height="40">
+			<a href="http://azhihu.cssroom.com">
+				<img src="http://azhihu.cssroom.com/uploads/logo/20200525/logo_(1).png"  height="40">
 			</a>
 		</div>
 		<!-- end logo -->
 		<!-- 导航 -->
 		<div class="aw-top-nav navbar">
 			<div class="navbar-header">
-				<button class="navbar-toggle pull-left">
+				<button  class="navbar-toggle pull-left">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -122,10 +122,10 @@
 			<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="tb_Article/queryAll"><i class=""></i> 首页</a>
+						<a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
 					</li>
 					<li>
-						<a href="http://azhihu.cssroom.com/?/column"><i class=""></i> 专栏</a>
+						<a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
 					</li>
 				</ul>
 			</nav>
@@ -133,56 +133,40 @@
 		<!-- end 导航 -->
 		<!-- 搜索框 -->
 		<div class="aw-search-box  hidden-xs hidden-sm">
-			<form class="navbar-search" action="http://azhihu.cssroom.com/?/search/" id="global_search_form" method="post">
-				<label class="oldPwdTip aw-search-query-label" onclick="$(this).hide();$('#aw-search-query').focus();">搜索问题、话题或人...</label>
-				<input class="form-control search-query" type="text" value="" autocomplete="off" name="q" id="aw-search-query"
-					   onfocus="hideOldPwdTip('aw-search-query');" onblur="toggleOldPwdTip('aw-search-query',this.value);">
-				<span title="搜索" id="global_search_btns" onclick="$('#global_search_form').submit();"><i class="icon icon-search"></i></span>
-				<div class="aw-dropdown">
-					<div class="mod-body">
-						<p class="title">输入关键字进行搜索</p>
-						<ul class="aw-dropdown-list collapse"></ul>
-						<p class="search"><span>搜索:</span><a onclick="$('#global_search_form').submit();"></a></p>
-					</div>
-					<div class="mod-footer">
-						<a href="javascript:;" onclick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
-					</div>
-				</div>
+			<form class="navbar-search" action="tb_Article/queryLike" id="global_search_form" method="post">
+				<input class="form-control search-query" type="text" value="" name="like"/>
+				<span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();">
+                    <i class="icon icon-search"></i>
+                </span>
 			</form>
 		</div>
 		<!-- end 搜索框 -->
 		<!-- 发起 -->
-		<div class="aw-publish-btn">
-
-			<a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/" onclick="AWS.dialog('publish', {'category_enable':'0', 'category_id':'0', 'topic_title':''}); return false;">发起</a>
-			<div class="dropdown-list pull-right">
-				<ul>
-					<li>
-						<form method="post" action="http://azhihu.cssroom.com/?/publish/">
-							<a onclick="$(this).parents('form').submit();">问题</a>
-						</form>
-
-					</li>
-
-				</ul>
-			</div>
-		</div>
+		<!--<div class="aw-publish-btn">
+            <a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/" onclick="AWS.dialog('publish', {'category_enable':'0', 'category_id':'0', 'topic_title':''}); return false;">发起</a>
+            <div class="dropdown-list pull-right">
+                <ul>
+                    <li>
+                        <form method="post" action="http://azhihu.cssroom.com/?/publish/">
+                            <a onclick="$(this).parents('form').submit();">问题</a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
 		<!-- end 发起 -->
 		<!-- 用户栏 -->
 		<div class="aw-user-nav">
 			<!-- 登陆&注册栏 -->
-			<a class="aw-user-nav-dropdown">
-                <img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" class="head_photo" />
+			<!--<a href="User/toOneHome" class="aw-user-nav-dropdown"></a>-->
+			<img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" />
 
-			</a>
 			<div class="aw-dropdown dropdown-list pull-right">
 				<ul class="aw-dropdown-list">
 					<li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
 						个人主页</a></li>
-					<li><a href=""><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse"
-																											 id="inbox_unread" style="display: none;">0</span></a></li>
-					<li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i>
-						设置</a></li>
+					<li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
+					<li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
 					<!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
 					<li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
 				</ul>

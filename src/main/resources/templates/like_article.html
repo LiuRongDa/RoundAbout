@@ -114,7 +114,7 @@
         <!-- 搜索框 -->
         <div class="aw-search-box  hidden-xs hidden-sm">
             <form class="navbar-search" action="tb_Article/queryLike" id="global_search_form" method="post">
-                <input class="form-control search-query" type="text" value="" name="like"/>
+                <input class="form-control search-query" type="text" value="" name="like" th:value="${like}"/>
                 <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();">
                     <i class="icon icon-search"></i>
                 </span>
@@ -183,72 +183,56 @@
     })
 </script>
 
-<!--<h4 th:each="art : ${tbArticleTopics}">
-    <h4 th:text="${art}"></h4>
-</h4>-->
-
-<!--<h4 th:text="${tbTopic}"></h4>-->
-
-<div class="ColumnHeader">
-    <div class="ColumnHeader-inner">
-        <h1 class="ColumnHeader-Title">[[${tbTopic.topic_name}]]</h1>
-        <div class="ColumnHeader-About">
-            <span><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png">总浏览量&nbsp;&nbsp;[[${tbTopic.topic_count}]]</span>・
-            <span><img src="http://azhihu.cssroom.com/static/css/default/img/nsan.png">文章总数&nbsp;&nbsp;[[${tbTopic.count}]]</span>
-        </div>
-        <!--<div class="ColumnHeader-About">
-            <img src="http://azhihu.cssroom.com/static/css/default/img/nsvn.png">被关注数&nbsp;&nbsp;0</span></p>
-        </div>-->
-        <img th:src="${tbTopic.tbUser[0].user_photo}" class="ColumnHeader-Image">
-        <!--<div th:if="${tbTopic.tbUser[0].user_id}!=${session.user.user_id}">
-            <span class="author-fav">
-                <a href="javascript:;">
-                    <span>关注</span>
-                </a>
-            </span>
-        </div>-->
-    </div>
-</div>
 <div class="aw-container-wrap">
     <div class="container">
         <div class="row">
             <div class="aw-content-wrap clearfix">
-                <div class="aw-main-content" style="margin: 0 auto;">
-
-                    <div class="aw-mod aw-explore-list">
+                <div class="col-sm-12 aw-main-content">
+                    <div class="aw-mod aw-mod-search-result">
+                        <div class="mod-head">
+                            <div class="tabbable">
+                                <ul class="nav nav-tabs aw-nav-tabs active" id="list_nav">
+                                    <li><a href="javaScript:;">用户</a></li>
+                                    <li><a th:href="@{tb_Issue/queryLike(like=${like})}">问题</a></li>
+                                    <li class="active"><a href="javaScript:;">文章</a></li>
+                                    <h2 class="hidden-xs">
+                                        <p>搜索</p>
+                                    </h2>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="mod-body">
-                            <div class="aw-common-list" th:each="art : ${tbArticleTopics}">
+                            <div class="aw-common-list" th:each="item : ${art}">
                                 <!--提问-->
                                 <div class="aw-item article" data-topic-id="30,2,3,">
                                     <div class="aw-question-content">
                                         <h4>
-                                            <a th:href="@{tb_Article/addcount(id=${art.TbArticle.article_id})}"><span th:text="${art.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
+                                            <a th:href="@{tb_Article/addcount(id=${item.TbArticle.article_id})}"><span th:text="${item.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
                                         </h4>
+                                        <p>
+                                            <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbArticle.TbUser.user_name}">
+                                                <i class="icon icon-user"></i>豆豆龙
+                                            </a>
+                                            发表了文章
+                                            <span><i class="icon icon-comment"></i><span th:text="${item.TbArticle.count}">4</span> 个评论</span>
+                                            <span><i class="icon icon-preview"></i><span th:text="${item.TbArticle.article_count}">766</span> 次浏览</span>
+                                            <span><i class="icon icon-date"></i><span th:text="${item.TbArticle.article_date}">2019-05-17 14:56</span></span>
+                                            <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
+                                        </p>
+
                                         <!-- 文章内容调用    onclick="window.location.href='article/6'"-->
                                         <div class="markitup-box" style="cursor: pointer;">
                                             <div class="img pull-right"></div>
-                                            <h2 th:utext="${art.TbArticle.article_content}"></h2>
+                                            <h2 th:utext="${item.TbArticle.article_content}"></h2>
                                         </div>
-                                        <p>
-                                            <a href="java:script:(0)" class="aw-user-name">
-                                                <i class="icon icon-user"></i>[[${art.TbArticle.TbUser.user_name}]]
-                                            </a>
-                                            发表了文章
-                                            <span><i class="icon icon-comment"></i><span th:text="${art.TbArticle.count}">4</span> 个评论</span>
-                                            <span><i class="icon icon-preview"></i><span th:text="${art.TbArticle.article_count}">766</span> 次浏览</span>
-                                            <span><i class="icon icon-date"></i><span th:text="${art.TbArticle.article_date}">2019-05-17 14:56</span></span>
-                                        </p>
-                                        <div class="collapse all-content" th:utext="${art.TbArticle.article_content}">
+                                        <div class="collapse all-content" th:utext="${item.TbArticle.article_content}">
 
                                         </div>
-                                        <!--  文章内容调用end -->
+                                        <!-- end 文章内容调用 -->
                                     </div>
                                 </div>
 
                             </div>
-                        </div>
-                        <div class="mod-footer">
-
                         </div>
                     </div>
                 </div>
@@ -256,5 +240,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="http://azhihu.cssroom.com/static/js/app/search.js"></script>
+
+<script type="text/javascript">
+    search_query = 'fsa';
+    split_query = 'fsa';
+</script>
+
 </body>
 </html>

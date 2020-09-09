@@ -72,4 +72,8 @@
     </if>
      where user_id=#{user_id}
   </update>
+
+  <select id="queryround" resultMap="BaseResultMap">
+    SELECT * FROM tb_user ORDER BY RAND() LIMIT 5;
+  </select>
 </mapper>

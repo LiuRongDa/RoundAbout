@@ -26,6 +26,11 @@ public class TbIssueService {
     @Resource
     TbIssueMapper tbIssueMapper;
 
+    public List<TbIssueGambit> queryLike(String like){
+        List<TbIssueGambit> tbIssueGambits = tbIsseGambitMapper.queryLike(like);
+        return tbIssueGambits;
+    }
+
     /*
     *查询用户问题
      */

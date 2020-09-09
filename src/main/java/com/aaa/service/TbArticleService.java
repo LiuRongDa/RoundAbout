@@ -43,6 +43,17 @@ public class TbArticleService {
 
     @Resource
     TbArticleTopicMapper tbArticleTopicMapper;
+
+    /**
+     * 条件查询
+     * @param like
+     * @return
+     */
+    public List<TbArticleGambit> queryLike(String like){
+        List<TbArticleGambit> tbArticleGambits = tbArticleGambitMapper.queryLike(like);
+        return tbArticleGambits;
+    }
+
     /**
      *
      * @param user_id

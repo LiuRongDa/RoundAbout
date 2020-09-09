@@ -42,6 +42,17 @@ public class TbIssueController {
     @Resource
     TbUserService tbUserService;
 
+    @RequestMapping("queryLike")
+    public String queryLike(Model model,String like){
+        if(like==null || like==""){
+            return "redirect:queryAll";
+        }else{
+            List<TbIssueGambit> tbIssueGambits = tbIssueService.queryLike(like);
+            model.addAttribute("like",like);
+            model.addAttribute("iss",tbIssueGambits);
+            return "like_issue";
+        }
+    }
 
     @RequestMapping("reportIssue")
     @ResponseBody

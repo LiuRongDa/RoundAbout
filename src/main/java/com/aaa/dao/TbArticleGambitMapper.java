@@ -2,6 +2,7 @@ package com.aaa.dao;
 
 import com.aaa.entity.TbArticleGambit;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.security.core.parameters.P;
 import tk.mybatis.MyMapper;
 
 import java.util.List;
@@ -26,4 +27,11 @@ public interface TbArticleGambitMapper extends MyMapper<TbArticleGambit> {
      * @return
      */
     List<TbArticleGambit> queryById(@Param("article_id") Integer article_id);
+
+    /**
+     * 条件查询
+     * @param like
+     * @return
+     */
+    List<TbArticleGambit> queryLike(@Param("like") String like);
 }

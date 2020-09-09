@@ -37,6 +37,19 @@ public class TbArticleController {
     @Resource
     TbUserService tbUserService;
 
+    @RequestMapping("queryLike")
+    public String queryLike(Model model,String like){
+        System.out.println("like--->"+like);
+        if(like==null || like==""){
+            return "redirect:queryAll";
+        }else{
+            List<TbArticleGambit> tbArticleGambits = tbArticleService.queryLike(like);
+            model.addAttribute("art",tbArticleGambits);
+            model.addAttribute("like",like);
+            return "like_article";
+        }
+    }
+
     /**
      * 举报文章
      * @param article_id
