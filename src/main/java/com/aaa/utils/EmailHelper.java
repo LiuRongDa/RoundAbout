@@ -12,12 +12,12 @@ import java.util.Properties;
  * @date 2020/9/2 10:12
  */
 public class EmailHelper {
-    private static final String sendFrom = "zl10041108@163.com";
-    private static final String username = "zl10041108@163.com";
-    private static final String password = "dh10041108";
+    private static final String sendFrom = "whwh173@163.com";
+    private static final String username = "whwh173@163.com";
+    private static final String password = "whwh123123";
     private static final String host = "smtp.163.com";//邮件服务器主机host,目前只支持SMTP协议(163或qq)  网易默认是：smtp.163.com
     private static final String smtp = "smtp";//邮件 SMTP协议
-    private static final String authorization_code = "NBUSMMRWUMAULVVX";//授权码
+    private static final String authorization_code = "KIJURNPNMAUSAMMX";//授权码KIJURNPNMAUSAMMX  NBUSMMRWUMAULVVX
 
     public static void sendEmail(String someone, String verification_code){
         Properties props = new Properties();
