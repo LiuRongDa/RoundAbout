@@ -50,20 +50,92 @@ public class TbReportService {
      * @param report_content
      * @return
      */
-    public Integer reportArticle(Integer article_id,Integer user_id,String report_content){
+    public Integer reportArticle(Integer article_id,Integer user_id,String report_content,Integer bereport_user_id){
         TbReport tbReport = new TbReport();
         tbReport.setArticle_id(article_id);
         tbReport.setUser_id(user_id);
-        tbReport.setReport_content(report_content);
+        tbReport.setBereport_user_id(bereport_user_id);
 
         List<TbReport> select = tbReportMapper.select(tbReport);
-        if(select.size() != 0){
+        if(select.size() == 0){
+            tbReport.setReport_content(report_content);
             tbReport.setReport_data(new Date());
             int insert = tbReportMapper.insert(tbReport);
             return 1;
         }
         return 0;
     }
+
+    /**
+     * 举报问题
+     * @param issue_id
+     * @param user_id
+     * @param report_content
+     * @return
+     */
+    public Integer reportIssue(Integer issue_id,Integer user_id,String report_content,Integer bereport_user_id){
+        TbReport tbReport = new TbReport();
+        tbReport.setIssue_id(issue_id);
+        tbReport.setUser_id(user_id);
+        tbReport.setBereport_user_id(bereport_user_id);
+        List<TbReport> select = tbReportMapper.select(tbReport);
+
+        System.out.println(select.size());
+        if(select.size() == 0){
+            tbReport.setReport_content(report_content);
+            tbReport.setReport_data(new Date());
+            System.out.println(tbReport);
+            int insert = tbReportMapper.insert(tbReport);
+            return 1;
+        }
+        return 0;
+    }
+    /**
+     * 举报评论
+     * @param comment_id
+     * @param user_id
+     * @param report_content
+     * @return
+     */
+    public Integer reportComment(Integer comment_id,Integer user_id,String report_content,Integer bereport_user_id){
+        TbReport tbReport = new TbReport();
+        tbReport.setComment_id(comment_id);
+        tbReport.setUser_id(user_id);
+        tbReport.setBereport_user_id(bereport_user_id);
+
+        List<TbReport> select = tbReportMapper.select(tbReport);
+        if(select.size() == 0){
+            tbReport.setReport_content(report_content);
+            tbReport.setReport_data(new Date());
+            int insert = tbReportMapper.insert(tbReport);
+            return 1;
+        }
+        return 0;
+    }
+    /**
+     * 举报回复
+     * @param reply_id
+     * @param user_id
+     * @param report_content
+     * @return
+     */
+    public Integer reportReply(Integer reply_id,Integer user_id,String report_content,Integer bereport_user_id){
+        TbReport tbReport = new TbReport();
+        tbReport.setReply_id(reply_id);
+        tbReport.setUser_id(user_id);
+        tbReport.setBereport_user_id(bereport_user_id);
+
+        List<TbReport> select = tbReportMapper.select(tbReport);
+        if(select.size() == 0){
+            tbReport.setReport_content(report_content);
+            tbReport.setReport_data(new Date());
+            int insert = tbReportMapper.insert(tbReport);
+            return 1;
+        }
+        return 0;
+    }
+
+
 
     /**
      * LRD  后台  分页+模糊查询

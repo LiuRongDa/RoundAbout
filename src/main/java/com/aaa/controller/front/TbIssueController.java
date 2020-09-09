@@ -33,6 +33,52 @@ public class TbIssueController {
     @Resource
     TbPraiseService tbPraiseService;
 
+    @Resource
+    TbIssueUserService tbIssueUserService;
+
+    @Resource
+    TbReportService tbReportService;
+
+
+    @RequestMapping("reportIssue")
+    @ResponseBody
+    public Integer reportIssue(Integer issue_id,Integer user_id,String report_content,Integer bereport_user_id){
+        System.out.println("issue_id---->"+issue_id);
+        System.out.println("user_id---->"+user_id);
+        System.out.println("report_content---->"+report_content);
+        Integer integer = tbReportService.reportIssue(issue_id, user_id, report_content,bereport_user_id);
+        return integer;
+    }
+
+    @RequestMapping("reportArticle")
+    @ResponseBody
+    public Integer reportArticle(Integer article_id,Integer user_id,String report_content,Integer bereport_user_id){
+        System.out.println("article_id---->"+article_id);
+        System.out.println("user_id---->"+user_id);
+        System.out.println("report_content---->"+report_content);
+        Integer integer = tbReportService.reportArticle(article_id, user_id, report_content,bereport_user_id);
+        return integer;
+    }
+
+    @RequestMapping("reportComment")
+    @ResponseBody
+    public Integer reportComment(Integer comment_id,Integer user_id,String report_content,Integer bereport_user_id){
+        System.out.println("comment_id---->"+comment_id);
+        System.out.println("user_id---->"+user_id);
+        System.out.println("report_content---->"+report_content);
+        Integer integer = tbReportService.reportComment(comment_id, user_id, report_content,bereport_user_id);
+        return integer;
+    }
+
+    @RequestMapping("reportReply")
+    @ResponseBody
+    public Integer reportReply(Integer reply_id,Integer user_id,String report_content,Integer bereport_user_id){
+        System.out.println("reply_id---->"+reply_id);
+        System.out.println("user_id---->"+user_id);
+        System.out.println("report_content---->"+report_content);
+        Integer integer = tbReportService.reportReply(reply_id, user_id, report_content,bereport_user_id);
+        return integer;
+    }
 
     /**
      * 点赞问题
@@ -43,8 +89,6 @@ public class TbIssueController {
     @RequestMapping("praiseIssue")
     @ResponseBody
     public Integer praiseIssue(Integer issue_id,Integer user_id){
-        System.out.println("issue_id--->"+issue_id);
-        System.out.println("user_id--->"+user_id);
         Integer integer = tbPraiseService.praiseIssue(issue_id, user_id);
         return integer;
     }
@@ -58,8 +102,6 @@ public class TbIssueController {
     @RequestMapping("praiseArticle")
     @ResponseBody
     public Integer praiseArticle(Integer article_id,Integer user_id){
-        System.out.println("article_id--->"+article_id);
-        System.out.println("user_id--->"+user_id);
         Integer integer = tbPraiseService.praiseArticle(article_id, user_id);
         return integer;
     }
@@ -73,8 +115,6 @@ public class TbIssueController {
     @RequestMapping("praiseComment")
     @ResponseBody
     public Integer praiseComment(Integer comment_id,Integer user_id){
-        System.out.println("comment_id--->"+comment_id);
-        System.out.println("user_id--->"+user_id);
         Integer integer = tbPraiseService.praiseComment(comment_id,user_id);
         return integer;
     }
@@ -88,8 +128,6 @@ public class TbIssueController {
     @RequestMapping("praiseReply")
     @ResponseBody
     public Integer praiseReply(Integer reply_id,Integer user_id){
-        System.out.println("reply_id--->"+reply_id);
-        System.out.println("user_id--->"+user_id);
         Integer integer = tbPraiseService.praiseReply(reply_id,user_id);
         return integer;
     }
@@ -111,10 +149,6 @@ public class TbIssueController {
      */
     @RequestMapping("insertIssue")
     public String insertIssue(Integer user_id,String issue_title,String issue_content,String topics){
-        System.out.println("user_id--->"+user_id);
-        System.out.println("issue_title--->"+issue_title);
-        System.out.println("issue_content--->"+issue_content);
-        System.out.println("topics---->"+topics);
         Integer integer = tbIssueService.insertIssue(user_id, issue_title, issue_content,topics);
         return "redirect:../tb_Article/queryAll";
     }
@@ -212,9 +246,28 @@ public class TbIssueController {
         List<TbIssueGambit> tbIssueGambits = tbIssueService.queryById(id);
         List<TbArticle> tbArticles = tbArticleService.queryByIdIss(id);
         List<TbGambit> gambits = tbGambitService.queryByIdIss(id);
+        List<TbUser> tbUsers = tbIssueUserService.queryUserAll();
         model.addAttribute("art",tbArticles);
         model.addAttribute("issue",tbIssueGambits);
         model.addAttribute("gambits",gambits);
+        model.addAttribute("tbusers",tbUsers);
+
         return "issue_details";
+    }
+
+    /**
+     *邀请回答
+     * @param user_id
+     * @param issue_id
+     * @return
+     */
+    @RequestMapping("addIssueUser")
+    @ResponseBody
+    public Integer addIssueUser(Integer user_id,Integer issue_id){
+        TbIssueUser tbIssueUser = new TbIssueUser();
+        tbIssueUser.setUser_id(user_id);
+        tbIssueUser.setIssue_id(issue_id);
+        Integer integer = tbIssueUserService.addIssueUser(user_id, issue_id);
+        return integer;
     }
 }

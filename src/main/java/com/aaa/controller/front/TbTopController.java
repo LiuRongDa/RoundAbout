@@ -1,5 +1,6 @@
 package com.aaa.controller.front;
 
+import com.aaa.entity.TbArticleTopic;
 import com.aaa.entity.TbTopic;
 import com.aaa.service.TbTopicService;
 import org.springframework.stereotype.Controller;
@@ -50,4 +51,15 @@ public class TbTopController {
         model.addAttribute("tbTopics",tbTopics);
         return "column::div1";
     }
+
+    @RequestMapping("queryById")
+    public String queryById(Model model,Integer topic_id){
+        TbTopic tbTopic = tbTopicService.queryById(topic_id);
+        List<TbArticleTopic> tbArticleTopics = tbTopicService.queryArtById(topic_id);
+        model.addAttribute("tbTopic",tbTopic);
+        model.addAttribute("tbArticleTopics",tbArticleTopics);
+        return "column_details";
+    }
+
+
 }

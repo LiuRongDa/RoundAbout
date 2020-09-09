@@ -60,7 +60,7 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelectorAll('pre').forEach((block) => {
                 hljs.highlightBlock(block);
-            });
+        });
         });
     </script>
     <style type="text/css">
@@ -79,8 +79,7 @@
         <img src="http://azhihu.cssroom.com/static/common/no-js.jpg">
         <p>你的浏览器禁用了JavaScript, 请开启后刷新浏览器获得更好的体验!</p>
     </div>
-</noscript>
-<body>
+</noscript><body>
 <div class="aw-top-menu-wrap">
     <div class="container" style="padding-right:0px;">
         <!-- logo -->
@@ -147,14 +146,14 @@
         <div class="aw-user-nav">
             <!-- 登陆&注册栏 -->
             <!--<a href="User/toOneHome" class="aw-user-nav-dropdown"></a>-->
-                <img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" />
+            <img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" />
 
             <div class="aw-dropdown dropdown-list pull-right">
                 <ul class="aw-dropdown-list">
                     <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
                         个人主页</a></li>
                     <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                    <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
+                    <li class="hidden-xs"><a href="http://azhihu.cssroom.com/?/account/setting/profile/"><i class="icon icon-setting"></i> 设置</a></li>
                     <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
                     <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                 </ul>
@@ -190,113 +189,73 @@
         })
     })
 </script>
+
+<!--<h4 th:each="iss : ${tbIssueUsers}">
+    <h4 th:text="${iss}"></h4>
+</h4>-->
+
 <div class="aw-container-wrap">
     <div class="container">
         <div class="row">
             <div class="aw-content-wrap clearfix">
                 <div class="aw-main-content pull-left">
-                    <!-- 新消息通知 -->
-                    <div class="aw-mod aw-notification-box collapse" id="index_notification">
-                        <div class="mod-head common-head">
-                            <h2>
-                                <span class="pull-right"><a href="http://azhihu.cssroom.com/?/account/setting/privacy/#notifications" class="text-color-999"><i class="icon icon-setting"></i> 通知设置</a></span>
-                                <i class="icon icon-bell"></i>新通知<em class="badge badge-important" name="notification_unread_num">0</em>
-                            </h2>
-                        </div>
-                        <div class="mod-body">
-                            <ul id="notification_list"></ul>
-                        </div>
-                        <div class="mod-footer clearfix">
-                            <a href="javascript:;" onclick="AWS.Message.read_notification(false, 0, false);" class="pull-left btn btn-mini btn-gray">我知道了</a>
-                            <a href="http://azhihu.cssroom.com/?/notifications/" class="pull-right btn btn-mini btn-success">查看所有</a>
-                        </div>
-                    </div>
-                    <!-- end 新消息通知 -->
                     <!-- tab切换 -->
                     <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
-                        <li><a th:href="@{tb_issuser/queryIssueUser(user_id=${session.user.user_id})}">等待回复</a></li>
+                        <li class="active"><a href="java:script:(0)">等待回复</a></li>
                         <li><a href="java:script:(0)">推荐</a></li>
                         <li><a th:href="@{tb_Issue/queryAll}">问题</a></li>
-                        <li class="active"><a href="java:script:(0)">文章</a></li>
+                        <li><a th:href="@{tb_Article/queryAll}">文章</a></li>
                         <h2 class="hidden-xs">主页·发现</h2>
                     </ul>
                     <!-- end tab切换 -->
-                    <!-- 自定义tab切换 -->
-                    <div class="aw-tabs">
-                        <ul>
-                            <li class="active"><a href="javascript:;">最新</a></li>
-                            <li><a th:href="@{tb_Article/queryhot}">热门</a></li>
-                        </ul>
-                    </div>
-                    <!-- end 自定义tab切换 -->
-
-                    <!--<h4 th:each="a : ${art.list}">
-                        <h4 th:text="${a.TbArticle}"></h4>
-                    </h4>-->
-
 
                     <div class="aw-mod aw-explore-list">
                         <div class="mod-body">
-                            <div class="aw-common-list" th:each="item : ${art.list}">
-                                <!--提问-->
-                                <div class="aw-item article" data-topic-id="30,2,3,">
-                                    <div class="aw-question-content">
-                                        <h4>
-                                            <a th:href="@{tb_Article/addcount(id=${item.TbArticle.article_id})}"><span th:text="${item.TbArticle.article_title}">身边的人是怎么靠生活经验赚钱的？</span></a>
-                                        </h4>
-                                        <p>
-                                            <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbArticle.TbUser.user_name}">
-                                                <i class="icon icon-user"></i>豆豆龙
-                                            </a>
-                                            发表了文章
-                                            <span><i class="icon icon-comment"></i><span th:text="${item.TbArticle.count}">4</span> 个评论</span>
-                                            <span><i class="icon icon-preview"></i><span th:text="${item.TbArticle.article_count}">766</span> 次浏览</span>
-                                            <span><i class="icon icon-date"></i><span th:text="${item.TbArticle.article_date}">2019-05-17 14:56</span></span>
-                                            <span class="text-color-999 related-topic collapse"> 来自相关话题</span>
-                                        </p>
+                            <div class="aw-common-list">
 
-                                        <!-- 文章内容调用    onclick="window.location.href='article/6'"-->
-                                        <div class="markitup-box" style="cursor: pointer;">
-                                            <div class="img pull-right"></div>
-                                            <h2 th:utext="${item.TbArticle.article_content}"></h2>
-                                        </div>
-                                        <div class="collapse all-content" th:utext="${item.TbArticle.article_content}">
-                                            <!--<img src="http://azhihu.cssroom.com/uploads/article/20190517/ce6b85e5d2c9bf215918c765f663ae3b.jpg?7411" />-->
-                                            <!--<p>麻辣烫，手抓饼，奶茶店，买空卖空的淘宝包邮？你们的智商都去哪里了？没有智商了，那你们的生活经验去哪里了？</p>
-                                            <p>以前的“我要当科学家”、“我要当老师”、“我要当工程师”、哪怕“我要当程序员”这些“梦想去哪里了”？ 君见几个卖麻辣烫，手抓饼和奶茶店的财务自由了。说不定好多场外开麻辣烫、手抓饼、奶茶店的人也正关注这个问题呢，密切的关注着有没有新的出路，脱离这起早贪黑、费力不赚钱，看不到希望的苦逼的麻辣烫，奶茶店。</p>
-                                            <p>或许有一些做的很好的麻辣烫或者奶茶店，但是他们背后的苦和心酸绝不是一个“一杯奶茶的成本7分钱，而售价却在8块到15块不等”这样的计算能衡量的。每一门生意都不简单，都是整套的系统，产品设计与创新，推广营销，客户管理，客户服务，成本控制……能成就一个赚钱的生意，都是一整套的系统在天时地利人和的情况的偶然的必然，如果只是一句简单的计算能日进斗金，那请你出门左转然后自己去试试。
-                                                <img src="/ueditor/php/upload/image/20190517/1558076175422458.png" title="1558076175422458.png" alt="image.png"/>
+                                <div id="div1" th:fragment="div1">
+                                    <div class="aw-item active" data-topic-id="" th:each="iss : ${tbIssueUsers}">
+                                        <!-- <a class="aw-user-name hidden-xs" data-id="2" href="http://azhihu.cssroom.com/?/people/2" rel="nofollow"><img src="http://azhihu.cssroom.com/uploads/avatar/000/00/00/02_avatar_max.jpg" alt="" /></a> -->
+                                        <div class="aw-question-content">
+
+                                            <a class="pull-right text-color-999" th:onclick="del([[${iss.TbIssue.issue_id}]])"><i class="icon icon-delete"></i></a>
+                                            <script type="text/javascript" th:inline="javascript">
+                                                function del(issue_id){
+                                                    var user_id = [[${session.user.user_id}]];
+                                                    $.ajax({
+                                                        type:"post",
+                                                        url:"tb_issuser/removeIssue",
+                                                        data:{"user_id":user_id,"issue_id":issue_id},
+                                                        success:function(date){
+                                                            $("#div1").html(date);
+                                                        }
+                                                    })
+                                                }
+                                            </script>
+                                            <h4>
+                                                <a th:href="@{tb_Issue/addcount(id=${iss.TbIssue.issue_id})}" th:text="${iss.TbIssue.issue_title}">和女生聊天，哪些话题百试不爽？</a>
+                                            </h4>
+                                                <a th:href="@{tb_Issue/addcount(id=${iss.TbIssue.issue_id})}" class="pull-right text-color-999">回复</a>
+
+                                            <p>
+                                                <a href="http://azhihu.cssroom.com/?/people/2" class="aw-user-name">
+                                                    <i class="icon icon-user"></i>
+                                                    [[${iss.TbIssue.TbUser.user_name}]]
+                                                </a>
+                                                发起了问题
+                                                <span><i class="icon icon-comment"></i>[[${iss.TbIssue.count}]] 个回复</span>
+                                                <span><i class="icon icon-preview"></i>[[${iss.TbIssue.issue_count}]] 次浏览</span>
+                                                <span><i class="icon icon-date"></i>[[${iss.TbIssue.issue_date}]]</span>
+                                                </span>
                                             </p>
-                                            <p><br/></p>
-                                            <p>这个问题下有很多回答的确让人眼前一亮耳目一新，隔行如隔山嘛，在这个问题下，我们可以看见好多其不起眼的行业的套路，但是请年轻的你，一定一定一定要有定力，不要被这些东西左右了自己的心智。360行，行行出状元，每个行业有每个行业的门道（套路），不要见到了别人的一些巧妙的门道（套路）就跨入这一行。</p>
-                                            <p><br/></p>-->
+
                                         </div>
-                                        <!-- end 文章内容调用 -->
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                         <div class="mod-footer">
-                            <div class="page-control">
-                                <ul class="pagination pull-right">
-                                    <li th:if="${art.isLastPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.navigateFirstPage},pageSize=${art.pageSize})}">首页</a>
-                                    </li>
-                                    <li th:if="${art.prePage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.pageNum-1},pageSize=${art.pageSize})}">上一页</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;" th:text="${art.pageNum}">2</a>
-                                    </li>
-                                    <li th:if="${art.nextPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.pageNum+1},pageSize=${art.pageSize})}">下一页</a>
-                                    </li>
-                                    <li th:if="${art.isFirstPage}">
-                                        <a th:href="@{tb_Article/queryAll(pageNum=${art.navigateLastPage},pageSize=${art.pageSize})}">尾页</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -323,8 +282,7 @@
                                 <span>写文章</span>
                             </a>
                         </div>
-                    </div>
-                    <div class="aw-mod write">
+                    </div>					<div class="aw-mod write">
                     <div>
                         <a th:href="@{tb_Topic/showColumn}">
                             <img src="http://azhihu.cssroom.com/static/css/azhihu/img/zlico.png"></br>
@@ -421,32 +379,5 @@
         </div>
     </div>
 </div>
-<div class="aw-footer-wrap">
-    <div class="aw-footer">
-        Copyright © 2020, All Rights Reserved</span>
-        <span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 3.5.1</a></span>
-        <script>
-            var _hmt = _hmt || [];
-            (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?1a4884ec01ab4ea9a8280251bbd1a95d";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
-    </div>
-</div>
-<a class="aw-back-top hidden-xs" href="javascript:;" onclick="$.scrollTo(1, 600, {queue:true});"><i class="icon icon-up"></i></a>
-<!--底部公共注入钩子-->
-<!--end底部公共注入钩子-->
-<!-- DO NOT REMOVE -->
-<div id="aw-ajax-box" class="aw-ajax-box"></div>
-<div style="display:none;" id="__crond">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#__crond').html(unescape('%3Cimg%20src%3D%22' + G_BASE_URL + '/crond/run/1598575905%22%20width%3D%221%22%20height%3D%221%22%20/%3E'));
-        });
-    </script>
-</div>
-<!-- Escape time: 0.079468011856079 --></body>
+</body>
 </html>

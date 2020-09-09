@@ -289,13 +289,99 @@
                                     </script>
                                 </div>
                                 <span class="pull-right  more-operate">
-                                    <a href="javascript:;" class="text-color-999" onclick="AWS.dialog('report', {item_type:'article', item_id:6,item_reson:''})">
+                                    <a href="javascript:;" class="text-color-999" data-toggle="modal" data-target="#myModal">
+                                        <i class="icon icon-reply"></i>邀请回答
+                                    </a>
+                                    <a href="javascript:;" class="text-color-999" data-toggle="modal" data-target="#jbissue">
                                         <i class="icon icon-report"></i>举报
                                     </a>
-                                    <em class="text-color-999" >2019-05-17</em>
+                                    <em class="text-color-999" th:text="${issue[0].TbIssue.issue_date}">2019-05-17</em>
                                 </span>
                             </div>
                         </div>
+                        <!--举报问题-->
+                        <div class="modal fade" id="jbissue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h1 class="modal-title">请输入举报原因:</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <textarea name="report_content" style="resize:none;width: 100%;height: 200px;"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        <button type="button" class="btn btn-primary" th:onclick="jbiss(this)">确定</button>
+                                        <script type="text/javascript" th:inline="javascript">
+                                            function jbiss(a){
+                                                var user_id = [[${session.user.user_id}]];
+                                                var issue_id = [[${issue[0].TbIssue.issue_id}]];
+                                                var report_content = $(a).parent().prev().children().val();
+                                                var bereport_user_id = [[${issue[0].TbIssue.TbUser.user_id}]];
+                                                $.ajax({
+                                                    type:"post",
+                                                    url:"tb_Issue/reportIssue",
+                                                    data:{"issue_id":issue_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
+                                                    success:function(date){
+                                                        if(date == 1){
+                                                            alert("举报成功");
+                                                            $(a).parent().prev().children().val("");
+                                                        }else{
+                                                            alert("不能重复举报");
+                                                        }
+                                                    }
+                                                })
+
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--邀请回答-->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">邀请用户</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mod-body" th:each="user : ${tbusers}">
+                                            <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
+                                                <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
+                                            </a>
+                                            <a>[[${user.user_name}]]
+                                                <a th:onclick="addIssueUser(this,[[${user.user_id}]])"><i class="icon icon-plus"></i></a>
+                                            </a>
+                                            <script type="text/javascript" th:inline="javascript">
+                                                function addIssueUser(a,user_id){
+                                                    var issue_id = [[${issue[0].TbIssue.issue_id}]];
+                                                    $.ajax({
+                                                        type:"post",
+                                                        url:"tb_Issue/addIssueUser",
+                                                        data:{"user_id":user_id,"issue_id":issue_id},
+                                                        success:function(date){
+                                                            if(date == 1){
+
+
+                                                            }else{
+                                                                alert("邀请成功");
+                                                            }
+                                                        }
+                                                    })
+
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="mod-footer">
                             <div class="aw-article-voter">
                                 <a href="javascript:;" class="voter" data-toggle="tooltip" data-placement="right">
@@ -360,8 +446,9 @@
                                             <a class="aw-article-comment text-color-999" onclick="if($(this).parent().next().css('display')=='none'){$(this).parent().next().next().hide();$(this).parent().next().show()}else{$(this).parent().next().hide()}">
                                                 <i class="icon icon-comment"></i> 回复
                                             </a>
-                                            <a href="javascript:;" class="text-color-999">
+                                            <a href="javascript:;" class="text-color-999" data-toggle="modal" data-target="#jbarticle" th:onclick="qwer([[${a.article_id}]],[[${a.user_id}]])">
                                                 <i class="icon icon-report"></i>举报
+
                                             </a>
                                             <script type="text/javascript" th:inline="javascript">
                                                 function showcomm(a,id){
@@ -409,7 +496,6 @@
                                                 }
                                             </script>
                                         </div>
-
                                         <div id="div2" th:fragment="div2">
                                             <div th:each="tbComment : ${tbComments}">
                                                 <div class="mod-head">
@@ -458,9 +544,10 @@
                                                         <a class="aw-article-comment text-color-999" onclick="if($(this).next().next().next().next().css('display')=='none'){$(this).parent().next().hide();$(this).next().next().next().next().show()}else{$(this).next().next().next().next().hide()}">
                                                             <i class="icon icon-comment"></i> 回复
                                                         </a>
-                                                        <a href="javascript:;" class="text-color-999">
+                                                        <a href="javascript:;" class="text-color-999" data-toggle="modal" data-target="#jbcomment" th:onclick="df([[${tbComment.comment_id}]],[[${tbComment.user_id}]])">
                                                             <i class="icon icon-report"></i>举报
                                                         </a>
+
                                                         <script type="text/javascript" th:inline="javascript">
                                                             function showReply(a,id){
                                                                 if($(a).parent().next().css('display')=='none'){
@@ -558,7 +645,7 @@
                                                                     <a class="aw-article-comment text-color-999" onclick="if($(this).parent().parent().next().css('display')=='none'){$(this).parent().parent().next().show()}else{$(this).parent().parent().next().hide()}">
                                                                         <i class="icon icon-comment"></i> 回复
                                                                     </a>
-                                                                    <a href="javascript:;" class="text-color-999">
+                                                                    <a href="javascript:;" class="text-color-999" data-toggle="modal" data-target="#jbreply" th:onclick="zx([[${tbRaply.reply_id}]],[[${tbRaply.user_id}]])">
                                                                         <i class="icon icon-report"></i>举报
                                                                     </a>
                                                                 </div>
@@ -598,15 +685,152 @@
                                                 </div>
                                             </div>
 
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-
                     </div>
+
+                    <!--回答举报-->
+                    <div class="modal fade" id="jbarticle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h1 class="modal-title">请输入举报原因:</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea name="report_content" style="resize:none;width: 100%;height: 200px;"></textarea>
+                                    <input type="text" name="qwer" value="" hidden>
+                                    <input type="text" name="df" value="" hidden>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" th:onclick="jbart(this)">确定</button>
+                                    <script type="text/javascript" th:inline="javascript">
+                                        function jbart(a){
+                                            var user_id = [[${session.user.user_id}]];
+                                            var article_id = $("[name='qwer']").val()
+                                            var report_content = $(a).parent().prev().children().val();
+                                            var bereport_user_id = $("[name='df']").val();
+                                            $.ajax({
+                                                type:"post",
+                                                url:"tb_Issue/reportArticle",
+                                                data:{"article_id":article_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
+                                                success:function(date){
+                                                    if(date == 1){
+                                                        alert("举报成功");
+                                                        $(a).parent().prev().children().val("");
+                                                    }else{
+                                                        alert("不能重复举报");
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--评论举报-->
+                    <div class="modal fade" id="jbcomment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h1 class="modal-title">请输入举报原因:</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea name="report_content" style="resize:none;width: 100%;height: 200px;"></textarea>
+                                    <input type="text" name="asdf" value="" hidden>
+                                    <input type="text" name="zx" value="" hidden>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" th:onclick="jbcom(this)">确定</button>
+                                    <script type="text/javascript" th:inline="javascript">
+                                        function jbcom(a){
+                                            var user_id = [[${session.user.user_id}]];
+                                            var comment_id = $("[name='asdf']").val()
+                                            var report_content = $(a).parent().prev().children().val();
+                                            var bereport_user_id = $("[name='zx']").val();
+                                            $.ajax({
+                                                type:"post",
+                                                url:"tb_Issue/reportComment",
+                                                data:{"comment_id":comment_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
+                                                success:function(date){
+                                                    if(date == 1){
+                                                        alert("举报成功");
+                                                        $(a).parent().prev().children().val("");
+                                                    }else{
+                                                        alert("不能重复举报");
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--回复举报-->
+                    <div class="modal fade" id="jbreply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h1 class="modal-title">请输入举报原因:</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea name="report_content" style="resize:none;width: 100%;height: 200px;"></textarea>
+                                    <input type="text" name="zxcv" value="" hidden>
+                                    <input type="text" name="qw" value="" hidden>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" th:onclick="jbrep(this)">确定</button>
+                                    <script type="text/javascript" th:inline="javascript">
+                                        function jbrep(a){
+                                            var user_id = [[${session.user.user_id}]];
+                                            var reply_id = $("[name='zxcv']").val()
+                                            var report_content = $(a).parent().prev().children().val();
+                                            var bereport_user_id = $("[name='qw']").val();
+                                            $.ajax({
+                                                type:"post",
+                                                url:"tb_Issue/reportReply",
+                                                data:{"reply_id":reply_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
+                                                success:function(date){
+                                                    if(date == 1){
+                                                        alert("举报成功");
+                                                        $(a).parent().prev().children().val("");
+                                                    }else{
+                                                        alert("不能重复举报");
+                                                    }
+                                                }
+                                            })
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript" th:inline="javascript">
+                        function qwer(a,u){
+                            $("[name='qwer']").val(a);
+                            $("[name='df']").val(u);
+                        }
+                        function df(a,u){
+                            $("[name='asdf']").val(a);
+                            $("[name='zx']").val(u);
+                        }
+                        function zx(a,u){
+                            $("[name='zxcv']").val(a);
+                            $("[name='qw']").val(u);
+                        }
+                    </script>
+
                     <!-- end 文章评论 -->
                     <!-- 回复编辑器 -->
                     <div class="aw-mod aw-article-replay-box">

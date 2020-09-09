@@ -1,6 +1,11 @@
 package com.aaa.service;
 
+import com.aaa.dao.TbArticleMapper;
+import com.aaa.dao.TbArticleTopicMapper;
 import com.aaa.dao.TbTopicMapper;
+import com.aaa.dao.TbUserMapper;
+import com.aaa.entity.TbArticle;
+import com.aaa.entity.TbArticleTopic;
 import com.aaa.entity.TbTopic;
 import com.aaa.entity.TbUser;
 import com.github.pagehelper.PageHelper;
@@ -19,6 +24,48 @@ import java.util.List;
 public class TbTopicService {
     @Resource
     TbTopicMapper tbTopicMapper;
+
+    @Resource
+    TbUserMapper tbUserMapper;
+
+    @Resource
+    TbArticleTopicMapper tbArticleTopicMapper;
+
+    @Resource
+    TbArticleMapper tbArticleMapper;
+
+    /**
+     * 查询指定专栏
+     * @param topic_id
+     * @return
+     */
+    public TbTopic queryById(Integer topic_id){
+        TbUser tbUser = new TbUser();
+        TbTopic tbTopic = tbTopicMapper.selectByPrimaryKey(topic_id);
+        tbUser.setUser_id(tbTopic.getUser_id());
+        List<TbUser> select = tbUserMapper.select(tbUser);
+        tbTopic.setTbUser(select);
+        return tbTopic;
+    }
+
+    /**
+     * 查询指定专栏下文章
+     * @param topic_id
+     * @return
+     */
+    public List<TbArticleTopic> queryArtById(Integer topic_id){
+        TbArticleTopic tbArticleTopic = new TbArticleTopic();
+        tbArticleTopic.setTopic_id(topic_id);
+        List<TbArticleTopic> TbArticleTopics = tbArticleTopicMapper.select(tbArticleTopic);
+
+        for(TbArticleTopic t : TbArticleTopics){
+            TbArticle tbArticle = tbArticleMapper.selectByPrimaryKey(t.getArticle_id());
+            TbUser tbUser = tbUserMapper.selectByPrimaryKey(tbArticle.getUser_id());
+            tbArticle.setTbUser(tbUser);
+            t.setTbArticle(tbArticle);
+        }
+        return TbArticleTopics;
+    }
 
     /**
      * 随机4条专栏
