@@ -21,6 +21,45 @@ public class TbTopicService {
     TbTopicMapper tbTopicMapper;
 
     /**
+     * 随机4条专栏
+     * @return
+     */
+    public List<TbTopic> queryTopic(){
+        List<TbTopic> tbTopics = tbTopicMapper.queryTopic();
+        return tbTopics;
+    }
+
+    /**
+     * 最热4条专栏
+     * @return
+     */
+    public List<TbTopic> queryhot(){
+        List<TbTopic> tbTopics = tbTopicMapper.queryhot();
+        return tbTopics;
+    }
+
+    /**
+     * 最新4条专栏
+     * @return
+     */
+    public List<TbTopic> querydate(){
+        List<TbTopic> tbTopics = tbTopicMapper.querydate();
+        return tbTopics;
+    }
+
+    /**
+     * 查询指定用户的专栏
+     * @param user_id
+     * @return
+     */
+
+    public List<TbTopic> queryUser(Integer user_id){
+        TbTopic tbTopic = new TbTopic();
+        tbTopic.setUser_id(user_id);
+        List<TbTopic> select = tbTopicMapper.select(tbTopic);
+        return select;
+    }
+    /**
      * LRD 后台  查询所有专栏 和专栏下的用户，文章
      * @return
      */

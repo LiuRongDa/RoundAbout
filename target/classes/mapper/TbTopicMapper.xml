@@ -8,6 +8,9 @@
     <id column="topic_id" jdbcType="INTEGER" property="topic_id" />
     <result column="topic_name" jdbcType="VARCHAR" property="topic_name" />
     <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="topic_date" jdbcType="VARCHAR" property="topic_date" />
+    <result column="topic_count" jdbcType="INTEGER" property="topic_count" />
+    <result column="count" jdbcType="INTEGER" property="count" />
 
     <collection property="tbUser" column="user_id" ofType="com.aaa.entity.TbUser" autoMapping="true">
       <id column="user_id" property="user_id"></id>
@@ -41,5 +44,17 @@ LEFT JOIN tb_article_topic on tb_topic.topic_id=tb_article_topic.topic_id LEFT J
       </if>
     </where>
     ORDER BY tb_topic.topic_id DESC
+  </select>
+
+    <select id="queryTopic" resultMap="BaseResultMap">
+      SELECT t.*,u.* FROM tb_topic t LEFT JOIN tb_user u on u.user_id=t.user_id ORDER BY RAND() LIMIT 4;
+    </select>
+
+  <select id="queryhot" resultMap="BaseResultMap">
+      SELECT t.*,u.* FROM tb_topic t LEFT JOIN tb_user u on u.user_id=t.user_id ORDER BY t.topic_count desc LIMIT 4;
+  </select>
+
+  <select id="querydate" resultMap="BaseResultMap">
+      SELECT t.*,u.* FROM tb_topic t LEFT JOIN tb_user u on u.user_id=t.user_id ORDER BY t.topic_date desc LIMIT 4;
   </select>
 </mapper>

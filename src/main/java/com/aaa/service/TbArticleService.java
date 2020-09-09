@@ -41,6 +41,8 @@ public class TbArticleService {
     @Resource
     TbIssueMapper tbIssueMapper;
 
+    @Resource
+    TbArticleTopicMapper tbArticleTopicMapper;
     /**
      *
      * @param user_id
@@ -49,7 +51,7 @@ public class TbArticleService {
      * @param topics
      * @return
      */
-    public Integer insertArticle(Integer user_id,String article_title,String article_content,String topics){
+    public Integer insertArticle(Integer user_id,String article_title,String article_content,String topics,Integer topic_id){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = formatter.format(new Date());
         TbArticle tbArticle = new TbArticle();
@@ -62,17 +64,22 @@ public class TbArticleService {
         tbArticle.setPraise_count(0);
         tbArticle.setArticle_date(dateString);
         int insert = tbArticleMapper.insert(tbArticle);
-
+        tbArticle = tbArticleMapper.selectOne(tbArticle);
         if(topics!=null && topics!=""){
-            tbArticle = tbArticleMapper.selectOne(tbArticle);
             TbArticleGambit tbArticleGambit = new TbArticleGambit();
             tbArticleGambit.setArticle_id(tbArticle.getArticle_id());
             char[] chars = topics.toCharArray();
             for (int i = 0;i<chars.length;i++){
                 int a = Integer.parseInt(String.valueOf(chars[i]));
                 tbArticleGambit.setGambit_id(a);
-                int insert1 = tbArticleGambitMapper.insert(tbArticleGambit);
+                tbArticleGambitMapper.insert(tbArticleGambit);
             }
+        }
+        if(topic_id != null){
+            TbArticleTopic tbArticleTopic = new TbArticleTopic();
+            tbArticleTopic.setTopic_id(topic_id);
+            tbArticleTopic.setArticle_id(tbArticle.getArticle_id());
+            tbArticleTopicMapper.insert(tbArticleTopic);
         }
         return insert;
     }

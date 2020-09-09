@@ -96,7 +96,7 @@
                         <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
                     </li>
                     <li>
-                        <a><i class=""></i> 专栏</a>
+                        <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
                     </li>
                 </ul>
             </nav>
@@ -297,7 +297,7 @@
                                     </script>
                                 </div>
                                 <span class="pull-right  more-operate">
-                                    <a href="javascript:;" class="text-color-999" onclick="AWS.dialog('report', {item_type:'article', item_id:6,item_reson:''})">
+                                    <a href="javascript:;" class="text-color-999">
                                         <i class="icon icon-report"></i>举报
                                     </a>
                                     <em class="text-color-999" th:text="${art[0].TbArticle.article_date}">2019-05-17</em>

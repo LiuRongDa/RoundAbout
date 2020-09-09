@@ -46,6 +46,28 @@ public class TbReportService {
     TbIssueArticleMapper tbIssueArticleMapper;
 
     /**
+     * 举报文章
+     * @param article_id
+     * @param user_id
+     * @param report_content
+     * @return
+     */
+    public Integer reportArticle(Integer article_id,Integer user_id,String report_content){
+        TbReport tbReport = new TbReport();
+        tbReport.setArticle_id(article_id);
+        tbReport.setUser_id(user_id);
+        tbReport.setReport_content(report_content);
+
+        List<TbReport> select = tbReportMapper.select(tbReport);
+        if(select.size() != 0){
+            tbReport.setReport_data(new Date());
+            int insert = tbReportMapper.insert(tbReport);
+            return 1;
+        }
+        return 0;
+    }
+
+    /**
      * LRD  后台  分页+模糊查询
      *
      * @param pageNum

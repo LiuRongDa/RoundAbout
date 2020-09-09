@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
@@ -8,9 +8,7 @@
     <meta http-equiv="Cache-Control" CONTENT="no-cache">
     <meta http-equiv="Pragma" CONTENT="no-cache">
     <meta name="renderer" content="webkit" />
-    <title>专栏</title>
-    <meta name="keywords" content="WeCenter3.31仿知乎模板" />
-    <meta name="description" content="WeCenter仿知乎模板，支持WeCenter3.31，WeCenter3.32，WeCenter3.33"  />
+    <title></title>
     <base href="http://localhost:8088/springboot/" /><!--[if IE]></base><![endif]-->
     <link href="css/azhihu/img/favicon.ico?v=20200516" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -18,19 +16,18 @@
     <link href="css/default/common.css?v=20200516" rel="stylesheet" type="text/css" />
     <link href="css/default/link.css?v=20200516" rel="stylesheet" type="text/css" />
     <link href="js/plug_module/style.css?v=20200516" rel="stylesheet" type="text/css" />
-    <link href="css/default/nindex.css?v=20200516" rel="stylesheet" type="text/css" />
     <link href="css/azhihu/azhihu.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="js/highlight/styles/tomorrow.css">
     <script type="text/javascript">
-        var _B5E03FF6F97CCC5E05B33B346E664474="";
-        var G_POST_HASH=_B5E03FF6F97CCC5E05B33B346E664474;
+        var _EAC7A52D7BE51FAD837670F9E5ED3B70="2b7e9e56bf33a1838a3b4766824b50ae";
+        var G_POST_HASH=_EAC7A52D7BE51FAD837670F9E5ED3B70;
         var G_INDEX_SCRIPT = "?/";
-        var G_SITE_NAME = "WeCenter仿知乎模板";
-        var G_BASE_URL = "http://azhihu.cssroom.com/?";
-        var G_STATIC_URL = "http://azhihu.cssroom.com/static";
-        var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";
-        var G_USER_ID = "";
-        var G_USER_NAME = "";
+        /*var G_SITE_NAME = "WeCenter仿知乎模板";*/
+        var G_BASE_URL = "http://localhost:8088/springboot";
+        /*var G_STATIC_URL = "http://azhihu.cssroom.com/static";
+        var G_UPLOAD_URL = "http://azhihu.cssroom.com/uploads";*/
+        var G_USER_ID = "106";
+        var G_USER_NAME = "Artls";
         var G_UPLOAD_ENABLE = "N";
         var G_UNREAD_NOTIFICATION = 0;
         var G_NOTIFICATION_INTERVAL = 100000;
@@ -52,19 +49,12 @@
     <script src="js/aw_template.js?v=20200516" type="text/javascript"></script>
     <script src="js/layer/layer.js?v=20200516" type="text/javascript"></script>
     <script src="js/app.js?v=20200516" type="text/javascript"></script>
-    <script src="js/layout.js?v=20200516" type="text/javascript"></script>
     <script type="text/javascript" src="js/compatibility.js"></script>
     <script type="text/javascript" src="js/laydate/laydate.js"></script>
     <script type="text/javascript" src="js/slide_captcha/gt.js"></script>
     <script src="js/crypto-js.js"></script>
     <script src="js/highlight/highlight.pack.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelectorAll('pre').forEach((block) => {
-                hljs.highlightBlock(block);
-        });
-        });
-    </script>
+    <script src="js/jquery-2.1.4.min.js"></script>
     <style type="text/css">
         .geetest_radar_tip_content{
             position: initial !important;
@@ -81,7 +71,8 @@
         <img src="http://azhihu.cssroom.com/static/common/no-js.jpg">
         <p>你的浏览器禁用了JavaScript, 请开启后刷新浏览器获得更好的体验!</p>
     </div>
-</noscript><body>
+</noscript>
+<body>
 <div class="aw-top-menu-wrap">
     <div class="container" style="padding-right:0px;">
         <!-- logo -->
@@ -190,304 +181,96 @@
         <div class="container">
             <div class="row">
                 <div class="aw-content-wrap clearfix simpobox">
-
                     <div class="N-left clearfix N-all">
                         <div class="N-mytitle">
                             <h2>专栏·发现</h2>
                             <ul>
-                                <li class=" cur  clearfix">
-                                    <a href="http://azhihu.cssroom.com/?/column/ajax/list/#column"
-                                       onclick="return false;" data-sort="sum">默认</a>
+                                <li>
+                                    <a onclick="moren()">默认</a>
                                 </li>
-                                <li class=" clearfix">
-                                    <a href="http://azhihu.cssroom.com/?/column/ajax/list/sort-new#column"
-                                       onclick="return false;" data-sort="new">最新</a>
+                                <li>
+                                    <a onclick="dates()">最新</a>
                                 </li>
-                                <li class=" clearfix">
-                                    <a href="http://azhihu.cssroom.com/?/column/ajax/list/sort-hot#column"
-                                       onclick="return false;" data-sort="hot">热门</a>
+                                <li>
+                                    <a onclick="hot()">热门</a>
                                 </li>
                             </ul>
+                            <script type="text/javascript" th:inline="javascript">
+                                function moren(){
+                                    $.ajax({
+                                        type:"post",
+                                        url:"tb_Topic/huan",
+                                        success:function(date){
+                                            $("#div1").html(date);
+                                        }
+                                    })
+                                }
+                                function dates(){
+                                    $.ajax({
+                                        type:"post",
+                                        url:"tb_Topic/date",
+                                        success:function(date){
+                                            $("#div1").html(date);
+                                        }
+                                    })
+                                }
+                                function hot(){
+                                    $.ajax({
+                                        type:"post",
+                                        url:"tb_Topic/hot",
+                                        success:function(date){
+                                            $("#div1").html(date);
+                                        }
+                                    })
+                                }
+                            </script>
                         </div>
 
                         <div class="N-zllist clearfix">
 
-                            <div class="N-myzilistbox clearfix" id="column">
-                                <dl>
-                                    <dt>
-                                        <img class="N-zimg" onclick="window.location = G_BASE_URL + '/column/details/1'"
-                                             src="http://azhihu.cssroom.com/uploads/column/9a8534317a7157af670e8a72521efa2b.jpg?4637"
-                                             style="cursor: pointer;"/>
-                                    </dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/column/details/1">投资笔记</a></h2>
-                                        <p>投资推荐阅读</p>
-                                        <span>
-                    <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 13</em>
-                    <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 1.95 K</em>
-                </span>
-                                        <span>
-                    <em>浏览量:1.95 K</em>|&nbsp;
-                    <em>文章数:6</em>
-                </span>
-                                    </dd>
-                                    <div class="ain"><a href="http://azhihu.cssroom.com/?/column/details/1">进入专栏</a>
-                                    </div>
-                                </dl>
-                                <dl>
-                                    <dt>
-                                        <img class="N-zimg" onclick="window.location = G_BASE_URL + '/column/details/2'"
-                                             src="http://azhihu.cssroom.com/uploads/column/b443401109d2291ca1d61ae7e60ad6e9.jpg?4789"
-                                             style="cursor: pointer;"/>
-                                    </dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/column/details/2">杯酒人生</a></h2>
-                                        <p>这杯法国柏阁葡萄酒,敬给还在焦虑着的人们...</p>
-                                        <span>
-                    <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 3</em>
-                    <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 1.02 K</em>
-                </span>
-                                        <span>
-                    <em>浏览量:1.02 K</em>|&nbsp;
-                    <em>文章数:3</em>
-                </span>
-                                    </dd>
-                                    <div class="ain"><a href="http://azhihu.cssroom.com/?/column/details/2">进入专栏</a>
-                                    </div>
-                                </dl>
-                                <dl>
-                                    <dt>
-                                        <img class="N-zimg" onclick="window.location = G_BASE_URL + '/column/details/4'"
-                                             src="http://azhihu.cssroom.com/uploads/column/d2a745c371b3a5b115afa9e1c7645aa6.jpg?6249"
-                                             style="cursor: pointer;"/>
-                                    </dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/column/details/4">假装思考</a></h2>
-                                        <p>请你告诉我如何悲伤</p>
-                                        <span>
-                    <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 0</em>
-                    <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 576</em>
-                </span>
-                                        <span>
-                    <em>浏览量:576</em>|&nbsp;
-                    <em>文章数:3</em>
-                </span>
-                                    </dd>
-                                    <div class="ain"><a href="http://azhihu.cssroom.com/?/column/details/4">进入专栏</a>
-                                    </div>
-                                </dl>
-                                <dl>
-                                    <dt>
-                                        <img class="N-zimg" onclick="window.location = G_BASE_URL + '/column/details/3'"
-                                             src="http://azhihu.cssroom.com/uploads/column/fc368855274e872dd86f7bdc567b390f.jpg?1438"
-                                             style="cursor: pointer;"/>
-                                    </dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/column/details/3">中二病茶会</a></h2>
-                                        <p>谈动画、影视为主</p>
-                                        <span>
-                    <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 2</em>
-                    <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 246</em>
-                </span>
-                                        <span>
-                    <em>浏览量:246</em>|&nbsp;
-                    <em>文章数:1</em>
-                </span>
-                                    </dd>
-                                    <div class="ain"><a href="http://azhihu.cssroom.com/?/column/details/3">进入专栏</a>
-                                    </div>
-                                </dl>
-
-                                <script type="text/javascript">
-
-                                    // $(".N-myzilistbox dl:odd").css('float','right');
-
-
-                                    function focus_column(selector, data_id) {
-                                        var url = '/column/ajax/focus_column/';
-
-                                        var data = {'column_id': data_id};
-
-                                        $.post(G_BASE_URL + url, data, function (result) {
-                                            if (result.errno == 1) {
-                                                if (result.rsm.type == 'add') {
-                                                    AWS.alert("关注成功！");
-                                                    selector.html('<img  src="http://azhihu.cssroom.com/static/css/default/img/nadn.png">');
-
-                                                } else {
-                                                    AWS.alert("取消关注！");
-                                                    selector.html('<img  src="http://azhihu.cssroom.com/static/css/default/img/nadd.png">');
-
-                                                }
-                                            } else {
-                                                if (result.err) {
-                                                    AWS.alert(result.err);
-                                                }
-
-                                                if (result.rsm.url) {
-                                                    window.location = decodeURIComponent(result.rsm.url);
-                                                }
-                                            }
-
-                                        }, 'json');
-
-                                    }
-                                </script>
+                            <div id="div1" th:fragment="div1">
+                                <div class="N-myzilistbox clearfix" id="column">
+                                    <dl th:each="topic : ${tbTopics}">
+                                        <dt>
+                                            <img class="N-zimg" onclick="window.location = G_BASE_URL + '/column/details/1'"
+                                                 src="http://azhihu.cssroom.com/uploads/column/9a8534317a7157af670e8a72521efa2b.jpg?4637"
+                                                 style="cursor: pointer;"/>
+                                        </dt>
+                                        <dd>
+                                            <h2 th:text="${topic.topic_name}"><a href="http://azhihu.cssroom.com/?/column/details/1">投资笔记</a></h2>
+                                            <span>
+                                                <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 13</em>
+                                                <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> [[${topic.topic_count}]]</em>
+                                            </span>
+                                            <span>
+                                                <em>浏览量:[[${topic.topic_count}]]</em>|&nbsp;
+                                                <em>文章数:[[${topic.count}]]</em>
+                                            </span>
+                                        </dd>
+                                        <div class="ain"><a href="http://azhihu.cssroom.com/?/column/details/1">进入专栏</a>
+                                        </div>
+                                    </dl>
+                                </div>
                             </div>
 
-                            <h6 class="nhref" id="bp_all_more" data-page="1"><i><img
-                                    src="http://azhihu.cssroom.com/static/css/default/img/href.png"></i>换一换</h6>
-
-
-                            <!-- <div class="N-mytitles">
-                                <h2>热门文章</h2>
-                                <a href="http://azhihu.cssroom.com/?/article/" class="nckmore">更多文章&gt;&gt;</a>
-                            </div>
-
-                            <div class="nzllist clearfix">
-                                                                 <dl>
-                                    <dt><a href="http://azhihu.cssroom.com/?/article/13"><img src="http://azhihu.cssroom.com/uploads/article/20190820/bdf36702ef735637eb5a302057ac9d4f.jpg?5898"></a></dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/article/13">有什么事是你租房以后才知道的？</a></h2>
-                                        <b>豆豆龙</b>
-                                        <span>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 2</em>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 225</em>
-                                            <em class="ntime">2019-08-20 09:37</em>
-                                        </span>
-                                    </dd>
-                                </dl>
-                                                                <dl>
-                                    <dt><a href="http://azhihu.cssroom.com/?/article/12"><img src="http://azhihu.cssroom.com/uploads/article/20190820/126316a8e8804283e8477142fabbbf23.jpg?7082"></a></dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/article/12">一个人在深圳累吗</a></h2>
-                                        <b>棉絮</b>
-                                        <span>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 0</em>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 355</em>
-                                            <em class="ntime">2019-08-20 09:29</em>
-                                        </span>
-                                    </dd>
-                                </dl>
-                                                                <dl>
-                                    <dt><a href="http://azhihu.cssroom.com/?/article/11"><img src="http://azhihu.cssroom.com/uploads/article/20190708/71be305ed3b52eae212b82737c38a71d.jpeg?478"></a></dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/article/11">顶级思维模型分享给大家</a></h2>
-                                        <b>黑色毛衣</b>
-                                        <span>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 2</em>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 246</em>
-                                            <em class="ntime">2019-07-08 12:01</em>
-                                        </span>
-                                    </dd>
-                                </dl>
-                                                                <dl>
-                                    <dt><a href="http://azhihu.cssroom.com/?/article/10"><img src="http://azhihu.cssroom.com/uploads/article/20190610/60077159a9a2ba6dff9e3b131430e41c.jpg?8794"></a></dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/article/10">在食堂吃饭点一个菜并不会丢人</a></h2>
-                                        <b>豆豆龙</b>
-                                        <span>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 4</em>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 286</em>
-                                            <em class="ntime">2019-06-10 15:45</em>
-                                        </span>
-                                    </dd>
-                                </dl>
-                                                                <dl>
-                                    <dt><a href="http://azhihu.cssroom.com/?/article/9"><img src="http://azhihu.cssroom.com/uploads/article/20190609/90c504115ddf86d80c55fc7855053625.jpg?1366"></a></dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/article/9">你跟我说他劈腿了怎么办</a></h2>
-                                        <b>棉絮</b>
-                                        <span>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 1</em>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 206</em>
-                                            <em class="ntime">2019-06-09 15:01</em>
-                                        </span>
-                                    </dd>
-                                </dl>
-                                                                <dl>
-                                    <dt><a href="http://azhihu.cssroom.com/?/article/8"><img src="http://azhihu.cssroom.com/uploads/article/20190530/4281ec8824e949a52001b60b9909b828.jpg?3570"></a></dt>
-                                    <dd>
-                                        <h2><a href="http://azhihu.cssroom.com/?/article/8">现在淘宝还能不能做不决定于市场，而取决于你自身。</a></h2>
-                                        <b>豆豆龙</b>
-                                        <span>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nz.png"></i> 2</em>
-                                            <em><i><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png"></i> 239</em>
-                                            <em class="ntime">2019-05-30 12:25</em>
-                                        </span>
-                                    </dd>
-                                </dl>
-                                                            </div>
-
-                            <h6 class="nhref" id="article_all_more" data-page="1"><i><img src="http://azhihu.cssroom.com/static/css/default/img/href.png"></i>换一换</h6> -->
-
-
+                            <a onclick="huan()">
+                                <h6 class="nhref">
+                                    <i><img src="http://azhihu.cssroom.com/static/css/default/img/href.png"></i>换一换
+                                </h6>
+                            </a>
+                            <script type="text/javascript" th:inline="javascript">
+                                function huan(){
+                                    $.ajax({
+                                        type:"post",
+                                        url:"tb_Topic/huan",
+                                        success:function(date){
+                                            $("#div1").html(date);
+                                        }
+                                    })
+                                }
+                            </script>
                         </div>
-
-
                     </div>
-                    <!-- <div class="N-right clearfix">
-
-                            <div class="N-tjpop">
-                                <h2><img src="http://azhihu.cssroom.com/static/css/default/img/tjpop.png">推荐专栏</h2>
-                            </div>
-
-                                                        <div class="N-poplist one">
-                                <div class="N-popbox">
-                                    <em>1</em>
-                                    <dl>
-                                        <dt><img onclick="window.location = G_BASE_URL + '/column/details/1'" src="http://azhihu.cssroom.com/uploads/column/9a8534317a7157af670e8a72521efa2b.jpg?4637"><a href="http://azhihu.cssroom.com/?/column/details/1">投资笔记</a></dt>
-                                        <dd>投资推荐阅读</dd>
-                                    </dl>
-                                    <ul>
-                                        <li><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png">文章总浏览量:<i>1.95 K</i></li>
-                                        <li><img src="http://azhihu.cssroom.com/static/css/default/img/nnum.png">发表文章总数:<i>6</i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                                                        <div class="N-poplist two">
-                                <div class="N-popbox">
-                                    <em>2</em>
-                                    <dl>
-                                        <dt><img onclick="window.location = G_BASE_URL + '/column/details/2'" src="http://azhihu.cssroom.com/uploads/column/b443401109d2291ca1d61ae7e60ad6e9.jpg?4789"><a href="http://azhihu.cssroom.com/?/column/details/2">杯酒人生</a></dt>
-                                        <dd>这杯法国柏阁葡萄酒,...</dd>
-                                    </dl>
-                                    <ul>
-                                        <li><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png">文章总浏览量:<i>1.02 K</i></li>
-                                        <li><img src="http://azhihu.cssroom.com/static/css/default/img/nnum.png">发表文章总数:<i>3</i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                                                        <div class="N-poplist three">
-                                <div class="N-popbox">
-                                    <em>3</em>
-                                    <dl>
-                                        <dt><img onclick="window.location = G_BASE_URL + '/column/details/4'" src="http://azhihu.cssroom.com/uploads/column/d2a745c371b3a5b115afa9e1c7645aa6.jpg?6249"><a href="http://azhihu.cssroom.com/?/column/details/4">假装思考</a></dt>
-                                        <dd>请你告诉我如何悲伤</dd>
-                                    </dl>
-                                    <ul>
-                                        <li><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png">文章总浏览量:<i>576</i></li>
-                                        <li><img src="http://azhihu.cssroom.com/static/css/default/img/nnum.png">发表文章总数:<i>3</i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                                                        <div class="N-poplist three">
-                                <div class="N-popbox">
-                                    <em>4</em>
-                                    <dl>
-                                        <dt><img onclick="window.location = G_BASE_URL + '/column/details/3'" src="http://azhihu.cssroom.com/uploads/column/fc368855274e872dd86f7bdc567b390f.jpg?1438"><a href="http://azhihu.cssroom.com/?/column/details/3">中二病茶会</a></dt>
-                                        <dd>谈动画、影视为主</dd>
-                                    </dl>
-                                    <ul>
-                                        <li><img src="http://azhihu.cssroom.com/static/css/default/img/nsee.png">文章总浏览量:<i>246</i></li>
-                                        <li><img src="http://azhihu.cssroom.com/static/css/default/img/nnum.png">发表文章总数:<i>1</i></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                    </div> -->
-
-
                 </div>
             </div>
         </div>
@@ -500,116 +283,14 @@
 </div>
 <script type="text/javascript">
     var sort = 'sum';
-    var re=eval("/dl/g");
 
     $(".N-mytitle").find("a").mouseenter(function(){
-        $('#bp_all_more').show();
-        $('#bp_all_more').attr('data-page',1);
         $(".N-mytitle").find("li").removeClass("cur");
         $(this).parent().addClass("cur");
         var url=$(this).attr("href");
         sort = $(this).attr('data-sort');
-        $.get(url,function(result){
-            $('.N-myzilistbox').html(result);
-        });
     });
-    $('#bp_all_more').click(function ()
-    {
-        var curPage = parseInt($(this).attr('data-page')) + 1;
-
-        var cloneN = $(".N-myzilistbox").clone();
-
-
-        $('.N-myzilistbox').html('<p style="padding: 15px 0" align="center"><img src="' + G_STATIC_URL + '/css/default/img/loading_b.gif" alt="" /></p>');
-
-        $.get(G_BASE_URL + '/column/ajax/list/sort' + '-' + sort + '__page' + '-' + curPage, function (response)
-        {
-
-            if ($.trim(response) != '')
-            {
-                var lengt = response.match(re).length;
-
-                if(lengt < 12){
-                    $("#bp_all_more").attr('data-page',0);
-                }else{
-                    $("#bp_all_more").attr('data-page',curPage);
-                }
-
-                $('.N-myzilistbox').html(response);
-            }
-            else
-            {
-                $("#bp_all_more").attr('data-page',0);
-                $('.N-myzilistbox').html(cloneN);
-
-            }
-        });
-    });
-
-    $('#article_all_more').click(function(){
-
-        var aPage = parseInt($(this).attr('data-page')) + 1;
-
-        var cloneA = $(".nzllist").clone();
-
-        $('.nzllist').html('<p style="padding: 15px 0" align="center"><img src="' + G_STATIC_URL + '/css/default/img/loading_b.gif" alt="" /></p>');
-
-        $.get(G_BASE_URL + '/column/ajax/article_list/page'+'-'+aPage, function (response)
-        {
-            if ($.trim(response) != '')
-            {
-
-                var lengt = response.match(re).length;
-
-                if(lengt < 12){
-
-                    $("#article_all_more").attr('data-page',0);
-
-                }else{
-
-                    $("#article_all_more").attr('data-page',aPage);
-
-                }
-
-                $('.nzllist').html(response);
-            }
-            else
-            {
-                $("#article_all_more").attr('data-page',0);
-                $('.nzllist').html(cloneA);
-
-            }
-
-        });
-    })
 </script>
 
-<div class="aw-footer-wrap">
-    <div class="aw-footer">
-        Copyright © 2020, All Rights Reserved</span>
-        <span class="hidden-xs">Powered By <a href="http://www.wecenter.com/?copyright" target="blank">WeCenter 3.5.1</a></span>
-        <script>
-            var _hmt = _hmt || [];
-            (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?1a4884ec01ab4ea9a8280251bbd1a95d";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-            })();
-        </script>
-    </div>
-</div>
-<a class="aw-back-top hidden-xs" href="javascript:;" onclick="$.scrollTo(1, 600, {queue:true});"><i class="icon icon-up"></i></a>
-<!--底部公共注入钩子-->
-<!--end底部公共注入钩子-->
-<!-- DO NOT REMOVE -->
-<div id="aw-ajax-box" class="aw-ajax-box"></div>
-<div style="display:none;" id="__crond">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#__crond').html(unescape('%3Cimg%20src%3D%22' + G_BASE_URL + '/crond/run/1598519603%22%20width%3D%221%22%20height%3D%221%22%20/%3E'));
-        });
-    </script>
-</div>
-<!-- Escape time: 0.069658041000366 --></body>
+</body>
 </html>

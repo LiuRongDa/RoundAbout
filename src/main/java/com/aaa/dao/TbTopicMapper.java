@@ -8,4 +8,10 @@ import java.util.List;
 
 public interface TbTopicMapper extends MyMapper<TbTopic> {
     List<TbTopic> queryAll(@Param("topic_id") Integer topic_id,@Param("topic_name")String topic_name);
+
+    List<TbTopic> queryTopic();
+
+    List<TbTopic> queryhot();
+
+    List<TbTopic> querydate();
 }

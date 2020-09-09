@@ -13,6 +13,12 @@ public class TbTopic implements Serializable {
 
     private Integer user_id;
 
+    private String topic_date;
+
+    private Integer topic_count;
+
+    private Integer count;
+
     private List<TbUser> tbUser;
 
     private List<TbTopicUser> tbTopicUser;
@@ -22,6 +28,30 @@ public class TbTopic implements Serializable {
     private List<TbArticle> tbArticle;
 
     private static final long serialVersionUID = 1L;
+
+    public String getTopic_date() {
+        return topic_date;
+    }
+
+    public void setTopic_date(String topic_date) {
+        this.topic_date = topic_date;
+    }
+
+    public Integer getTopic_count() {
+        return topic_count;
+    }
+
+    public void setTopic_count(Integer topic_count) {
+        this.topic_count = topic_count;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public List<TbArticle> getTbArticle() {
         return tbArticle;
@@ -117,6 +147,9 @@ public class TbTopic implements Serializable {
                 "topic_id=" + topic_id +
                 ", topic_name='" + topic_name + '\'' +
                 ", user_id=" + user_id +
+                ", topic_date='" + topic_date + '\'' +
+                ", topic_count=" + topic_count +
+                ", count=" + count +
                 ", tbUser=" + tbUser +
                 ", tbTopicUser=" + tbTopicUser +
                 ", tbArticleTopic=" + tbArticleTopic +

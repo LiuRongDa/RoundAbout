@@ -1,13 +1,7 @@
 package com.aaa.controller.front;
 
-import com.aaa.entity.TbArticleGambit;
-import com.aaa.entity.TbComment;
-import com.aaa.entity.TbGambit;
-import com.aaa.entity.TbReply;
-import com.aaa.service.TbArticleService;
-import com.aaa.service.TbCommentService;
-import com.aaa.service.TbGambitService;
-import com.aaa.service.TbPraiseService;
+import com.aaa.entity.*;
+import com.aaa.service.*;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -35,6 +30,23 @@ public class TbArticleController {
 
     @Resource
     TbPraiseService tbPraiseService;
+
+    @Resource
+    TbTopicService tbTopicService;
+
+    /**
+     * 举报文章
+     * @param article_id
+     * @param user_id
+     * @param report_content
+     * @return
+     */
+    @RequestMapping("reportArticle")
+    @ResponseBody
+    public Integer reportArticle(Integer article_id,Integer user_id,String report_content){
+
+        return 0;
+    }
 
     /**
      * 点赞文章
@@ -85,21 +97,24 @@ public class TbArticleController {
      * 发布问题
      */
     @RequestMapping("insertArticle")
-    public String insertArticle(Integer user_id,String article_title,String article_content,String topics){
+    public String insertArticle(Integer user_id,String article_title,String article_content,String topics,Integer topic_id){
         System.out.println("user_id--->"+user_id);
         System.out.println("article_title--->"+article_title);
         System.out.println("article_content--->"+article_content);
         System.out.println("topics---->"+topics);
-        Integer integer = tbArticleService.insertArticle(user_id, article_title, article_content, topics);
+        System.out.println("topic_id--->"+topic_id);
+        Integer integer = tbArticleService.insertArticle(user_id, article_title, article_content, topics,topic_id);
         return "redirect:../tb_Article/queryAll";
     }
 
 
     @RequestMapping("w_a")
-    public String write_article(Model model){
-
+    public String write_article(Model model, HttpSession session){
+        TbUser user = (TbUser) session.getAttribute("user");
+        List<TbTopic> tbTopics = tbTopicService.queryUser(user.getUser_id());
         List<TbGambit> query = tbGambitService.query();
         model.addAttribute("gambits",query);
+        model.addAttribute("tbTopics",tbTopics);
 
         return "write_article";
     }

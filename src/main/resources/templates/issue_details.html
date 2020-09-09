@@ -98,7 +98,7 @@
                         <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
                     </li>
                     <li>
-                        <a><i class=""></i> 专栏</a>
+                        <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
                     </li>
                 </ul>
             </nav>
@@ -610,6 +610,11 @@
                     <!-- end 文章评论 -->
                     <!-- 回复编辑器 -->
                     <div class="aw-mod aw-article-replay-box">
+                        <div class="mod-head">
+                            <a href="http://azhihu.cssroom.com/?/people/" class="aw-user-name">
+                                <img alt="Artls" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png"/>
+                            </a>
+                        </div>
                         <div class="mod-body">
                             <input type="text" id="issid" value="" th:value="${issue[0].TbIssue.issue_id}" hidden>
                             <input type="text" id="userid" value="" th:value="${session.user.user_id}" hidden>
