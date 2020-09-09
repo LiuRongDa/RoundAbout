@@ -42,6 +42,15 @@ public class TbUserService {
     @Resource
     TbAttentionMapper tbAttentionMapper;//关注表
 
+    /**
+     * 查询随机5条用户
+     * @return
+     */
+    public List<TbUser> queryround(){
+        List<TbUser> queryround = tbUserMapper.queryround();
+        return queryround;
+    }
+
     //修改个人信息
     public boolean setUser(TbUser user){
         int i = tbUserMapper.updateByPrimaryKeySelective(user);

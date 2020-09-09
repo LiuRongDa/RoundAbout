@@ -39,6 +39,9 @@ public class TbIssueController {
     @Resource
     TbReportService tbReportService;
 
+    @Resource
+    TbUserService tbUserService;
+
 
     @RequestMapping("reportIssue")
     @ResponseBody
@@ -176,6 +179,8 @@ public class TbIssueController {
     @RequestMapping("queryAll")
     public String queryAll(Model model,Integer pageNum,Integer pageSize){
         PageInfo pageInfo = tbIssueService.queryAll(pageNum,pageSize);
+        List<TbUser> queryround = tbUserService.queryround();
+        model.addAttribute("query",queryround);
         model.addAttribute("iss",pageInfo);
         return "issue_main";
     }
@@ -183,6 +188,8 @@ public class TbIssueController {
     @RequestMapping("queryhot")
     public String queryhot(Model model,Integer pageNum,Integer pageSize){
         PageInfo pageInfo = tbIssueService.queryhot(pageNum,pageSize);
+        List<TbUser> queryround = tbUserService.queryround();
+        model.addAttribute("query",queryround);
         model.addAttribute("iss",pageInfo);
         return "issue_hot";
     }

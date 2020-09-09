@@ -34,6 +34,9 @@ public class TbArticleController {
     @Resource
     TbTopicService tbTopicService;
 
+    @Resource
+    TbUserService tbUserService;
+
     /**
      * 举报文章
      * @param article_id
@@ -129,6 +132,8 @@ public class TbArticleController {
     @RequestMapping("queryAll")
     public String queryAll(Model model,Integer pageNum,Integer pageSize){
         PageInfo pageInfo = tbArticleService.queryAll(pageNum,pageSize);
+        List<TbUser> queryround = tbUserService.queryround();
+        model.addAttribute("query",queryround);
         model.addAttribute("art",pageInfo);
         return "main";
     }
@@ -177,6 +182,8 @@ public class TbArticleController {
     @RequestMapping("queryhot")
     public String queryhot(Model model,Integer pageNum,Integer pageSize){
         PageInfo pageInfo = tbArticleService.queryhot(pageNum,pageSize);
+        List<TbUser> queryround = tbUserService.queryround();
+        model.addAttribute("query",queryround);
         model.addAttribute("art",pageInfo);
         return "article_hot";
     }

@@ -22,4 +22,6 @@ public interface TbUserMapper extends MyMapper<TbUser> {
     Boolean add(TbUser tbUser);
 
     Boolean upState(@Param("user_state")Integer user_state,@Param("user_id")Integer user_id);
+
+    List<TbUser> queryround();
 }

@@ -13,6 +13,8 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,6 +35,37 @@ public class TbTopicService {
 
     @Resource
     TbArticleMapper tbArticleMapper;
+
+
+    /**
+     * fsjaif
+     * @return
+     */
+    public Integer addCount(Integer topic_id){
+        TbTopic tbTopic = tbTopicMapper.selectByPrimaryKey(topic_id);
+        tbTopic.setTopic_count(tbTopic.getTopic_count()+1);
+        int i = tbTopicMapper.updateByPrimaryKey(tbTopic);
+        return i;
+    }
+    /**
+     * 创建专栏
+     * @param user_id
+     * @param topic_name
+     * @return
+     */
+    public Integer addTopic(Integer user_id,String topic_name){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(new Date());
+        TbTopic tbTopic = new TbTopic();
+        tbTopic.setTopic_name(topic_name);
+        tbTopic.setUser_id(user_id);
+        tbTopic.setTopic_date(dateString);
+        tbTopic.setTopic_count(0);
+        tbTopic.setCount(0);
+
+        int insert = tbTopicMapper.insert(tbTopic);
+        return insert;
+    }
 
     /**
      * 查询指定专栏

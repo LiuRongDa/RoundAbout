@@ -97,7 +97,7 @@
                         <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
                     </li>
                     <li>
-                        <a href="http://azhihu.cssroom.com/?/column" class="active"><i class=""></i> 专栏</a>
+                        <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
                     </li>
                 </ul>
             </nav>
@@ -115,7 +115,7 @@
                         <p class="search"><span>搜索:</span><a onClick="$('#global_search_form').submit();"></a></p>
                     </div>
                     <div class="mod-footer">
-                        <a href="http://azhihu.cssroom.com/?/publish" onClick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
+                        <a href="javascript:;" onClick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
                     </div>
                 </div>
             </form>
@@ -123,17 +123,14 @@
         <!-- end 搜索框 -->
         <!-- 发起 -->
         <div class="aw-publish-btn">
-
-            <a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/">发起</a>
+            <a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/" onclick="AWS.dialog('publish', {'category_enable':'0', 'category_id':'0', 'topic_title':''}); return false;">发起</a>
             <div class="dropdown-list pull-right">
                 <ul>
                     <li>
                         <form method="post" action="http://azhihu.cssroom.com/?/publish/">
                             <a onclick="$(this).parents('form').submit();">问题</a>
                         </form>
-
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -141,8 +138,26 @@
         <!-- 用户栏 -->
         <div class="aw-user-nav">
             <!-- 登陆&注册栏 -->
+            <!--<a href="User/toOneHome" class="aw-user-nav-dropdown"></a>-->
+            <img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" />
 
-            <a class="register btn btn-normal btn-success" href="http://azhihu.cssroom.com/?/account/register/"><i class="icon icon-users"></i> 注册</a>					<a class="login btn btn-normal btn-primary" href="http://azhihu.cssroom.com/?/account/login/">登录</a>
+            <div class="aw-dropdown dropdown-list pull-right">
+                <ul class="aw-dropdown-list">
+                    <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                        个人主页</a></li>
+                    <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
+                    <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
+                    <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
+                    <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
+                </ul>
+            </div>
+            <!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
+                <ul class="aw-dropdown-list">
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=common"><i class="icon icon-draft"></i> 默认&nbsp;&nbsp;√</a></li>
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=green"><i class="icon icon-draft"></i> 绿色&nbsp;&nbsp;</a></li>
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=orange"><i class="icon icon-draft"></i> 橙色&nbsp;&nbsp;</a></li>
+                </ul>
+            </div> -->
             <!-- end 登陆&注册栏 -->
         </div>
         <!-- end 用户栏 -->
@@ -171,11 +186,49 @@
     <div class="columntop">
         <h1>站内专栏</h1>
         <h2>随心写作，自由表达</h2>
-        <a target="_blank" type="button" class="btn ColumnHomeTop-writeButton"
-           href="http://azhihu.cssroom.com/?/account/login/">开始写文章</a>
-        <a target="_blank" type="button" class="Button ColumnHomeTop-requestButton"
-           href="http://azhihu.cssroom.com/?/account/login/">申请开通专栏 <img
-                src="http://azhihu.cssroom.com/static/css/azhihu/img/c_right.png"></a>
+        <a type="button" class="btn ColumnHomeTop-writeButton"
+           th:href="@{tb_Article/w_a}">开始写文章</a>
+        <a class="Button ColumnHomeTop-requestButton" data-toggle="modal" data-target="#jbreply">
+            申请开通专栏
+            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/c_right.png">
+        </a>
+    </div>
+    <div class="modal fade" id="jbreply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h1 class="modal-title">专栏名称:</h1>
+                </div>
+                <div class="modal-body">
+                    <input style="width: 100%" type="text" value="" name="topic_name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" th:onclick="jbart(this)">确定</button>
+                    <script type="text/javascript" th:inline="javascript">
+                        function jbart(a){
+                            var user_id = [[${session.user.user_id}]];
+                            var topic_name = $("[name='topic_name']").val();
+
+                            $.ajax({
+                                type:"post",
+                                url:"tb_Topic/addTopic",
+                                data:{"user_id":user_id,"topic_name":topic_name},
+                                success:function(date){
+                                    if(date == 1){
+                                        $("[name='topic_name']").val("");
+                                        alert("创建成功,现在可以开始写作了")
+                                    }else{
+                                        alert("一个未知的错误");
+                                    }
+                                }
+                            })
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="aw-container-wrap">
         <div class="container">
@@ -248,7 +301,7 @@
                                                 <em>文章数:[[${topic.count}]]</em>
                                             </span>
                                         </dd>
-                                        <div class="ain"><a th:href="@{tb_Topic/queryById(topic_id=${topic.topic_id})}">进入专栏</a>
+                                        <div class="ain"><a th:href="@{tb_Topic/addCount(topic_id=${topic.topic_id})}">进入专栏</a>
                                         </div>
                                     </dl>
                                 </div>

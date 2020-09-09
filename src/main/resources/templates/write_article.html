@@ -217,7 +217,7 @@
                                     <input type="text" name="topic_id" id="cou" value="" hidden>
                                 </div>
 
-                                <h3>设置专栏:(选填)</h3>
+                                <h3><a th:href="@{tb_Topic/showColumn}">设置专栏:(选填)</a></h3>
                                 <div th:each="topic : ${tbTopics}">
                                     <input type="checkbox" name="ids" onclick="zl(this)" value="" th:value="${topic.topic_id}">[[${topic.topic_name}]]
                                 </div>

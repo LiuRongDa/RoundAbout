@@ -138,18 +138,26 @@
         <!-- 用户栏 -->
         <div class="aw-user-nav">
             <!-- 登陆&注册栏 -->
-            <a href="http://azhihu.cssroom.com/?/people/106" class="aw-user-nav-dropdown">
-                <img alt="Artls" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" />
-            </a>
+            <!--<a href="User/toOneHome" class="aw-user-nav-dropdown"></a>-->
+            <img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" />
+
             <div class="aw-dropdown dropdown-list pull-right">
                 <ul class="aw-dropdown-list">
+                    <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                        个人主页</a></li>
                     <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                    <li class="hidden-xs"><a href="http://azhihu.cssroom.com/?/account/setting/profile/"><i class="icon icon-setting"></i> 设置</a></li>
-
-                    <li><a href="http://azhihu.cssroom.com/?/account/logout/"><i class="icon icon-logout"></i> 退出</a></li>
+                    <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
+                    <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
+                    <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                 </ul>
             </div>
-
+            <!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
+                <ul class="aw-dropdown-list">
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=common"><i class="icon icon-draft"></i> 默认&nbsp;&nbsp;√</a></li>
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=green"><i class="icon icon-draft"></i> 绿色&nbsp;&nbsp;</a></li>
+                    <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=orange"><i class="icon icon-draft"></i> 橙色&nbsp;&nbsp;</a></li>
+                </ul>
+            </div> -->
             <!-- end 登陆&注册栏 -->
         </div>
         <!-- end 用户栏 -->
@@ -308,7 +316,7 @@
                         <div class="mod-footer">
                             <div class="aw-article-voter">
                                 <a href="javascript:;" class="voter" data-toggle="tooltip" data-placement="right" th:each="tbComment : ${tbComments}">
-                                    <img alt="a58523" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png"/>
+                                    <img th:src="${tbComment.TbUser.user_photo}"/>
                                 </a>
                             </div>
                         </div>
@@ -323,8 +331,8 @@
                         <div class="mod-body aw-feed-list" th:each="tbComment : ${tbComments}">
                             <div class="aw-item">
                                 <div class="mod-head">
-                                    <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
-                                        <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
+                                    <a class="aw-user-img aw-border-radius-5" th:href="@{User/toElseHome(id=${tbComment.TbUser.user_id})}">
+                                        <img th:src="${tbComment.TbUser.user_photo}"/>
                                     </a>
                                     <p>
                                         <a href="javascript:;" th:text="${tbComment.TbUser.user_name}">evz03424</a>
@@ -408,8 +416,8 @@
 
                                             <div th:each="a : ${tbComment.tbReplies}">
                                                 <div class="mod-head">
-                                                    <a class="aw-user-img aw-border-radius-5" href="http://azhihu.cssroom.com/?/people/57">
-                                                        <img src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" alt="evz03424"/>
+                                                    <a class="aw-user-img aw-border-radius-5" th:href="@{User/toElseHome(id=${a.TbUser.user_id})}">
+                                                        <img th:src="${a.TbUser.user_photo}"/>
                                                     </a>
                                                     <p th:if="${a.tbReplies == null}">
                                                         <a href="javascript:;" th:text="${a.TbUser.user_name}+回复+${tbComment.TbUser.user_name}">evz03424</a>
@@ -645,8 +653,8 @@
                             <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden/>
                             <input type="text" name="article_id" value="" th:value="${art[0].article_id}" hidden/>
                             <div class="mod-head">
-                                <a href="http://azhihu.cssroom.com/?/people/" class="aw-user-name">
-                                    <img alt="Artls" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png"/>
+                                <a th:href="@{User/toElseHome(id=${session.user.user_id})}" class="aw-user-name">
+                                    <img th:src="${session.user.user_photo}"/>
                                 </a>
                             </div>
                             <div class="mod-body">
@@ -670,22 +678,18 @@
                         <div class="mod-body">
                             <dl>
                                 <dt class="pull-left aw-border-radius-5">
-                                    <a href="javascript:;">
-                                        <img alt="豆豆龙" src="http://azhihu.cssroom.com/uploads/avatar/000/00/00/02_avatar_mid.jpg"/>
+                                    <a th:href="@{User/toElseHome(id=${art[0].TbArticle.TbUser.user_id})}">
+                                        <img th:src="${art[0].TbArticle.TbUser.user_photo}"/>
                                     </a>
                                 </dt>
                                 <dd class="pull-left">
-                                    <a class="aw-user-name" href="http://azhihu.cssroom.com/?/people/2" data-id="2" th:text="${art[0].TbArticle.TbUser.user_name}">
+                                    <a class="aw-user-name" th:href="@{User/toElseHome(id=${art[0].TbArticle.TbUser.user_id})}" data-id="2" th:text="${art[0].TbArticle.TbUser.user_name}">
                                         豆豆龙
-                                    </a>
-
-                                    <a class="icon-inverse follow tooltips icon icon-plus "
-                                       onclick="AWS.User.follow($(this), 'user', 2);">
                                     </a>
                                 </dd>
                             </dl>
                         </div>
-                        <div class="mod-footer clearfix">
+                        <!--<div class="mod-footer clearfix">
                             <div class="aw-topic-bar">
                                 <div class="topic-bar clearfix">
                                     <span class="pull-left text-color-999">
@@ -709,7 +713,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <!-- end 发起人 -->
 
