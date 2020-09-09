@@ -10,9 +10,7 @@ import com.aaa.utils.FileUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -40,6 +38,11 @@ public class UserMessageController {
     @Resource
     BCryptPasswordEncoderRun bCryptPasswordEncoderRun;
 
+    //跳转到修改邮箱
+    @RequestMapping("/toChangeEmail")
+    public String toChangeEmail(){
+        return "changeemail";
+    }
     //跳转到修改密码
     @RequestMapping("/toChangePwd")
     public String toChangePwd(){
@@ -172,5 +175,26 @@ public class UserMessageController {
     public boolean setpwd(@RequestParam("id") int id,@RequestParam("pwd") String pwd){
 
         return tbUserService.setpwd(id, pwd);
+    }
+    //忘记密码 设置密码
+    @RequestMapping("/setEmail")
+    @ResponseBody
+    public boolean setEmail(HttpSession session,@RequestParam("email") String email){
+        Integer id = (Integer) session.getAttribute("id");
+        return tbUserService.setEmail(session,id,email);
+    }
+
+    //修改个人信息
+    @RequestMapping(value = "/setUser", method = RequestMethod.POST)
+    public String setUser(TbUser user,HttpSession session){
+        //System.out.println(user);
+        user.setUser_id((Integer) session.getAttribute("id"));
+        boolean b = tbUserService.setUser(user);
+        if (b) {
+            session.setAttribute("user",tbUserService.queryById((Integer) session.getAttribute("id")));
+            return "redirect:/User/toOneHome";
+        }else
+            return "";
+
     }
 }

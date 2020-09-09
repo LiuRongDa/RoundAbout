@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -41,6 +42,14 @@ public class TbUserService {
     @Resource
     TbAttentionMapper tbAttentionMapper;//关注表
 
+    //修改个人信息
+    public boolean setUser(TbUser user){
+        int i = tbUserMapper.updateByPrimaryKeySelective(user);
+        if (1>0)
+            return true;
+        else
+            return false;
+    }
     //主页访问次数+1
     public void addcount(Integer id){
         TbUser tbUser = queryById(id);
@@ -149,6 +158,18 @@ public class TbUserService {
         if (i>0)
             return true;
         else
+            return false;
+    }
+    //设置密码
+    public boolean setEmail(HttpSession session,Integer id, String email){
+        TbUser tbUser = new TbUser();
+        tbUser.setUser_id(id);
+        tbUser.setUser_email(email);
+        int i = tbUserMapper.updateByPrimaryKeySelective(tbUser);
+        if (i>0) {
+            session.setAttribute("user",tbUserMapper.selectByPrimaryKey(tbUser));
+            return true;
+        }else
             return false;
     }
 
