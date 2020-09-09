@@ -52,7 +52,7 @@ public class EmailHelper {
         mimeMessage.setFrom(new InternetAddress(sendFrom));
         //邮件接收人，可以同时发送给很多人，我们这里只发给自己；
         mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(someone));
-        mimeMessage.setSubject(verification_code); //邮件主题标题
+        mimeMessage.setSubject("问号科技"); //邮件主题标题
         //编写邮件内容1.图片2.附件3.文本
         //文本
         MimeBodyPart body1 = new MimeBodyPart();
