@@ -84,26 +84,27 @@ public class TbIssueUserService {
      * @param issue_id
      * @return
      */
-    public Integer addIssueUser(Integer user_id,Integer issue_id){
+    public Integer addIssueUser(Integer user_id,Integer issue_id) {
         TbIssueUser tbIssueUser = new TbIssueUser();
         tbIssueUser.setUser_id(user_id);
         tbIssueUser.setIssue_id(issue_id);
 
         List<TbIssueUser> select = tbIssueUserMapper.select(tbIssueUser);
-        if(select.size() == 0){
+        if (select.size() == 0) {
             int insert = tbIssueUserMapper.insert(tbIssueUser);
             return 1;
-        }else{
+        } else {
             return 0;
         }
+    }
     /**
      * LRD 后台 添加问题用户桥梁表信息
      * @param tbIssueUser
      * @return
      */
-    public Boolean add(TbIssueUser tbIssueUser){
+    public Boolean add(TbIssueUser tbIssueUser) {
         int insert = tbIssueUserMapper.insert(tbIssueUser);
-        if(insert==1)return true;
+        if (insert == 1) return true;
         return false;
     }
 }
