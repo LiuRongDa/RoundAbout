@@ -21,6 +21,13 @@ public class LoginController {
     @Resource
     TbUserService tbUserService;
 
+    //退出
+    @RequestMapping("/exit")
+    public String exit(HttpSession session){
+        //session.invalidate();session失效
+        session.removeAttribute("user");
+        return "redirect:/L/login";
+    }
     @RequestMapping("/login")
     public String reLogin(){
         return "login";
@@ -29,12 +36,15 @@ public class LoginController {
     @ResponseBody
     public boolean toLogin(HttpSession session, @RequestParam("email") String email,@RequestParam("pwd") String pwd){
         TbUser tbUser = tbUserService.toLogin(email, pwd);
-        session.setAttribute("user",tbUser);
-        session.setAttribute("id",tbUser.getUser_id());
+
         if (tbUser==null)
             return false;
-        else
+        else{
+            session.setAttribute("user",tbUser);
+            session.setAttribute("id",tbUser.getUser_id());
             return true;
+        }
+
     }
     @RequestMapping("/toRegister")
     @ResponseBody

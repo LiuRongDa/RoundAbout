@@ -41,6 +41,14 @@ public class TbUserService {
     @Resource
     TbAttentionMapper tbAttentionMapper;//关注表
 
+    //主页访问次数+1
+    public void addcount(Integer id){
+        TbUser tbUser = queryById(id);
+        TbUser tbUser1 = new TbUser();
+        tbUser1.setUser_id(id);
+        tbUser1.setUser_count(tbUser.getUser_count()+1);
+        tbUserMapper.updateByPrimaryKeySelective(tbUser1);
+    }
     //关注 取消
     public void attention(Integer id,Integer id1,Integer sta){
         TbAttention tbAttention = new TbAttention();

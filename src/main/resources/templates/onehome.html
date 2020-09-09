@@ -242,9 +242,6 @@
                             <a href="User/toMessage" class="btn btn-mini btn-success">编辑个人资料</a>
                         </span>
                     </div>
-
-
-
                 </div>
                 <div class="col-sm-12 col-md-9 aw-main-content">
                     <!-- 用户数据内容 -->
@@ -390,7 +387,7 @@
                                         <div class="aw-profile-publish-list" id="contents_user_actions_articles">
                                             <div th:each="l : ${article}">
                                                 <p>
-                                                    <a th:href="@{tb_Article/queryById(id=${l.article_id})}"><span th:text="${l.article_content}"></span></a>
+                                                    <a th:href="@{tb_Article/queryById(id=${l.article_id})}"><span th:text="${l.article_title}"></span></a>
                                                 </p>
                                                 <p>浏览量：[[${l.article_count}]]&nbsp;&nbsp;&nbsp;&nbsp;
                                                     评论数：[[${l.count}]]&nbsp;&nbsp;&nbsp;&nbsp;

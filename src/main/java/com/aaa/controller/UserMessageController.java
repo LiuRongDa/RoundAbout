@@ -1,11 +1,13 @@
 package com.aaa.controller;
 
 import com.aaa.entity.TbUser;
+import com.aaa.security.BCryptPasswordEncoderRun;
 import com.aaa.service.TbArticleService;
 import com.aaa.service.TbIssueService;
 import com.aaa.service.TbUserService;
 import com.aaa.utils.EmailHelper;
 import com.aaa.utils.FileUtil;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +37,28 @@ public class UserMessageController {
     TbArticleService tbArticleService;
     @Resource
     TbIssueService tbIssueService;
+    @Resource
+    BCryptPasswordEncoderRun bCryptPasswordEncoderRun;
 
+    //跳转到修改密码
+    @RequestMapping("/toChangePwd")
+    public String toChangePwd(){
+        return "changepwd";
+    }
+    //修改密码
+    @RequestMapping("/changePwd")
+    @ResponseBody
+    public Integer changePwd(HttpSession session, @Param("oldpwd") String oldpwd,@Param("newpwd") String newpwd){
+        TbUser user = (TbUser) session.getAttribute("user");
+        System.out.println(oldpwd+"--"+newpwd);
+        if(bCryptPasswordEncoderRun.passwordEncoder().matches(oldpwd,user.getUser_pwd())){
+            if (tbUserService.setpwd(user.getUser_id(), newpwd)){
+                return 1;
+            }else
+                return 2;
+        }else
+            return 0;
+    }
     //上传图片
     @RequestMapping("/uploadImage")
     @ResponseBody
@@ -95,9 +118,13 @@ public class UserMessageController {
     //跳转到别人主页
     @RequestMapping("/toElseHome")
     public String toElseHome(HttpSession session,Integer id,Model model){
-        if (id==session.getAttribute("id")){
+        //System.out.println(session.getAttribute("id")+"---"+id);
+        Integer userId = (Integer) session.getAttribute("id");
+        if (id.equals(userId)){
             return "redirect:toOneHome";
         }else{
+            //主页浏览次数增加
+            tbUserService.addcount(id);
             //查询是否关注某人
             model.addAttribute("booleanUser",tbUserService.booleanUser((Integer) session.getAttribute("id"),id));
             //基本信息
