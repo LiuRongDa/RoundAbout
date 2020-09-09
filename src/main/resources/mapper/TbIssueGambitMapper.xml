@@ -40,4 +40,5 @@
     select i.*,u.* from tb_issue i
     LEFT JOIN tb_user u on u.user_id=i.user_id where i.issue_title like CONCAT("%", #{like}, "%")
   </select>
+  <!---->
 </mapper>

@@ -24,6 +24,10 @@ public interface TbIssueGambitMapper extends MyMapper<TbIssueGambit> {
      */
     List<TbIssueGambit> queryById(@Param("issue_id") Integer issue_id);
 
-
+    /**
+     * 条件查询
+     * @param like
+     * @return
+     */
     List<TbIssueGambit> queryLike(@Param("like") String like);
 }

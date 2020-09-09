@@ -29,7 +29,7 @@ public interface TbArticleGambitMapper extends MyMapper<TbArticleGambit> {
     List<TbArticleGambit> queryById(@Param("article_id") Integer article_id);
 
     /**
-     * 条件查询
+     * 条件查询1
      * @param like
      * @return
      */
