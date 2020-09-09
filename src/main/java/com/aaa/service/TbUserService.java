@@ -193,6 +193,13 @@ public class TbUserService {
      * @return
      */
     public Boolean upState(Integer user_state,Integer user_id){
+        Boolean aBoolean = tbUserMapper.upState(user_state, user_id);
+        sendEmail(user_state,user_id);//调用发送邮件的方法
+        return aBoolean;
+    }
+
+    //发送邮件
+    public void sendEmail(Integer user_state,Integer user_id){
         TbUser tbUser=new TbUser();
         tbUser.setUser_id(user_id);
         TbUser user = tbUserMapper.selectOne(tbUser);
@@ -201,8 +208,6 @@ public class TbUserService {
         }else{
             emailSendUtils.sendSimple("大问号","您的账户已被解封！",user.getUser_email());
         }
-        Boolean aBoolean = tbUserMapper.upState(user_state, user_id);
-        return aBoolean;
     }
 
     /**

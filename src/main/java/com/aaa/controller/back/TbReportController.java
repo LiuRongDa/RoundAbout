@@ -2,6 +2,7 @@ package com.aaa.controller.back;
 
 import com.aaa.entity.TbReport;
 import com.aaa.service.TbReportService;
+import com.aaa.utils.EmailSendUtils;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,9 @@ import java.util.List;
 public class TbReportController {
     @Resource
     TbReportService tbReportService;
+
+    @Resource
+    EmailSendUtils emailSendUtils;
 
     /**
      * 分页 =+模糊查询
@@ -51,10 +55,13 @@ public class TbReportController {
 
 
     @RequestMapping("del")
-    public PageInfo<TbReport> del(Integer report_id){
+    public PageInfo<TbReport> del(Integer report_id,String user_email){
         Boolean del = tbReportService.del(report_id);
-        System.out.println(del);
-        if(del)return selePage(null,null,null,null,null);
+        if(del){
+            emailSendUtils.sendSimple("大问号","您发布的内容被多人举报，涉嫌违规，现已被删除！",user_email);
+            return selePage(null,null,null,null,null);
+        }
         return null;
     }
+
 }

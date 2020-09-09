@@ -1,15 +1,11 @@
 package com.aaa.service;
 
 import com.aaa.dao.TbIssueGambitMapper;
-import com.aaa.entity.TbComment;
-import com.aaa.entity.TbIssueGambit;
-import com.aaa.entity.TbUser;
+import com.aaa.entity.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
 import com.aaa.dao.TbIssueMapper;
-import com.aaa.entity.TbGambit;
-import com.aaa.entity.TbIssue;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

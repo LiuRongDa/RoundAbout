@@ -2,6 +2,7 @@ package com.aaa.service;
 
 import com.aaa.dao.*;
 import com.aaa.entity.*;
+import com.aaa.utils.EmailSendUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -22,15 +23,6 @@ public class TbReportService {
     TbReportMapper tbReportMapper;
 
     @Resource
-    TbCommentService tbCommentService;
-
-    @Resource
-    TbArticleService tbArticleService;
-
-    @Resource
-    TbIssueService tbIssueService;
-
-    @Resource
     TbIssueMapper tbIssueMapper;
 
     @Resource
@@ -44,6 +36,12 @@ public class TbReportService {
 
     @Resource
     TbIssueArticleMapper tbIssueArticleMapper;
+
+    @Resource
+    TbUserMapper tbUserMapper;
+
+    @Resource
+    EmailSendUtils emailSendUtils;
 
     /**
      * 举报文章
