@@ -21,7 +21,6 @@ import java.util.List;
 public class TbArticleController {
     @Resource
     TbArticleService tbArticleService;
-
     @Resource
     TbGambitService tbGambitService;
 

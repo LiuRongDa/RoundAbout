@@ -18,7 +18,6 @@ import java.awt.image.BufferedImage;
 public class WangEditorController {
     @Resource
     FileUtil fileUtil;
-
     @RequestMapping("upload")
     @ResponseBody
     public ImgInfo uploadNew(@RequestParam(value = "file") MultipartFile uploadFile, HttpServletResponse response){

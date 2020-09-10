@@ -20,7 +20,6 @@ import java.util.List;
 public class TbTopController {
     @Resource
     TbTopicService tbTopicService;
-
     @RequestMapping("showColumn")
     public String showColumn(Model model){
         List<TbTopic> tbTopics = tbTopicService.queryTopic();

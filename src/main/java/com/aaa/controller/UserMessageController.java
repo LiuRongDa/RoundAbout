@@ -25,7 +25,6 @@ import java.awt.image.BufferedImage;
 public class UserMessageController {
     @Resource
     TbUserService tbUserService;
-
     @Resource
     FileUtil fileUtil;
 

@@ -19,7 +19,6 @@ import java.util.List;
 public class TbIssueUserController {
     @Resource
     TbIssueUserService tbIssueUserService;
-
     @RequestMapping("queryIssueUser")
     public String queryIssueUser(Model model,Integer user_id){
         List<TbIssueUser> tbIssueUsers = tbIssueUserService.queryIssueUser(user_id);

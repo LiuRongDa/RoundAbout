@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/Reception/L")
 public class LoginController {
-
     @Resource
     TbUserService tbUserService;
 

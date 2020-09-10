@@ -20,7 +20,6 @@ import java.util.List;
 public class TbIssueController {
     @Resource
     TbIssueService tbIssueService;
-
     @Resource
     TbArticleService tbArticleService;
 

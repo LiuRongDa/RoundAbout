@@ -16,7 +16,6 @@ import java.util.List;
 public class UserConfig implements UserDetailsService {
     @Resource
     TbstaffController tbstaffController;
-
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //System.out.println(username);
         TbStaff tbStaff=new TbStaff();
