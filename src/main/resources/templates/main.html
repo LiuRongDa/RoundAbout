@@ -113,7 +113,7 @@
         <!-- end 导航 -->
         <!-- 搜索框 -->
         <div class="aw-search-box  hidden-xs hidden-sm">
-            <form class="navbar-search" action="tb_Article/queryLike" id="global_search_form" method="post">
+            <form class="navbar-search" action="Reception/tb_Article/queryLike" id="global_search_form" method="post">
                 <input class="form-control search-query" type="text" value="" name="like"/>
                 <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();">
                     <i class="icon icon-search"></i>
@@ -208,6 +208,7 @@
                     <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
                         <li><a th:href="@{Reception/tb_issuser/queryIssueUser(user_id=${session.user.user_id})}">等待回复</a></li>
                         <li><a th:href="@{Reception/tb_Issue/queryAll}">问题</a></li>
+                        <li><a th:href="@{Reception/tb_gambit/queryAll}">话题</a></li>
                         <li class="active"><a href="java:script:(0)">文章</a></li>
                         <h2 class="hidden-xs">主页·发现</h2>
                     </ul>
@@ -378,7 +379,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
 
-                            <form action="tb_Issue/insertIssue" method="post" id="addissues">
+                            <form action="Reception/tb_Issue/insertIssue" method="post" id="addissues">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     <h1 class="modal-title">发布问题:</h1>

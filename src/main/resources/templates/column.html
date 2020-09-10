@@ -94,10 +94,10 @@
             <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
+                        <a th:href="@{Reception/tb_Article/queryAll}"><i class=""></i> 首页</a>
                     </li>
                     <li>
-                        <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
+                        <a th:href="@{Reception/tb_Topic/showColumn}"><i class=""></i> 专栏</a>
                     </li>
                 </ul>
             </nav>
@@ -105,7 +105,7 @@
         <!-- end 导航 -->
         <!-- 搜索框 -->
         <div class="aw-search-box  hidden-xs hidden-sm">
-            <form class="navbar-search" action="tb_Article/queryLike" id="global_search_form" method="post">
+            <form class="navbar-search" action="Reception/tb_Article/queryLike" id="global_search_form" method="post">
                 <input class="form-control search-query" type="text" value="" name="like"/>
                 <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();">
                     <i class="icon icon-search"></i>
@@ -135,12 +135,12 @@
 
             <div class="aw-dropdown dropdown-list pull-right">
                 <ul class="aw-dropdown-list">
-                    <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                    <li class="hidden-xs"><a href="Reception/User/toOneHome"><i class="icon icon-draft"></i>
                         个人主页</a></li>
                     <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                    <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
+                    <li class="hidden-xs"><a href="Reception/User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
                     <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
-                    <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
+                    <li><a href="Reception/L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                 </ul>
             </div>
             <!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
@@ -179,7 +179,7 @@
         <h1>站内专栏</h1>
         <h2>随心写作，自由表达</h2>
         <a type="button" class="btn ColumnHomeTop-writeButton"
-           th:href="@{tb_Article/w_a}">开始写文章</a>
+           th:href="@{Reception/tb_Article/w_a}">开始写文章</a>
         <a class="Button ColumnHomeTop-requestButton" data-toggle="modal" data-target="#jbreply">
             申请开通专栏
             <img src="http://azhihu.cssroom.com/static/css/azhihu/img/c_right.png">
@@ -205,7 +205,7 @@
 
                             $.ajax({
                                 type:"post",
-                                url:"tb_Topic/addTopic",
+                                url:"Reception/tb_Topic/addTopic",
                                 data:{"user_id":user_id,"topic_name":topic_name},
                                 success:function(date){
                                     if(date == 1){
@@ -244,7 +244,7 @@
                                 function moren(){
                                     $.ajax({
                                         type:"post",
-                                        url:"tb_Topic/huan",
+                                        url:"Reception/tb_Topic/huan",
                                         success:function(date){
                                             $("#div1").html(date);
                                         }
@@ -253,7 +253,7 @@
                                 function dates(){
                                     $.ajax({
                                         type:"post",
-                                        url:"tb_Topic/date",
+                                        url:"Reception/tb_Topic/date",
                                         success:function(date){
                                             $("#div1").html(date);
                                         }
@@ -262,7 +262,7 @@
                                 function hot(){
                                     $.ajax({
                                         type:"post",
-                                        url:"tb_Topic/hot",
+                                        url:"Reception/tb_Topic/hot",
                                         success:function(date){
                                             $("#div1").html(date);
                                         }
@@ -293,7 +293,7 @@
                                                 <em>文章数:[[${topic.count}]]</em>
                                             </span>
                                         </dd>
-                                        <div class="ain"><a th:href="@{tb_Topic/addCount(topic_id=${topic.topic_id})}">进入专栏</a>
+                                        <div class="ain"><a th:href="@{Reception/tb_Topic/addCount(topic_id=${topic.topic_id})}">进入专栏</a>
                                         </div>
                                     </dl>
                                 </div>
@@ -308,7 +308,7 @@
                                 function huan(){
                                     $.ajax({
                                         type:"post",
-                                        url:"tb_Topic/huan",
+                                        url:"Reception/tb_Topic/huan",
                                         success:function(date){
                                             $("#div1").html(date);
                                         }

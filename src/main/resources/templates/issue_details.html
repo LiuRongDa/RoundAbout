@@ -95,10 +95,10 @@
             <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
+                        <a th:href="@{Reception/tb_Article/queryAll}"><i class=""></i> 首页</a>
                     </li>
                     <li>
-                        <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
+                        <a th:href="@{Reception/tb_Topic/showColumn}"><i class=""></i> 专栏</a>
                     </li>
                 </ul>
             </nav>
@@ -106,7 +106,7 @@
         <!-- end 导航 -->
         <!-- 搜索框 -->
         <div class="aw-search-box  hidden-xs hidden-sm">
-            <form class="navbar-search" action="tb_Article/queryLike" id="global_search_form" method="post">
+            <form class="navbar-search" action="Reception/tb_Article/queryLike" id="global_search_form" method="post">
                 <input class="form-control search-query" type="text" value="" name="like"/>
                 <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();">
                     <i class="icon icon-search"></i>
@@ -136,12 +136,12 @@
 
             <div class="aw-dropdown dropdown-list pull-right">
                 <ul class="aw-dropdown-list">
-                    <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                    <li class="hidden-xs"><a href="Reception/User/toOneHome"><i class="icon icon-draft"></i>
                         个人主页</a></li>
                     <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                    <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
+                    <li class="hidden-xs"><a href="Reception/User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
                     <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
-                    <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
+                    <li><a href="Reception/L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                 </ul>
             </div>
             <!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
@@ -275,7 +275,7 @@
                                             var count = $("#count").text();
                                             $.ajax({
                                                 type:"post",
-                                                url:"tb_Issue/praiseIssue",
+                                                url:"Reception/tb_Issue/praiseIssue",
                                                 data:{"issue_id":issue_id,"user_id":user_id},
                                                 success:function(date){
                                                     if(date == 1){
@@ -321,7 +321,7 @@
                                                 var bereport_user_id = [[${issue[0].TbIssue.TbUser.user_id}]];
                                                 $.ajax({
                                                     type:"post",
-                                                    url:"tb_Issue/reportIssue",
+                                                    url:"Reception/tb_Issue/reportIssue",
                                                     data:{"issue_id":issue_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
                                                     success:function(date){
                                                         if(date == 1){
@@ -350,10 +350,10 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="mod-body" th:each="user : ${tbusers}">
-                                            <a class="aw-user-img aw-border-radius-5" th:href="@{User/toElseHome(id=${user.user_id})}">
+                                            <a class="aw-user-img aw-border-radius-5" th:href="@{Reception/User/toElseHome(id=${user.user_id})}">
                                                 <img th:src="${user.user_photo}" alt="evz03424"/>
                                             </a>
-                                            <a th:href="@{User/toElseHome(id=${user.user_id})}">[[${user.user_name}]]
+                                            <a th:href="@{Reception/User/toElseHome(id=${user.user_id})}">[[${user.user_name}]]
                                                 <a th:onclick="addIssueUser(this,[[${user.user_id}]])" class="pull-right">
                                                     <button class="btn btn-primary btn-block">
                                                         邀请回答
@@ -365,7 +365,7 @@
                                                     var issue_id = [[${issue[0].TbIssue.issue_id}]];
                                                     $.ajax({
                                                         type:"post",
-                                                        url:"tb_Issue/addIssueUser",
+                                                        url:"Reception/tb_Issue/addIssueUser",
                                                         data:{"user_id":user_id,"issue_id":issue_id},
                                                         success:function(date){
                                                             if(date == 1){
@@ -404,7 +404,7 @@
                             <div class="mod-body aw-feed-list" th:each="a : ${art}">
                                 <div class="aw-item" id="answer_list_11">
                                     <div class="mod-head">
-                                        <a class="aw-user-img aw-border-radius-5" th:href="@{User/toElseHome(id=${a.TbUser.user_id})}">
+                                        <a class="aw-user-img aw-border-radius-5" th:href="@{Reception/User/toElseHome(id=${a.TbUser.user_id})}">
                                             <img th:src="${a.TbUser.user_photo}"/>
                                         </a>
                                         <p>
@@ -431,7 +431,7 @@
 
                                                     $.ajax({
                                                         type:"post",
-                                                        url:"tb_Issue/praiseArticle",
+                                                        url:"Reception/tb_Issue/praiseArticle",
                                                         data:{"article_id":article_id,"user_id":user_id},
                                                         success:function(date){
                                                             if(date == 1){
@@ -464,7 +464,7 @@
                                                     }
                                                     $.ajax({
                                                         type:"post",
-                                                        url:"tb_Issue/showcomm",
+                                                        url:"Reception/tb_Issue/showcomm",
                                                         data:{"article_id":id},
                                                         success:function(date){
                                                             $(a).parent().next().next().html(date);
@@ -489,7 +489,7 @@
 
                                                     $.ajax({
                                                         type:'post',
-                                                        url:'tb_Issue/addcomm',
+                                                        url:'Reception/tb_Issue/addcomm',
                                                         data:{'user_id':user_id,'comment_content':comment_content,'article_id':article_id},
                                                         success:function(date){
                                                             $(a).parent().next().html(date);
@@ -503,7 +503,7 @@
                                         <div id="div2" th:fragment="div2">
                                             <div th:each="tbComment : ${tbComments}">
                                                 <div class="mod-head">
-                                                    <a class="aw-user-img aw-border-radius-5" th:href="@{User/toElseHome(id=${tbComment.TbUser.user_id})}">
+                                                    <a class="aw-user-img aw-border-radius-5" th:href="@{Reception/User/toElseHome(id=${tbComment.TbUser.user_id})}">
                                                         <img th:src="${tbComment.TbUser.user_photo}"/>
                                                     </a>
                                                     <p>
@@ -529,7 +529,7 @@
 
                                                                 $.ajax({
                                                                     type:"post",
-                                                                    url:"tb_Issue/praiseComment",
+                                                                    url:"Reception/tb_Issue/praiseComment",
                                                                     data:{"comment_id":comment_id,"user_id":user_id},
                                                                     success:function(date){
                                                                         if(date == 1){
@@ -562,7 +562,7 @@
                                                                 }
                                                                 $.ajax({
                                                                     type:"post",
-                                                                    url:"tb_Issue/showReply",
+                                                                    url:"Reception/tb_Issue/showReply",
                                                                     data:{"comment_id":id},
                                                                     success:function(date){
                                                                         $(a).parent().next().html(date);
@@ -584,7 +584,7 @@
 
                                                                     $.ajax({
                                                                         type:"post",
-                                                                        url:"tb_Issue/addreply",
+                                                                        url:"Reception/tb_Issue/addreply",
                                                                         data:{'user_id':user_id,'reply_idto':null,'comment_id':comment_id,'comment_content':comment_content},
                                                                         success:function(date){
                                                                             $(a).parent().parent().next().html(date);
@@ -604,7 +604,7 @@
                                                         <div th:each="tbRaply : ${tbReplies}">
 
                                                             <div class="mod-head">
-                                                                <a class="aw-user-img aw-border-radius-5" th:href="@{User/toElseHome(id=${tbRaply.TbUser.user_id})}">
+                                                                <a class="aw-user-img aw-border-radius-5" th:href="@{Reception/User/toElseHome(id=${tbRaply.TbUser.user_id})}">
                                                                     <img th:src="${tbRaply.TbUser.user_photo}" alt="evz03424"/>
                                                                 </a>
                                                                 <p th:if="${tbRaply.reply_idto == 0}">
@@ -633,7 +633,7 @@
 
                                                                             $.ajax({
                                                                                 type:"post",
-                                                                                url:"tb_Issue/praiseReply",
+                                                                                url:"Reception/tb_Issue/praiseReply",
                                                                                 data:{"reply_id":reply_id,"user_id":user_id},
                                                                                 success:function(date){
                                                                                     if(date == 1){
@@ -671,7 +671,7 @@
 
                                                                         $.ajax({
                                                                             type:"post",
-                                                                            url:"tb_Issue/insertReply",
+                                                                            url:"Reception/tb_Issue/insertReply",
                                                                             data:{'user_id':user_id,'reply_idto':reply_id,'comment_id':comment_id,'comment_content':comment_content},
                                                                             success:function(date){
                                                                                 $(a).parent().parent().parent().html(date);
@@ -721,7 +721,7 @@
                                             var bereport_user_id = $("[name='df']").val();
                                             $.ajax({
                                                 type:"post",
-                                                url:"tb_Issue/reportArticle",
+                                                url:"Reception/tb_Issue/reportArticle",
                                                 data:{"article_id":article_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
                                                 success:function(date){
                                                     if(date == 1){
@@ -762,7 +762,7 @@
                                             var bereport_user_id = $("[name='zx']").val();
                                             $.ajax({
                                                 type:"post",
-                                                url:"tb_Issue/reportComment",
+                                                url:"Reception/tb_Issue/reportComment",
                                                 data:{"comment_id":comment_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
                                                 success:function(date){
                                                     if(date == 1){
@@ -803,7 +803,7 @@
                                             var bereport_user_id = $("[name='qw']").val();
                                             $.ajax({
                                                 type:"post",
-                                                url:"tb_Issue/reportReply",
+                                                url:"Reception/tb_Issue/reportReply",
                                                 data:{"reply_id":reply_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
                                                 success:function(date){
                                                     if(date == 1){
@@ -840,7 +840,7 @@
                     <!-- 回复编辑器 -->
                     <div class="aw-mod aw-article-replay-box" id="hindWang" hidden>
                         <div class="mod-head">
-                            <a th:href="@{User/toElseHome(id=${session.user.user_id})}" class="aw-user-name">
+                            <a th:href="@{Reception/User/toElseHome(id=${session.user.user_id})}" class="aw-user-name">
                                 <img th:src="${session.user.user_photo}"/>
                             </a>
                         </div>
@@ -858,7 +858,7 @@
                             var E = window.wangEditor;
                             var editor = new E('#editor');
 
-                            editor.customConfig.uploadImgServer = 'editor/upload';
+                            editor.customConfig.uploadImgServer = 'Reception/editor/upload';
                             // 将图片大小限制为 3M
                             editor.customConfig.uploadImgMaxSize = 5 * 1024 * 1024;
                             // 自定义上传参数
@@ -886,7 +886,7 @@
 
                                 $.ajax({
                                     type:"post",
-                                    url:"tb_Issue/addArticle",
+                                    url:"Reception/tb_Issue/addArticle",
                                     data:{"issue_id":issid,"user_id":userid,"article_content":editor.txt.html()},
                                     success:function(date){
                                         window.location="http://localhost:8088/springboot/tb_Issue/queryById?id="+issid+"";
@@ -908,12 +908,12 @@
                         <div class="mod-body">
                             <dl>
                                 <dt class="pull-left aw-border-radius-5">
-                                    <a th:href="@{User/toElseHome(id=${issue[0].TbIssue.TbUser.user_id})}">
+                                    <a th:href="@{Reception/User/toElseHome(id=${issue[0].TbIssue.TbUser.user_id})}">
                                         <img th:src="${issue[0].TbIssue.TbUser.user_photo}"/>
                                     </a>
                                 </dt>
                                 <dd class="pull-left">
-                                    <a class="aw-user-name" th:href="@{User/toElseHome(id=${issue[0].TbIssue.TbUser.user_id})}" data-id="2" th:text="${issue[0].TbIssue.TbUser.user_name}">
+                                    <a class="aw-user-name" th:href="@{Reception/User/toElseHome(id=${issue[0].TbIssue.TbUser.user_id})}" data-id="2" th:text="${issue[0].TbIssue.TbUser.user_name}">
                                         豆豆龙
                                     </a>
 

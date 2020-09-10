@@ -112,24 +112,16 @@
         <!-- end 导航 -->
         <!-- 搜索框 -->
         <div class="aw-search-box  hidden-xs hidden-sm">
-            <form class="navbar-search" action="http://azhihu.cssroom.com/?/search/" id="global_search_form" method="post">
-                <label class="oldPwdTip aw-search-query-label" onclick="$(this).hide();$('#aw-search-query').focus();">搜索问题、话题或人...</label> 					<input class="form-control search-query" type="text" value=""  autocomplete="off" name="q" id="aw-search-query" onfocus="hideOldPwdTip('aw-search-query');" onblur="toggleOldPwdTip('aw-search-query',this.value);" />
-                <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();"><i class="icon icon-search"></i></span>
-                <div class="aw-dropdown">
-                    <div class="mod-body">
-                        <p class="title">输入关键字进行搜索</p>
-                        <ul class="aw-dropdown-list collapse"></ul>
-                        <p class="search"><span>搜索:</span><a onClick="$('#global_search_form').submit();"></a></p>
-                    </div>
-                    <div class="mod-footer">
-                        <a href="javascript:;" onClick="$('#header_publish').click();" class="pull-right btn btn-mini btn-success publish">发起问题</a>
-                    </div>
-                </div>
+            <form class="navbar-search" action="Reception/tb_Article/queryLike" id="global_search_form" method="post">
+                <input class="form-control search-query" type="text" value="" name="like"/>
+                <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();">
+                    <i class="icon icon-search"></i>
+                </span>
             </form>
         </div>
         <!-- end 搜索框 -->
         <!-- 发起 -->
-        <div class="aw-publish-btn">
+        <!--<div class="aw-publish-btn">
             <a id="header_publish" class="btn-primary" href="http://azhihu.cssroom.com/?/publish/" onclick="AWS.dialog('publish', {'category_enable':'0', 'category_id':'0', 'topic_title':''}); return false;">发起</a>
             <div class="dropdown-list pull-right">
                 <ul>
@@ -140,7 +132,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>-->
         <!-- end 发起 -->
         <!-- 用户栏 -->
         <div class="aw-user-nav">
@@ -153,7 +145,7 @@
                     <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
                         个人主页</a></li>
                     <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                    <li class="hidden-xs"><a href="http://azhihu.cssroom.com/?/account/setting/profile/"><i class="icon icon-setting"></i> 设置</a></li>
+                    <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
                     <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
                     <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                 </ul>
@@ -202,8 +194,9 @@
                     <!-- tab切换 -->
                     <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
                         <li class="active"><a href="java:script:(0)">等待回复</a></li>
-                        <li><a th:href="@{tb_Issue/queryAll}">问题</a></li>
-                        <li><a th:href="@{tb_Article/queryAll}">文章</a></li>
+                        <li><a th:href="@{Reception/tb_Issue/queryAll}">问题</a></li>
+                        <li><a th:href="@{Reception/tb_gambit/queryAll}">话题</a></li>
+                        <li><a th:href="@{Reception/tb_Article/queryAll}">文章</a></li>
                         <h2 class="hidden-xs">主页·发现</h2>
                     </ul>
                     <!-- end tab切换 -->
@@ -223,7 +216,7 @@
                                                     var user_id = [[${session.user.user_id}]];
                                                     $.ajax({
                                                         type:"post",
-                                                        url:"tb_issuser/removeIssue",
+                                                        url:"Reception/tb_issuser/removeIssue",
                                                         data:{"user_id":user_id,"issue_id":issue_id},
                                                         success:function(date){
                                                             $("#div1").html(date);
@@ -232,9 +225,9 @@
                                                 }
                                             </script>
                                             <h4>
-                                                <a th:href="@{tb_Issue/addcount(id=${iss.TbIssue.issue_id})}" th:text="${iss.TbIssue.issue_title}">和女生聊天，哪些话题百试不爽？</a>
+                                                <a th:href="@{Reception/tb_Issue/addcount(id=${iss.TbIssue.issue_id})}" th:text="${iss.TbIssue.issue_title}">和女生聊天，哪些话题百试不爽？</a>
                                             </h4>
-                                                <a th:href="@{tb_Issue/addcount(id=${iss.TbIssue.issue_id})}" class="pull-right text-color-999">回复</a>
+                                                <a th:href="@{Reception/tb_Issue/addcount(id=${iss.TbIssue.issue_id})}" class="pull-right text-color-999">回复</a>
 
                                             <p>
                                                 <a href="http://azhihu.cssroom.com/?/people/2" class="aw-user-name">
@@ -270,32 +263,32 @@
                             </a>
                         </div>
                         <div>
-                            <a th:href="@{tb_Issue/w_i}">
+                            <a th:href="@{Reception/tb_Issue/w_i}">
                                 <i class="icon icon-ask"></i></br>
                                 <span>写问题</span>
                             </a>
                         </div>
                         <div>
-                            <a th:href="@{tb_Article/w_a}">
+                            <a th:href="@{Reception/tb_Article/w_a}">
                                 <i class="icon icon-draft"></i></br>
                                 <span>写文章</span>
                             </a>
                         </div>
                     </div>					<div class="aw-mod write">
                     <div>
-                        <a th:href="@{tb_Topic/showColumn}">
+                        <a th:href="@{Reception/tb_Topic/showColumn}">
                             <img src="http://azhihu.cssroom.com/static/css/azhihu/img/zlico.png"></br>
                             <span class="w_span">专栏</span>
                         </a>
                     </div>
                     <div>
-                        <a th:href="@{tb_Issue/w_i}">
+                        <a th:href="@{Reception/tb_Issue/w_i}">
                             <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wtico.png"></br>
                             <span class="w_span">问题</span>
                         </a>
                     </div>
                     <div>
-                        <a th:href="@{tb_Article/w_a}">
+                        <a th:href="@{Reception/tb_Article/w_a}">
                             <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wzico.png"></br>
                             <span class="w_span">文章</span>
                         </a>

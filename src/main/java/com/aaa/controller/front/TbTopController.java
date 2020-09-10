@@ -16,7 +16,7 @@ import java.util.List;
  * @date 2020/9/9 1:293
  */
 @Controller
-@RequestMapping("Reception/tb_Topic")
+@RequestMapping("/Reception/tb_Topic")
 public class TbTopController {
     @Resource
     TbTopicService tbTopicService;
@@ -61,6 +61,7 @@ public class TbTopController {
         Integer integer = tbTopicService.addCount(topic_id);
         return "redirect:queryById?topic_id="+topic_id+"";
     }
+
 
     @RequestMapping("queryById")
     public String queryById(Model model,Integer topic_id){

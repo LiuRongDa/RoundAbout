@@ -10,7 +10,9 @@ public class TbIssueArticle implements Serializable {
     private Integer article_id;
 
     private TbArticle tbArticle;
+
     private TbIssue tbIssue;
+
     public TbArticle getTbArticle() {
         return tbArticle;
     }

@@ -115,10 +115,10 @@
                 <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="tb_Article/queryAll"><i class=""></i> 首页</a>
+                            <a href="Reception/tb_Article/queryAll"><i class=""></i> 首页</a>
                         </li>
                         <li>
-                            <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
+                            <a th:href="@{Reception/tb_Topic/showColumn}"><i class=""></i> 专栏</a>
                         </li>
                     </ul>
                 </nav>
@@ -126,7 +126,7 @@
             <!-- end 导航 -->
             <!-- 搜索框 -->
             <div class="aw-search-box  hidden-xs hidden-sm">
-                <form class="navbar-search" action="tb_Article/queryLike" id="global_search_form" method="post">
+                <form class="navbar-search" action="Reception/tb_Article/queryLike" id="global_search_form" method="post">
                     <input class="form-control search-query" type="text" value="" name="like"/>
                     <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();">
                     <i class="icon icon-search"></i>
@@ -156,12 +156,12 @@
 
                 <div class="aw-dropdown dropdown-list pull-right">
                     <ul class="aw-dropdown-list">
-                        <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                        <li class="hidden-xs"><a href="Reception/User/toOneHome"><i class="icon icon-draft"></i>
                             个人主页</a></li>
                         <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                        <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
+                        <li class="hidden-xs"><a href="Reception/User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
                         <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
-                        <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
+                        <li><a href="Reception/L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                     </ul>
                 </div>
                 <!-- end 登陆&注册栏 -->
@@ -196,7 +196,7 @@
                                     //console.log(data)
                                     $.ajax({
                                         type: "POST",
-                                        url: "User/uploadImage" ,
+                                        url: "Reception/User/uploadImage" ,
                                         data: data,
                                         contentType: false, //不设置内容类型
                                         processData: false, //不处理数据
@@ -225,7 +225,7 @@
                             <p th:text="${session.user.user_name}" style="font-size: 25px;padding-top: 10px" ></p>
                             <span style="padding-left: 100px" th:text="${session.user.user_sign}" ></span>
                             <span class="pull-right operate">
-                            <a href="User/toMessage" class="btn btn-mini btn-success">编辑个人资料</a>
+                            <a href="Reception/User/toMessage" class="btn btn-mini btn-success">编辑个人资料</a>
                         </span>
                         </div>
                     </div>
@@ -260,7 +260,7 @@
                                                 <div th:each="l,a : ${userAnswerIssue}" >
                                                 <span th:if="${a.count < 3}">
                                                 <p>
-                                                        您回答了问题：<a th:href="@{tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
+                                                        您回答了问题：<a th:href="@{Reception/tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
                                                     </p>
                                                     <p>浏览量：<span th:text="${l.TbArticle.article_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         评论数：<span th:text="${l.TbArticle.count}">0</span>&nbsp;&nbsp;&nbsp;
@@ -283,7 +283,7 @@
                                                 <div th:each="l,a : ${userIssue}" >
                                                 <span th:if="${a.count < 3}">
                                                 <p>
-                                                    <a th:href="@{tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}"></span></a>
+                                                    <a th:href="@{Reception/tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}"></span></a>
                                                 </p>
                                                     <p>浏览量：<span th:text="${l.issue_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         回答数：<span th:text="${l.count}">0</span>&nbsp;&nbsp;&nbsp;
@@ -317,7 +317,7 @@
                                             <div class="aw-profile-publish-list" id="contents_user_actions_questions">
                                                 <div th:each="l : ${userIssue}">
                                                     <p>
-                                                        <a th:href="@{tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}"></span></a>
+                                                        <a th:href="@{Reception/tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}"></span></a>
                                                     </p>
                                                     <p>浏览量：<span th:text="${l.issue_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         回答数：<span th:text="${l.count}">0</span>&nbsp;&nbsp;&nbsp;
@@ -346,7 +346,7 @@
 
                                                 <div th:each="l : ${userAnswerIssue}">
                                                     <p>
-                                                        您回答了问题：<a th:href="@{tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
+                                                        您回答了问题：<a th:href="@{Reception/tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
                                                     </p>
                                                     <p>浏览量：[[${l.TbArticle.article_count}]]&nbsp;&nbsp;&nbsp;
                                                         评论数：[[${l.TbArticle.count}]]&nbsp;&nbsp;&nbsp;
@@ -373,7 +373,7 @@
                                             <div class="aw-profile-publish-list" id="contents_user_actions_articles">
                                                 <div th:each="l : ${article}">
                                                     <p>
-                                                        <a th:href="@{tb_Article/queryById(id=${l.article_id})}"><span th:text="${l.article_title}"></span></a>
+                                                        <a th:href="@{Reception/tb_Article/queryById(id=${l.article_id})}"><span th:text="${l.article_title}"></span></a>
                                                     </p>
                                                     <p>浏览量：[[${l.article_count}]]&nbsp;&nbsp;&nbsp;&nbsp;
                                                         评论数：[[${l.count}]]&nbsp;&nbsp;&nbsp;&nbsp;
@@ -409,10 +409,10 @@
                                                         <ul id="contents_user_follows" class="clearfix">
                                                             <li th:each="l : ${userAttention}">
                                                                 <div class="mod-head">
-                                                                    <a class="aw-user-img pull-left aw-border-radius-5" data-id="1" th:href="@{User/toElseHome(id=${l.user_id})}">
+                                                                    <a class="aw-user-img pull-left aw-border-radius-5" data-id="1" th:href="@{Reception/User/toElseHome(id=${l.user_id})}">
                                                                         <img th:src="${l.user_photo}" th:alt="${l.user_name}">
                                                                     </a>
-                                                                    <p><a th:href="@{User/toElseHome(id=${l.user_id})}">[[${l.user_name}]]</a></p>
+                                                                    <p><a th:href="@{Reception/User/toElseHome(id=${l.user_id})}">[[${l.user_name}]]</a></p>
                                                                 </div>
                                                                 <div class="mod-body">
                                                                     <p class="text-color-999 aw-hide-txt"></p>
@@ -440,10 +440,10 @@
                                                         <ul class="clearfix" id="contents_user_fans">
                                                             <li th:each="l : ${attentionUser}">
                                                                 <div class="mod-head">
-                                                                    <a class="aw-user-img pull-left aw-border-radius-5" data-id="1" th:href="@{User/toElseHome(id=${l.user_id})}">
+                                                                    <a class="aw-user-img pull-left aw-border-radius-5" data-id="1" th:href="@{Reception/User/toElseHome(id=${l.user_id})}">
                                                                         <img th:src="${l.user_photo}" th:alt="${l.user_name}">
                                                                     </a>
-                                                                    <p><a th:href="@{User/toElseHome(id=${l.user_id})}">[[${l.user_name}]]</a></p>
+                                                                    <p><a th:href="@{Reception/User/toElseHome(id=${l.user_id})}">[[${l.user_name}]]</a></p>
                                                                 </div>
                                                                 <div class="mod-body">
                                                                     <p class="text-color-999 aw-hide-txt"></p>
@@ -489,7 +489,7 @@
                                             <div class="aw-profile-publish-list" id="">
                                                 <div th:each="l : ${topic}">
                                                     <p>
-                                                        <a th:href="@{tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.topic_name}"></span></a>
+                                                        <a th:href="@{/Reception/tb_Topic/queryById(topic_id=${l.topic_id})}"><span th:text="${l.topic_name}"></span></a>
                                                     </p>
                                                     <p>浏览量：<span th:text="${l.topic_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         文章数：[[${l.count}]]&nbsp;&nbsp;&nbsp;
@@ -520,7 +520,7 @@
                                 <span>关注 <em class="aw-text-color-blue" th:text="${userAttention.size()}">0</em> 人 </span>
                                 <p>
                                 <span  th:each="l : ${userAttention}">
-                                <a class="aw-user-name" data-id="1" th:href="@{User/toElseHome(id=${l.user_id})}"><img th:src="${l.user_photo}" th:alt="${l.user_name}"></a>
+                                <a class="aw-user-name" data-id="1" th:href="@{Reception/User/toElseHome(id=${l.user_id})}"><img th:src="${l.user_photo}" th:alt="${l.user_name}"></a>
                                 </span>
                                 </p>
                             </div>
@@ -532,7 +532,7 @@
                                 <span>被 <em class="aw-text-color-blue" th:text="${attentionUser.size()}">0</em> 人关注 </span>
                                 <p>
                                 <span  th:each="l : ${attentionUser}">
-                                <a class="aw-user-name" data-id="1" th:href="@{User/toElseHome(id=${l.user_id})}"><img th:src="${l.user_photo}" th:alt="${l.user_name}"></a>
+                                <a class="aw-user-name" data-id="1" th:href="@{Reception/User/toElseHome(id=${l.user_id})}"><img th:src="${l.user_photo}" th:alt="${l.user_name}"></a>
                                 </span>
                                 </p>
                             </div>

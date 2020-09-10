@@ -102,10 +102,10 @@
             <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
+                        <a th:href="@{Reception/tb_Article/queryAll}"><i class=""></i> 首页</a>
                     </li>
                     <li>
-                        <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
+                        <a th:href="@{Reception/tb_Topic/showColumn}"><i class=""></i> 专栏</a>
                     </li>
                 </ul>
             </nav>
@@ -113,7 +113,7 @@
         <!-- end 导航 -->
         <!-- 搜索框 -->
         <div class="aw-search-box  hidden-xs hidden-sm">
-            <form class="navbar-search" action="tb_Article/queryLike" id="global_search_form" method="post">
+            <form class="navbar-search" action="Reception/tb_Article/queryLike" id="global_search_form" method="post">
                 <input class="form-control search-query" type="text" value="" name="like"/>
                 <span title="搜索" id="global_search_btns" onClick="$('#global_search_form').submit();">
                     <i class="icon icon-search"></i>
@@ -143,12 +143,12 @@
 
             <div class="aw-dropdown dropdown-list pull-right">
                 <ul class="aw-dropdown-list">
-                    <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                    <li class="hidden-xs"><a href="Reception/User/toOneHome"><i class="icon icon-draft"></i>
                         个人主页</a></li>
                     <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                    <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
+                    <li class="hidden-xs"><a href="Reception/User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
                     <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
-                    <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
+                    <li><a href="Reception/L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                 </ul>
             </div>
             <!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
@@ -206,9 +206,10 @@
                     <!-- end 新消息通知 -->
                     <!-- tab切换 -->
                     <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
-                        <li><a th:href="@{tb_issuser/queryIssueUser(user_id=${session.user.user_id})}">等待回复</a></li>
+                        <li><a th:href="@{Reception/tb_issuser/queryIssueUser(user_id=${session.user.user_id})}">等待回复</a></li>
                         <li class="active"><a href="java:script:(0)">问题</a></li>
-                        <li><a th:href="@{tb_Article/queryAll}">文章</a></li>
+                        <li><a th:href="@{Reception/tb_gambit/queryAll}">话题</a></li>
+                        <li><a th:href="@{Reception/tb_Article/queryAll}">文章</a></li>
                         <h2 class="hidden-xs">主页·发现</h2>
                     </ul>
                     <!-- end tab切换 -->
@@ -216,7 +217,7 @@
                     <!-- 自定义tab切换 -->
                     <div class="aw-tabs">
                         <ul>
-                            <li><a th:href="@{tb_Issue/queryAll}">最新</a></li>
+                            <li><a th:href="@{Reception/tb_Issue/queryAll}">最新</a></li>
                             <li class="active"><a href="javascript:;">热门</a></li>
                         </ul>
                     </div>
@@ -233,7 +234,7 @@
                                 <div class="aw-item article" data-topic-id="30,2,3,">
                                     <div class="aw-question-content">
                                         <h4>
-                                            <a th:href="@{tb_Issue/addcount(id=${item.TbIssue.issue_id})}" th:text="${item.TbIssue.issue_title}">身边的人是怎么靠生活经验赚钱的？</a>
+                                            <a th:href="@{Reception/tb_Issue/addcount(id=${item.TbIssue.issue_id})}" th:text="${item.TbIssue.issue_title}">身边的人是怎么靠生活经验赚钱的？</a>
                                         </h4>
                                         <p>
                                             <a href="java:script:(0)" class="aw-user-name" th:text="${item.TbIssue.TbUser.user_name}">
@@ -264,19 +265,19 @@
                             <div class="page-control">
                                 <ul class="pagination pull-right">
                                     <li th:if="${iss.isLastPage}">
-                                        <a th:href="@{tb_Issue/queryhot(pageNum=${iss.navigateFirstPage},pageSize=${iss.pageSize})}">首页</a>
+                                        <a th:href="@{Reception/tb_Issue/queryhot(pageNum=${iss.navigateFirstPage},pageSize=${iss.pageSize})}">首页</a>
                                     </li>
                                     <li th:if="${iss.prePage}">
-                                        <a th:href="@{tb_Issue/queryhot(pageNum=${iss.pageNum-1},pageSize=${iss.pageSize})}">上一页</a>
+                                        <a th:href="@{Reception/tb_Issue/queryhot(pageNum=${iss.pageNum-1},pageSize=${iss.pageSize})}">上一页</a>
                                     </li>
                                     <li>
                                         <a href="javascript:;" th:text="${iss.pageNum}">2</a>
                                     </li>
                                     <li th:if="${iss.nextPage}">
-                                        <a th:href="@{tb_Issue/queryhot(pageNum=${iss.pageNum+1},pageSize=${iss.pageSize})}">下一页</a>
+                                        <a th:href="@{Reception/tb_Issue/queryhot(pageNum=${iss.pageNum+1},pageSize=${iss.pageSize})}">下一页</a>
                                     </li>
                                     <li th:if="${iss.isFirstPage}">
-                                        <a th:href="@{tb_Issue/queryhot(pageNum=${iss.navigateLastPage},pageSize=${iss.pageSize})}">尾页</a>
+                                        <a th:href="@{Reception/tb_Issue/queryhot(pageNum=${iss.navigateLastPage},pageSize=${iss.pageSize})}">尾页</a>
                                     </li>
                                 </ul>
                             </div>
@@ -288,7 +289,7 @@
                     <!--侧边栏插件-->
                     <div class="aw-mod write">
                         <div>
-                            <a th:href="@{tb_Topic/showColumn}">
+                            <a th:href="@{Reception/tb_Topic/showColumn}">
                                 <img src="http://azhihu.cssroom.com/static/css/azhihu/img/zlico.png"></br>
                                 <span class="w_span">专栏</span>
                             </a>
@@ -307,7 +308,7 @@
                         </div>
 
                         <div>
-                            <a th:href="@{tb_Article/w_a}">
+                            <a th:href="@{Reception/tb_Article/w_a}">
                                 <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wzico.png"></br>
                                 <span class="w_span">文章</span>
                             </a>
@@ -352,10 +353,10 @@
 
                             <dl th:each="a : ${query}">
                                 <dt class="pull-left aw-border-radius-5">
-                                    <a th:href="@{User/toElseHome(id=${a.user_id})}"><img th:src="${a.user_photo}"/></a>
+                                    <a th:href="@{Reception/User/toElseHome(id=${a.user_id})}"><img th:src="${a.user_photo}"/></a>
                                 </dt>
                                 <dd class="pull-left">
-                                    <a th:href="@{User/toElseHome(id=${a.user_id})}" data-id="104" class="aw-user-name">[[${a.user_name}]]						</a>
+                                    <a th:href="@{Reception/User/toElseHome(id=${a.user_id})}" data-id="104" class="aw-user-name">[[${a.user_name}]]						</a>
                                     <p class="signature"></p>
                                 </dd>
                             </dl>
@@ -369,7 +370,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
 
-                            <form action="tb_Issue/insertIssue" method="post" id="addissues">
+                            <form action="Reception/tb_Issue/insertIssue" method="post" id="addissues">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     <h1 class="modal-title">发布问题:</h1>

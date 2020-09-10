@@ -1,9 +1,6 @@
 package com.aaa.service;
 
-import com.aaa.dao.TbArticleGambitMapper;
-import com.aaa.dao.TbGambitMapper;
-import com.aaa.dao.TbIssueArticleMapper;
-import com.aaa.dao.TbIssueGambitMapper;
+import com.aaa.dao.*;
 import com.aaa.entity.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -27,6 +24,33 @@ public class TbGambitService {
 
     @Resource
     TbIssueGambitMapper tbIssueGambitMapper;
+
+    @Resource
+    TbArticleMapper tbArticleMapper;
+
+    @Resource
+    TbUserMapper tbUserMapper;
+
+    /**
+     * 查询话题下的文章
+     * @param gambit_id
+     * @return
+     */
+    public List<TbArticleGambit> queryLike(Integer gambit_id){
+        TbArticleGambit tbArticleGambit = new TbArticleGambit();
+        tbArticleGambit.setGambit_id(gambit_id);
+
+        List<TbArticleGambit> tbArticleGambits = tbArticleGambitMapper.select(tbArticleGambit);
+        if(tbArticleGambits.size() != 0){
+            for(TbArticleGambit ag : tbArticleGambits){
+                TbArticle tbArticle = tbArticleMapper.selectByPrimaryKey(ag.getArticle_id());
+                TbUser tbUser = tbUserMapper.selectByPrimaryKey(tbArticle.getUser_id());
+                tbArticle.setTbUser(tbUser);
+                ag.setTbArticle(tbArticle);
+            }
+        }
+        return tbArticleGambits;
+    }
 
     /**
      * 查找所有的话题
