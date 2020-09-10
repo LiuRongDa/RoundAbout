@@ -354,7 +354,11 @@
                                                 <img th:src="${user.user_photo}" alt="evz03424"/>
                                             </a>
                                             <a th:href="@{User/toElseHome(id=${user.user_id})}">[[${user.user_name}]]
-                                                <a th:onclick="addIssueUser(this,[[${user.user_id}]])"><i class="icon icon-plus"></i></a>
+                                                <a th:onclick="addIssueUser(this,[[${user.user_id}]])" class="pull-right">
+                                                    <button class="btn btn-primary btn-block">
+                                                        邀请回答
+                                                    </button>
+                                                </a>
                                             </a>
                                             <script type="text/javascript" th:inline="javascript">
                                                 function addIssueUser(a,user_id){

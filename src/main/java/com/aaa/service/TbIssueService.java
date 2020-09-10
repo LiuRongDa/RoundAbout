@@ -83,6 +83,7 @@ public class TbIssueService {
         tbIssue.setPraise_count(0);
 
         int insert = tbIssueMapper.insert(tbIssue);
+
         if(topics!=null && topics!=""){
             tbIssue = tbIssueMapper.selectOne(tbIssue);
             TbIssueGambit tbIssueGambit = new TbIssueGambit();

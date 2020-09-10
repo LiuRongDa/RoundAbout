@@ -164,7 +164,7 @@ public class TbIssueController {
     @RequestMapping("insertIssue")
     public String insertIssue(Integer user_id,String issue_title,String issue_content,String topics){
         Integer integer = tbIssueService.insertIssue(user_id, issue_title, issue_content,topics);
-        return "redirect:../tb_Article/queryAll";
+        return "redirect:queryAll";
     }
 
     @RequestMapping("addcount")

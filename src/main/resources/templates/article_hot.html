@@ -206,8 +206,7 @@
                     <!-- end 新消息通知 -->
                     <!-- tab切换 -->
                     <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
-                        <li><a href="java:script:(0)">等待回复</a></li>
-                        <li><a href="java:script:(0)">推荐</a></li>
+                        <li><a th:href="@{tb_issuser/queryIssueUser(user_id=${session.user.user_id})}">等待回复</a></li>
                         <li><a th:href="@{tb_Issue/queryAll}">问题</a></li>
                         <li class="active"><a href="java:script:(0)">文章</a></li>
                         <h2 class="hidden-xs">主页·发现</h2>
@@ -284,26 +283,32 @@
                     </div>
                 </div>
 
-                <!-- 侧边栏 -->
                 <div class="aw-side-bar pull-left">
                     <!--侧边栏插件-->
                     <div class="aw-mod write">
                         <div>
                             <a th:href="@{tb_Topic/showColumn}">
-                                <i class="icon icon-edit"></i></br>
-                                <span>专栏</span>
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/zlico.png"></br>
+                                <span class="w_span">专栏</span>
                             </a>
                         </div>
-                        <div>
+                        <!--<div>
                             <a th:href="@{tb_Issue/w_i}">
                                 <i class="icon icon-ask"></i></br>
                                 <span>写问题</span>
                             </a>
+                        </div>-->
+                        <div>
+                            <a data-toggle="modal" data-target="#adiss">
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wtico.png"></br>
+                                <span class="w_span">问题</span>
+                            </a>
                         </div>
+
                         <div>
                             <a th:href="@{tb_Article/w_a}">
-                                <i class="icon icon-draft"></i></br>
-                                <span>写文章</span>
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wzico.png"></br>
+                                <span class="w_span">文章</span>
                             </a>
                         </div>
                     </div>
@@ -357,7 +362,33 @@
                         </div>
                     </div>
                 </div>
-                <!-- end 侧边栏 -->
+                <!-- 侧边栏end -->
+                <!--添加问题-->
+                <div class="modal fade" id="adiss" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <form action="tb_Issue/insertIssue" method="post" id="addissues">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h1 class="modal-title">发布问题:</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" name="user_id" value="" th:value="${session.user.user_id}" hidden>
+
+                                    <input type="text" style="width: 100%" name="issue_title" value="">
+                                    <textarea name="issue_content" style="resize:none;width: 100%;height: 200px;"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" onclick="$('#addissues').submit()">确定</button>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
