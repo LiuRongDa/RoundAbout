@@ -289,7 +289,7 @@
                                     </script>
                                 </div>
                                 <span class="pull-right  more-operate">
-                                    <a href="javascript:;" class="text-color-999" data-toggle="modal" data-target="#myModal">
+                                    <a href="javascript:;" class="text-color-999" data-toggle="modal" data-target="#myModal" onclick="$('#hindWang').hide()">
                                         <i class="icon icon-reply"></i>邀请回答
                                     </a>
                                     <a href="javascript:;" class="text-color-999" data-toggle="modal" data-target="#jbissue">
@@ -832,8 +832,9 @@
                     </script>
 
                     <!-- end 文章评论 -->
+                    <button class="btn btn-primary btn-lg btn-block" onclick="if($('#hindWang').css('display')=='none'){$('#hindWang').show()}else{$('#hindWang').hide()}">评论</button>
                     <!-- 回复编辑器 -->
-                    <div class="aw-mod aw-article-replay-box">
+                    <div class="aw-mod aw-article-replay-box" id="hindWang" hidden>
                         <div class="mod-head">
                             <a th:href="@{User/toElseHome(id=${session.user.user_id})}" class="aw-user-name">
                                 <img th:src="${session.user.user_photo}"/>
@@ -846,7 +847,7 @@
 
                             </div>
                         </div>
-                        <div class="mod-footer clearfix">
+                        <div class="mod-footer clearfix" >
                             <a href="javascript:;" class="btn btn-normal btn-success pull-right btn-reply" id='publish_submit'>回复</a>
                         </div>
                         <script type="text/javascript">
