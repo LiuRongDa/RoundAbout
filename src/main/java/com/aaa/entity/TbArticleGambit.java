@@ -14,6 +14,7 @@ public class TbArticleGambit implements Serializable {
 
     private TbArticle tbArticle;
 
+    private TbUser tbUser;
 
     @Override
     public String toString() {
@@ -21,7 +22,16 @@ public class TbArticleGambit implements Serializable {
                 "article_id=" + article_id +
                 ", gambit_id=" + gambit_id +
                 ", tbArticle=" + tbArticle +
+                ", tbUser=" + tbUser +
                 '}';
+    }
+
+    public TbUser getTbUser() {
+        return tbUser;
+    }
+
+    public void setTbUser(TbUser tbUser) {
+        this.tbUser = tbUser;
     }
 
     public Integer getArticle_id() {

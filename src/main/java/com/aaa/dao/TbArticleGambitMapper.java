@@ -34,4 +34,11 @@ public interface TbArticleGambitMapper extends MyMapper<TbArticleGambit> {
      * @return
      */
     List<TbArticleGambit> queryLike(@Param("like") String like);
+
+    /**
+     * 根据文章ID删除桥梁表
+     * @param article_id
+     * @return
+     */
+    Boolean delByArticleId(@Param("article_id")Integer article_id);
 }

@@ -61,4 +61,8 @@
     LEFT JOIN tb_user u on u.user_id=a.user_id where a.article_title is not null and a.article_title like CONCAT("%", #{like}, "%")
   </select>
   <!---->
+
+  <delete id="delByArticleId" parameterType="com.aaa.entity.TbArticleGambit">
+    delete from tb_article_gambit where article_id=#{article_id}
+  </delete>
 </mapper>

@@ -38,6 +38,8 @@ public class TbReportService {
     TbIssueArticleMapper tbIssueArticleMapper;
 
     @Resource
+    TbArticleGambitMapper tbArticleGambitMapper;
+    @Resource
     TbUserMapper tbUserMapper;
 
     @Resource
@@ -187,6 +189,13 @@ public class TbReportService {
         List<TbComment> tbCommentList = tbCommentMapper.select(tbComment);
         for (TbComment tbcomm :tbCommentList) {
             delComment(tbcomm.getComment_id());
+        }
+        TbArticleGambit tbArticleGambit=new TbArticleGambit();
+        tbArticleGambit.setArticle_id(Article_id);
+        List<TbArticleGambit> tbArticleGambitList = tbArticleGambitMapper.select(tbArticleGambit);
+        for (TbArticleGambit articleGambit: tbArticleGambitList) {
+            System.out.println("删除话题文章桥梁表");
+            tbArticleGambitMapper.delByArticleId(articleGambit.getArticle_id());
         }
         tbArticleMapper.deleteByPrimaryKey(Article_id);
     }
