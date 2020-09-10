@@ -52,12 +52,21 @@ public class TbStaffService {
 
     /**
      * 修改员工信息
-     * @param tbStaff
+     * @param
      * @return
      */
-    public Boolean update(TbStaff tbStaff){
-        Boolean update = tbStaffMapper.update(tbStaff);
-        return update;
+    public Boolean update(String staff_name,String staff_number,String staff_pwd,Integer staff_sex,String staff_idcard,String staff_phone,Integer role_id,Integer staff_id){
+        TbStaff tbStaff=new TbStaff();
+        tbStaff.setStaff_name(staff_name);
+        tbStaff.setStaff_number(staff_number);
+        tbStaff.setStaff_pwd(staff_pwd);
+        tbStaff.setStaff_sex(staff_sex);
+        tbStaff.setStaff_idcard(staff_idcard);
+        tbStaff.setStaff_phone(staff_phone);
+        tbStaff.setRole_id(role_id);
+        tbStaff.setStaff_id(staff_id);
+        Boolean aBoolean = tbStaffMapper.update(tbStaff);
+        return aBoolean;
     }
 
     /**
@@ -106,12 +115,13 @@ public class TbStaffService {
 
     /**
      * LRD 后台 校验密码是否一致
-     * @param staff_id
+     * @param
      * @return
      */
-    public Boolean oldPwd(Integer staff_id){
-        TbStaff staff = tbStaffMapper.selectByPrimaryKey(staff_id);
-        if(staff.getPassword().equals(staff.getStaff_pwd()))return true;
+    public Boolean oldPwd(String staff_pwd,String oldPwd){
+        BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
+        boolean matches = bc.matches(oldPwd,staff_pwd);
+        if(matches)return true;
         return false;
     }
 
@@ -127,5 +137,11 @@ public class TbStaffService {
         String encode = bCrypt.encode(staff_pwd);
         Boolean aBoolean = tbStaffMapper.upPwd(encode, staff_id);
         return aBoolean;
+    }
+
+
+    public List<TbStaff> queryAll(){
+        List<TbStaff> tbStaffList = tbStaffMapper.selectAll();
+        return tbStaffList;
     }
 }

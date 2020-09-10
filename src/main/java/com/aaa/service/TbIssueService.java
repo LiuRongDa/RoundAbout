@@ -151,7 +151,7 @@ public class TbIssueService {
      */
     public PageInfo<TbIssue> selePage(Integer pageNum, Integer pageSize, String issue_title,String issue_content){
         if(pageNum==null || pageNum==0) pageNum = 1;
-        if(pageSize==null || pageSize==0) pageSize = 2;
+        if(pageSize==null || pageSize==0) pageSize = 10;
         PageHelper.startPage(pageNum,pageSize);
         List<TbIssue> tbIssues =tbIssueMapper.selePage(issue_title,issue_content);
         PageInfo<TbIssue> pageInfo=new PageInfo<>(tbIssues);

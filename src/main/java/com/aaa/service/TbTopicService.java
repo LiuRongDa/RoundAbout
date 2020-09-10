@@ -4,10 +4,7 @@ import com.aaa.dao.TbArticleMapper;
 import com.aaa.dao.TbArticleTopicMapper;
 import com.aaa.dao.TbTopicMapper;
 import com.aaa.dao.TbUserMapper;
-import com.aaa.entity.TbArticle;
-import com.aaa.entity.TbArticleTopic;
-import com.aaa.entity.TbTopic;
-import com.aaa.entity.TbUser;
+import com.aaa.entity.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -196,16 +193,12 @@ public class TbTopicService {
      * @param topic_name
      * @return
      */
-    public PageInfo<TbTopic> selePage(Integer pageNum, Integer pageSize,Integer topic_id,String topic_name){
-        if(pageNum==null || pageNum==0){
-            PageHelper.startPage(1,2);
-        }else if(pageSize==null || pageSize==0){
-            PageHelper.startPage(pageNum,2);
-        }else{
-            PageHelper.startPage(pageNum,pageSize);
-        }
-        List<TbTopic> tbTopics = tbTopicMapper.queryAll(null,topic_name);
-        PageInfo<TbTopic> pageInfo=new PageInfo<>(tbTopics);
+    public PageInfo<TbTopic> selePage(Integer pageNum, Integer pageSize, Integer topic_id, String topic_name) {
+        if (pageNum == null || pageNum == 0) pageNum = 1;
+        if (pageSize == null || pageSize == 0) pageSize = 5;
+        PageHelper.startPage(pageNum, pageSize);
+        List<TbTopic> tbTopicList = tbTopicMapper.queryAll(topic_id, topic_name);
+        PageInfo<TbTopic> pageInfo = new PageInfo<>(tbTopicList);
         return pageInfo;
     }
 }

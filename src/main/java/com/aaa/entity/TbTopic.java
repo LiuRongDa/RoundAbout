@@ -23,7 +23,7 @@ public class TbTopic implements Serializable {
 
     private List<TbTopicUser> tbTopicUser;
 
-    private List<TbArticleTopic> tbArticleTopic;
+    private TbArticleTopic tbArticleTopic;
 
     private List<TbArticle> tbArticle;
 
@@ -61,11 +61,12 @@ public class TbTopic implements Serializable {
         this.tbArticle = tbArticle;
     }
 
-    public List<TbArticleTopic> getTbArticleTopic() {
+
+    public TbArticleTopic getTbArticleTopic() {
         return tbArticleTopic;
     }
 
-    public void setTbArticleTopic(List<TbArticleTopic> tbArticleTopic) {
+    public void setTbArticleTopic(TbArticleTopic tbArticleTopic) {
         this.tbArticleTopic = tbArticleTopic;
     }
 

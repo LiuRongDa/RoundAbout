@@ -57,4 +57,5 @@ public interface TbStaffMapper extends MyMapper<TbStaff> {
      * @return
      */
     Boolean upPwd(@Param("staff_pwd")String staff_pwd,@Param("staff_id")Integer staff_id);
+
 }

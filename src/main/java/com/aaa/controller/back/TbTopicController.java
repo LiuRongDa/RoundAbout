@@ -85,7 +85,7 @@ public class TbTopicController {
      */
     @RequestMapping("selePage")
     public PageInfo<TbTopic> selePage(Integer pageNum, Integer pageSize,Integer topic_id,String topic_name){
-        PageInfo<TbTopic> tbTopicPageInfo = tbTopicService.selePage(pageNum, pageSize,null,topic_name);
+        PageInfo<TbTopic> tbTopicPageInfo = tbTopicService.selePage(pageNum, pageSize,topic_id,topic_name);
         return tbTopicPageInfo;
     }
 }
