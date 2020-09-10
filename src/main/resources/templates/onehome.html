@@ -238,6 +238,7 @@
                                     <li><a href="http://localhost:8088/springboot/?/#questions" id="page_questions" data-toggle="tab">发问<span class="badge" th:text="${userIssue.size()}">0</span></a></li>
                                     <li><a href="http://localhost:8088/springboot/?/#answers" id="page_answers" data-toggle="tab">回答<span class="badge" th:text="${userAnswerIssue.size()}">0</span></a></li>
                                     <li><a href="http://localhost:8088/springboot/?/#articles" id="page_articles" data-toggle="tab">文章<span class="badge" th:text="${article.size()}">0</span></a></li>
+                                    <li><a href="http://localhost:8088/springboot/?/#topic" id="page_topic" data-toggle="tab">专栏<span class="badge" th:text="${topic.size()}">0</span></a></li>
                                     <li><a href="http://localhost:8088/springboot/?/#focus" id="page_focus" data-toggle="tab">关注</a></li>
                                     <!--<li><a href="http://localhost:8088/springboot/?/#actions" id="page_actions" data-toggle="tab">动态</a></li>-->
                                     <!-- <li><a href="#detail" id="page_detail" data-toggle="tab">详细资料</a></li> -->
@@ -261,8 +262,8 @@
                                                 <p>
                                                         您回答了问题：<a th:href="@{tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
                                                     </p>
-                                                    <p>浏览量：[[${l.TbArticle.article_count}]]&nbsp;&nbsp;&nbsp;
-                                                        评论数：[[${l.TbArticle.count}]]&nbsp;&nbsp;&nbsp;
+                                                    <p>浏览量：<span th:text="${l.TbArticle.article_count}">0</span>&nbsp;&nbsp;&nbsp;
+                                                        评论数：<span th:text="${l.TbArticle.count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         [[${l.TbArticle.article_date}]]</p>
                                                 <p class="padding10 text-center" th:if="l eq null">没有内容</p>
                                                     </span>
@@ -284,8 +285,9 @@
                                                 <p>
                                                     <a th:href="@{tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}"></span></a>
                                                 </p>
-                                                    <p>浏览量：[[${l.issue_count}]]&nbsp;&nbsp;&nbsp;
-                                                        回答数：[[${l.count}]]&nbsp;&nbsp;&nbsp;[[${l.issue_date}]]</p>
+                                                    <p>浏览量：<span th:text="${l.issue_count}">0</span>&nbsp;&nbsp;&nbsp;
+                                                        回答数：<span th:text="${l.count}">0</span>&nbsp;&nbsp;&nbsp;
+                                                        [[${l.issue_date}]]</p>
                                                 <p class="padding10 text-center" th:if="l eq null">没有内容</p>
                                                     </span>
                                                 </div>
@@ -317,8 +319,8 @@
                                                     <p>
                                                         <a th:href="@{tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}"></span></a>
                                                     </p>
-                                                    <p>浏览量：[[${l.issue_count}]]&nbsp;&nbsp;&nbsp;
-                                                        回答数：[[${l.count}]]&nbsp;&nbsp;&nbsp;
+                                                    <p>浏览量：<span th:text="${l.issue_count}">0</span>&nbsp;&nbsp;&nbsp;
+                                                        回答数：<span th:text="${l.count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         [[${l.issue_date}]]</p>
                                                     <p style="padding: 15px 0" align="center" th:if="l eq null">没有内容</p>
                                                 </div>
@@ -397,7 +399,7 @@
                                             <ul>
                                                 <li class="active"><a>关注的人</a></li>
                                                 <li><a>关注者</a></li>
-                                                <li><a>关注的话题</a></li>
+                                                <!--<li><a>关注的话题</a></li>-->
                                             </ul>
                                         </div>
                                         <div class="mod-body">
@@ -477,6 +479,34 @@
                                         </div>
                                     </div>
                                     <!-- end 自定义切换 -->
+                                </div>
+                                <div class="tab-pane" id="topic">
+                                    <div class="aw-mod">
+                                        <div class="mod-head">
+                                            <h3>专栏</h3>
+                                        </div>
+                                        <div class="mod-body">
+                                            <div class="aw-profile-publish-list" id="">
+                                                <div th:each="l : ${topic}">
+                                                    <p>
+                                                        <a th:href="@{tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.topic_name}"></span></a>
+                                                    </p>
+                                                    <p>浏览量：<span th:text="${l.topic_count}">0</span>&nbsp;&nbsp;&nbsp;
+                                                        文章数：[[${l.count}]]&nbsp;&nbsp;&nbsp;
+                                                        [[${l.topic_date}]]</p>
+                                                    <p style="padding: 15px 0" align="center" th:if="l eq null">没有内容</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mod-footer">
+                                            <!-- 加载更多内容 -->
+                                            <p style="text-align: center"> 没有更多了</p>
+                                            <!--<a class="aw-load-more-content disabled" id="bp_user_actions_questions_more" data-page="0">
+                                                <span>没有更多了</span>
+                                            </a>-->
+                                            <!-- end 加载更多内容 -->
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

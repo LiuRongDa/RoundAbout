@@ -130,6 +130,8 @@ public class TbUserService {
         tbUser.setUser_email(email);
         tbUser.setUser_name("zh"+Math.random()*10000);
         tbUser.setUser_state(0);
+        tbUser.setUser_photo("imgs/cat.gif");
+        tbUser.setUser_backdrop("imgs/backdrop.jpg");
         tbUser.setUser_joindate(new Date());
         tbUser.setUser_pwd(bCryptPasswordEncoderRun.passwordEncoder().encode(pwd));
         int insert = tbUserMapper.insert(tbUser);
