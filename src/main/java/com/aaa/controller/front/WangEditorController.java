@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 
 @Controller
-@RequestMapping("editor")
+@RequestMapping("Reception/editor")
 public class WangEditorController {
     @Resource
     FileUtil fileUtil;

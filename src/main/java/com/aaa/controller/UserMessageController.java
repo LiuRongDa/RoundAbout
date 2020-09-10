@@ -23,7 +23,7 @@ import java.awt.image.BufferedImage;
  * @date 2020/8/31 19:48
  */
 @Controller
-@RequestMapping("/User")
+@RequestMapping("/Reception/User")
 public class UserMessageController {
     @Resource
     TbUserService tbUserService;

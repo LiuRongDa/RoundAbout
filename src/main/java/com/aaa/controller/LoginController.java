@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  * @date 2020/8/26 16:10
  */
 @Controller
-@RequestMapping("/L")
+@RequestMapping("/Reception/L")
 public class LoginController {
 
     @Resource

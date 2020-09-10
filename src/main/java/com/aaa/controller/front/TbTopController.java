@@ -16,7 +16,7 @@ import java.util.List;
  * @date 2020/9/9 1:293
  */
 @Controller
-@RequestMapping("tb_Topic")
+@RequestMapping("Reception/tb_Topic")
 public class TbTopController {
     @Resource
     TbTopicService tbTopicService;
