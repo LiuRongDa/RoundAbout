@@ -7,6 +7,7 @@ import tk.mybatis.MyMapper;
 import java.util.List;
 
 public interface TbIssueMapper extends MyMapper<TbIssue> {
+
     List<TbIssue> selePage(@Param("issue_title")String issue_title,@Param("issue_content")String issue_content);
 
     Boolean add(TbIssue tbIssue);

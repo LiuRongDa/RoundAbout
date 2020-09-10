@@ -99,6 +99,8 @@ public class UserMessageController {
     @RequestMapping("/toOneHome")
     public String toOneHome(HttpSession session,Model model){
         Integer id = (Integer) session.getAttribute("id");
+        //answer 查询用户回答的问题
+        model.addAttribute("userAnswerIssue",tbIssueService.queryUserIssue(id));
         //查询用户的文章
         model.addAttribute("article",tbArticleService.queryUser(id));
         //查询关注的人
@@ -128,6 +130,8 @@ public class UserMessageController {
         }else{
             //主页浏览次数增加
             tbUserService.addcount(id);
+            //answer 查询用户回答的问题
+            model.addAttribute("userAnswerIssue",tbIssueService.queryUserIssue(id));
             //查询是否关注某人
             model.addAttribute("booleanUser",tbUserService.booleanUser((Integer) session.getAttribute("id"),id));
             //基本信息
@@ -176,7 +180,7 @@ public class UserMessageController {
 
         return tbUserService.setpwd(id, pwd);
     }
-    //忘记密码 设置密码
+    //修改密码
     @RequestMapping("/setEmail")
     @ResponseBody
     public boolean setEmail(HttpSession session,@RequestParam("email") String email){

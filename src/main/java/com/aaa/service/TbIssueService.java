@@ -1,5 +1,6 @@
 package com.aaa.service;
 
+import com.aaa.dao.TbIssueArticleMapper;
 import com.aaa.dao.TbIssueGambitMapper;
 import com.aaa.entity.*;
 import com.github.pagehelper.PageHelper;
@@ -25,12 +26,21 @@ public class TbIssueService {
 
     @Resource
     TbIssueMapper tbIssueMapper;
+    @Resource
+    TbIssueArticleMapper tbIssueArticleMapper;
 
     public List<TbIssueGambit> queryLike(String like){
         List<TbIssueGambit> tbIssueGambits = tbIsseGambitMapper.queryLike(like);
         return tbIssueGambits;
     }
 
+    //查询用户回答过的问题
+    public List<TbIssueArticle> queryUserIssue(Integer user_id){
+        System.out.println(1111111111);
+        List<TbIssueArticle> tbIssueArticles = tbIssueArticleMapper.queryUserIssue(user_id);
+        System.out.println("-----"+tbIssueArticles);
+        return tbIssueArticles;
+    }
     /*
     *查询用户问题
      */

@@ -9,6 +9,24 @@ public class TbIssueArticle implements Serializable {
 
     private Integer article_id;
 
+    private TbArticle tbArticle;
+    private TbIssue tbIssue;
+    public TbArticle getTbArticle() {
+        return tbArticle;
+    }
+
+    public void setTbArticle(TbArticle tbArticle) {
+        this.tbArticle = tbArticle;
+    }
+
+    public TbIssue getTbIssue() {
+        return tbIssue;
+    }
+
+    public void setTbIssue(TbIssue tbIssue) {
+        this.tbIssue = tbIssue;
+    }
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -41,14 +59,11 @@ public class TbIssueArticle implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", issue_id=").append(issue_id);
-        sb.append(", article_id=").append(article_id);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "TbIssueArticle{" +
+                "issue_id=" + issue_id +
+                ", article_id=" + article_id +
+                ", " + tbArticle +
+                ", " + tbIssue +
+                '}';
     }
 }

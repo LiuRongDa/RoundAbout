@@ -98,8 +98,8 @@
         <div class="container" style="padding-right:0px;">
             <!-- logo -->
             <div class="aw-logo hidden-xs">
-                <a href="http://azhihu.cssroom.com">
-                    <img src="http://azhihu.cssroom.com/uploads/logo/20200525/logo_(1).png"  height="40">
+                <a href="http://azhihu.cssroom.com/">
+                    <img src="onehome_files/logo_(1).png" height="40">
                 </a>
             </div>
             <!-- end logo -->
@@ -115,7 +115,7 @@
                 <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
+                            <a href="tb_Article/queryAll"><i class=""></i> 首页</a>
                         </li>
                         <li>
                             <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
@@ -164,17 +164,9 @@
                         <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                     </ul>
                 </div>
-                <!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
-                    <ul class="aw-dropdown-list">
-                        <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=common"><i class="icon icon-draft"></i> 默认&nbsp;&nbsp;√</a></li>
-                        <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=green"><i class="icon icon-draft"></i> 绿色&nbsp;&nbsp;</a></li>
-                        <li><a href="http://azhihu.cssroom.com/?/account/change_skin/?type=orange"><i class="icon icon-draft"></i> 橙色&nbsp;&nbsp;</a></li>
-                    </ul>
-                </div> -->
                 <!-- end 登陆&注册栏 -->
             </div>
             <!-- end 用户栏 -->
-
         </div>
     </div>
     <div class="aw-container-wrap">
@@ -240,35 +232,14 @@
                     <div class="col-sm-12 col-md-9 aw-main-content">
                         <!-- 用户数据内容 -->
                         <div class="aw-mod aw-user-detail-box">
-                            <!--<div class="mod-head">
-                                    <img th:alt="${session.user.user_name}" th:src="${session.user.user_photo}" />
-                                    <br>
-                                    <h1 th:text="${session.user.user_name}" ></h1><br>
-                                    <h1 th:text="${session.user.user_sign}" ></h1>
-                                    <p class="text-color-999"></p>
-                                    <p class="aw-user-flag">
-                                    </p>
-                                        <span class="pull-right operate">
-                                    <a href="User/toMessage" class="btn btn-mini btn-success">编辑个人资料</a>
-                                    </span>
-                                </div>-->
-
-                            <!--<div class="mod-body">
-                                <div class="meta">
-                                    <span><i class="icon icon-prestige"></i> 威望 : <em class="aw-text-color-green">0</em></span>
-                                    <span><i class="icon icon-agree"></i> 赞同 : <em class="aw-text-color-orange">0</em></span>
-                                    <span><i class="icon icon-thank"></i> 感谢 : <em class="aw-text-color-orange">0</em></span>
-                                </div>
-
-                            </div>-->
                             <div class="mod-footer">
                                 <ul class="nav nav-tabs aw-nav-tabs">
                                     <li class="active"><a href="http://localhost:8088/springboot/?/#overview" id="page_overview" data-toggle="tab">概述</a></li>
                                     <li><a href="http://localhost:8088/springboot/?/#questions" id="page_questions" data-toggle="tab">发问<span class="badge" th:text="${userIssue.size()}">0</span></a></li>
-                                    <li><a href="http://localhost:8088/springboot/?/#answers" id="page_answers" data-toggle="tab">回复<span class="badge">0</span></a></li>
+                                    <li><a href="http://localhost:8088/springboot/?/#answers" id="page_answers" data-toggle="tab">回答<span class="badge" th:text="${userAnswerIssue.size()}">0</span></a></li>
                                     <li><a href="http://localhost:8088/springboot/?/#articles" id="page_articles" data-toggle="tab">文章<span class="badge" th:text="${article.size()}">0</span></a></li>
                                     <li><a href="http://localhost:8088/springboot/?/#focus" id="page_focus" data-toggle="tab">关注</a></li>
-                                    <li><a href="http://localhost:8088/springboot/?/#actions" id="page_actions" data-toggle="tab">动态</a></li>
+                                    <!--<li><a href="http://localhost:8088/springboot/?/#actions" id="page_actions" data-toggle="tab">动态</a></li>-->
                                     <!-- <li><a href="#detail" id="page_detail" data-toggle="tab">详细资料</a></li> -->
                                 </ul>
                             </div>
@@ -281,11 +252,21 @@
                                     <div class="aw-mod">
                                         <div class="mod-head">
                                             <h3><a class="pull-right aw-more-content" href="javascript:;" onclick="$('#page_answers').click();">更多
-                                                »</a>回复</h3>
+                                                »</a>回答</h3>
                                         </div>
                                         <div class="mod-body">
                                             <div class="aw-profile-answer-list">
-                                                <p class="padding10 text-center">没有内容</p>
+                                                <div th:each="l,a : ${userAnswerIssue}" >
+                                                <span th:if="${a.count < 3}">
+                                                <p>
+                                                        您回答了问题：<a th:href="@{tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
+                                                    </p>
+                                                    <p>浏览量：[[${l.TbArticle.article_count}]]&nbsp;&nbsp;&nbsp;
+                                                        评论数：[[${l.TbArticle.count}]]&nbsp;&nbsp;&nbsp;
+                                                        [[${l.TbArticle.article_date}]]</p>
+                                                <p class="padding10 text-center" th:if="l eq null">没有内容</p>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -312,7 +293,7 @@
                                         </div>
                                     </div>
                                     <!-- end 发问 -->
-                                    <!-- 最新动态 -->
+                                    <!--&lt;!&ndash; 最新动态 &ndash;&gt;
                                     <div class="aw-mod">
                                         <div class="mod-head">
                                             <h3><a class="pull-right aw-more-content" href="javascript:;" onclick="$('#page_actions').click();">更多
@@ -323,7 +304,7 @@
                                                 <p class="padding10 text-center">没有内容</p>
                                             </ul>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="tab-pane" id="questions">
                                     <div class="aw-mod">
@@ -356,11 +337,20 @@
                                 <div class="tab-pane" id="answers">
                                     <div class="aw-mod">
                                         <div class="mod-head">
-                                            <h3>回复</h3>
+                                            <h3>回答</h3>
                                         </div>
                                         <div class="mod-body">
                                             <div class="aw-profile-answer-list" id="contents_user_actions_answers">
-                                                <p style="padding: 15px 0" align="center">没有内容</p>
+
+                                                <div th:each="l : ${userAnswerIssue}">
+                                                    <p>
+                                                        您回答了问题：<a th:href="@{tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
+                                                    </p>
+                                                    <p>浏览量：[[${l.TbArticle.article_count}]]&nbsp;&nbsp;&nbsp;
+                                                        评论数：[[${l.TbArticle.count}]]&nbsp;&nbsp;&nbsp;
+                                                        [[${l.TbArticle.article_date}]]</p>
+                                                    <p style="padding: 15px 0" align="center" th:if="l eq null">没有内容</p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="mod-footer">
@@ -488,153 +478,9 @@
                                     </div>
                                     <!-- end 自定义切换 -->
                                 </div>
-                                <div class="tab-pane" id="actions">
-                                    <div class="aw-mod">
-                                        <div class="mod-head">
-                                            <h3>最新动态</h3>
-                                        </div>
-                                        <div class="mod-body">
-                                            <div id="contents_user_actions">
-                                                <p style="padding: 15px 0" align="center">没有内容</p>
-                                            </div>
-                                        </div>
-                                        <div class="mod-footer">
-                                            <!-- 加载更多内容 -->
-                                            <a class="aw-load-more-content disabled" id="bp_user_actions_more" data-page="0">
-                                                <span>没有更多了</span>
-                                            </a>
-                                            <!-- end 加载更多内容 -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="orders">
-                                    <div class="aw-mod">
-                                        <div class="mod-head">
-                                            <h3><i class="icon icon-point"></i>我的交易</h3>
-                                        </div>
-                                        <div class="mod-body">
-                                            <table class="table table-hover aw-table">
-                                                <thead>
-                                                <tr class="info">
-                                                    <th width="30%">类型</th>
-                                                    <th width="20%">时间</th>
-                                                    <th width="10%">数额</th>
-                                                    <th width="10%">支付方式</th>
-                                                    <th width="10%">状态</th>
-                                                    <th width="15%">描述</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="contents_user_orders">
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="mod-footer">
-                                            <!-- 加载更多内容 -->
-                                            <a class="aw-load-more-content loading" id="bp_user_orders_more" data-page="0">
-                                                <span>更多</span>
-                                            </a>
-                                            <!-- end 加载更多内容 -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--                             <div class="tab-pane" id="detail">
-                            <div class="aw-mod">
-                                <div class="mod-head">
-                                    <h3>详细资料</h3>
-                                </div>
-                                <div class="mod-body aw-user-center-details">
-                                                                        <dl>
-                                    <dt><span>个人成就:</span></dt>
-                                    <dd>
-                                        <p class="meta">
-                                            <span><i class="icon icon-prestige"></i>威望: <em class="aw-text-color-green">0</em></span>
-                                                                                            <span><i class="icon icon-agree"></i>赞同: <em class="aw-text-color-orange">0</em></span>
-                                            <span><i class="icon icon-thank"></i>感谢: <em class="aw-text-color-orange">0</em></span>
-                                        </p>
-                                    </dd>
-                                </dl>
-
-
-
-                                                                    <dl>
-                                    <dt><span>最后活跃:</span></dt>
-                                    <dd>8 秒前</dd>
-                                </dl>
-
-                                                                    </div>
-                            </div>
-                        </div> -->
-                                <!--提现记录 start-->
-                                <div class="tab-pane" id="withdraw">
-                                    <div class="aw-mod">
-                                        <div class="mod-head">
-                                            <h3><i class="icon icon-point"></i>提现记录</h3>
-                                        </div>
-                                        <div class="mod-body">
-                                            <table class="table table-hover aw-table">
-                                                <thead>
-                                                <tr class="info">
-                                                    <th width="14%">时间</th>
-                                                    <th width="8%">金额</th>
-                                                    <th width="8%">卡号</th>
-                                                    <th width="14%">银行</th>
-                                                    <th width="12%">持卡人</th>
-                                                    <th width="8%">手续费</th>
-                                                    <th width="12%">状态</th>
-                                                    <th width="40%">描述</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="contents_user_withdraw">
-                                                <p style="padding: 15px 0" align="center">没有内容</p>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="mod-footer">
-                                            <!-- 加载更多内容 -->
-                                            <a class="aw-load-more-content disabled" id="bp_user_withdraw" data-page="0">
-                                                <span>没有更多了</span>
-                                            </a>
-                                            <!-- end 加载更多内容 -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--提现记录 end-->
-
-                                <!--提现记录 start-->
-                                <div class="tab-pane" id="approval">
-                                    <div class="aw-mod">
-                                        <div class="mod-head">
-                                            <h3><i class="icon icon-point"></i>审核记录</h3>
-                                        </div>
-                                        <div class="mod-body">
-                                            <table class="table table-hover aw-table">
-                                                <thead>
-                                                <tr class="info">
-                                                    <th width="14%">时间</th>
-                                                    <th width="8%">类型</th>
-                                                    <th width="12%">状态</th>
-                                                    <th width="40%">描述</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="contents_user_approval">
-                                                <p style="padding: 15px 0" align="center">没有内容</p>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="mod-footer">
-                                            <!-- 加载更多内容 -->
-                                            <a class="aw-load-more-content disabled" id="bp_user_approval" data-page="0">
-                                                <span>没有更多了</span>
-                                            </a>
-                                            <!-- end 加载更多内容 -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--提现记录 end-->
                             </div>
                         </div>
                     </div>
-
                     <!-- 侧边栏 -->
                     <div class="col-sm-12 col-md-3 aw-side-bar">
                         <div class="aw-mod people-following">
@@ -747,5 +593,4 @@
     <div style="display:none;" id="__crond"><img src="common/saved_resource" width="1" height="1"></div>
     <!-- Escape time: 0.080562114715576 -->
 </noscript>
-<!---->
 </html>

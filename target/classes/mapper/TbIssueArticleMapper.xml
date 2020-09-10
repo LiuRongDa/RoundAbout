@@ -7,5 +7,16 @@
     -->
     <result column="issue_id" jdbcType="INTEGER" property="issue_id" />
     <result column="article_id" jdbcType="INTEGER" property="article_id" />
+    <association property="tbArticle" column="article_id" javaType="com.aaa.entity.TbArticle" autoMapping="true">
+      <id column="article_id" property="article_id" />
+    </association>
+    <association property="tbIssue" column="issue_id" javaType="com.aaa.entity.TbIssue" autoMapping="true">
+      <id column="issue_id" property="issue_id" />
+    </association>
   </resultMap>
+
+  <select id="queryUserIssue" resultMap="BaseResultMap">
+    select * from tb_article a,tb_issue b, tb_issue_article c where
+a.article_id = c.article_id and b.issue_id = c.issue_id and a.article_title is null and a.user_id = #{user_id}
+  </select>
 </mapper>
