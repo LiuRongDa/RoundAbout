@@ -133,11 +133,9 @@ public class TbArticleService {
 
     // wh 查询用户的文章
     public List<TbArticle> queryUser(Integer id){
-        TbArticle tbArticle = new TbArticle();
-        tbArticle.setUser_id(id);
-        List<TbArticle> select = tbArticleMapper.select(tbArticle);
-        System.out.println(select);
-        return select;
+        List<TbArticle> tbArticles = tbArticleMapper.queryUser(id);
+        System.out.println(tbArticles);
+        return tbArticles;
     }
 
     /**

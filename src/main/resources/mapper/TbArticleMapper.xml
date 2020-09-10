@@ -19,7 +19,9 @@
       <id column="user_id" property="user_id" />
     </association>
   </resultMap>
-
+  <select id="queryUser" resultMap="BaseResultMap">
+    select * from tb_article where article_title != '' and user_id=#{user_id}
+  </select>
   <select id="selePage" resultMap="BaseResultMap">
     select * from tb_article LEFT JOIN tb_user on tb_article.user_id=tb_user.user_id
     <where>

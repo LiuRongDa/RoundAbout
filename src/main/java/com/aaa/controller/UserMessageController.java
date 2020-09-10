@@ -2,9 +2,7 @@ package com.aaa.controller;
 
 import com.aaa.entity.TbUser;
 import com.aaa.security.BCryptPasswordEncoderRun;
-import com.aaa.service.TbArticleService;
-import com.aaa.service.TbIssueService;
-import com.aaa.service.TbUserService;
+import com.aaa.service.*;
 import com.aaa.utils.EmailHelper;
 import com.aaa.utils.FileUtil;
 import org.apache.ibatis.annotations.Param;
@@ -37,6 +35,10 @@ public class UserMessageController {
     TbIssueService tbIssueService;
     @Resource
     BCryptPasswordEncoderRun bCryptPasswordEncoderRun;
+    @Resource
+    TbTradeService tbTradeService;
+    @Resource
+    TbTopicService tbTopicService;
 
     //跳转到修改邮箱
     @RequestMapping("/toChangeEmail")
@@ -99,6 +101,8 @@ public class UserMessageController {
     @RequestMapping("/toOneHome")
     public String toOneHome(HttpSession session,Model model){
         Integer id = (Integer) session.getAttribute("id");
+        //查询用户的专栏
+        model.addAttribute("topic",tbTopicService.queryUser(id));
         //answer 查询用户回答的问题
         model.addAttribute("userAnswerIssue",tbIssueService.queryUserIssue(id));
         //查询用户的文章
@@ -150,7 +154,8 @@ public class UserMessageController {
 
     //跳转到个人信息编辑页面
     @RequestMapping("/toMessage")
-    public String toMessage(){
+    public String toMessage(Model model){
+        model.addAttribute("trade",tbTradeService.queryAll());
         return "onemessage";
     }
 

@@ -295,50 +295,13 @@
 												</dd>
 											</dl>
 											<dl>
-												<dt><label>职业:</label></dt>
+												<dt>职业</dt>
 												<dd class="introduce">
-													<input class="form-control" name="user_trade" maxlength="128" type="text" value="" th:value="${session.user.user_trade}">
-													<!--<select name="job_id" class="form-control">
-														<option value="0">&#45;&#45;</option>
-														<option value="1">销售</option>
-														<option value="2">市场/市场拓展/公关</option>
-														<option value="3">商务/采购/贸易</option>
-														<option value="4">计算机软、硬件/互联网/IT</option>
-														<option value="5">电子/半导体/仪表仪器</option>
-														<option value="6">通信技术</option>
-														<option value="7">客户服务/技术支持</option>
-														<option value="8">行政/后勤</option>
-														<option value="9">人力资源</option>
-														<option value="10">高级管理</option>
-														<option value="11">生产/加工/制造</option>
-														<option value="12">质控/安检</option>
-														<option value="13">工程机械</option>
-														<option value="14">技工</option>
-														<option value="15">财会/审计/统计</option>
-														<option value="16">金融/银行/保险/证券/投资</option>
-														<option value="17">建筑/房地产/装修/物业</option>
-														<option value="18">交通/仓储/物流</option>
-														<option value="19">普通劳动力/家政服务</option>
-														<option value="20">零售业</option>
-														<option value="21">教育/培训</option>
-														<option value="22">咨询/顾问</option>
-														<option value="23">学术/科研</option>
-														<option value="24">法律</option>
-														<option value="25">美术/设计/创意</option>
-														<option value="26">编辑/文案/传媒/影视/新闻</option>
-														<option value="27">酒店/餐饮/旅游/娱乐</option>
-														<option value="28">化工</option>
-														<option value="29">能源/矿产/地质勘查</option>
-														<option value="30">医疗/护理/保健/美容</option>
-														<option value="31">生物/制药/医疗器械</option>
-														<option value="32">翻译（口译与笔译）</option>
-														<option value="33">公务员</option>
-														<option value="34">环境科学/环保</option>
-														<option value="35">农/林/牧/渔业</option>
-														<option value="36">兼职/临时/培训生/储备干部</option>
-														<option value="37">在校学生</option>
-														<option value="38">其他</option>
-													</select>-->
+													<select name="user_trade">
+														<span th:each="l : ${trade}">
+															<option th:value="${l.trade_id}" th:text="${l.trade_name}" th:selected="${l.trade_id} == ${session.user.user_trade}"></option>aa==1？"as":"sd"
+														</span>
+													</select>
 												</dd>
 											</dl>
 											<dl>
