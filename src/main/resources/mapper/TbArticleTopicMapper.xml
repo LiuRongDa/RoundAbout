@@ -8,4 +8,9 @@
     <result column="topic_id" jdbcType="INTEGER" property="topic_id" />
     <result column="article_id" jdbcType="INTEGER" property="article_id" />
   </resultMap>
+
+  <!--删文章时删除文章专栏桥梁表-->
+  <delete id="delByArticle" parameterType="com.aaa.entity.TbArticleTopic">
+    delete from tb_article_topic where article_id=#{article_id}
+  </delete>
 </mapper>

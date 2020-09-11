@@ -39,6 +39,10 @@ public class TbReportService {
 
     @Resource
     TbArticleGambitMapper tbArticleGambitMapper;
+
+    @Resource
+    TbArticleTopicMapper tbArticleTopicMapper;
+
     @Resource
     TbUserMapper tbUserMapper;
 
@@ -190,12 +194,18 @@ public class TbReportService {
         for (TbComment tbcomm :tbCommentList) {
             delComment(tbcomm.getComment_id());
         }
+        //删除问题文章桥梁表
         TbArticleGambit tbArticleGambit=new TbArticleGambit();
-        tbArticleGambit.setArticle_id(Article_id);
         List<TbArticleGambit> tbArticleGambitList = tbArticleGambitMapper.select(tbArticleGambit);
         for (TbArticleGambit articleGambit: tbArticleGambitList) {
-            System.out.println("删除话题文章桥梁表");
             tbArticleGambitMapper.delByArticleId(articleGambit.getArticle_id());
+        }
+        //删除专栏文章桥梁表
+        TbArticleTopic tbArticleTopic=new TbArticleTopic();
+        tbArticleTopic.setArticle_id(Article_id);
+        List<TbArticleTopic> tbArticleTopicList = tbArticleTopicMapper.select(tbArticleTopic);
+        for (TbArticleTopic topic: tbArticleTopicList) {
+            tbArticleTopicMapper.delByArticle(topic.getArticle_id());
         }
         tbArticleMapper.deleteByPrimaryKey(Article_id);
     }
