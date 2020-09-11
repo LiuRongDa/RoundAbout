@@ -56,6 +56,14 @@
     <script type="text/javascript" src="js/slide_captcha/gt.js"></script>
     <script src="js/crypto-js.js"></script>
     <script src="js/highlight/highlight.pack.js"></script>
+    <script type="text/javascript" src="js/toastr.min.js"></script>
+    <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        toastr.options.positionClass = 'toast-top-center';
+        toastr.options.showDuration = '1000';
+        toastr.options.hideDuration = '3000';
+        toastr.options.timeOut = '1500';
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelectorAll('pre').forEach((block) => {
@@ -387,13 +395,12 @@
                                 <div class="modal-body">
                                     <input type="text" name="user_id" value="" th:value="${session.user.user_id}" hidden>
 
-                                    <input type="text" style="width: 100%" name="issue_title" value="">
+                                    <input type="text" id="isscon" style="width: 100%" name="issue_title" value="">
                                     <textarea name="issue_content" style="resize:none;width: 100%;height: 200px;"></textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary" onclick="$('#addissues').submit()">确定</button>
-
+                                    <button type="button" class="btn btn-primary" onclick="if($('#isscon').val()==''){toastr.warning('问题标题不能为空')}else{$('#addissues').submit()}">确定</button>
                                 </div>
                             </form>
 
