@@ -256,15 +256,14 @@
                                     <!-- 回答 -->
                                     <div class="aw-mod">
                                         <div class="mod-head">
-                                            <h3><a class="pull-right aw-more-content" href="javascript:;" onclick="$('#page_answers').show();">更多
-                                                »</a>回答</h3>
+                                            <h3>回答</h3>
                                         </div>
                                         <div class="mod-body">
                                             <div class="aw-profile-answer-list">
                                                 <div th:each="l,a : ${userAnswerIssue}" >
                                                     <span th:if="${a.count < 3}">
                                                         <p>
-                                                            您回答了问题：<a th:href="@{Reception/tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
+                                                            您回答了问题：<a th:href="@{Reception/tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span style="font-weight: 900" th:text="${l.TbIssue.issue_title}" style="font-weight: 700;font-size: 20px;color: #6C6C6C;margin-left: 30px"></span></a>
                                                         </p>
                                                         <div class="layui-collapse">
                                                           <div class="layui-colla-item">
@@ -275,9 +274,9 @@
                                                         <p>浏览量：<span th:text="${l.TbArticle.article_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                             评论数：<span th:text="${l.TbArticle.count}">0</span>&nbsp;&nbsp;&nbsp;
                                                             [[${l.TbArticle.article_date}]]</p>
-                                                        <p class="padding10 text-center" th:if="l eq null">没有内容</p>
                                                     </span>
                                                 </div>
+                                                <p class="padding10 text-center" th:if="${userAnswerIssue.isEmpty()}">没有内容</p>
                                             </div>
                                         </div>
                                     </div>
@@ -285,22 +284,21 @@
                                     <!-- 发问 -->
                                     <div class="aw-mod">
                                         <div class="mod-head">
-                                            <h3><a class="pull-right aw-more-content" href="javascript:;" onclick="$('#page_questions').click();">更多
-                                                »</a>发问</h3>
+                                            <h3>发问</h3>
                                         </div>
                                         <div class="mod-body">
                                             <div class="aw-profile-publish-list">
                                                 <div th:each="l,a : ${userIssue}" >
                                                 <span th:if="${a.count < 3}">
                                                 <p>
-                                                    <a th:href="@{Reception/tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}"></span></a>
+                                                    <a th:href="@{Reception/tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}" style="font-weight: 700;font-size: 20px;color: #6C6C6C;margin-left: 30px"></span></a>
                                                 </p>
                                                     <p>浏览量：<span th:text="${l.issue_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         回答数：<span th:text="${l.count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         [[${l.issue_date}]]</p>
-                                                <p class="padding10 text-center" th:if="l eq null">没有内容</p>
                                                     </span>
                                                 </div>
+                                                <p class="padding10 text-center" th:if="${userIssue.isEmpty()}">没有内容</p>
                                             </div>
                                         </div>
                                     </div>
@@ -315,7 +313,7 @@
                                             <div class="aw-profile-publish-list" id="contents_user_actions_questions">
                                                 <div th:each="l : ${userIssue}">
                                                     <p>
-                                                        <a th:href="@{Reception/tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}"></span></a>
+                                                        <a th:href="@{Reception/tb_Issue/queryById(id=${l.issue_id})}"><span th:text="${l.issue_title}" style="font-weight: 700;font-size: 20px;color: #6C6C6C;margin-left: 30px"></span></a>
                                                     </p>
                                                     <p>浏览量：<span th:text="${l.issue_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         回答数：<span th:text="${l.count}">0</span>&nbsp;&nbsp;&nbsp;
@@ -344,7 +342,7 @@
 
                                                 <div th:each="l : ${userAnswerIssue}">
                                                     <p>
-                                                        您回答了问题：<a th:href="@{Reception/tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
+                                                        您回答了问题：<a th:href="@{Reception/tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}" style="font-weight: 700;font-size: 20px;color: #6C6C6C;margin-left: 30px"></span></a>
                                                     </p>
                                                     <div class="layui-collapse">
                                                         <div class="layui-colla-item">
@@ -375,7 +373,7 @@
                                             <div class="aw-profile-publish-list" id="contents_user_actions_articles">
                                                 <div th:each="l : ${article}">
                                                     <p>
-                                                        <a th:href="@{Reception/tb_Article/queryById(id=${l.article_id})}"><span th:text="${l.article_title}"></span></a>
+                                                        <a th:href="@{Reception/tb_Article/queryById(id=${l.article_id})}"><span th:text="${l.article_title}" style="font-weight: 700;font-size: 20px;color: #6C6C6C;margin-left: 30px"></span></a>
                                                     </p>
                                                     <p>浏览量：[[${l.article_count}]]&nbsp;&nbsp;&nbsp;&nbsp;
                                                         评论数：[[${l.count}]]&nbsp;&nbsp;&nbsp;&nbsp;
@@ -403,7 +401,7 @@
                                             <div class="aw-profile-publish-list" id="contents_user_actions">
                                                 <div th:each="l : ${topic}">
                                                     <p>
-                                                        <a th:href="@{/Reception/tb_Topic/queryById(topic_id=${l.topic_id})}"><span th:text="${l.topic_name}"></span></a>
+                                                        <a th:href="@{/Reception/tb_Topic/queryById(topic_id=${l.topic_id})}"><span th:text="${l.topic_name}" style="font-weight: 700;font-size: 20px;color: #6C6C6C;margin-left: 30px"></span></a>
                                                     </p>
                                                     <p>浏览量：<span th:text="${l.topic_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                         文章数：[[${l.count}]]&nbsp;&nbsp;&nbsp;
@@ -512,33 +510,34 @@
                     <div class="col-sm-12 col-md-3 aw-side-bar">
                         <div class="aw-mod people-following">
                             <div class="mod-body">
-                                <a onclick="$('#page_focus').click();$('#focus .aw-tabs ul li').eq(0).click();$.scrollTo($('#focus').offset()['top'], 600, {queue:true})"
-                                   class="pull-right font-size-12">更多 »</a>
+                                <!--<a onclick="$('#page_focus').click();$('#focus .aw-tabs ul li').eq(0).click();$.scrollTo($('#focus').offset()['top'], 600, {queue:true})"
+                                   class="pull-right font-size-12">更多 »</a>-->
                                 <span>关注 <em class="aw-text-color-blue" th:text="${userAttention.size()}">0</em> 人 </span>
                                 <p>
-                                <span  th:each="l : ${userAttention}">
-                                <a class="aw-user-name" data-id="1" th:href="@{Reception/User/toElseHome(id=${l.user_id})}"><img th:src="${l.user_photo}" th:alt="${l.user_name}"></a>
-                                </span>
+                                <span  th:each="l,a : ${userAttention}">
+                                    <span th:if="${a.count < 5}">
+                                <a class="aw-user-name" data-id="1" th:href="@{Reception/User/toElseHome(id=${l.user_id})}"><img th:src="${l.user_photo}" th:alt="${l.user_name}" style="width: 50px;height: 50px"></a>
+                                    </span></span>
                                 </p>
                             </div>
                         </div>
                         <div class="aw-mod people-following">
                             <div class="mod-body">
-                                <a onclick="$('#page_focus').click();$('#focus .aw-tabs ul li').eq(1).click();$.scrollTo($('#focus').offset()['top'], 600, {queue:true})"
-                                   class="pull-right font-size-12">更多 »</a>
+                                <!--<a onclick="$('#page_focus').click();$('#focus .aw-tabs ul li').eq(1).click();$.scrollTo($('#focus').offset()['top'], 600, {queue:true})"
+                                   class="pull-right font-size-12">更多 »</a>-->
                                 <span>被 <em class="aw-text-color-blue" th:text="${attentionUser.size()}">0</em> 人关注 </span>
                                 <p>
-                                <span  th:each="l : ${attentionUser}">
-                                <a class="aw-user-name" data-id="1" th:href="@{Reception/User/toElseHome(id=${l.user_id})}"><img th:src="${l.user_photo}" th:alt="${l.user_name}"></a>
-                                </span>
+                                <span  th:each="l,a : ${attentionUser}">
+                                    <span th:if="${a.count < 5}">
+                                <a class="aw-user-name" data-id="1" th:href="@{Reception/User/toElseHome(id=${l.user_id})}"><img th:src="${l.user_photo}" th:alt="${l.user_name}" style="width: 50px;height: 50px"></a>
+                                    </span></span>
                                 </p>
                             </div>
-
                         </div>
                         <div class="aw-mod">
                             <div class="mod-body">
 									<span class="aw-text-color-666">
-										主页访问量 : [[${session.user.user_count}]] 次访问 </span>
+										主页访问量 : <span th:text="${session.user.user_count}" ></span> 次访问 </span>
                             </div>
                         </div>
                     </div>

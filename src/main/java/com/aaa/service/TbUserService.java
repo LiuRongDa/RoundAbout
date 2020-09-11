@@ -133,6 +133,8 @@ public class TbUserService {
         tbUser.setUser_photo("imgs/cat.gif");
         tbUser.setUser_backdrop("imgs/backdrop.jpg");
         tbUser.setUser_joindate(new Date());
+        tbUser.setUser_count(0);
+        tbUser.setUser_trade("1");
         tbUser.setUser_pwd(bCryptPasswordEncoderRun.passwordEncoder().encode(pwd));
         int insert = tbUserMapper.insert(tbUser);
         return insert;

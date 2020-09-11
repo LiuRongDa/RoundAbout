@@ -41,15 +41,18 @@ public class LoginController {
     }
     @RequestMapping("/toLogin")
     @ResponseBody
-    public boolean toLogin(HttpSession session, @RequestParam("email") String email,@RequestParam("pwd") String pwd){
+    public Integer toLogin(HttpSession session, @RequestParam("email") String email,@RequestParam("pwd") String pwd){
         TbUser tbUser = tbUserService.toLogin(email, pwd);
 
         if (tbUser==null)
-            return false;
+            return 2;
         else{
-            session.setAttribute("user",tbUser);
-            session.setAttribute("id",tbUser.getUser_id());
-            return true;
+            if (tbUser.getUser_state()==0) {
+                session.setAttribute("user", tbUser);
+                session.setAttribute("id", tbUser.getUser_id());
+                return 0;
+            }else
+                return 1;
         }
 
     }
