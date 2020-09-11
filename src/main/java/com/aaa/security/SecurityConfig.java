@@ -47,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/onehome_files/**").permitAll()
                 .antMatchers("/imgs/**").permitAll()
+                .antMatchers("/layui/**").permitAll()
                 .antMatchers("/").permitAll()
                 // 请求配置
                 .requestMatchers(CorsUtils::isPreFlightRequest)

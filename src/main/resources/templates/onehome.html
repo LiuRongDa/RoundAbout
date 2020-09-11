@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="onehome_files/laydate.css"  type="text/css">
     <link rel="stylesheet" href="onehome_files/theme/default/layer.css"   type="text/css">
     <link rel="stylesheet" href="onehome_files/theme/default/laydate.css"  type="text/css">
-
+    <link href="layui/css/layui.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         var _AB17AD33DDAD1569F36887ECA744458C = "7343be5318c167b2ef5e1cb87e5b8a60";
         var G_POST_HASH = _AB17AD33DDAD1569F36887ECA744458C;
@@ -67,6 +67,7 @@
     <script src="onehome_files/crypto-js.js"></script>
     <script src="onehome_files/highlight.pack.js"></script>
     <script src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="layui/layui.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             document.querySelectorAll('pre').forEach((block) => {
@@ -265,6 +266,12 @@
                                                         <p>
                                                             您回答了问题：<a th:href="@{Reception/tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
                                                         </p>
+                                                        <div class="layui-collapse">
+                                                          <div class="layui-colla-item">
+                                                            <h2 class="layui-colla-title">查看回答</h2>
+                                                              <div class="layui-colla-content"><span th:utext="${l.TbArticle.article_content}"></span></div>
+                                                          </div>
+                                                        </div>
                                                         <p>浏览量：<span th:text="${l.TbArticle.article_count}">0</span>&nbsp;&nbsp;&nbsp;
                                                             评论数：<span th:text="${l.TbArticle.count}">0</span>&nbsp;&nbsp;&nbsp;
                                                             [[${l.TbArticle.article_date}]]</p>
@@ -339,6 +346,12 @@
                                                     <p>
                                                         您回答了问题：<a th:href="@{Reception/tb_Issue/queryById(id=${l.TbIssue.issue_id})}"><span th:text="${l.TbIssue.issue_title}"></span></a>
                                                     </p>
+                                                    <div class="layui-collapse">
+                                                        <div class="layui-colla-item">
+                                                            <h2 class="layui-colla-title">查看回答</h2>
+                                                            <div class="layui-colla-content"><span th:utext="${l.TbArticle.article_content}"></span></div>
+                                                        </div>
+                                                    </div>
                                                     <p>浏览量：[[${l.TbArticle.article_count}]]&nbsp;&nbsp;&nbsp;
                                                         评论数：[[${l.TbArticle.count}]]&nbsp;&nbsp;&nbsp;
                                                         [[${l.TbArticle.article_date}]]</p>
@@ -578,6 +591,17 @@
 
             location.href="http://azhihu.cssroom.com/?/plugins/p-consult__a-edit__at_uid-1";
         }
+    </script>
+    <script>
+        layui.use(['element', 'layer'], function(){
+            var element = layui.element();
+            var layer = layui.layer;
+
+            //监听折叠
+            element.on('collapse(test)', function(data){
+                layer.msg('展开状态：'+ data.show);
+            });
+        });
     </script>
     <script type="text/javascript" src="onehome_files/people.js"></script>
     <div class="aw-footer-wrap">
