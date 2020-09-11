@@ -191,15 +191,15 @@
                 <div class="col-sm-12 col-md-9 aw-main-content">
                     <!-- tab 切换 -->
                     <ul class="nav nav-tabs aw-nav-tabs active">
-                        <li class="active"><a href="javascript:;">文章</a></li>
-                        <h2 class="hidden-xs"><i class="icon icon-ask"></i> 发起</h2>
+                        <li class="active"><a href="javascript:;" style="font-size: 18px;">文章</a></li>
+                        <h2 class="hidden-xs"><i class="icon icon-ask" ></i> 发起</h2>
                     </ul>
                     <!-- end tab 切换 -->
                     <form action="Reception/tb_Article/insertArticle" method="post">
                         <input type="text" name="user_id" value="" th:value="${session.user.user_id}" hidden/>
                         <div class="aw-mod aw-mod-publish">
                             <div class="mod-body">
-                                <h3>文章标题:</h3>
+                                <h3 style="font-size: 18px;">文章标题</h3>
                                 <!-- 问题标题 -->
                                 <div class="aw-publish-title active">
 
@@ -207,7 +207,7 @@
 
                                 </div>
                                 <!-- end 问题标题 -->
-                                <h3>文章内容:</h3>
+                                <h3 style="font-size: 18px;">文章内容</h3>
                                 <div class="aw-mod aw-editor-box">
                                     <div id="editor">
 
@@ -216,8 +216,8 @@
                                     <input type="text" name="topic_id" id="cou" value="" hidden>
                                 </div>
 
-                                <h3><a th:href="@{Reception/tb_Topic/showColumn}">设置专栏:(选填)</a></h3>
-                                <div th:each="topic : ${tbTopics}">
+                                <h3 style="font-size: 18px;"><a th:href="@{Reception/tb_Topic/showColumn}">设置专栏(选填)</a></h3>
+                                <div th:each="topic : ${tbTopics}" style="font-size: 15px;">
                                     <input type="checkbox" name="ids" onclick="zl(this)" value="" th:value="${topic.topic_id}">[[${topic.topic_name}]]
                                 </div>
                                 <script type="text/javascript" th:inline="javascript">
@@ -231,7 +231,7 @@
                                         $("#cou").val(str);
                                     }
                                 </script>
-                                <h3>添加话题:</h3>
+                                <h3 style="font-size: 18px;">添加话题:</h3>
                                 <div class="aw-topic-bar" data-type="publish">
                                     <div class="tag-bar clearfix" style="display: block;">
                                         <span class="topic-tag" id="weiz">
@@ -240,7 +240,7 @@
 
                                         <input type="text" value="" name="topics" hidden>
 
-                                        <span class="aw-edit-topic icon-inverse" id="aaa" style="display: block;" onclick="$(this).hide();$(this).parent().next().show();">
+                                        <span class="aw-edit-topic icon-inverse" id="aaa" style="display: block;font-size: 15px;" onclick="$(this).hide();$(this).parent().next().show();">
                                             <i class="icon icon-edit"></i> 编辑话题
                                         </span>
                                     </div>
@@ -279,7 +279,7 @@
 
                             </div>
                             <div class="mod-footer clearfix">
-                                <button class="btn-success btn-publish-submit" id="publish_submit">确认发起</button>
+                                <button type="button" class="btn btn-success btn-lg" id="publish_submit">确认发起</button>
                             </div>
 
                             <script type="text/javascript">
