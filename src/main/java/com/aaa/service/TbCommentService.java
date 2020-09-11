@@ -194,7 +194,6 @@ public class TbCommentService {
             //评论人
             TbUser tbUser1 = tbUserMapper.selectOne(tbUser);
 
-
             tc.setTbUser(tbUser1);
             tbReply.setComment_id(tc.getComment_id());
             //所有该评论下的所有回复

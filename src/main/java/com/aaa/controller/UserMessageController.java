@@ -200,7 +200,7 @@ public class UserMessageController {
         boolean b = tbUserService.setUser(user);
         if (b) {
             session.setAttribute("user",tbUserService.queryById((Integer) session.getAttribute("id")));
-            return "redirect:/User/toOneHome";
+            return "redirect:toOneHome";
         }else
             return "";
 

@@ -25,7 +25,7 @@ public class LoginController {
     public String exit(HttpSession session){
         //session.invalidate();session失效
         session.removeAttribute("user");
-        return "redirect:/L/login";
+        return "redirect:login";
     }
     @RequestMapping("/login")
     public String reLogin(){

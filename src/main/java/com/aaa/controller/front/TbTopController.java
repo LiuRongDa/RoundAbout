@@ -1,5 +1,6 @@
 package com.aaa.controller.front;
 
+import com.aaa.entity.TbArticle;
 import com.aaa.entity.TbArticleTopic;
 import com.aaa.entity.TbTopic;
 import com.aaa.service.TbTopicService;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -19,7 +21,9 @@ import java.util.List;
 @RequestMapping("/Reception/tb_Topic")
 public class TbTopController {
     @Resource
+
     TbTopicService tbTopicService;
+
     @RequestMapping("showColumn")
     public String showColumn(Model model){
         List<TbTopic> tbTopics = tbTopicService.queryTopic();
@@ -64,12 +68,48 @@ public class TbTopController {
 
 
     @RequestMapping("queryById")
-    public String queryById(Model model,Integer topic_id){
+    public String queryById(Model model, HttpSession session, Integer topic_id){
         TbTopic tbTopic = tbTopicService.queryById(topic_id);
         List<TbArticleTopic> tbArticleTopics = tbTopicService.queryArtById(topic_id);
+        Integer id = Integer.parseInt(session.getAttribute("id").toString());
+        List<TbArticle> tbArticles = tbTopicService.queryNotTopicArticle(id, topic_id);
         model.addAttribute("tbTopic",tbTopic);
+        model.addAttribute("tbArticles",tbArticles);
         model.addAttribute("tbArticleTopics",tbArticleTopics);
         return "column_details";
+    }
+
+    /**
+     *收录文章
+     * @param model
+     * @param topic_id
+     * @return
+     */
+    @RequestMapping("addArticleTop")
+    public String addArticleTop(Model model,Integer topic_id,Integer article_id){
+        tbTopicService.addArticleTop(topic_id, article_id);
+        List<TbArticleTopic> tbArticleTopics = tbTopicService.queryArtById(topic_id);
+        model.addAttribute("tbArticleTopics",tbArticleTopics);
+        return "column_details::div5";
+    }
+
+    /**
+     * 移除文章
+     * @param topic_id
+     * @param article_id
+     * @return
+     */
+    @RequestMapping("removeArticleTop")
+    public String removeArticleTop(HttpSession session,Model model,Integer user_id,Integer article_id,Integer topic_id){
+        Integer id = Integer.parseInt(session.getAttribute("id").toString());
+        if(user_id == id){
+            tbTopicService.removeArticleTop(topic_id,article_id);
+            List<TbArticleTopic> tbArticleTopics = tbTopicService.queryArtById(topic_id);
+            model.addAttribute("tbArticleTopics",tbArticleTopics);
+            return "column_details::div5";
+        }else{
+            return "column_details::div5";
+        }
     }
 
     /**

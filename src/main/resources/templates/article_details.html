@@ -474,10 +474,10 @@
                                                         <input type="text" name="comment_id" value="" th:value="${a.comment_id}" hidden>
                                                         <input type="text" name="article_id" value="" th:value="${tbComment.article_id}" hidden>
                                                         <input type="text" name="comment_content" value="">
-                                                        <input class="btn btn-success" type="button" value="回复" onclick="addreply(this)">
+                                                        <input class="btn btn-success" type="button" value="回复" onclick="addre(this)">
 
                                                         <script type="text/javascript" th:inline="javascript">
-                                                            function addreply(a){
+                                                            function addre(a){
                                                                 var user_id = $(a).parent().find("[name='user_id']").val();
                                                                 var reply_id = $(a).parent().find("[name='reply_idto']").val();
                                                                 var comment_id = $(a).parent().find("[name='comment_id']").val();
@@ -492,7 +492,8 @@
                                                                         /*$(a).parent().find("[name='comment_content']").val('')
                                                                         $(a).parent().hide();*/
                                                                         $("#div1").html(date);
-                                                                    }})
+                                                                    }
+                                                                })
                                                             }
                                                         </script>
                                                     </div>

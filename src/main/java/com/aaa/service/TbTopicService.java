@@ -33,8 +33,42 @@ public class TbTopicService {
     @Resource
     TbArticleMapper tbArticleMapper;
 
+    /**
+     * 移除收录文章
+     @param topic_id
+     * @param article_id
+     * @return
+     */
+    public Integer removeArticleTop(Integer topic_id,Integer article_id){
+        TbArticleTopic tbArticleTopic = new TbArticleTopic();
+        tbArticleTopic.setTopic_id(topic_id);
+        tbArticleTopic.setArticle_id(article_id);
+        int delete = tbArticleTopicMapper.delete(tbArticleTopic);
+        TbTopic tbTopic = tbTopicMapper.selectByPrimaryKey(topic_id);
+        tbTopic.setCount(tbTopic.getCount()-1);
+        int i = tbTopicMapper.updateByPrimaryKey(tbTopic);
+        return i;
+    }
+    /**
+     * 收录文章
+     * @param article_id
+     * @param topic_id
+     * @return
+     */
+    public Integer addArticleTop(Integer topic_id,Integer article_id){
+        TbArticleTopic tbArticleTopic = new TbArticleTopic();
+        tbArticleTopic.setArticle_id(article_id);
+        tbArticleTopic.setTopic_id(topic_id);
 
-
+        int insert = tbArticleTopicMapper.insert(tbArticleTopic);
+        if(insert > 0){
+            tbArticleTopic = tbArticleTopicMapper.selectOne(tbArticleTopic);
+            TbTopic tbTopic = tbTopicMapper.selectByPrimaryKey(tbArticleTopic.getTopic_id());
+            tbTopic.setCount(tbTopic.getCount()+1);
+            int i = tbTopicMapper.updateByPrimaryKey(tbTopic);
+        }
+        return insert;
+    }
 
     /**
      * fsjaif
@@ -78,6 +112,17 @@ public class TbTopicService {
         List<TbUser> select = tbUserMapper.select(tbUser);
         tbTopic.setTbUser(select);
         return tbTopic;
+    }
+
+    /**
+     * 查询没有收录的文章
+     * @param user_id
+     * @param topic_id
+     * @return
+     */
+    public List<TbArticle> queryNotTopicArticle(Integer user_id,Integer topic_id){
+        List<TbArticle> tbArticles = tbArticleMapper.queryNotTopicArticle(user_id, topic_id);
+        return tbArticles;
     }
 
     /**
