@@ -267,8 +267,9 @@
                             <ul class="nav nav-tabs aw-nav-tabs">
                                 <li class="active"><a href="http://localhost:8088/springboot/?/#overview" id="page_overview" data-toggle="tab">概述</a></li>
                                 <li><a href="http://localhost:8088/springboot/?/#questions" id="page_questions" data-toggle="tab">发问<span class="badge" th:text="${userIssue.size()}">0</span></a></li>
-                                <li><a href="http://localhost:8088/springboot/?/#answers" id="page_answers" data-toggle="tab">回复<span class="badge">0</span></a></li>
+                                <li><a href="http://localhost:8088/springboot/?/#answers" id="page_answers" data-toggle="tab">回答<span class="badge" th:text="${userAnswerIssue.size()}">0</span></a></li>
                                 <li><a href="http://localhost:8088/springboot/?/#articles" id="page_articles" data-toggle="tab">文章<span class="badge" th:text="${article.size()}">0</span></a></li>
+                                <li><a href="http://localhost:8088/springboot/#topic" id="page_topic" data-toggle="tab">专栏<span class="badge" th:text="${topic.size()}">0</span></a></li>
                                 <li><a href="http://localhost:8088/springboot/?/#focus" id="page_focus" data-toggle="tab">关注</a></li>
                                 <!--<li><a href="http://localhost:8088/springboot/?/#actions" id="page_actions" data-toggle="tab">动态</a></li>-->
                                 <!-- <li><a href="#detail" id="page_detail" data-toggle="tab">详细资料</a></li> -->
@@ -279,7 +280,7 @@
                     <div class="aw-user-center-tab">
                         <div class="tab-content">
                             <div class="tab-pane active" id="overview">
-                                <!-- 回复 -->
+                                <!-- 回答 -->
                                 <div class="aw-mod">
                                     <div class="mod-head">
                                         <h3><a class="pull-right aw-more-content" href="javascript:;" onclick="$('#page_answers').click();">更多
@@ -301,7 +302,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end 回复 -->
+                                <!-- end 回答 -->
                                 <!-- 发问 -->
                                 <div class="aw-mod">
                                     <div class="mod-head">
@@ -385,9 +386,7 @@
                                     </div>
                                     <div class="mod-footer">
                                         <!-- 加载更多内容 -->
-                                        <!--<a class="aw-load-more-content disabled" id="bp_user_actions_answers_more" data-page="0">
-                                            <span>没有更多了</span>
-                                        </a>-->
+                                        <p style="text-align: center"> 没有更多了</p>
                                         <!-- end 加载更多内容 -->
                                     </div>
                                 </div>
@@ -415,6 +414,34 @@
                                         <p style="text-align: center"> 没有更多了</p>
                                         <!--<a  class="aw-load-more-content disabled" id="bp_user_actions_articles_more" data-page="0">
                                             没有更多了
+                                        </a>-->
+                                        <!-- end 加载更多内容 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="topic">
+                                <div class="aw-mod">
+                                    <div class="mod-head">
+                                        <h3>专栏</h3>
+                                    </div>
+                                    <div class="mod-body">
+                                        <div class="aw-profile-publish-list" id="">
+                                            <div th:each="l : ${topic}">
+                                                <p>
+                                                    <a th:href="@{/Reception/tb_Topic/queryById(topic_id=${l.topic_id})}"><span th:text="${l.topic_name}"></span></a>
+                                                </p>
+                                                <p>浏览量：<span th:text="${l.topic_count}">0</span>&nbsp;&nbsp;&nbsp;
+                                                    文章数：[[${l.count}]]&nbsp;&nbsp;&nbsp;
+                                                    [[${l.topic_date}]]</p>
+                                                <p style="padding: 15px 0" align="center" th:if="l eq null">没有内容</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mod-footer">
+                                        <!-- 加载更多内容 -->
+                                        <p style="text-align: center"> 没有更多了</p>
+                                        <!--<a class="aw-load-more-content disabled" id="bp_user_actions_questions_more" data-page="0">
+                                            <span>没有更多了</span>
                                         </a>-->
                                         <!-- end 加载更多内容 -->
                                     </div>
@@ -451,15 +478,11 @@
                                                                 &lt;!&ndash; <span><i class="icon icon-thank"></i>感谢 <em class="aw-text-color-orange">5</em></span> &ndash;&gt;
                                                             </div>-->
                                                         </li>
-                                                        <input type="hidden" class="ajax_result0" value="1">
-                                                        <input type="hidden" class="per_page" value="10">
                                                     </ul>
                                                 </div>
                                                 <div class="mod-footer">
                                                     <!-- 加载更多内容 -->
-                                                    <!--<a class="aw-load-more-content disabled" id="bp_user_follows_more" data-page="1">
-                                                        <span>没有更多了</span>
-                                                    </a>-->
+                                                    <p style="text-align: center"> 没有更多了</p>
                                                     <!-- end 加载更多内容 -->
                                                 </div>
                                             </div>
@@ -483,26 +506,24 @@
                                                 </div>
                                                 <div class="mod-footer">
                                                     <!-- 加载更多内容 -->
-                                                    <!--<a class="aw-load-more-content disabled" id="bp_user_fans_more" data-page="0">
-                                                        <span>没有更多了</span>
-                                                    </a>-->
+                                                    <p style="text-align: center"> 没有更多了</p>
                                                     <!-- end 加载更多内容 -->
                                                 </div>
                                             </div>
-                                            <div class="aw-mod aw-user-center-follow-mod collapse">
+                                            <!--<div class="aw-mod aw-user-center-follow-mod collapse">
                                                 <div class="mod-body">
                                                     <ul id="contents_user_topics" class="clearfix">
                                                         <p style="padding: 15px 0" align="center">没有内容</p>
                                                     </ul>
                                                 </div>
                                                 <div class="mod-footer">
-                                                    <!-- 加载更多内容 -->
-                                                    <!--<a class="aw-load-more-content disabled" id="bp_user_topics_more" data-page="0">
+                                                    &lt;!&ndash; 加载更多内容 &ndash;&gt;
+                                                    <a class="aw-load-more-content disabled" id="bp_user_topics_more" data-page="0">
                                                         <span>没有更多了</span>
-                                                    </a>-->
-                                                    <!-- end 加载更多内容 -->
+                                                    </a>
+                                                    &lt;!&ndash; end 加载更多内容 &ndash;&gt;
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>

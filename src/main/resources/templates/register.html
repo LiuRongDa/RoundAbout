@@ -157,7 +157,7 @@
 </style>
 <div class="aw-register-box">
     <div class="mod-head">
-        <a href=""><img src="css/azhihu/img/login_logo.png" alt="" /></a>
+        <img src="css/azhihu/img/login_logo.png" alt="" />
         <h1>注册新用户</h1>
     </div>
     <div class="mod-body">
@@ -183,7 +183,7 @@
                 <li class="last">
                     <label><input type="checkbox" id="cb" value="agree" name="agreement_chk" /> 我同意</label>
                     <a href="javascript:;" class="aw-agreement-btn">用户协议</a>
-                    <a href="login.html" class="pull-right">已有账号?</a>
+                    <a href="Reception/L/login" class="pull-right">已有账号?</a>
                     <!-- <a style="margin-right:8px;" href="http://azhihu.cssroom.com/?/account/register/type-email" class="pull-right">邮箱注册</a> -->
                 </li>
                 <li class="clearfix">
@@ -249,13 +249,12 @@
     function byemail() {
         $.ajax({
             type:"post",
-            data:{email:$("[name=email]").val()},
+            data:{email:$("[name=email]").val(),sta:0},
             url:"Reception/User/byEmail",
             async:false,
             success:function (da) {
-                var a = da.indexOf("_");
-                if (a<0)
-                $("#span").val(da);
+                if (da!=null)
+                    $("#span").val(da);
             }
         })
     }

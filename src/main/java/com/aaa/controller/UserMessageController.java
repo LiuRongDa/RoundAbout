@@ -131,6 +131,8 @@ public class UserMessageController {
         if (id.equals(userId)){
             return "redirect:toOneHome";
         }else{
+            //查询用户的专栏
+            model.addAttribute("topic",tbTopicService.queryUser(id));
             //主页浏览次数增加
             tbUserService.addcount(id);
             //answer 查询用户回答的问题
@@ -161,19 +163,26 @@ public class UserMessageController {
     //忘记密码 查询邮箱是否存在
     @RequestMapping("/byEmail")
     @ResponseBody
-    public String byemail(@RequestParam("email") String email){
+    public String byemail(@RequestParam("email") String email,@RequestParam("sta") Integer sta){
+        //sta=1 邮箱存在发送验证码   sta=0 邮箱不存在发送验证码
         TbUser byemail = tbUserService.byemail(email);
         System.out.println(byemail);
         if (byemail!=null) {
-            String random =String.valueOf(Math.round(Math.random() * 1000000));
-            EmailHelper.sendEmail(email,random);
-            String data = byemail.getUser_id()+"_"+random;
-            System.out.println(data);
-            return data;
+            if (sta!=0) {
+                String random = String.valueOf(Math.round(Math.random() * 1000000));
+                EmailHelper.sendEmail(email, random);
+                String data = byemail.getUser_id() + "_" + random;
+                System.out.println(data);
+                return data;
+            }else
+                return null;
         }else {
-            String data =String.valueOf(Math.round(Math.random() * 1000000));
-            EmailHelper.sendEmail(email,data);
-            return data;
+            if(sta!=1){
+                String data =String.valueOf(Math.round(Math.random() * 1000000));
+                EmailHelper.sendEmail(email,data);
+                return data;
+            }else
+                return null;
         }
     }
 

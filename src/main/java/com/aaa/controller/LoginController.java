@@ -27,6 +27,14 @@ public class LoginController {
         session.removeAttribute("user");
         return "redirect:login";
     }
+    @RequestMapping("/forgetpwd")
+    public String forgetpwd(){
+        return "forget_password";
+    }
+    @RequestMapping("/register")
+    public String register(){
+        return "register";
+    }
     @RequestMapping("/login")
     public String reLogin(){
         return "login";
