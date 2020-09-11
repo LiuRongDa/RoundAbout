@@ -39,4 +39,9 @@
     ORDER BY tb_article.article_id DESC
   </select>
 
+  <select id="queryNotTopicArticle" resultMap="BaseResultMap">
+    select * from tb_article a where a.article_title is not null
+     and a.user_id = #{user_id} and a.article_id not in(select ac.article_id from tb_article_topic ac where ac.topic_id=#{topic_id})
+  </select>
+
 </mapper>
