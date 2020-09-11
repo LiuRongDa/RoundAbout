@@ -55,6 +55,14 @@
     <script src="js/crypto-js.js"></script>
     <script src="js/highlight/highlight.pack.js"></script>
     <script src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/toastr.min.js"></script>
+    <link href="css/toastr.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        toastr.options.positionClass = 'toast-top-center';
+        toastr.options.showDuration = '1000';
+        toastr.options.hideDuration = '3000';
+        toastr.options.timeOut = '1500';
+    </script>
     <style type="text/css">
         .geetest_radar_tip_content{
             position: initial !important;
@@ -202,20 +210,23 @@
                         function jbart(a){
                             var user_id = [[${session.user.user_id}]];
                             var topic_name = $("[name='topic_name']").val();
-
-                            $.ajax({
-                                type:"post",
-                                url:"Reception/tb_Topic/addTopic",
-                                data:{"user_id":user_id,"topic_name":topic_name},
-                                success:function(date){
-                                    if(date == 1){
-                                        $("[name='topic_name']").val("");
-                                        alert("创建成功,现在可以开始写作了")
-                                    }else{
-                                        alert("一个未知的错误");
+                            if(topic_name == ""){
+                                toastr.warning("专栏名称不能为空");
+                            }else{
+                                $.ajax({
+                                    type:"post",
+                                    url:"Reception/tb_Topic/addTopic",
+                                    data:{"user_id":user_id,"topic_name":topic_name},
+                                    success:function(date){
+                                        if(date == 1){
+                                            $("[name='topic_name']").val("");
+                                            toastr.success("创建成功");
+                                        }else{
+                                            toastr.warning("一个未知的错误,请重新尝试创建一次");
+                                        }
                                     }
-                                }
-                            })
+                                })
+                            }
                         }
                     </script>
                 </div>
@@ -336,6 +347,7 @@
         var url=$(this).attr("href");
         sort = $(this).attr('data-sort');
     });
+
 </script>
 <!---->
 </body>

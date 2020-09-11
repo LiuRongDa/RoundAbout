@@ -229,7 +229,7 @@
                 <h1 class="modal-title">请选择要收录的文章:</h1>
             </div>
             <div class="modal-body">
-                <h4 th:each="art : ${tbArticles}">
+                <h4  th:each="art : ${tbArticles}">
                     <a class="" th:text="${art.article_title}">身边的人是怎么靠生活经验赚钱的?</a>
                     <button class="pull-right" th:onclick="zlart(this,[[${tbTopic.topic_id}]],[[${art.article_id}]])">添加</button>
                 </h4>
@@ -305,18 +305,20 @@
 <script type="text/javascript" th:inline="javascript">
     function ycart(article_id,topic_id) {
         var user_id = [[${tbTopic.tbUser[0].user_id}]];
-        $.ajax({
-            type:"post",
-            url:"Reception/tb_Topic/removeArticleTop",
-            data:{"user_id":user_id,"article_id":article_id,"topic_id":topic_id},
-            success:function(date){
-                if(parseInt(date.length) > 100){
+        var session_id = [[${session.user.user_id}]];
+        if(user_id == session_id){
+            $.ajax({
+                type:"post",
+                url:"Reception/tb_Topic/removeArticleTop",
+                data:{"article_id":article_id,"topic_id":topic_id},
+                success:function(date){
+                    toastr.success("移除文章成功");
                     $("#div1").html(date);
-                }else{
-                    toastr.error("您所在的用户组没有此权限");
                 }
-            }
-        })
+            })
+        }else{
+            toastr.error("您所在的用户组没有此权限");
+        }
     }
 </script>
 </body>

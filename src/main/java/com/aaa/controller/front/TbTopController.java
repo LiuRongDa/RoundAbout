@@ -100,16 +100,11 @@ public class TbTopController {
      * @return
      */
     @RequestMapping("removeArticleTop")
-    public String removeArticleTop(HttpSession session,Model model,Integer user_id,Integer article_id,Integer topic_id){
-        Integer id = Integer.parseInt(session.getAttribute("id").toString());
-        if(user_id == id){
-            tbTopicService.removeArticleTop(topic_id,article_id);
-            List<TbArticleTopic> tbArticleTopics = tbTopicService.queryArtById(topic_id);
-            model.addAttribute("tbArticleTopics",tbArticleTopics);
-            return "column_details::div5";
-        }else{
-            return "column_details::div5";
-        }
+    public String removeArticleTop(Model model,Integer article_id,Integer topic_id){
+        tbTopicService.removeArticleTop(topic_id,article_id);
+        List<TbArticleTopic> tbArticleTopics = tbTopicService.queryArtById(topic_id);
+        model.addAttribute("tbArticleTopics",tbArticleTopics);
+        return "column_details::div5";
     }
 
     /**

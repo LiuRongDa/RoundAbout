@@ -297,8 +297,10 @@
                                                 success:function(date){
                                                     if(date == 1){
                                                         $("#b_count").text(parseInt(count+1));
+                                                        toastr.success("点赞成功")
                                                     }else{
                                                         $("#b_count").text(parseInt(count-1));
+                                                        toastr.success("取消点赞")
                                                     }
                                                 }
                                             })
@@ -363,8 +365,10 @@
                                                     success:function(date){
                                                         if(date == 1){
                                                             $(a).children("span").text(parseInt(count+1));
+                                                            toastr.success("点赞成功");
                                                         }else{
                                                             $(a).children("span").text(parseInt(count-1));
+                                                            toastr.success("取消点赞");
                                                         }
                                                     }
                                                 })
@@ -398,16 +402,21 @@
                                                 var comment_id = $(a).parent().find("[name='comment_id']").val();
                                                 var article_id = $(a).parent().find("[name='article_id']").val();
                                                 var comment_content = $(a).parent().find("[name='comment_content']").val();
-
-                                                $.ajax({
-                                                    type:'post',
-                                                    url:'Reception/tb_Article/addReply',
-                                                    data:{'user_id':user_id,'reply_idto':null,'comment_id':comment_id,'comment_content':comment_content,'article_id':article_id},
-                                                    success:function(date){
-                                                        /*$(a).parent().find("[name='comment_content']").val('')
-                                                        $(a).parent().hide();*/
-                                                        $("#div1").html(date);
-                                                    }})
+                                                if(comment_content == ""){
+                                                    toastr.warning("回复内容不能为空");
+                                                }else{
+                                                    $.ajax({
+                                                        type:'post',
+                                                        url:'Reception/tb_Article/addReply',
+                                                        data:{'user_id':user_id,'reply_idto':null,'comment_id':comment_id,'comment_content':comment_content,'article_id':article_id},
+                                                        success:function(date){
+                                                            /*$(a).parent().find("[name='comment_content']").val('')
+                                                            $(a).parent().hide();*/
+                                                            toastr.success("回复成功");
+                                                            $("#div1").html(date);
+                                                        }
+                                                    })
+                                                }
                                             }
                                         </script>
                                     </div>
@@ -451,8 +460,10 @@
                                                                     success:function(date){
                                                                         if(date == 1){
                                                                             $(a).children("span").text(parseInt(count+1));
+                                                                            toastr.success("点赞成功");
                                                                         }else{
                                                                             $(a).children("span").text(parseInt(count-1));
+                                                                            toastr.success("取消点赞");
                                                                         }
                                                                     }
                                                                 })
@@ -484,16 +495,21 @@
                                                                 var article_id = $(a).parent().find("[name='article_id']").val();
                                                                 var comment_content = $(a).parent().find("[name='comment_content']").val();
 
-                                                                $.ajax({
-                                                                    type:'post',
-                                                                    url:'Reception/tb_Article/addReply',
-                                                                    data:{'user_id':user_id,'reply_idto':reply_id,'comment_id':comment_id,'comment_content':comment_content,'article_id':article_id},
-                                                                    success:function(date){
-                                                                        /*$(a).parent().find("[name='comment_content']").val('')
-                                                                        $(a).parent().hide();*/
-                                                                        $("#div1").html(date);
-                                                                    }
-                                                                })
+                                                                if(comment_content == ""){
+                                                                    toastr.warning("回复内容不能为空");
+                                                                }else{
+                                                                    $.ajax({
+                                                                        type:'post',
+                                                                        url:'Reception/tb_Article/addReply',
+                                                                        data:{'user_id':user_id,'reply_idto':reply_id,'comment_id':comment_id,'comment_content':comment_content,'article_id':article_id},
+                                                                        success:function(date){
+                                                                            /*$(a).parent().find("[name='comment_content']").val('')
+                                                                            $(a).parent().hide();*/
+                                                                            toastr.success("回复成功");
+                                                                            $("#div1").html(date);
+                                                                        }
+                                                                    })
+                                                                }
                                                             }
                                                         </script>
                                                     </div>
@@ -532,19 +548,23 @@
                                             var article_id = $("[name='qwer']").val()
                                             var report_content = $(a).parent().prev().children().val();
                                             var bereport_user_id = $("[name='df']").val();
-                                            $.ajax({
-                                                type:"post",
-                                                url:"Reception/tb_Issue/reportArticle",
-                                                data:{"article_id":article_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
-                                                success:function(date){
-                                                    if(date == 1){
-                                                        alert("举报成功");
-                                                        $(a).parent().prev().children().val("");
-                                                    }else{
-                                                        alert("不能重复举报");
+                                            if(report_content == ""){
+                                                toastr.warning("举报原因不能为空");
+                                            }else{
+                                                $.ajax({
+                                                    type:"post",
+                                                    url:"Reception/tb_Issue/reportArticle",
+                                                    data:{"article_id":article_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
+                                                    success:function(date){
+                                                        if(date == 1){
+                                                            toastr.success("举报成功")
+                                                            $(a).parent().prev().children().val("");
+                                                        }else{
+                                                            toastr.warning("不能重复举报");
+                                                        }
                                                     }
-                                                }
-                                            })
+                                                })
+                                            }
                                         }
                                     </script>
                                 </div>
@@ -573,19 +593,23 @@
                                             var comment_id = $("[name='asdf']").val()
                                             var report_content = $(a).parent().prev().children().val();
                                             var bereport_user_id = $("[name='zx']").val();
-                                            $.ajax({
-                                                type:"post",
-                                                url:"Reception/tb_Issue/reportComment",
-                                                data:{"comment_id":comment_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
-                                                success:function(date){
-                                                    if(date == 1){
-                                                        alert("举报成功");
-                                                        $(a).parent().prev().children().val("");
-                                                    }else{
-                                                        alert("不能重复举报");
+                                            if(report_content == ""){
+                                                toastr.warning("举报原因不能为空");
+                                            }else{
+                                                $.ajax({
+                                                    type:"post",
+                                                    url:"Reception/tb_Issue/reportComment",
+                                                    data:{"comment_id":comment_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
+                                                    success:function(date){
+                                                        if(date == 1){
+                                                            toastr.success("举报成功");
+                                                            $(a).parent().prev().children().val("");
+                                                        }else{
+                                                            toastr.warning("举报原因不能为空");
+                                                        }
                                                     }
-                                                }
-                                            })
+                                                })
+                                            }
                                         }
                                     </script>
                                 </div>
@@ -614,16 +638,19 @@
                                             var reply_id = $("[name='zxcv']").val()
                                             var report_content = $(a).parent().prev().children().val();
                                             var bereport_user_id = $("[name='qw']").val();
+                                            if(report_content == ""){
+                                                toastr.warning("举报原因不能为空");
+                                            }
                                             $.ajax({
                                                 type:"post",
                                                 url:"Reception/tb_Issue/reportReply",
                                                 data:{"reply_id":reply_id,"user_id":user_id,"report_content":report_content,"bereport_user_id":bereport_user_id},
                                                 success:function(date){
                                                     if(date == 1){
-                                                        alert("举报成功");
+                                                        toastr.success("举报成功");
                                                         $(a).parent().prev().children().val("");
                                                     }else{
-                                                        alert("不能重复举报");
+                                                        toastr.warning("不能重复举报");
                                                     }
                                                 }
                                             })
@@ -651,7 +678,7 @@
                     <!-- 回复编辑器 -->
                     <div class="aw-mod aw-article-replay-box">
                         <a name="answer_form"></a>
-                        <form action="Reception/tb_Article/addComment" method="post">
+                        <form action="Reception/tb_Article/addComment" id="adcomt" method="post">
                             <input type="text" name="user_id" value="1" th:value="${session.user.user_id}" hidden/>
                             <input type="text" name="article_id" value="" th:value="${art[0].article_id}" hidden/>
                             <div class="mod-head">
@@ -664,7 +691,7 @@
                                           placeholder="写下你的评论..."/></textarea>
                             </div>
                             <div class="mod-footer clearfix">
-                                <input type="submit" class="btn btn-normal btn-success pull-right" value="评论">
+                                <input type="button" class="btn btn-success pull-right" onclick="if($('#comment_editor').val()==''){toastr.warning('评论内容不能为空')}else{$('#adcomt').submit();}" value="评论">
                             </div>
                         </form>
                     </div>
