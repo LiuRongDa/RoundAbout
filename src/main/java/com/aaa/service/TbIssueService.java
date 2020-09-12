@@ -36,7 +36,6 @@ public class TbIssueService {
 
     //查询用户回答过的问题
     public List<TbIssueArticle> queryUserIssue(Integer user_id){
-        System.out.println(1111111111);
         List<TbIssueArticle> tbIssueArticles = tbIssueArticleMapper.queryUserIssue(user_id);
         System.out.println("-----"+tbIssueArticles);
         return tbIssueArticles;
@@ -107,7 +106,7 @@ public class TbIssueService {
      */
     public PageInfo queryAll(Integer pageNum,Integer pageSize){
         if (pageNum == null) {
-            PageHelper.startPage(1,2);
+            PageHelper.startPage(1,10);
         }else{
             PageHelper.startPage(pageNum,pageSize);
         }
@@ -124,7 +123,7 @@ public class TbIssueService {
      */
     public PageInfo queryhot(Integer pageNum,Integer pageSize){
         if (pageNum == null) {
-            PageHelper.startPage(1,2);
+            PageHelper.startPage(1,10);
         }else{
             PageHelper.startPage(pageNum,pageSize);
         }
@@ -152,7 +151,7 @@ public class TbIssueService {
      */
     public PageInfo<TbIssue> selePage(Integer pageNum, Integer pageSize, String issue_title,String issue_content){
         if(pageNum==null || pageNum==0) pageNum = 1;
-        if(pageSize==null || pageSize==0) pageSize = 10;
+        if(pageSize==null || pageSize==0) pageSize = 20;
         PageHelper.startPage(pageNum,pageSize);
         List<TbIssue> tbIssues =tbIssueMapper.selePage(issue_title,issue_content);
         PageInfo<TbIssue> pageInfo=new PageInfo<>(tbIssues);

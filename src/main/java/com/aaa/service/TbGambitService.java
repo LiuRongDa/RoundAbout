@@ -90,7 +90,6 @@ public class TbGambitService {
         List<TbGambit> tbGambits = new ArrayList<>();
         for(int i = 0;i<tbArticleGambits.size();i++){
             TbGambit tbGambit1 = tbGambitMapper.selectByPrimaryKey(tbArticleGambits.get(i).getGambit_id());
-            /*System.out.println(i+"--->"+tbGambit1);*/
             tbGambits.add(i,tbGambit1);
         }
         return tbGambits;
@@ -137,7 +136,7 @@ public class TbGambitService {
      */
     public PageInfo<TbGambit> selePage(Integer pageNum, Integer pageSize, Integer gambit_id,String gambit_name){
         if(pageNum==null || pageNum==0) pageNum = 1;
-        if(pageSize==null || pageSize==0) pageSize = 5;
+        if(pageSize==null || pageSize==0) pageSize = 20;
         PageHelper.startPage(pageNum,pageSize);
         List<TbGambit> tbGambits =tbGambitMapper.queryAll(null,gambit_name);
         PageInfo<TbGambit> pageInfo=new PageInfo<>(tbGambits);

@@ -44,6 +44,9 @@ public class TbArticleService {
     @Resource
     TbArticleTopicMapper tbArticleTopicMapper;
 
+    @Resource
+    TbTopicMapper tbTopicMapper;
+
     /**
      * 条件查询
      * @param like
@@ -91,6 +94,9 @@ public class TbArticleService {
             tbArticleTopic.setTopic_id(topic_id);
             tbArticleTopic.setArticle_id(tbArticle.getArticle_id());
             tbArticleTopicMapper.insert(tbArticleTopic);
+            TbTopic tbTopic = tbTopicMapper.selectByPrimaryKey(topic_id);
+            tbTopic.setCount(tbTopic.getCount()+1);
+            tbTopicMapper.updateByPrimaryKey(tbTopic);
         }
         return insert;
     }
@@ -145,7 +151,7 @@ public class TbArticleService {
      */
     public PageInfo queryAll(Integer pageNum,Integer pageSize){
         if (pageNum == null) {
-            PageHelper.startPage(1,2);
+            PageHelper.startPage(1,5);
         }else{
             PageHelper.startPage(pageNum,pageSize);
         }
@@ -163,7 +169,7 @@ public class TbArticleService {
      */
     public PageInfo queryhot(Integer pageNum,Integer pageSize){
         if (pageNum == null) {
-            PageHelper.startPage(1,2);
+            PageHelper.startPage(1,5);
         }else{
             PageHelper.startPage(pageNum,pageSize);
         }
@@ -223,7 +229,7 @@ public class TbArticleService {
      */
     public PageInfo<TbArticle> selePage(Integer pageNum, Integer pageSize,String article_title,String article_content,String article_date){
         if(pageNum==null || pageNum==0) pageNum = 1;
-        if(pageSize==null || pageSize==0) pageSize = 5;
+        if(pageSize==null || pageSize==0) pageSize = 11;
         PageHelper.startPage(pageNum,pageSize);
         List<TbArticle> tbArticles =tbArticleMapper.selePage(article_title,article_content,article_date);
         PageInfo<TbArticle> pageInfo=new PageInfo<>(tbArticles);

@@ -88,9 +88,9 @@ public class TbStaffService {
      */
     public PageInfo<TbStaff> selePage(Integer pageNum,Integer pageSize,String staff_name){
         if(pageNum==null || pageNum==0){
-            PageHelper.startPage(1,5);
+            PageHelper.startPage(1,11);
         }else if(pageSize==null || pageSize==0){
-            PageHelper.startPage(pageNum,5);
+            PageHelper.startPage(pageNum,11);
         }else{
             PageHelper.startPage(pageNum,pageSize);
         }

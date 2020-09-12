@@ -242,7 +242,7 @@ public class TbTopicService {
      */
     public PageInfo<TbTopic> selePage(Integer pageNum, Integer pageSize, Integer topic_id, String topic_name) {
         if (pageNum == null || pageNum == 0) pageNum = 1;
-        if (pageSize == null || pageSize == 0) pageSize = 5;
+        if (pageSize == null || pageSize == 0) pageSize = 11;
         PageHelper.startPage(pageNum, pageSize);
         List<TbTopic> tbTopicList = tbTopicMapper.queryAll(topic_id, topic_name);
         PageInfo<TbTopic> pageInfo = new PageInfo<>(tbTopicList);

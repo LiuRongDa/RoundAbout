@@ -43,6 +43,8 @@ public class TbArticleController {
             return "redirect:queryAll";
         }else{
             List<TbArticleGambit> tbArticleGambits = tbArticleService.queryLike(like);
+            List<TbUser> queryround = tbUserService.queryround();
+            model.addAttribute("query",queryround);
             model.addAttribute("art",tbArticleGambits);
             model.addAttribute("like",like);
             return "like_article";
@@ -118,10 +120,10 @@ public class TbArticleController {
         System.out.println("article_content--->"+article_content);
         System.out.println("topics---->"+topics);
         System.out.println("topic_id--->"+topic_id);
+
         Integer integer = tbArticleService.insertArticle(user_id, article_title, article_content, topics,topic_id);
         return "redirect:../tb_Article/queryAll";
     }
-
 
     @RequestMapping("w_a")
     public String write_article(Model model, HttpSession session){
@@ -130,7 +132,6 @@ public class TbArticleController {
         List<TbGambit> query = tbGambitService.query();
         model.addAttribute("gambits",query);
         model.addAttribute("tbTopics",tbTopics);
-
         return "write_article";
     }
 

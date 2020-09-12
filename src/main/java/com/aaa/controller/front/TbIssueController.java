@@ -47,6 +47,8 @@ public class TbIssueController {
             return "redirect:queryAll";
         }else{
             List<TbIssueGambit> tbIssueGambits = tbIssueService.queryLike(like);
+            List<TbUser> queryround = tbUserService.queryround();
+            model.addAttribute("query",queryround);
             model.addAttribute("like",like);
             model.addAttribute("iss",tbIssueGambits);
             return "like_issue";

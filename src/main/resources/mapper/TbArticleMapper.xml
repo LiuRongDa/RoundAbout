@@ -25,7 +25,7 @@
   <select id="selePage" resultMap="BaseResultMap">
     select * from tb_article LEFT JOIN tb_user on tb_article.user_id=tb_user.user_id
     <where>
-        1=1
+      tb_article.article_title is not null
       <if test="article_title != 'undefined' and article_title!=null and article_title != ''">
         and tb_article.article_title like CONCAT("%", #{article_title}, "%")
       </if>

@@ -1,7 +1,9 @@
 package com.aaa.controller.front;
 
 import com.aaa.entity.TbIssueUser;
+import com.aaa.entity.TbUser;
 import com.aaa.service.TbIssueUserService;
+import com.aaa.service.TbUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +21,15 @@ import java.util.List;
 public class TbIssueUserController {
     @Resource
     TbIssueUserService tbIssueUserService;
+
+    @Resource
+    TbUserService tbUserService;
+
     @RequestMapping("queryIssueUser")
     public String queryIssueUser(Model model,Integer user_id){
         List<TbIssueUser> tbIssueUsers = tbIssueUserService.queryIssueUser(user_id);
+        List<TbUser> queryround = tbUserService.queryround();
+        model.addAttribute("query",queryround);
         model.addAttribute("tbIssueUsers",tbIssueUsers);
         return "wait_reploy";
     }

@@ -44,11 +44,7 @@ public class TbReportService {
     TbArticleTopicMapper tbArticleTopicMapper;
 
     @Resource
-    TbUserMapper tbUserMapper;
-
-    @Resource
-    EmailSendUtils emailSendUtils;
-
+    TbTopicMapper tbTopicMapper;
     /**
      * 举报文章
      * @param article_id
@@ -154,7 +150,7 @@ public class TbReportService {
      */
     public PageInfo<TbReport> selePage(Integer pageNum, Integer pageSize, String report_content, String report_data, Integer report_id, Integer bereport_user_id) {
         if (pageNum == null || pageNum == 0) pageNum = 1;
-        if (pageSize == null || pageSize == 0) pageSize = 10;
+        if (pageSize == null || pageSize == 0) pageSize = 11;
         PageHelper.startPage(pageNum, pageSize);
         List<TbReport> tbReports = tbReportMapper.selePage(report_content, report_data, report_id, bereport_user_id);
         PageInfo<TbReport> pageInfo = new PageInfo<>(tbReports);
@@ -195,18 +191,19 @@ public class TbReportService {
             delComment(tbcomm.getComment_id());
         }
         //删除问题文章桥梁表
-        TbArticleGambit tbArticleGambit=new TbArticleGambit();
-        List<TbArticleGambit> tbArticleGambitList = tbArticleGambitMapper.select(tbArticleGambit);
-        for (TbArticleGambit articleGambit: tbArticleGambitList) {
-            tbArticleGambitMapper.delByArticleId(articleGambit.getArticle_id());
-        }
+        tbArticleGambitMapper.delByArticleId(Article_id);
         //删除专栏文章桥梁表
-        TbArticleTopic tbArticleTopic=new TbArticleTopic();
+        TbArticleTopic tbArticleTopic = new TbArticleTopic();
         tbArticleTopic.setArticle_id(Article_id);
-        List<TbArticleTopic> tbArticleTopicList = tbArticleTopicMapper.select(tbArticleTopic);
-        for (TbArticleTopic topic: tbArticleTopicList) {
-            tbArticleTopicMapper.delByArticle(topic.getArticle_id());
+        List<TbArticleTopic> select = tbArticleTopicMapper.select(tbArticleTopic);
+        if(select.size() != 0){
+            for(TbArticleTopic ta : select){
+                TbTopic tbTopic = tbTopicMapper.selectByPrimaryKey(ta.getTopic_id());
+                tbTopic.setCount(tbTopic.getCount()-1);
+                tbTopicMapper.updateByPrimaryKey(tbTopic);
+            }
         }
+        tbArticleTopicMapper.delByArticle(Article_id);
         tbArticleMapper.deleteByPrimaryKey(Article_id);
     }
     //评论
@@ -235,10 +232,12 @@ public class TbReportService {
     public Boolean del(Integer report_id) {
         List<TbReport> tbReports = tbReportMapper.selePage(null, null, report_id, null);
         //删除问题
-        if(tbReports.get(0).getIssue_id()!=null){
-            delIssue(tbReports.get(0).getIssue_id());
-            delReport(report_id);
-            return true;
+        if(tbReports.size()!=0){
+            if(tbReports.get(0).getIssue_id()!=null){
+                delIssue(tbReports.get(0).getIssue_id());
+                delReport(report_id);
+                return true;
+            }
         }
         //删除文章
         if(tbReports.get(0).getArticle_id()!=null){

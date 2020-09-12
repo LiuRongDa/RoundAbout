@@ -84,8 +84,8 @@
     <div class="container" style="padding-right:0px;">
         <!-- logo -->
         <div class="aw-logo hidden-xs">
-            <a href="http://azhihu.cssroom.com">
-                <img src="http://azhihu.cssroom.com/uploads/logo/20200525/logo_(1).png"  height="40">
+            <a>
+                <h1 style="font-size: 30px; color: #1a90ff; margin-top: 6%;">大问号</h1>
             </a>
         </div>
         <!-- end logo -->
@@ -101,10 +101,10 @@
             <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a th:href="@{tb_Article/queryAll}"><i class=""></i> 首页</a>
+                        <a th:href="@{Reception/tb_Article/queryAll}"><i class=""></i> 首页</a>
                     </li>
                     <li>
-                        <a th:href="@{tb_Topic/showColumn}"><i class=""></i> 专栏</a>
+                        <a th:href="@{Reception/tb_Topic/showColumn}"><i class=""></i> 专栏</a>
                     </li>
                 </ul>
             </nav>
@@ -142,12 +142,11 @@
 
             <div class="aw-dropdown dropdown-list pull-right">
                 <ul class="aw-dropdown-list">
-                    <li class="hidden-xs"><a href="User/toOneHome"><i class="icon icon-draft"></i>
+                    <li class="hidden-xs"><a href="Reception/User/toOneHome"><i class="icon icon-draft"></i>
                         个人主页</a></li>
-                    <li><a href="http://azhihu.cssroom.com/?/inbox/"><i class="icon icon-inbox"></i> 私信<span class="badge badge-important collapse" id="inbox_unread">0</span></a></li>
-                    <li class="hidden-xs"><a href="User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
+                    <li class="hidden-xs"><a href="Reception/User/toChangePwd"><i class="icon icon-setting"></i> 设置</a></li>
                     <!-- <li id="changeSkin"><a href="javascript:void(0);"><i class="icon icon-skin"></i> 换肤</a></li> -->
-                    <li><a href="L/exit"><i class="icon icon-logout"></i> 退出</a></li>
+                    <li><a href="Reception/L/exit"><i class="icon icon-logout"></i> 退出</a></li>
                 </ul>
             </div>
             <!-- <div class="aw-dropdown dropdown-list pull-right" id="skinList" style="left: 100%;top:200%;display: none">
@@ -252,121 +251,110 @@
                     </div>
                 </div>
 
-                <!-- 侧边栏 -->
                 <div class="aw-side-bar pull-left">
                     <!--侧边栏插件-->
                     <div class="aw-mod write">
                         <div>
-                            <a href="http://azhihu.cssroom.com/?/question/">
-                                <i class="icon icon-reply"></i></br>
-                                <span>写回答</span>
+                            <a th:href="@{Reception/tb_Topic/showColumn}">
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/zlico.png"></br>
+                                <span class="w_span">专栏</span>
                             </a>
                         </div>
-                        <div>
-                            <a th:href="@{Reception/tb_Issue/w_i}">
+                        <!--<div>
+                            <a th:href="@{tb_Issue/w_i}">
                                 <i class="icon icon-ask"></i></br>
                                 <span>写问题</span>
                             </a>
-                        </div>
+                        </div>-->
                         <div>
-                            <a th:href="@{Reception/tb_Article/w_a}">
-                                <i class="icon icon-draft"></i></br>
-                                <span>写文章</span>
+                            <a data-toggle="modal" data-target="#adiss">
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wtico.png"></br>
+                                <span class="w_span">问题</span>
                             </a>
                         </div>
-                    </div>					<div class="aw-mod write">
-                    <div>
-                        <a th:href="@{Reception/tb_Topic/showColumn}">
-                            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/zlico.png"></br>
-                            <span class="w_span">专栏</span>
-                        </a>
+
+                        <div>
+                            <a th:href="@{Reception/tb_Article/w_a}">
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wzico.png"></br>
+                                <span class="w_span">文章</span>
+                            </a>
+                        </div>
                     </div>
-                    <div>
-                        <a th:href="@{Reception/tb_Issue/w_i}">
-                            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wtico.png"></br>
-                            <span class="w_span">问题</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a th:href="@{Reception/tb_Article/w_a}">
-                            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wzico.png"></br>
-                            <span class="w_span">文章</span>
-                        </a>
-                    </div>
-                </div>
+                    <!--<div class="aw-mod write">
+                        <div>
+                            <a th:href="@{tb_Topic/showColumn}">
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/zlico.png"></br>
+                                <span class="w_span">专栏</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a th:href="@{tb_Issue/w_i}">
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wtico.png"></br>
+                                <span class="w_span">问题</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a th:href="@{tb_Article/w_a}">
+                                <img src="http://azhihu.cssroom.com/static/css/azhihu/img/wzico.png"></br>
+                                <span class="w_span">文章</span>
+                            </a>
+                        </div>
+                    </div>-->
                     <div class="sideAdd">
-                        <a href="#"><img src="http://azhihu.cssroom.com/static/css/azhihu/img/side_add.jpg" alt=""></a>
-                    </div>										<div class="aw-mod aw-text-align-justify">
-                    <div class="mod-head">
-                        <a href="http://azhihu.cssroom.com/?/topic/channel-hot" class="pull-right">更多话题 &gt;&gt;</a>
-                        <h3>热门话题</h3>
+                        <a>
+                            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/side_add.jpg" alt="">
+                        </a>
                     </div>
-                    <div class="mod-body">
-                    </div>
-                </div>
+                    <!--<div class="aw-mod aw-text-align-justify">
+                        <div class="mod-body">
+
+                        </div>
+                    </div>-->
                     <div class="aw-mod aw-text-align-justify">
                         <div class="mod-head">
-                            <a href="http://azhihu.cssroom.com/?/people/" class="pull-right">更多用户 &gt;&gt;</a>
+
                             <h3>热门用户</h3>
                         </div>
                         <div class="mod-body">
-                            <dl>
+
+                            <dl th:each="a : ${query}">
                                 <dt class="pull-left aw-border-radius-5">
-                                    <a href="http://azhihu.cssroom.com/?/people/105"><img alt="" src="http://azhihu.cssroom.com/uploads/avatar/000/00/01/05_avatar_mid.jpg" /></a>
+                                    <a th:href="@{Reception/User/toElseHome(id=${a.user_id})}"><img th:src="${a.user_photo}"/></a>
                                 </dt>
                                 <dd class="pull-left">
-                                    <a href="http://azhihu.cssroom.com/?/people/105" data-id="105" class="aw-user-name">你好						</a>
+                                    <a th:href="@{Reception/User/toElseHome(id=${a.user_id})}" data-id="104" class="aw-user-name">[[${a.user_name}]]						</a>
                                     <p class="signature"></p>
-                                    <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
                                 </dd>
                             </dl>
 
-                            <dl>
-                                <dt class="pull-left aw-border-radius-5">
-                                    <a href="http://azhihu.cssroom.com/?/people/101"><img alt="" src="http://azhihu.cssroom.com/uploads/avatar/000/00/01/01_avatar_mid.jpg" /></a>
-                                </dt>
-                                <dd class="pull-left">
-                                    <a href="http://azhihu.cssroom.com/?/people/101" data-id="101" class="aw-user-name">1354996886qw						</a>
-                                    <p class="signature"></p>
-                                    <p><b>1</b> 个问题, <b>0</b> 次赞同</p>
-                                </dd>
-                            </dl>
-
-                            <dl>
-                                <dt class="pull-left aw-border-radius-5">
-                                    <a href="http://azhihu.cssroom.com/?/people/103"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
-                                </dt>
-                                <dd class="pull-left">
-                                    <a href="http://azhihu.cssroom.com/?/people/103" data-id="103" class="aw-user-name">zs						</a>
-                                    <p class="signature"></p>
-                                    <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
-                                </dd>
-                            </dl>
-
-                            <dl>
-                                <dt class="pull-left aw-border-radius-5">
-                                    <a href="http://azhihu.cssroom.com/?/people/107"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
-                                </dt>
-                                <dd class="pull-left">
-                                    <a href="http://azhihu.cssroom.com/?/people/107" data-id="107" class="aw-user-name">123aa						</a>
-                                    <p class="signature"></p>
-                                    <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
-                                </dd>
-                            </dl>
-
-                            <dl>
-                                <dt class="pull-left aw-border-radius-5">
-                                    <a href="http://azhihu.cssroom.com/?/people/104"><img alt="" src="http://azhihu.cssroom.com/static/common/avatar-mid-img.png" /></a>
-                                </dt>
-                                <dd class="pull-left">
-                                    <a href="http://azhihu.cssroom.com/?/people/104" data-id="104" class="aw-user-name">1111ded						</a>
-                                    <p class="signature"></p>
-                                    <p><b>0</b> 个问题, <b>0</b> 次赞同</p>
-                                </dd>
-                            </dl>
                         </div>
-                    </div>									</div>
+                    </div>
+                </div>
                 <!-- 侧边栏end -->
+                <!--添加问题-->
+                <div class="modal fade" id="adiss" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <form action="Reception/tb_Issue/insertIssue" method="post" id="addissues">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h1 class="modal-title">发布问题:</h1>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" name="user_id" value="" th:value="${session.user.user_id}" hidden>
+                                    <input type="text" id="isscon" style="width: 100%" name="issue_title" value="" placeholder="请输入标题">
+                                    <textarea name="issue_content" style="resize:none;width: 100%;height: 200px;" placeholder="请输入内容"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" onclick="if($('#isscon').val()==''){toastr.warning('问题标题不能为空')}else{$('#addissues').submit()}">确定</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
