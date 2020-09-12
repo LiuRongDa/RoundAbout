@@ -285,10 +285,10 @@
                                                 data:{"issue_id":issue_id,"user_id":user_id},
                                                 success:function(date){
                                                     if(date == 1){
-                                                        $("#count").text(parseInt(count+1));
+                                                        $("#count").text(parseInt(count)+1);
                                                         toastr.success("点赞成功")
                                                     }else{
-                                                        $("#count").text(parseInt(count-1));
+                                                        $("#count").text(parseInt(count)-1);
                                                         toastr.success("取消点赞");
                                                     }
                                                 }
@@ -402,10 +402,10 @@
                                                         data:{"article_id":article_id,"user_id":user_id},
                                                         success:function(date){
                                                             if(date == 1){
-                                                                $(a).children("span").text(parseInt(count+1));
+                                                                $(a).children("span").text(parseInt(count)+1);
                                                                 toastr.success("点赞成功");
                                                             }else{
-                                                                $(a).children("span").text(parseInt(count-1));
+                                                                $(a).children("span").text(parseInt(count)-1);
                                                                 toastr.success("取消点赞");
                                                             }
                                                         }
@@ -508,10 +508,10 @@
                                                                     success:function(date){
                                                                         if(date == 1){
                                                                             toastr.success("点赞成功");
-                                                                            $(a).children("span").text(parseInt(count+1));
+                                                                            $(a).children("span").text(parseInt(count)+1);
                                                                         }else{
                                                                             toastr.success("取消点赞");
-                                                                            $(a).children("span").text(parseInt(count-1));
+                                                                            $(a).children("span").text(parseInt(count)-1);
                                                                         }
                                                                     }
                                                                 })
@@ -617,10 +617,10 @@
                                                                                 success:function(date){
                                                                                     if(date == 1){
                                                                                         toastr.success("点赞成功");
-                                                                                        $(a).children("span").text(parseInt(count+1));
+                                                                                        $(a).children("span").text(parseInt(count)+1);
                                                                                     }else{
                                                                                         toastr.success("取消点赞");
-                                                                                        $(a).children("span").text(parseInt(count-1));
+                                                                                        $(a).children("span").text(parseInt(count)-1);
                                                                                     }
                                                                                 }
 

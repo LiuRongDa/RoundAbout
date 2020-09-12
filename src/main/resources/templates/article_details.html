@@ -295,10 +295,10 @@
                                                 data:{"user_id":user_id,"article_id":article_id},
                                                 success:function(date){
                                                     if(date == 1){
-                                                        $("#b_count").text(parseInt(count+1));
+                                                        $("#b_count").text(parseInt(count)+1);
                                                         toastr.success("点赞成功")
                                                     }else{
-                                                        $("#b_count").text(parseInt(count-1));
+                                                        $("#b_count").text(parseInt(count)-1);
                                                         toastr.success("取消点赞")
                                                     }
                                                 }
@@ -363,10 +363,10 @@
                                                     data:{"user_id":user_id,"comment_id":comment_id},
                                                     success:function(date){
                                                         if(date == 1){
-                                                            $(a).children("span").text(parseInt(count+1));
+                                                            $(a).children("span").text(parseInt(count)+1);
                                                             toastr.success("点赞成功");
                                                         }else{
-                                                            $(a).children("span").text(parseInt(count-1));
+                                                            $(a).children("span").text(parseInt(count)-1);
                                                             toastr.success("取消点赞");
                                                         }
                                                     }
@@ -458,10 +458,10 @@
                                                                     data:{"user_id":user_id,"reply_id":reply_id},
                                                                     success:function(date){
                                                                         if(date == 1){
-                                                                            $(a).children("span").text(parseInt(count+1));
+                                                                            $(a).children("span").text(parseInt(count)+1);
                                                                             toastr.success("点赞成功");
                                                                         }else{
-                                                                            $(a).children("span").text(parseInt(count-1));
+                                                                            $(a).children("span").text(parseInt(count)-1);
                                                                             toastr.success("取消点赞");
                                                                         }
                                                                     }

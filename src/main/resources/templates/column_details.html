@@ -232,7 +232,7 @@
                             success:function(date){
                                 $(a).parent().remove();
                                 toastr.success("收录成功");
-                                $("#cous").text(parseInt(ds+1));
+                                $("#cous").text(parseInt(ds)+1);
                                 $("#div1").html(date);
                             }
                         })
@@ -305,7 +305,7 @@
                 data:{"article_id":article_id,"topic_id":topic_id},
                 success:function(date){
                     toastr.success("移除文章成功");
-                    $("#cous").text(parseInt(ds-1));
+                    $("#cous").text(parseInt(ds)-1);
                     $("#div1").html(date);
                 }
             })
