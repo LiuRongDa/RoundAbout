@@ -74,7 +74,6 @@ public class TbstaffController {
     @RequestMapping("update")
     public PageInfo<TbStaff> update(String staff_name,String staff_number,String staff_pwd,Integer staff_sex,String staff_idcard,String staff_phone,Integer role_id,Integer staff_id){
         Boolean update = tbStaffService.update(staff_name, staff_number, staff_pwd, staff_sex, staff_idcard, staff_phone, role_id, staff_id);
-        System.out.println(staff_name);
         if (update)return selePage(null,null,null);
         return null;
     }

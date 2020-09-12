@@ -716,7 +716,8 @@
                                 <dd class="pull-left">
                                     <a class="aw-user-name" th:href="@{Reception/User/toElseHome(id=${art[0].TbArticle.TbUser.user_id})}" data-id="2" th:text="${art[0].TbArticle.TbUser.user_name}">
                                         豆豆龙
-                                    </a>
+                                    </a><br>
+                                    <span th:text="${art[0].TbArticle.TbUser.user_brief}">aasdas</span>
                                 </dd>
                             </dl>
                         </div>
@@ -747,19 +748,28 @@
                         </div>-->
                     </div>
                     <!-- end 发起人 -->
-
-                    <!-- 相关问题 -->
-                    <div class="aw-mod aw-text-align-justify question-related-list">
-                        <div class="mod-head">
-                            <h3>相关问题</h3>
-                        </div>
-                        <div class="mod-body font-size-12">
-                            <ul>
-                                <li><a href="http://azhihu.cssroom.com/?/question/8">有哪些不起眼却非常赚钱的行业？</a></li>
-                            </ul>
-                        </div>
+                    <div class="sideAdd">
+                        <a>
+                            <img src="http://azhihu.cssroom.com/static/css/azhihu/img/side_add.jpg" alt="">
+                        </a>
                     </div>
-                    <!-- end 相关问题 -->
+                    <!--页脚-->
+                    <div>
+                        <ul>
+                            <li style="color: #b8b1b1">帮助中心大问号指南知乎协议大问号隐私保护指引</li>
+                            <li style="color: #b8b1b1">应用工作申请开通大问号机构号</li>
+                            <li style="color: #b8b1b1">侵权举报网上有害信息举报专区</li>
+                            <li style="color: #b8b1b1">京 ICP 证 110745 号</li>
+                            <li style="color: #b8b1b1">京 ICP 备 13052560 号 - 1</li>
+                            <li style="color: #b8b1b1">京公网安备 11010802010035 号</li>
+                            <li style="color: #b8b1b1">互联网药品信息服务资格证书</li>
+                            <li style="color: #b8b1b1">（京）- 非经营性 - 2017 - 0067违法和不良信息举报：010-82716601</li>
+                            <li style="color: #b8b1b1">儿童色情信息举报专区</li>
+                            <li style="color: #b8b1b1">证照中心</li>
+                            <li style="color: #b8b1b1">联系我们 © 2020 大问号</li>
+                        </ul>
+                    </div>
+                    <!--end页脚-->
                 </div>
                 <!-- end 侧边栏 -->
             </div>
